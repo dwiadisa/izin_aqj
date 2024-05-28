@@ -31,11 +31,6 @@
                                                 <td><?php echo $wl->nama_wilayah ?></td>
                                                 <td>
 
-
-
-
-
-                                                
                                                 </td>
                                                
                                             </tr>
