@@ -9,7 +9,7 @@
     <!-- theme meta -->
     <meta name="theme-name" content="quixlab" />
   
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title><?php echo $title ?></title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('assets/theme/') ?>images/favicon.png">
     <!-- Pignose Calender -->
