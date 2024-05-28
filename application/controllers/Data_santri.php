@@ -25,10 +25,21 @@ class Data_santri extends CI_Controller {
     }
 
     
-    public function tambah_santri(){
+    public function tambah_santri(){ 
 
-            
+
         
+        $data = [
+            'title' => ' Tambah Data Santri',
+        ];
+            
+
+
+
+        
+        $this->load->view('templates/header_dashboard' , $data);
+        $this->load->view('content/tambah_data_santri', $data);
+        $this->load->view('templates/footer_dashboard');
 
     }
 }
