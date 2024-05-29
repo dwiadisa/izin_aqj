@@ -23,6 +23,13 @@ class Data_wilayah extends CI_Controller {
 
 
     }
+
+    public function tambah_wilayah(){
+
+        echo "ini tambah wilayah";
+
+
+    }
 }
 
 /* End of file Data_wilayah.php and path \application\controllers\Data_wilayah.php */
