@@ -11,7 +11,7 @@
   
     <title><?php echo $title ?></title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('assets/theme/') ?>images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('assets/images/') ?>Logo-Al-Qodiri-Small-150x150.png">
     <!-- Pignose Calender -->
     <link href="<?php echo base_url('assets/theme/') ?>plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
@@ -47,13 +47,16 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-        <div class="nav-header">
-            <div class="brand-logo">
-                <a href="index.html">
-                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
+        <div class="nav-header bg-success">
+          <div class="brand-logo">
+                <a href="<?php echo base_url('dashboard'); ?>">
+                    <b class="logo-abbr"><img src="<?php echo base_url('assets/images/') ?>Logo-Al-Qodiri-Small-150x150.png" alt=""></b>
+                    <span class="logo-compact"><img src="<?php echo base_url('assets/images/') ?>Logo-Al-Qodiri-Small-150x150.png" alt=""></span>
                     <span class="brand-title">
-                        <img src="images/logo-text.png" alt="">
+                        <img src="<?php echo base_url('assets/images/') ?>Logo-Al-Qodiri-Small-150x150.png" style="width: 40px;" alt="">
+                        <span class="text-white font-weight-bold">
+                            SIPP-TREN AQJ
+                        </span>
                     </span>
                 </a>
             </div>
@@ -216,7 +219,7 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="images/user/1.png" height="40" width="40" alt="">
+                                <img src=" <?php echo base_url('assets/theme/') ?>images/user/1.png" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -263,91 +266,49 @@
                             <!-- <li><a href="./index-2.html">Home 2</a></li> -->
                         </ul>
                     </li>
-                    <li class="mega-menu mega-menu-sm">
+                   
+                    <li class="nav-label">Master Data Santri dan Wilayah (Asrama)</li>
+                    <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Layouts</span>
+                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Data Santri</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./layout-blank.html">Blank</a></li>
-                            <li><a href="./layout-one-column.html">One Column</a></li>
-                            <li><a href="./layout-two-column.html">Two column</a></li>
-                            <li><a href="./layout-compact-nav.html">Compact Nav</a></li>
-                            <li><a href="./layout-vertical.html">Vertical</a></li>
-                            <li><a href="./layout-horizontal.html">Horizontal</a></li>
-                            <li><a href="./layout-boxed.html">Boxed</a></li>
-                            <li><a href="./layout-wide.html">Wide</a></li>
-                            
-                            
-                            <li><a href="./layout-fixed-header.html">Fixed Header</a></li>
-                            <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
+                            <li><a href="./email-inbox.html">Data Santri</a></li>
+                            <li><a href="./email-read.html">Tambah Santri</a></li>
+                        
                         </ul>
                     </li>
-                    <li class="nav-label">Apps</li>
+                   
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
+                            <i class="icon-graph menu-icon"></i> <span class="nav-text">Data Wilayah/Daerah (Asrama)</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./email-inbox.html">Inbox</a></li>
-                            <li><a href="./email-read.html">Read</a></li>
-                            <li><a href="./email-compose.html">Compose</a></li>
+                            <li><a href="<?php echo base_url('data_wilayah') ?>">Data Wilayah </a></li>
+                            <li><a href="./chart-morris.html">Tambah Wilayah</a></li>
+                           
                         </ul>
                     </li>
+                    <li class="nav-label">Kelola Penempatan Santri</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Apps</span>
+                            <i class="icon-grid menu-icon"></i><span class="nav-text">Data Penempatan Santri di Wilayah/Daerah (Asrama)</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./app-profile.html">Profile</a></li>
-                            <li><a href="./app-calender.html">Calender</a></li>
-                        </ul>
+                            <li><a href="./ui-accordion.html">List Seluruh Penempatan Santri</a></li>
+                            <li><a href="./ui-alert.html">Tambah Penempatan Santri</a></li>
+                          
+                         </ul>
                     </li>
+                     <li class="nav-label">Master Perizinan Santri</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-graph menu-icon"></i> <span class="nav-text">Charts</span>
+                            <i class="icon-layers menu-icon"></i><span class="nav-text">Kelola Perizinan Santri</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./chart-flot.html">Flot</a></li>
-                            <li><a href="./chart-morris.html">Morris</a></li>
-                            <li><a href="./chart-chartjs.html">Chartjs</a></li>
-                            <li><a href="./chart-chartist.html">Chartist</a></li>
-                            <li><a href="./chart-sparkline.html">Sparkline</a></li>
-                            <li><a href="./chart-peity.html">Peity</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">UI Components</li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-grid menu-icon"></i><span class="nav-text">UI Components</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./ui-accordion.html">Accordion</a></li>
-                            <li><a href="./ui-alert.html">Alert</a></li>
-                            <li><a href="./ui-badge.html">Badge</a></li>
-                            <li><a href="./ui-button.html">Button</a></li>
-                            <li><a href="./ui-button-group.html">Button Group</a></li>
-                            <li><a href="./ui-cards.html">Cards</a></li>
-                            <li><a href="./ui-carousel.html">Carousel</a></li>
-                            <li><a href="./ui-dropdown.html">Dropdown</a></li>
-                            <li><a href="./ui-list-group.html">List Group</a></li>
-                            <li><a href="./ui-media-object.html">Media Object</a></li>
-                            <li><a href="./ui-modal.html">Modal</a></li>
-                            <li><a href="./ui-pagination.html">Pagination</a></li>
-                            <li><a href="./ui-popover.html">Popover</a></li>
-                            <li><a href="./ui-progressbar.html">Progressbar</a></li>
-                            <li><a href="./ui-tab.html">Tab</a></li>
-                            <li><a href="./ui-typography.html">Typography</a></li>
-                        <!-- </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-layers menu-icon"></i><span class="nav-text">Components</span>
-                        </a>
-                        <ul aria-expanded="false"> -->
-                            <li><a href="./uc-nestedable.html">Nestedable</a></li>
-                            <li><a href="./uc-noui-slider.html">Noui Slider</a></li>
-                            <li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
-                            <li><a href="./uc-toastr.html">Toastr</a></li>
+                            <li><a href="./uc-nestedable.html">List Data/Status Perizinan Santri</a></li>
+                            <li><a href="./uc-noui-slider.html">Tambah Perizinan Santri</a></li>
+                        
                         </ul>
                     </li>
                     <li>
@@ -355,33 +316,30 @@
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
                         </a>
                     </li>
-                    <li class="nav-label">Forms</li>
+                    <li class="nav-label">Kelola Data Santri Riyadhoh</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
+                            <i class="icon-note menu-icon"></i><span class="nav-text">Data Santri Riyadhoh</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./form-basic.html">Basic Form</a></li>
-                            <li><a href="./form-validation.html">Form Validation</a></li>
-                            <li><a href="./form-step.html">Step Form</a></li>
-                            <li><a href="./form-editor.html">Editor</a></li>
-                            <li><a href="./form-picker.html">Picker</a></li>
+                            <li><a href="./form-basic.html">List Santri Riyadhoh</a></li>
+                            <li><a href="./form-validation.html">Tambah Data Santri Riyadhoh</a></li>
+                            
                         </ul>
                     </li>
-                    <li class="nav-label">Table</li>
+                    <li class="nav-label">Manajemen User</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Table</span>
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Data User</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./table-basic.html" aria-expanded="false">Basic Table</a></li>
-                            <li><a href="./table-datatable.html" aria-expanded="false">Data Table</a></li>
+                            <li><a href="./table-basic.html" aria-expanded="false">List User</a></li>
+                            <li><a href="./table-datatable.html" aria-expanded="false">Tambah User</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">Pages</li>
-                    <li>
+                      <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-notebook menu-icon"></i><span class="nav-text">Pages</span>
+                            <i class="icon-notebook menu-icon"></i><span class="nav-text">Tentang Aplikasi</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./page-login.html">Login</a></li>
@@ -398,6 +356,13 @@
                             </li>
                         </ul>
                     </li>
+                      <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">Lihat Profil Pengguna</span>
+                        </a>
+                    </li>
+                    
+                  
                 </ul>
             </div>
         </div>

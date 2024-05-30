@@ -18,8 +18,8 @@ class Dashboard extends CI_Controller {
             'hitung' => 'ini untuk hitung'
         ];  
 
-        $this->load->view('templates/header_dashboard');
-        $this->load->view('content/dashboard');
+        $this->load->view('templates/header_dashboard' , $data);
+        $this->load->view('content/dashboard',$data);
         $this->load->view('templates/footer_dashboard');
 
         // var_dump($this->session->userdata());
