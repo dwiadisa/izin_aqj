@@ -333,7 +333,7 @@
                            <i class="fa-solid fa-crown"></i><span class="nav-text">Data User</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./table-basic.html" aria-expanded="false">List User</a></li>
+                            <li><a href="<?php echo base_url('data_user') ?>" aria-expanded="false">List User</a></li>
                             <li><a href="./table-datatable.html" aria-expanded="false">Tambah User</a></li>
                         </ul>
                     </li>

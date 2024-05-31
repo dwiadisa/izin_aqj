@@ -7,7 +7,7 @@ class Data_wilayah_model extends CI_Model
     {
 
 
-    $wilayah = $this->db->get('data_wilayah')->result();
+        $wilayah = $this->db->get('data_wilayah')->result();
         return $wilayah;
 
     } 
