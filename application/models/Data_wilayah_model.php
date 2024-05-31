@@ -23,12 +23,13 @@ class Data_wilayah_model extends CI_Model
      return $this->db->get_where('data_wilayah', $where);
 
     }
-    public function update_wilayah(){
-
+    public function update_wilayah($where, $data){
+        $this->db->where($where);
+        $this->db->update('data_wilayah', $data);
     }
-    public function hapus_wilayah(){
-        
-    }
+    public function hapus_wilayah($where){
+          $this->db->delete('data_wilayah', $where);
+    }   
                         
 }
 
