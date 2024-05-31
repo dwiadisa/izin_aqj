@@ -32,14 +32,19 @@ class Data_wilayah extends CI_Controller {
         ];
 
 
-        $this->form_validation->rules('kode_wilayah' , 'Kode Wilayah' , 'required' ,array('required' => 'Kode Wilayah wajib diisi'));
-        $this->form_validation->rules('nama_wilayah' , 'nama Wilayah' , 'required' ,array('required' => 'Nama Wilayah wajib diisi'));
+        $this->form_validation->set_rules('kode_wilayah' , 'Kode Wilayah' , 'required' ,array('required' => 'Kode Wilayah wajib diisi'));
+        $this->form_validation->set_rules('nama_wilayah' , 'nama Wilayah' , 'required' ,array('required' => 'Nama Wilayah wajib diisi'));
 
         if ($this->form_validation->run() !=false) {
-            // jika dia berhasil input
-                
+            
+            $data = array(
+                'singkatan_wilayah' => $this->input->post('kode_wilayah'),
+                'nama_wilayah' =>   $this->input->post('nama_wilayah')
+            );
 
-
+                    $this->data_wilayah_model->tambah_wilayah($data);
+                    redirect('data_wilayah');
+         
         } else {
         $this->load->view('templates/header_dashboard' , $data);
         $this->load->view('content/tambah_data_wilayah', $data);
@@ -50,6 +55,13 @@ class Data_wilayah extends CI_Controller {
 
         // echo "ini tambah wilayah";
 
+
+    }
+    public function ubah_wilayah($id){
+
+    }
+
+    public function hapus_wilayah($id){
 
     }
 }

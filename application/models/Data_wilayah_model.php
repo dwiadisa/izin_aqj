@@ -10,7 +10,25 @@ class Data_wilayah_model extends CI_Model
     $wilayah = $this->db->get('data_wilayah')->result();
         return $wilayah;
 
-    }                        
+    } 
+    
+    
+    public function tambah_wilayah($data){
+
+         $this->db->insert('data_wilayah', $data);
+
+    }
+    public function ubah_wilayah($where){
+
+     return $this->db->get_where('data_wilayah', $where);
+
+    }
+    public function update_wilayah(){
+
+    }
+    public function hapus_wilayah(){
+        
+    }
                         
 }
 

@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/theme/') ?>plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
     <link href="<?php echo base_url('assets/theme/') ?>css/style.css" rel="stylesheet">
+    <!-- font awesome load -->
+    <script src="https://kit.fontawesome.com/6e0c65f34f.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -234,9 +236,7 @@
                                         </li>
                                         
                                         <hr class="my-2">
-                                        <li>
-                                            <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                        </li>
+                                      
                                         <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
@@ -259,7 +259,7 @@
                     <li class="nav-label">Dashboard</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                         <i class="fa-solid fa-gauge"></i><span class="nav-text">Dashboard</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./index.html">Home 1</a></li>
@@ -270,7 +270,7 @@
                     <li class="nav-label">Master Data Santri dan Wilayah (Asrama)</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Data Santri</span>
+                         <i class="fa-solid fa-users"></i> <span class="nav-text">Data Santri</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./email-inbox.html">Data Santri</a></li>
@@ -281,18 +281,18 @@
                    
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-graph menu-icon"></i> <span class="nav-text">Data Wilayah/Daerah (Asrama)</span>
+                          <i class="fa-solid fa-location-dot"></i> <span class="nav-text">Data Wilayah/Daerah (Asrama)</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="<?php echo base_url('data_wilayah') ?>">Data Wilayah </a></li>
-                            <li><a href="./chart-morris.html">Tambah Wilayah</a></li>
+                            <li><a href="<?php echo base_url('data_wilayah/tambah_wilayah') ?>">Tambah Wilayah</a></li>
                            
                         </ul>
                     </li>
                     <li class="nav-label">Kelola Penempatan Santri</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-grid menu-icon"></i><span class="nav-text">Data Penempatan Santri di Wilayah/Daerah (Asrama)</span>
+                          <i class="fa-solid fa-list"></i><span class="nav-text">Data Penempatan Santri di Wilayah/Daerah (Asrama)</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./ui-accordion.html">List Seluruh Penempatan Santri</a></li>
@@ -303,7 +303,7 @@
                      <li class="nav-label">Master Perizinan Santri</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-layers menu-icon"></i><span class="nav-text">Kelola Perizinan Santri</span>
+                          <i class="fa-solid fa-check-to-slot"></i><span class="nav-text">Kelola Perizinan Santri</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./uc-nestedable.html">List Data/Status Perizinan Santri</a></li>
@@ -311,15 +311,15 @@
                         
                         </ul>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="widgets.html" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-label">Kelola Data Santri Riyadhoh</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-note menu-icon"></i><span class="nav-text">Data Santri Riyadhoh</span>
+                          <i class="fa-solid fa-table"></i><span class="nav-text">Data Santri Riyadhoh</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./form-basic.html">List Santri Riyadhoh</a></li>
@@ -330,7 +330,7 @@
                     <li class="nav-label">Manajemen User</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Data User</span>
+                           <i class="fa-solid fa-crown"></i><span class="nav-text">Data User</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./table-basic.html" aria-expanded="false">List User</a></li>
@@ -340,11 +340,11 @@
                   
                       <li>
                         <a href="widgets.html" aria-expanded="false">
-                            <i class="icon-badge menu-icon"></i><span class="nav-text">Lihat Profil Pengguna</span>
+                           <i class="fa-solid fa-address-card"></i><span class="nav-text">Lihat Profil Pengguna</span>
                         </a>
                       <li>
                         <a href="widgets.html" aria-expanded="false">
-                            <i class="icon-badge menu-icon"></i><span class="nav-text">Logout</span>
+                          <i class="fa-solid fa-right-from-bracket"></i><span class="nav-text">Logout</span>
                         </a>
                     </li>
                     
