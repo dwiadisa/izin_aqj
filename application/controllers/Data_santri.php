@@ -6,6 +6,7 @@ class Data_santri extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        if (!is_login()) redirect('auth');
     }
 
     public function index()
@@ -41,6 +42,10 @@ class Data_santri extends CI_Controller {
         $this->load->view('content/tambah_data_santri', $data);
         $this->load->view('templates/footer_dashboard');
 
+    }
+    public function ubah_santri(){
+
+        echo "ini ubah santri";
     }
 }
 

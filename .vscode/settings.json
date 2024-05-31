@@ -1,5 +1,13 @@
 {
 	"editor.fontFamily": "Consolas",
 	"editor.cursorBlinking": "expand",
-	"editor.cursorStyle": "line"
+	"editor.cursorStyle": "line",
+	"[javascript]": {
+		"editor.formatOnSave": false,
+
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"[javascript]": {
+			"editor.defaultFormatter": "<another formatter>"
+		}
+	}
 }

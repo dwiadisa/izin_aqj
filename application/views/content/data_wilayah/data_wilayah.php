@@ -11,6 +11,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><?php echo $title ?></h4>
+                                <hr>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
@@ -41,8 +42,6 @@
                                                 </td>                                             
                                             </tr>
                                                 <!-- modal hapus  -->
-
-
                                                 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -77,8 +76,6 @@
             </div>
             <!-- #/ container -->
         </div>
-
-
 
     <!-- JS modal -->
 
