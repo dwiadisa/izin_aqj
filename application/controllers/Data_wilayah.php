@@ -17,7 +17,7 @@ class Data_wilayah extends CI_Controller {
         ];
     // var_dump($data);
         $this->load->view('templates/header_dashboard' , $data);
-        $this->load->view('content/data_wilayah', $data);
+        $this->load->view('content/data_wilayah/data_wilayah', $data);
         $this->load->view('templates/footer_dashboard');
       
 
@@ -47,7 +47,7 @@ class Data_wilayah extends CI_Controller {
          
         } else {
         $this->load->view('templates/header_dashboard' , $data);
-        $this->load->view('content/tambah_data_wilayah', $data);
+        $this->load->view('content/data_wilayah/tambah_data_wilayah', $data);
         $this->load->view('templates/footer_dashboard');
         }
         
@@ -58,11 +58,24 @@ class Data_wilayah extends CI_Controller {
 
     }
     public function ubah_wilayah($id){
+            $where = array('id_wilayah' => $id);
+            $data = [
+            'title' => 'Ubah Wilayah',
+            'wilayah' => $this->data_wilayah_model->ubah_wilayah($where)->result()
+
+        ];
+        var_dump($data);
+
+    }
+    public function update_wilayah(){
 
     }
 
     public function hapus_wilayah($id){
+             $where = array('id_wilayah' => $id);
 
+        $this->data_wilayah_model->hapus_wilayah($where);
+        redirect(base_url('data_wilayah'));
     }
 }
 

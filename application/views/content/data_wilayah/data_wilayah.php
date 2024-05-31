@@ -41,6 +41,8 @@
                                                 </td>                                             
                                             </tr>
                                                 <!-- modal hapus  -->
+
+
                                                 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
