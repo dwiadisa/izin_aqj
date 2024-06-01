@@ -6,18 +6,20 @@ class Data_user extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('data_user_model');
     }
 
     public function index()
     {
          $data = [
             'title' => 'Data User' ,
-            'user' => 'ini untuk hitung'
+            'user' => $this->data_user_model->lihat_user()->result()
         ];  
 
-        $this->load->view('templates/header_dashboard' , $data);
-        $this->load->view('content/data_user/data_user',$data);
-        $this->load->view('templates/footer_dashboard');
+        var_dump($data);
+        // $this->load->view('templates/header_dashboard' , $data);
+        // $this->load->view('content/data_user/data_user',$data);
+        // $this->load->view('templates/footer_dashboard');
 
 
     }

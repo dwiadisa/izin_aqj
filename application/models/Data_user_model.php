@@ -6,7 +6,7 @@ class Data_user_model extends CI_Model
     public function lihat_user()
     {
         
-        $user = $this->db->get('data_user')->result();
+        $user = $this->db->get('user');
         return $user;
 
     }   
