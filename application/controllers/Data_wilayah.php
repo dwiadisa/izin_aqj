@@ -13,7 +13,7 @@ class Data_wilayah extends CI_Controller {
     public function index()
     {
          $data = [
-            'title' => 'Data Wilayah/Rayon',
+            'title' => 'Data Wilayah/Asrama',
             'wilayah' => $this->data_wilayah_model->lihat_wilayah()
         ];
     // var_dump($data);
