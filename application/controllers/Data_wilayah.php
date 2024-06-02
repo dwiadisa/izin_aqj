@@ -110,6 +110,23 @@ class Data_wilayah extends CI_Controller {
         $this->data_wilayah_model->hapus_wilayah($where);
         redirect(base_url('data_wilayah'));
     }
-}
 
+
+
+
+// ini bagian manajemen kamar
+
+
+    public function list_kamar(){
+
+    echo "ini list kamaar ";
+
+    }
+     public function tambah_kamar(){
+
+    echo "ini tambah kamaar ";
+
+    }
+
+}
 /* End of file Data_wilayah.php and path \application\controllers\Data_wilayah.php */

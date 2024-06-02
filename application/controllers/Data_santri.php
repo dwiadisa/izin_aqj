@@ -43,6 +43,23 @@ class Data_santri extends CI_Controller {
         $this->load->view('templates/footer_dashboard');
 
     }
+    public function tambah_santri_massal(){ 
+
+
+        
+        $data = [
+            'title' => ' Tambah Data Santri Secara Massal',
+        ];
+            
+
+
+
+        
+        $this->load->view('templates/header_dashboard' , $data);
+        $this->load->view('content/tambah_data_santri', $data);
+        $this->load->view('templates/footer_dashboard');
+
+    }
     public function ubah_santri(){
 
         echo "ini ubah santri";
