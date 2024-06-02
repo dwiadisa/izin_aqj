@@ -12,40 +12,7 @@ class Data_wilayah_model extends CI_Model
 
     } 
     
-    
-    public function tambah_kamar($data){
-
-         $this->db->insert('data_kamar', $data);
-
-    }
-    public function ubah_kamar($where){
-
-     return $this->db->get_where('data_kamar', $where);
-
-    }
-    public function update_kamar($where, $data){
-        $this->db->where($where);
-        $this->db->update('data_kamar', $data);
-    }
-    public function hapus_kamar($where){
-          $this->db->delete('data_kamar', $where);
-    }   
-
-    
-
-    // model untuk data kamar santri
-
-     public function lihat_kamar()
-    {
-
-
-        $wilayah = $this->db->get('data_kamar')->result();
-        return $wilayah;
-
-    } 
-    
-    
-    public function tambah_wilayah($data){
+     public function tambah_wilayah($data){
 
          $this->db->insert('data_wilayah', $data);
 
@@ -64,6 +31,40 @@ class Data_wilayah_model extends CI_Model
     }   
 
 
+    // model untuk data kamar santri
+
+     public function lihat_kamar()
+    {
+
+
+        $wilayah = $this->db->get('data_kamar')->result();
+        return $wilayah;
+
+    } 
+
+
+
+
+        public function tambah_kamar($data){
+
+         $this->db->insert('data_kamar', $data);
+
+    }
+    public function ubah_kamar($where){
+
+     return $this->db->get_where('data_kamar', $where);
+
+    }
+    public function update_kamar($where, $data){
+        $this->db->where($where);
+        $this->db->update('data_kamar', $data);
+    }
+    public function hapus_kamar($where){
+          $this->db->delete('data_kamar', $where);
+    }   
+    
+    
+   
 
                         
 }
