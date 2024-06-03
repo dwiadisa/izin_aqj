@@ -119,12 +119,58 @@ class Data_wilayah extends CI_Controller {
 
     public function list_kamar(){
 
-    echo "ini list kamaar ";
+        $data =[
+            'title' => 'Data Kamar',
+            'wilayah' => $this->data_wilayah_model->lihat_wilayah(),
+            'kamar' => $this->data_wilayah_model->lihat_kamar()
+
+        ];
+        // var_dump($data);
+
+
+        $this->load->view('templates/header_dashboard' , $data);
+        $this->load->view('content/data_wilayah/data_kamar', $data);
+        $this->load->view('templates/footer_dashboard');
+    // echo "ini list kamaar ";
 
     }
      public function tambah_kamar(){
 
-    echo "ini tambah kamaar ";
+        $this->form_validation->set_rules('nama_wilayah' , 'Nama Wilayah' , 'required' , array('required' => 'Kolom Wilayah Wajib diisi!'));
+        $this->form_validation->set_rules('nama_kamar' , 'Nama Kamar' , 'required' ,array('required' => 'Nama Kamar Wajib diisi!'));
+
+        if ($this->form_validation->run() !=false) {
+            
+            $data = array(
+                'wilayah' => $this->input->post('nama_wilayah'),
+                'nama_kamar' => $this->input->post('nama_kamar')
+
+            );
+
+            // var_dump($data);
+            $this->data_wilayah_model->tambah_kamar($data);
+            redirect('data_wilayah/list_kamar');
+
+
+        } else {
+             $data =[
+            'title' => ' Tambah Data Kamar',
+            'wilayah' => $this->data_wilayah_model->lihat_wilayah(),
+            'kamar' => 'query'
+
+        ];
+
+
+        $this->load->view('templates/header_dashboard' , $data);
+        $this->load->view('content/data_wilayah/tambah_data_kamar', $data);
+        $this->load->view('templates/footer_dashboard');
+        }
+        
+
+
+
+       
+    // echo "ini tambah kamaar ";
 
     }
 
