@@ -55,7 +55,10 @@
                                                     <tbody>
                                                         <?php 
                                                         $no =1;
-                                                        foreach ($query_kamar as $km):?>
+                                                        foreach ($query_kamar as $km):
+                                                        var_dump($km);
+                                                        ?>
+                                                        
                                                         <tr role="row" class="odd">
                                                             <td class="sorting_1"><?php echo $no++ ?></td>
                                                             <td><?php echo $km->nama_kamar ?></td>
@@ -65,7 +68,8 @@
                                                         <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item" href="<?php echo base_url('data_wilayah/ubah_kamar/') . $km->id_kamar ?>">Ubah</a>
-                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModal<?php echo $wl->id_wilayah ?>">Hapus</a>
+                                                            <a class="dropdown-item" href="<?php echo base_url('data_wilayah/hapus_kamar/') . $km->id_kamar ?>">Hapus</a>
+                                                            
                                                         </div>
                                                     </div>
 
