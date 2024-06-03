@@ -40,16 +40,8 @@ class Data_wilayah_model extends CI_Model
         $this->db->from('data_kamar');
         $this->db->join('data_wilayah', 'data_kamar.wilayah = data_wilayah.id_wilayah', 'left');
         $query = $this->db->get()->result();
-// $this->db->select('data_kamar.id_kamar, data_kamar.nama_kamar, data_wilayah.nama_wilayah');
-// $this->db->from('data_kamar');
-// $this->db->join('data_wilayah', 'data_kamar.wilayah = data_wilayah.id_wilayah', 'left');
-// $query = $this->db->get()->result();
 
         return $query;
-        // $kamar = $this
-        // // $wilayah = $this->db->get('data_kamar')->result();
-        // return $kamar;
-
     } 
     public function lihat_kamar_perwilayah($id_wilayah){
         $this->db->select('data_kamar.id_kamar, data_kamar.nama_kamar, data_wilayah.id_wilayah, data_wilayah.nama_wilayah');
@@ -69,7 +61,18 @@ class Data_wilayah_model extends CI_Model
     }
     public function ubah_kamar($where){
 
-     return $this->db->get_where('data_kamar', $where);
+
+
+            $this->db->select('data_kamar.id_kamar, data_kamar.nama_kamar, data_wilayah.id_wilayah, data_wilayah.nama_wilayah');
+            $this->db->from('data_kamar');
+            $this->db->join('data_wilayah', 'data_kamar.wilayah = data_wilayah.id_wilayah', 'left');
+            $this->db->where('data_kamar.id_kamar', $where);
+            $query = $this->db->get();
+
+
+
+
+     return $query;
 
     }
     public function update_kamar($where, $data){

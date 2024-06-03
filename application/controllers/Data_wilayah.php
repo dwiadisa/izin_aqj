@@ -167,8 +167,30 @@ class Data_wilayah extends CI_Controller {
         }
      }
 
-        public function ubah_kamar(){
-            echo "testing";
+        public function ubah_kamar($id){
+
+
+            $where = $id;
+            $data = [
+            'title' => 'Ubah Wilayah',
+            'wilayah' => $this->data_wilayah_model->ubah_kamar($where)->result()
+
+        ];
+            // echo "testing";
+
+            
+        $this->load->view('templates/header_dashboard' , $data);
+        $this->load->view('content/data_wilayah/ubah_data_kamar', $data);
+        $this->load->view('templates/footer_dashboard');
+        }
+
+        // update masih belum
+        public function hapus_kamar($id){
+
+        $where = array('id_kamar' => $id);
+
+        $this->data_wilayah_model->hapus_kamar($where);
+        redirect(base_url('data_wilayah/list_kamar'));
         }
         
 
