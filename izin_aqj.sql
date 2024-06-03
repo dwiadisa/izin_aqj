@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 28, 2024 at 11:19 PM
--- Server version: 8.2.0
--- PHP Version: 8.0.30
+-- Generation Time: Jun 03, 2024 at 02:36 PM
+-- Server version: 8.0.21
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `izin_aqj`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_kamar`
+--
+
+DROP TABLE IF EXISTS `data_kamar`;
+CREATE TABLE IF NOT EXISTS `data_kamar` (
+  `id_kamar` int NOT NULL AUTO_INCREMENT,
+  `wilayah` int NOT NULL,
+  `nama_kamar` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_kamar`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `data_kamar`
+--
+
+INSERT INTO `data_kamar` (`id_kamar`, `wilayah`, `nama_kamar`) VALUES
+(1, 1, 'asdsad'),
+(2, 2, 'Mesir'),
+(3, 2, 'Baghdad');
 
 -- --------------------------------------------------------
 
@@ -89,14 +112,16 @@ CREATE TABLE IF NOT EXISTS `data_wilayah` (
   `nama_wilayah` varchar(100) NOT NULL,
   `singkatan_wilayah` varchar(100) NOT NULL,
   PRIMARY KEY (`id_wilayah`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `data_wilayah`
 --
 
 INSERT INTO `data_wilayah` (`id_wilayah`, `nama_wilayah`, `singkatan_wilayah`) VALUES
-(1, 'Sunan Kalijaga', 'SK');
+(1, 'Sunan Kalijaga', 'SK'),
+(2, 'Lembaga Pendidikan Bahasa Arab', 'LPBA'),
+(3, 'Sunan Muria', 'SM');
 
 -- --------------------------------------------------------
 
