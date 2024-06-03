@@ -122,7 +122,7 @@ class Data_wilayah extends CI_Controller {
         $data =[
             'title' => 'Data Kamar',
             'wilayah' => $this->data_wilayah_model->lihat_wilayah(),
-            'kamar' => $this->data_wilayah_model->lihat_kamar()
+            // 'kamar' => $this->data_wilayah_model->lihat_kamar()
 
         ];
         // var_dump($data);
@@ -165,14 +165,18 @@ class Data_wilayah extends CI_Controller {
         $this->load->view('content/data_wilayah/tambah_data_kamar', $data);
         $this->load->view('templates/footer_dashboard');
         }
+     }
+
+        public function ubah_kamar(){
+            echo "testing";
+        }
         
 
 
-
+    }
        
     // echo "ini tambah kamaar ";
 
-    }
+    
 
-}
 /* End of file Data_wilayah.php and path \application\controllers\Data_wilayah.php */
