@@ -295,8 +295,8 @@
                           <i class="fa-solid fa-list"></i><span class="nav-text">Data Penempatan Santri di Wilayah/Daerah (Asrama)</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./ui-accordion.html">List Seluruh Penempatan Santri</a></li>
-                            <li><a href="./ui-alert.html">Tambah Penempatan Santri</a></li>
+                            <li><a href="<?php echo base_url('data_penempatan_santri') ?>">List Seluruh Penempatan Santri</a></li>
+                            <li><a href="<?php echo base_url('data_penempatan_santri/tambah_penempatan_santri') ?>">Tambah Penempatan Santri</a></li>
                           
                          </ul>
                     </li>
@@ -322,8 +322,8 @@
                           <i class="fa-solid fa-table"></i><span class="nav-text">Data Santri Riyadhoh</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./form-basic.html">List Santri Riyadhoh</a></li>
-                            <li><a href="./form-validation.html">Tambah Data Santri Riyadhoh</a></li>
+                            <li><a href="<?php echo base_url('data_santri_riyadhoh') ?>">List Santri Riyadhoh</a></li>
+                            <li><a href="<?php echo base_url('data_santri_riyadhoh/tambah_santri_riyadhoh') ?>">Tambah Data Santri Riyadhoh</a></li>
                             
                         </ul>
                     </li>
@@ -334,7 +334,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="<?php echo base_url('data_user') ?>" aria-expanded="false">List User</a></li>
-                            <li><a href="./table-datatable.html" aria-expanded="false">Tambah User</a></li>
+                            <li><a href="<?php echo base_url('data_user/tambah_user') ?>" aria-expanded="false">Tambah User</a></li>
                         </ul>
                     </li>
                   
