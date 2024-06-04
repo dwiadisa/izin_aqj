@@ -15,28 +15,25 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4>Tambah Data Kamar</h4>
+                                <?php foreach ($kamar as $km ):?>
+                                <h4>Ubah Data Kamar</h4>
                                 <hr>
                                 <div class="form-validation">
-                                    <form class="form-valide" action="<?php echo base_url('data_wilayah/tambah_kamar') ?>" method="post" novalidate="novalidate">
-                                          <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-skill">Pilih Wilayah <span class="text-danger">*</span>
+                                    <form class="form-valide" action="<?php echo base_url('data_wilayah/update_kamar') ?>" method="post" novalidate="novalidate">
+                                       
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-username">Nama Wilayah <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <select class="form-control" id="nama_wilayah" name="nama_wilayah">
-                                                    <option value="">Pilih Wilayah</option>
-                                                    <?php foreach ($wilayah as $wl):?>
-                                                    <option value="<?php echo $wl->id_wilayah ?>"><?php echo $wl->nama_wilayah ?></option>
-                                                    <?php endforeach; ?>
-                                                  
-                                                </select>
+                                                <input type="hidden" class="form-control" id="id_kamar" name="id_kamar" readonly placeholder="Enter a username.." value="<?php echo  $km->id_kamar ?>">
+                                                <input type="text" class="form-control" id="nama_wilayah" name="nama_wilayah" readonly placeholder="Enter a username.." value="<?php echo  $km->nama_wilayah ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-username">Nama Kamar <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="nama_kamar" name="nama_kamar" placeholder="Enter a username..">
+                                                <input type="text" class="form-control" id="nama_kamar" name="nama_kamar" placeholder="Enter a username.." value="<?php echo  $km->nama_kamar ?>">
                                             </div>
                                         </div>
                                         
@@ -48,6 +45,7 @@
                                         </div>
                                     </form>
                                 </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>

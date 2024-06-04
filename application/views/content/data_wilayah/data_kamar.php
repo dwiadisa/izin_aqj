@@ -56,7 +56,7 @@
                                                         <?php 
                                                         $no =1;
                                                         foreach ($query_kamar as $km):
-                                                        var_dump($km);
+                                                        // var_dump($km);
                                                         ?>
                                                         
                                                         <tr role="row" class="odd">

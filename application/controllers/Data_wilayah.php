@@ -173,17 +173,54 @@ class Data_wilayah extends CI_Controller {
             $where = $id;
             $data = [
             'title' => 'Ubah Wilayah',
-            'wilayah' => $this->data_wilayah_model->ubah_kamar($where)->result()
+            'kamar' => $this->data_wilayah_model->ubah_kamar($where)->result(),
+            'load_wilayah' => $this->data_wilayah_model->lihat_wilayah()
 
         ];
             // echo "testing";
 
-            
+            // var_dump($data);
         $this->load->view('templates/header_dashboard' , $data);
         $this->load->view('content/data_wilayah/ubah_data_kamar', $data);
         $this->load->view('templates/footer_dashboard');
         }
+        public function update_kamar(){
+            // $this->form_validation->set_rules('id_kamar' , 'Id Kamar' , 'required');
+            $this->form_validation->set_rules('nama_kamar' , 'Nama Kamar' , 'required' , array('required' => 'Nama Kamar Wajib diisi!'));
 
+            if ($this->form_validation->run() !=false) {
+
+                $where = array(
+                    'id_kamar' =>$this->input->post('id_kamar')
+                );
+
+                $data = array(
+                    'id_kamar' => $id = $this->input->post('id_kamar'),
+                    'nama_kamar' => $this->input->post('nama_kamar')
+
+                );
+
+                var_dump($data,$where);
+                $this->data_wilayah_model->update_kamar($where, $data);
+                redirect('data_wilayah/list_kamar');
+                # code...
+            } else {
+                
+
+            $where = $this->input->post('id_kamar');
+            $data = [
+            'title' => 'Ubah Wilayah',
+            'kamar' => $this->data_wilayah_model->ubah_kamar($where)->result(),
+            'load_wilayah' => $this->data_wilayah_model->lihat_wilayah()
+            ];
+            
+            $this->load->view('templates/header_dashboard' , $data);
+            $this->load->view('content/data_wilayah/ubah_data_kamar', $data);
+            $this->load->view('templates/footer_dashboard');
+
+
+                
+        }}
         // update masih belum
         public function hapus_kamar($id){
 
