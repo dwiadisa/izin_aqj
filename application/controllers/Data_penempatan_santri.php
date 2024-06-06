@@ -10,7 +10,18 @@ class Data_penempatan_santri extends CI_Controller {
 
     public function index()
     {
-        echo "jancok";
+       $data =[
+            'title' => 'Kelola Penempatan Santri',
+            'lihat_penempatan' => 'asdsad',
+            'penempatan_santri' => 'query'
+
+       ];
+
+        $this->load->view('templates/header_dashboard' , $data);
+        $this->load->view('content/data_penempatan/lihat_penempatan', $data);
+        $this->load->view('templates/footer_dashboard');
+
+
     }
 }
 
