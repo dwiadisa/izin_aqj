@@ -16,11 +16,31 @@ class Data_user extends CI_Controller {
             'user' => $this->data_user_model->lihat_user()->result()
         ];  
 
-        var_dump($data);
-        // $this->load->view('templates/header_dashboard' , $data);
-        // $this->load->view('content/data_user/data_user',$data);
-        // $this->load->view('templates/footer_dashboard');
+        // var_dump($data);
+        $this->load->view('templates/header_dashboard' , $data);
+        $this->load->view('content/data_user/data_user',$data);
+        $this->load->view('templates/footer_dashboard');
 
+
+    }
+
+    public function tambah_user(){
+
+
+
+
+
+
+
+        $data = [
+            'title' => 'Tambah Data User' ,
+            'user' => $this->data_user_model->lihat_user()->result()
+        ];  
+
+        // var_dump($data);
+        $this->load->view('templates/header_dashboard' , $data);
+        $this->load->view('content/data_user/tambah_data_user',$data);
+        $this->load->view('templates/footer_dashboard');
 
     }
 }
