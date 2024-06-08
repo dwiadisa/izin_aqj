@@ -36,7 +36,7 @@
                                                     <div class="btn-group" role="group">
                                                         <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                         <div class="dropdown-menu">
-                                                            <a class="dropdown-item" href="<?php echo base_url('data_wilayah/ubah_wilayah/') . $us->id_user ?>">Ubah</a>
+                                                            <a class="dropdown-item" href="<?php echo base_url('data_user/ubah_user/') . $us->id_user ?>">Ubah</a>
                                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModal<?php echo $us->id_user ?>">Hapus</a>
                                                         </div>
                                                     </div>

@@ -12,12 +12,12 @@ class Data_user_model extends CI_Model
     }   
     
     public function tambah_user($data){
-        
+
         $this->db->insert('user', $data);
     }
 
-    public function ubah_user(){
-
+    public function ubah_user($where){
+          return $this->db->get_where('user', $where);
     }
     public function update_user(){
 

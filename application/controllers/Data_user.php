@@ -71,6 +71,32 @@ class Data_user extends CI_Controller {
 
        
     }
+    public function ubah_user($id){
+
+    $where = array('id_user' => $id);
+    $data =[
+        'title' => 'Ubah Data User',
+        'load_user' => $this->data_user_model->ubah_user($where)->result()
+
+
+    ];
+
+  $this->load->view('templates/header_dashboard' , $data);
+        $this->load->view('content/data_user/ubah_data_user',$data);
+        $this->load->view('templates/footer_dashboard');
+
+
+
+    // var_dump($data);
+
+    }
+    public function update_user(){
+
+    }
+
+    public function hapus_user($id){
+
+    }
 }
 
 /* End of file Data_user.php and path \application\controllers\Data_user.php */
