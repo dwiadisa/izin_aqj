@@ -68,8 +68,8 @@
                                             <div class="col-lg-6">
                                                 <select class="form-control" id="level" name="level">
                                                     <option value="">Pilih Level </option>
-                                                    <option value="ADMIN">Administrator</option>
-                                                    <option value="PENGURUS">Pengurus</option>
+                                                    <option value="ADMIN" <?php echo ($user->level == 'ADMIN') ? 'selected' : ''; ?> >Administrator</option>
+                                                    <option value="PENGURUS" <?php echo ($user->level == 'PENGURUS') ? 'selected' : ''; ?> >Pengurus</option>
                                                    
                                                 </select>
                                             </div>
