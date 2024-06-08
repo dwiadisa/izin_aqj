@@ -11,8 +11,9 @@ class Data_user_model extends CI_Model
 
     }   
     
-    public function tambah_user(){
-
+    public function tambah_user($data){
+        
+        $this->db->insert('user', $data);
     }
 
     public function ubah_user(){
