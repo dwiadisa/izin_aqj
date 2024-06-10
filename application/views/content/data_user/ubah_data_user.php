@@ -10,11 +10,11 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4>Tambah Data User</h4>
+                                <h4>Ubah Data User</h4>
                                 
                                 <hr>
                                 <div class="form-validation">
-                                    <form class="form-valide" action="<?php echo base_url('data_user/tambah_user') ?>" method="post" novalidate="novalidate">
+                                    <form class="form-valide" action="<?php echo base_url('data_user/update_user') ?>" method="post" novalidate="novalidate">
                                         <?php foreach ($load_user as $user):?>
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-username">Username <span class="text-danger">*</span>
@@ -36,13 +36,6 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Password">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-password"> Konfirmasi Password <span class="text-danger">*</span>
-                                            </label>
-                                            <div class="col-lg-6">
-                                                <input type="password" class="form-control" id="konfir_password" name="konfir_password" placeholder="Masukkan Konfirmasi Password">
                                             </div>
                                         </div>
                                         <div class="form-group row">
