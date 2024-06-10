@@ -20,6 +20,7 @@
                                             <label class="col-lg-4 col-form-label" for="val-username">Username <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
+                                                <input type="hidden" class="form-control" id="id_user" name="id_user" placeholder="Masukkan Username" value="<?php echo $user->id_user ?>">
                                                 <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" value="<?php echo $user->username ?>">
                                             </div>
                                         </div>
