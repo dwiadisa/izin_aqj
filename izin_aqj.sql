@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 03, 2024 at 02:36 PM
--- Server version: 8.0.21
--- PHP Version: 7.4.9
+-- Generation Time: Jun 13, 2024 at 06:29 PM
+-- Server version: 8.2.0
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,16 +33,42 @@ CREATE TABLE IF NOT EXISTS `data_kamar` (
   `wilayah` int NOT NULL,
   `nama_kamar` varchar(20) NOT NULL,
   PRIMARY KEY (`id_kamar`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `data_kamar`
 --
 
 INSERT INTO `data_kamar` (`id_kamar`, `wilayah`, `nama_kamar`) VALUES
-(1, 1, 'asdsad'),
-(2, 2, 'Mesir'),
-(3, 2, 'Baghdad');
+(10, 1, 'SK-1'),
+(9, 1, 'SK-2'),
+(8, 4, 'Muharram'),
+(11, 2, 'Palestina'),
+(12, 2, 'Mesir'),
+(13, 2, 'Afghanistan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_lembaga`
+--
+
+DROP TABLE IF EXISTS `data_lembaga`;
+CREATE TABLE IF NOT EXISTS `data_lembaga` (
+  `id_lembaga` int NOT NULL AUTO_INCREMENT,
+  `singkatan_lembaga` varchar(20) NOT NULL,
+  `nama_lembaga` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id_lembaga`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `data_lembaga`
+--
+
+INSERT INTO `data_lembaga` (`id_lembaga`, `singkatan_lembaga`, `nama_lembaga`) VALUES
+(1, 'SMKAQJ', 'SMK Al-Qodiri Jember'),
+(2, 'MTSUAQ', 'MTs, Unggulan Al-Qodiri Jember'),
+(3, 'asdas', 'asdasd');
 
 -- --------------------------------------------------------
 
@@ -55,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `data_penghuni` (
   `id_penghuni` int NOT NULL AUTO_INCREMENT,
   `id_santri` int NOT NULL,
   `id_wilayah` int NOT NULL,
+  `id_kamar` int NOT NULL,
   PRIMARY KEY (`id_penghuni`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -88,15 +115,23 @@ CREATE TABLE IF NOT EXISTS `data_perizinan` (
 DROP TABLE IF EXISTS `data_santri`;
 CREATE TABLE IF NOT EXISTS `data_santri` (
   `id_santri` int NOT NULL AUTO_INCREMENT,
-  `ni_santri` varchar(100) NOT NULL,
-  `nama_santri` varchar(100) NOT NULL,
-  `tempat_lahir_santri` varchar(20) NOT NULL,
-  `tanggal_lahir_santri` date NOT NULL,
-  `nama_ayah` varchar(100) NOT NULL,
-  `nama_ibu` varchar(100) NOT NULL,
-  `no_hp_ayah` varchar(20) NOT NULL,
-  `no_hp_ibu` varchar(20) NOT NULL,
-  `alamat_santri` varchar(256) NOT NULL,
+  `no_induk_santri` varchar(20) NOT NULL,
+  `nama_lengkap_santri` varchar(150) NOT NULL,
+  `tanggal_masuk` date NOT NULL,
+  `tempat_lahir` varchar(20) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `alamat_dusun` varchar(20) NOT NULL,
+  `alamat_desa` varchar(20) NOT NULL,
+  `alamat_kecamatan` varchar(20) NOT NULL,
+  `alamat_kabupaten` varchar(20) NOT NULL,
+  `alamat_provinsi` varchar(30) NOT NULL,
+  `pendidikan_dipilih` int NOT NULL,
+  `nama_ayah` varchar(150) NOT NULL,
+  `pekerjaan_ayah` varchar(100) NOT NULL,
+  `nama_ibu` varchar(150) NOT NULL,
+  `no_hp` varchar(20) NOT NULL,
+  `foto` varchar(150) NOT NULL,
+  `status` enum('AKTIF','NONAKTIF','','') NOT NULL,
   PRIMARY KEY (`id_santri`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -112,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `data_wilayah` (
   `nama_wilayah` varchar(100) NOT NULL,
   `singkatan_wilayah` varchar(100) NOT NULL,
   PRIMARY KEY (`id_wilayah`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `data_wilayah`
@@ -121,7 +156,8 @@ CREATE TABLE IF NOT EXISTS `data_wilayah` (
 INSERT INTO `data_wilayah` (`id_wilayah`, `nama_wilayah`, `singkatan_wilayah`) VALUES
 (1, 'Sunan Kalijaga', 'SK'),
 (2, 'Lembaga Pendidikan Bahasa Arab', 'LPBA'),
-(3, 'Sunan Muria', 'SM');
+(3, 'Sunan Muria', 'SM'),
+(4, 'Rusunawa (Unggulan)', 'RSW');
 
 -- --------------------------------------------------------
 
@@ -140,14 +176,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `level` enum('ADMIN','PENGURUS') NOT NULL,
   `status` enum('AKTIF','NONAKTIF') NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `nama_lengkap`, `email`, `no_hp`, `level`, `status`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'administrator', 'administator@email.com', '0000000000', 'ADMIN', 'AKTIF');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'administrator', 'administator@email.com', '0000000000', 'ADMIN', 'AKTIF'),
+(2, 'pengurus', '25d55ad283aa400af464c76d713c07ad', 'pengurus pondok', 'mahfudzroziqi16@guru.smk.belajar.id', '089287867123', 'PENGURUS', 'AKTIF');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
