@@ -271,7 +271,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="<?php echo base_url('data_santri') ?>">Data Santri</a></li>
-                            <li><a href="<?php echo base_url('data_santri/tambah_data_santri') ?>">Tambah Santri Secara Manual</a></li>
+                            <li><a href="<?php echo base_url('data_santri/tambah_santri') ?>">Tambah Santri Secara Manual</a></li>
                             <li><a href="<?php echo base_url('data_santri/tambah_data_santri_massal') ?>">Tambah Santri Secara Massal (Excel)</a></li>
                         
                         </ul>
@@ -287,6 +287,18 @@
                             <li><a href="<?php echo base_url('data_wilayah/list_kamar') ?>">Data Kamar</a></li>
                             <li><a href="<?php echo base_url('data_wilayah/tambah_kamar') ?>">Tambah Kamar</a></li>
                            
+                        </ul>
+                    </li>
+
+                     <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="fa-solid fa-school"></i> <span class="nav-text">Lembaga Pendidikan</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="<?php echo base_url('data_lembaga_pendidikan') ?>">Data Lembaga Pendidikan</a></li>
+                            <li><a href="<?php echo base_url('data_lembaga_pendidikan/tambah_lembaga') ?>">Tambah Lembaga Pendidikan</a></li>
+                            
+                        
                         </ul>
                     </li>
                     <li class="nav-label">Kelola Penempatan Santri</li>
