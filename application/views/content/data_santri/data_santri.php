@@ -32,17 +32,10 @@
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>No. Induk Santri</th>
-                                            <th>Nama Lengkap</th>
-                                            <th>Tanggal Masuk</th>
-                                            <th>Tempat Lahir</th>
-                                            <th>Tanggal Lahir</th>
-                                            <th>Alamat Dusun</th>
-                                            <th>Alamat Kecamatan</th>
-                                            <th>Alamat Provinsi</th>
-                                            <th>Lembaga Pendidikan</th>
-                                            <th>Nama Ayah</th>
-                                            <th>Pekerjaan Ayah</th>
+                                            <th>Foto</th>
+                                            <th>Detail Santri</th>
+                                            <th>Alamat Lengkap</th>
+                                            <th>Orangtua</th>
                                             <th>No. HP</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -52,17 +45,25 @@
                                         <?php foreach ($data_santri as $santri) : ?>
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
-                                                <td><?php echo $santri->no_induk_santri ?></td>
-                                                <td><?php echo $santri->nama_lengkap_santri ?></td>
-                                                <td><?php echo $santri->tanggal_masuk ?></td>
-                                                <td><?php echo $santri->tempat_lahir ?></td>
-                                                <td><?php echo $santri->tanggal_lahir ?></td>
-                                                <td><?php echo $santri->alamat_dusun ?></td>
-                                                <td><?php echo $santri->alamat_kecamatan ?></td>
-                                                <td><?php echo $santri->alamat_provinsi ?></td>
-                                                <td><?php echo $santri->nama_lembaga ?></td>
-                                                <td><?php echo $santri->nama_ayah ?></td>
-                                                <td><?php echo $santri->pekerjaan_ayah ?></td>
+                                                <td><img src="<?php echo base_url($santri->foto); ?>" alt="Foto Santri" style="width: 100px; height: auto;"></td>
+                                                <td>
+                                                    No. Induk Santri: <?php echo $santri->no_induk_santri ?><br>
+                                                    Nama: <?php echo $santri->nama_lengkap_santri ?><br>
+                                                    Tgl Lahir: <?php echo $santri->tanggal_lahir ?><br>
+                                                    Lembaga: <?php echo $santri->nama_lembaga ?> <br>
+                                                    Status: <span class="badge badge-<?php echo ($santri->status == 'AKTIF') ? 'success' : 'danger'; ?>"><?php echo $santri->status; ?></span>
+                                                </td>
+                                                <td>
+                                                    Dusun: <?php echo $santri->alamat_dusun ?><br>
+                                                    Kecamatan: <?php echo $santri->alamat_kecamatan ?><br>
+                                                    Provinsi: <?php echo $santri->alamat_provinsi ?>
+                                                </td>
+                                                <td>
+                                                    Nama Ayah: <?php echo $santri->nama_ayah ?><br>
+                                                    Pekerjaan Ayah: <?php echo $santri->pekerjaan_ayah ?><br>
+                                                    Nama Ibu: <?php echo $santri->nama_ibu ?><br>
+                                    
+                                                </td>
                                                 <td><?php echo $santri->no_hp ?></td>
                                                 <td>
                                                     <div class="btn-group" role="group">
@@ -104,31 +105,118 @@
                                         </div>
                                         <div class="tab-pane fade" id="aktif">
                                             <div class="p-t-15">
-                                                <h4>ini aktif</h4>
-                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
-                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
+                                                
+                                                <table class="table table-striped table-bordered zero-configuration">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No.</th>
+                                                            <th>Foto</th>
+                                                            <th>Detail Santri</th>
+                                                            <th>Alamat Lengkap</th>
+                                                            <th>Orangtua</th>
+                                                            <th>No. HP</th>
+                                                            <th>Aksi</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php $no = 1; ?>
+                                                        <?php foreach ($santri_aktif as $santri) : ?>
+                                                            <tr>
+                                                                <td><?php echo $no++ ?></td>
+                                                                <td><img src="<?php echo base_url($santri->foto); ?>" alt="Foto Santri" style="width: 100px; height: auto;"></td>
+                                                                <td>
+                                                                    No. Induk Santri: <?php echo $santri->no_induk_santri ?><br>
+                                                                    Nama: <?php echo $santri->nama_lengkap_santri ?><br>
+                                                                    Tgl Lahir: <?php echo $santri->tanggal_lahir ?><br>
+                                                                    Lembaga: <?php echo $santri->nama_lembaga ?> <br>
+                                                                    Status: <span class="badge badge-success"><?php echo $santri->status; ?></span>
+                                                                </td>
+                                                                <td>
+                                                                    Dusun: <?php echo $santri->alamat_dusun ?><br>
+                                                                    Kecamatan: <?php echo $santri->alamat_kecamatan ?><br>
+                                                                    Provinsi: <?php echo $santri->alamat_provinsi ?>
+                                                                </td>
+                                                                <td>
+                                                                    Nama Ayah: <?php echo $santri->nama_ayah ?><br>
+                                                                    Pekerjaan Ayah: <?php echo $santri->pekerjaan_ayah ?><br>
+                                                                    Nama Ibu: <?php echo $santri->nama_ibu ?><br>
+                                                                </td>
+                                                                <td><?php echo $santri->no_hp ?></td>
+                                                                <td>
+                                                                    <div class="btn-group" role="group">
+                                                                        <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
+                                                                        <div class="dropdown-menu">
+                                                                            <a class="dropdown-item" href="<?php echo base_url('data_santri/ubah_santri/') . $santri->id_santri ?>">Ubah</a>
+                                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModal<?php echo $santri->id_santri ?>">Hapus</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        <?php endforeach; ?>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="nonaktif">
                                             <div class="p-t-15">
-                                                <h4>ini nonaktif</h4>
-                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+                                                
+                                                <table class="table table-striped table-bordered zero-configuration">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No.</th>
+                                                            <th>Foto</th>
+                                                            <th>Detail Santri</th>
+                                                            <th>Alamat Lengkap</th>
+                                                            <th>Orangtua</th>
+                                                            <th>No. HP</th>
+                                                            <th>Aksi</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php $no = 1; ?>
+                                                        <?php foreach ($santri_nonaktif as $santri) : ?>
+                                                            <tr>
+                                                                <td><?php echo $no++ ?></td>
+                                                                <td><img src="<?php echo base_url($santri->foto); ?>" alt="Foto Santri" style="width: 100px; height: auto;"></td>
+                                                                <td>
+                                                                    No. Induk Santri: <?php echo $santri->no_induk_santri ?><br>
+                                                                    Nama: <?php echo $santri->nama_lengkap_santri ?><br>
+                                                                    Tgl Lahir: <?php echo $santri->tanggal_lahir ?><br>
+                                                                    Lembaga: <?php echo $santri->nama_lembaga ?> <br>
+                                                                    Status: <span class="badge badge-danger"><?php echo $santri->status; ?></span>
+                                                                </td>
+                                                                <td>
+                                                                    Dusun: <?php echo $santri->alamat_dusun ?><br>
+                                                                    Kecamatan: <?php echo $santri->alamat_kecamatan ?><br>
+                                                                    Provinsi: <?php echo $santri->alamat_provinsi ?>
+                                                                </td>
+                                                                <td>
+                                                                    Nama Ayah: <?php echo $santri->nama_ayah ?><br>
+                                                                    Pekerjaan Ayah: <?php echo $santri->pekerjaan_ayah ?><br>
+                                                                    Nama Ibu: <?php echo $santri->nama_ibu ?><br>
+                                                                </td>
+                                                                <td><?php echo $santri->no_hp ?></td>
+                                                                <td>
+                                                                    <div class="btn-group" role="group">
+                                                                        <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
+                                                                        <div class="dropdown-menu">
+                                                                            <a class="dropdown-item" href="<?php echo base_url('data_santri/ubah_santri/') . $santri->id_santri ?>">Ubah</a>
+                                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModal<?php echo $santri->id_santri ?>">Hapus</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        <?php endforeach; ?>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
-                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                 
-                  
-                    
-                   
-                   
-                   
                 </div>
             </div>
-            <!-- #/ container -->
-        </div>
+            <!-- End of Selection -->
+                                        </div>

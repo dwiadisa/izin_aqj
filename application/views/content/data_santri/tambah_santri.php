@@ -45,7 +45,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-confirm-password">Tanggal Lahir <span class="text-danger">*</span>
-                                            </label>
+                                            </label
                                             <div class="col-lg-6">
                                                 <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukkan Tempat Lahir">
                                             </div>
@@ -87,7 +87,6 @@
                                             </div>
                                         </div>
                                         <hr>
-                                      
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-skill">Lembaga Pendidikan yang dipilih<span class="text-danger">*</span>
                                             </label>
@@ -116,20 +115,43 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-currency">Nama Ibu <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Masukkan Nama Ibu">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-website">Pekerjaan Ibu <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-phoneus">No HP<span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan No Hp cth: 08123456xxx">
                                             </div>
                                         </div>
-                                        <!-- <div class="form-group row">
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-status">Status <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <select class="form-control" id="status" name="status">
+                                                    <option value="AKTIF">Aktif</option>
+                                                    <option value="NONAKTIF">Nonaktif</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-digits">Foto Santri <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="file" class="form-control" id="foto" name="foto" placeholder="5">
+                                                <input type="file" class="form-control" id="foto_santri" name="foto_santri">
                                             </div>
-                                        </div> -->
-                                      
+                                        </div>
                                         <div class="form-group row">
                                             <div class="col-lg-8 ml-auto">
                                                 <button type="submit" class="btn btn-primary">Submit</button>

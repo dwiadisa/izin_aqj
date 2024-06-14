@@ -33,7 +33,18 @@ class Data_santri_model extends CI_Model
         return $this->db->update('data_santri', $data_update);
     }
 
+    public function get_santri_by_id($id_santri) {
+        $this->db->where('id_santri', $id_santri);
+        $query = $this->db->get('data_santri');
+        return $query->row();
+    }
 
+    public function hapus_santri($where) {
+        $this->db->where($where);
+        return $this->db->delete('data_santri');
+    }
+
+    
     public function lihat_santri_semua()
     {
         $this->db->select('data_santri.*, data_lembaga.nama_lembaga');
@@ -45,12 +56,22 @@ class Data_santri_model extends CI_Model
 
     public function lihat_santri_aktif()
     {
-        // Implementasikan fungsi ini jika diperlukan
+        $this->db->select('data_santri.*, data_lembaga.nama_lembaga');
+        $this->db->from('data_santri');
+        $this->db->join('data_lembaga', 'data_santri.pendidikan_dipilih = data_lembaga.id_lembaga', 'left');
+        $this->db->where('data_santri.status', 'AKTIF');
+        $query = $this->db->get();
+        return $query;
     }                        
 
     public function lihat_santri_nonaktif()
     {
-        // Implementasikan fungsi ini jika diperlukan
+        $this->db->select('data_santri.*, data_lembaga.nama_lembaga');
+        $this->db->from('data_santri');
+        $this->db->join('data_lembaga', 'data_santri.pendidikan_dipilih = data_lembaga.id_lembaga', 'left');
+        $this->db->where('data_santri.status', 'NONAKTIF');
+        $query = $this->db->get();
+        return $query;
     }
 }
 ?>

@@ -45,7 +45,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-confirm-password">Tanggal Lahir <span class="text-danger">*</span>
-                                            </label
+                                            </label>
                                             <div class="col-lg-6">
                                                 <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="<?php echo $santri->tanggal_lahir; ?>" placeholder="Masukkan Tanggal Lahir">
                                             </div>
@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-confirm-password">Kecamatan 
-                                            </label>
+                                            </label
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="alamat_kecamatan" name="alamat_kecamatan" value="<?php echo $santri->alamat_kecamatan; ?>" placeholder="Masukkan Kecamatan">
                                             </div>
@@ -83,11 +83,10 @@
                                             <label class="col-lg-4 col-form-label" for="val-confirm-password">Provinsi 
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="alamat_provinsi" name="alamat_provinsi" value="<?php echo $santri->alamat_provinsi; ?>" placeholder="Masukkan Provinsi">
+                                                <input type of="text" class="form-control" id="alamat_provinsi" name="alamat_provinsi" value="<?php echo $santri->alamat_provinsi; ?>" placeholder="Masukkan Provinsi">
                                             </div>
                                         </div>
                                         <hr>
-                                      
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-skill">Lembaga Pendidikan yang dipilih<span class="text-danger">*</span>
                                             </label>
@@ -116,13 +115,37 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-currency">Nama Ibu <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" value="<?php echo $santri->nama_ibu; ?>" placeholder="Masukkan Nama Ibu">
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-phoneus">No HP<span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?php echo $santri->no_hp; ?>" placeholder="Masukkan No Hp cth: 08123456xxx">
                                             </div>
                                         </div>
-                                      
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-confirm-password">Status <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <select class="form-control" id="status" name="status">
+                                                    <option value="">Pilih Status</option>
+                                                    <option value="AKTIF" <?php echo ($santri->status == 'AKTIF') ? 'selected' : ''; ?>>Aktif</option>
+                                                    <option value="NONAKTIF" <?php echo ($santri->status == 'NONAKTIF') ? 'selected' : ''; ?>>Nonaktif</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="foto_santri">Foto Santri</label>
+                                            <div class="col-lg-6">
+                                                <input type="file" class="form-control-file" id="foto_santri" name="foto_santri">
+                                            </div>
+                                        </div>
                                         <div class="form-group row">
                                             <div class="col-lg-8 ml-auto">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
