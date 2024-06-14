@@ -16,14 +16,31 @@ class Data_santri_model extends CI_Model
         return 0;
     }
 
-    public function tambah_santri($newOrderFormatted, $data) {
-        $data['no_induk_santri'] = $newOrderFormatted;        
+    public function tambah_santri($data) {
+        // $data['no_induk_santri'] = $newOrderFormatted;        
         return $this->db->insert('data_santri', $data);
     }
 
+    public function lihat_santri_by_id($where) {
+        $this->db->where($where);
+        $query = $this->db->get('data_santri');
+        return $query;
+    }
+
+    
+    public function update_santri($where, $data_update) {
+        $this->db->where($where);
+        return $this->db->update('data_santri', $data_update);
+    }
+
+
     public function lihat_santri_semua()
     {
-        // Implementasikan fungsi ini jika diperlukan
+        $this->db->select('data_santri.*, data_lembaga.nama_lembaga');
+        $this->db->from('data_santri');
+        $this->db->join('data_lembaga', 'data_santri.pendidikan_dipilih = data_lembaga.id_lembaga', 'left');
+        $query = $this->db->get();
+        return $query;
     }                        
 
     public function lihat_santri_aktif()
