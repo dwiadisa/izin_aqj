@@ -7,7 +7,7 @@ class Data_wilayah_model extends CI_Model
     {
 
 
-        $wilayah = $this->db->get('data_wilayah')->result();
+        $wilayah = $this->db->get('data_wilayah');
         return $wilayah;
 
     } 
@@ -39,7 +39,7 @@ class Data_wilayah_model extends CI_Model
         $this->db->select('data_kamar.id_kamar, data_kamar.nama_kamar, data_wilayah.id_wilayah, data_wilayah.nama_wilayah');
         $this->db->from('data_kamar');
         $this->db->join('data_wilayah', 'data_kamar.wilayah = data_wilayah.id_wilayah', 'left');
-        $query = $this->db->get()->result();
+        $query = $this->db->get();
 
         return $query;
     } 
