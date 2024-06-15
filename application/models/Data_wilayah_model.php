@@ -84,6 +84,23 @@ class Data_wilayah_model extends CI_Model
     }   
     
     
+    // fungsi untuk jquerychain
+
+    public function get_wilayah(){
+       
+        $wilayah = $this->db->get('data_wilayah');
+        return $wilayah;
+    }
+
+    public function get_kamar($id_wilayah){
+
+        $this->db->select('*');
+        $this->db->from('data_kamar');
+        $this->db->where('wilayah', $id_wilayah);
+        return $this->db->get()->result();
+         
+
+    }
    
 
                         

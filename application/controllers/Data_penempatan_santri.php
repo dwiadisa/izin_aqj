@@ -27,6 +27,17 @@ class Data_penempatan_santri extends CI_Controller {
 
 
     }
+
+
+    // untuk jquery
+
+    public function get_kamar(){
+        $id_wilayah = $this->input->post('id');
+        $data = $this->data_wilayah_model->get_kamar($id_wilayah);
+        echo json_encode($data);
+        // echo json_decode($data);
+    }
+
 public function tambah_penempatan_santri(){
 
     $data = [
@@ -35,6 +46,8 @@ public function tambah_penempatan_santri(){
         'load_wilayah' => $this->data_wilayah_model->lihat_wilayah()->result(),
         'load_kamar' => $this->data_wilayah_model->lihat_kamar()->result()
     ];
+
+
 
         $this->load->view('templates/header_dashboard' , $data);
         $this->load->view('content/data_penempatan/tambah_penempatan', $data);

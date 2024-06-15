@@ -50,6 +50,11 @@
     <script src="<?php echo base_url('assets/theme/') ?>plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
     <script src="<?php echo base_url('assets/theme/') ?>plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
 
+    <!-- jquery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    
+
 </body>
 
 </html>

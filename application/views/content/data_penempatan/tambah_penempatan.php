@@ -53,17 +53,7 @@
                                             <div class="col-lg-6">
                                                 <select class="form-control" id="pilih_kamar" name="pilih_kamar">
                                                     <option value="">Please select</option>
-                                                    <option value="html">HTML</option>
-                                                    <option value="css">CSS</option>
-                                                    <option value="javascript">JavaScript</option>
-                                                    <option value="angular">Angular</option>
-                                                    <option value="angular">React</option>
-                                                    <option value="vuejs">Vue.js</option>
-                                                    <option value="ruby">Ruby</option>
-                                                    <option value="php">PHP</option>
-                                                    <option value="asp">ASP.NET</option>
-                                                    <option value="python">Python</option>
-                                                    <option value="mysql">MySQL</option>
+                                                  
                                                 </select>
                                             </div>
                                         </div>
@@ -82,3 +72,36 @@
             </div>
             <!-- #/ container -->
         </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#pilih_wilayah').change(function(){
+            var id_wilayah = $(this).val();
+            if(id_wilayah != '') {
+                $.ajax({
+                    url : "<?php echo base_url();?>index.php/Data_penempatan_santri/get_kamar",
+                    method : "POST",
+                    data : {id: id_wilayah},
+                    dataType : 'json',
+                    success: function(data){
+                        var html = '<option value="">Pilih Kamar</option>';
+                        if(data.length > 0){
+                            for(var i=0; i<data.length; i++){
+                                html += '<option value="'+data[i].id_kamar+'">'+data[i].nama_kamar+'</option>';
+                            }
+                        } else {
+                            html += '<option value="">Tidak ada kamar tersedia</option>';
+                        }
+                        $('#pilih_kamar').html(html);
+                    },
+                    error: function(){
+                        $('#pilih_kamar').html('<option value="">Error loading kamar</option>');
+                    }
+                });
+            } else {
+                $('#pilih_kamar').html('<option value="">Pilih Kamar</option>');
+            }
+        });
+    });
+</script>

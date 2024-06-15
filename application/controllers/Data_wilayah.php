@@ -14,7 +14,7 @@ class Data_wilayah extends CI_Controller {
     {
          $data = [
             'title' => 'Data Wilayah/Asrama',
-            'wilayah' => $this->data_wilayah_model->lihat_wilayah()
+            'wilayah' => $this->data_wilayah_model->lihat_wilayah()->result()   
         ];
     // var_dump($data);
         $this->load->view('templates/header_dashboard' , $data);
@@ -121,7 +121,7 @@ class Data_wilayah extends CI_Controller {
 
         $data =[
             'title' => 'Data Kamar',
-            'wilayah' => $this->data_wilayah_model->lihat_wilayah(),
+            'wilayah' => $this->data_wilayah_model->lihat_wilayah()->result(),
             // 'kamar' => $this->data_wilayah_model->lihat_kamar()
 
         ];
