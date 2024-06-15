@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 13, 2024 at 06:29 PM
+-- Generation Time: Jun 15, 2024 at 01:06 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.0.30
 
@@ -67,8 +67,7 @@ CREATE TABLE IF NOT EXISTS `data_lembaga` (
 
 INSERT INTO `data_lembaga` (`id_lembaga`, `singkatan_lembaga`, `nama_lembaga`) VALUES
 (1, 'SMKAQJ', 'SMK Al-Qodiri Jember'),
-(2, 'MTSUAQ', 'MTs, Unggulan Al-Qodiri Jember'),
-(3, 'asdas', 'asdasd');
+(2, 'MTSUAQ', 'MTs, Unggulan Al-Qodiri Jember');
 
 -- --------------------------------------------------------
 
@@ -133,7 +132,16 @@ CREATE TABLE IF NOT EXISTS `data_santri` (
   `foto` varchar(150) NOT NULL,
   `status` enum('AKTIF','NONAKTIF','','') NOT NULL,
   PRIMARY KEY (`id_santri`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `data_santri`
+--
+
+INSERT INTO `data_santri` (`id_santri`, `no_induk_santri`, `nama_lengkap_santri`, `tanggal_masuk`, `tempat_lahir`, `tanggal_lahir`, `alamat_dusun`, `alamat_desa`, `alamat_kecamatan`, `alamat_kabupaten`, `alamat_provinsi`, `pendidikan_dipilih`, `nama_ayah`, `pekerjaan_ayah`, `nama_ibu`, `no_hp`, `foto`, `status`) VALUES
+(7, '2024002', 'Lonika', '2024-06-20', 'Jember', '2024-06-21', 'asdas', 'asdas', 'sfdgfdg', 'asdasd', 'asdasd', 2, 'Ancok Wijayasss', 'asdasdasd', 'Ancok Widodowww', '089287867123', './assets/foto_santri/2024002_6c23fa12-48fa-46d2-b206-2c3c224d6b48.jpg', 'AKTIF'),
+(6, '2024001', 'Arrohim Dwi Ksatria', '2024-06-19', 'Jember', '2024-06-19', 'sadasd', 'asdfasg', 'sfdgfdg', 'dfweqrwer', 'dsfdsfsd', 1, 'Ancok Wijayasss', 'asdasdasd', 'Ancok Widodo', '089287867123', './assets/foto_santri/2024001_WhatsApp_Image_2024-05-16_at_10_10_29_1fd11b7e.jpg', 'AKTIF'),
+(9, '2024003', 'testing santri', '2024-06-18', 'Jember', '2024-06-25', 'saddfghfdhjf', 'asdfasg', 'asdas', 'dfweqrwer', 'tryrty', 1, 'sadsa', 'asdasdasd', 'Ancok Widodo', '089287867123', './assets/foto_santri/2024003_WhatsApp_Image_2024-05-20_at_07_32_47_17219e0f.jpg', 'NONAKTIF');
 
 -- --------------------------------------------------------
 
@@ -156,8 +164,7 @@ CREATE TABLE IF NOT EXISTS `data_wilayah` (
 INSERT INTO `data_wilayah` (`id_wilayah`, `nama_wilayah`, `singkatan_wilayah`) VALUES
 (1, 'Sunan Kalijaga', 'SK'),
 (2, 'Lembaga Pendidikan Bahasa Arab', 'LPBA'),
-(3, 'Sunan Muria', 'SM'),
-(4, 'Rusunawa (Unggulan)', 'RSW');
+(3, 'Sunan Muria', 'SM');
 
 -- --------------------------------------------------------
 
