@@ -13,7 +13,12 @@ class Data_penempatan_model extends CI_Model
     $this->db->join('data_kamar', 'data_penghuni.id_kamar = data_kamar.id_kamar', 'left');
     $query = $this->db->get();
     return $query;
-    }                        
+    } 
+    
+public function tambah_penempatan($data_penempatan)
+{
+    $this->db->insert('data_penghuni', $data_penempatan);
+}
                         
 }
 

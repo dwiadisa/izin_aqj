@@ -11,47 +11,50 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Penempatan Santri</h4>
+                                <hr>
                                 <!-- Nav tabs -->
                                 <div class="default-tab">
                                     <ul class="nav nav-tabs mb-3" role="tablist">
-                                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+                                        <?php foreach ($load_wilayah as $wilayah): ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link <?php echo $wilayah->id_wilayah == $load_wilayah[0]->id_wilayah ? 'active' : ''; ?>" data-toggle="tab" href="#wilayah<?php echo $wilayah->id_wilayah; ?>">
+                                                <?php echo $wilayah->nama_wilayah; ?>
+                                            </a>
                                         </li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
-                                        </li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#contact">Contact</a>
-                                        </li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#message">Message</a>
-                                        </li>
+                                        <?php endforeach; ?>
                                     </ul>
                                     <div class="tab-content">
-                                        <div class="tab-pane fade show active" id="home" role="tabpanel">
-                                            <div class="p-t-15">
-                                                <h4>This is home title</h4>
-                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+                                        <?php foreach ($load_wilayah as $wilayah): ?>
+                                        <div class="tab-pane fade <?php echo $wilayah->id_wilayah == $load_wilayah[0]->id_wilayah ? 'show active' : ''; ?>" id="wilayah<?php echo $wilayah->id_wilayah; ?>" role="tabpanel">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-4 col-lg-3">
+                                                    <div class="nav flex-column nav-pills">
+                                                        <a href="#v-pills-home<?php echo $wilayah->id_wilayah; ?>" data-toggle="pill" class="nav-link active show">Home</a>
+                                                        <a href="#v-pills-profile<?php echo $wilayah->id_wilayah; ?>" data-toggle="pill" class="nav-link">Profile</a>
+                                                        <a href="#v-pills-messages<?php echo $wilayah->id_wilayah; ?>" data-toggle="pill" class="nav-link">Messages</a>
+                                                        <a href="#v-pills-settings<?php echo $wilayah->id_wilayah; ?>" data-toggle="pill" class="nav-link">Settings</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <div class="tab-content">
+                                                        <div id="v-pills-home<?php echo $wilayah->id_wilayah; ?>" class="tab-pane fade active show">
+                                                            <p>Cillum ad ut irure tempor velit nostrud occaecat ullamco aliqua anim Lorem sint. Veniam sint duis incididunt do esse magna mollit excepteur laborum qui. Deserunt non laborum enim et cillum eu deserunt excepteur ea incididunt minim occaecat.</p>
+                                                        </div>
+                                                        <div id="v-pills-profile<?php echo $wilayah->id_wilayah; ?>" class="tab-pane fade">
+                                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi adipisci cupiditate quo libero doloribus et rem a eos officiis. Eos at consequuntur, fugiat ducimus sapiente sit sequi aliquam, deserunt laboriosam perferendis sed corporis. Unde provident ea quo quibusdam beatae neque.</p>
+                                                        </div>
+                                                        <div id="v-pills-messages<?php echo $wilayah->id_wilayah; ?>" class="tab-pane fade">
+                                                            <p>perspiciatis provm!</p>
+                                                            <p>Fugiat id quis dolor culpa eiusmod anim velit excepteur proident dolor aute qui magna. Ad proident laboris ullamco esse anim Lorem Lorem veniam quis Lorem irure occaecat velit nostrud magna nulla. Velit et et proident Lorem do ea tempor officia dolor. Reprehenderit Lorem aliquip labore est magna commodo est ea veniam consectetur.</p>
+                                                        </div>
+                                                        <div id="v-pills-settings<?php echo $wilayah->id_wilayah; ?>" class="tab-pane fade">
+                                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi adipisci cupiditate quo libero doloribus et rem a eos officiis. Eos at consequuntur, fugiat ducimus sapiente sit sequi aliquam, deserunt laboriosam perferendis sed corporis. Unde provident ea quo quibusdam beatae neque.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="profile">
-                                            <div class="p-t-15">
-                                                <h4>This is profile title</h4>
-                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
-                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="contact">
-                                            <div class="p-t-15">
-                                                <h4>This is contact title</h4>
-                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="message">
-                                            <div class="p-t-15">
-                                                <h4>This is message title</h4>
-                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
-                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor.</p>
-                                            </div>
-                                        </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>

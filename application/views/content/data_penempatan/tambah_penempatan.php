@@ -18,7 +18,7 @@
                                 <h4>Tambah Penempatan Santri</h4>
                                 <hr>
                                 <div class="form-validation">
-                                    <form class="form-valide" action="#" method="post" novalidate="novalidate">
+                                    <form class="form-valide" action="<?php echo base_url('data_penempatan_santri/tambah_penempatan_santri') ?>" method="post" novalidate="novalidate">
                                        
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-skill">Pilih Santri<span class="text-danger">*</span>
