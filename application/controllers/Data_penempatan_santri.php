@@ -36,9 +36,6 @@ public function tambah_penempatan_santri(){
         'load_kamar' => $this->data_wilayah_model->lihat_kamar()->result()
     ];
 
-        // Tidak perlu memuat kamar di sini karena akan dilakukan melalui jQuery chaining
-        $data['load_kamar'] = [];
-
         $this->load->view('templates/header_dashboard' , $data);
         $this->load->view('content/data_penempatan/tambah_penempatan', $data);
         $this->load->view('templates/footer_dashboard');

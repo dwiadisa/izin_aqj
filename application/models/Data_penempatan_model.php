@@ -14,14 +14,7 @@ class Data_penempatan_model extends CI_Model
     $query = $this->db->get();
     return $query;
     }                        
-public function get_kamar_by_wilayah($id_wilayah)
-{
-    $this->db->select('id_kamar, nama_kamar');
-    $this->db->from('data_kamar');
-    $this->db->where('wilayah', $id_wilayah);
-    $query = $this->db->get();
-    return $query->result();
-}
+                        
 }
 
 
