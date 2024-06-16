@@ -21,6 +21,7 @@
     <link href="<?php echo base_url('assets/theme/') ?>css/style.css" rel="stylesheet">
     <!-- font awesome load -->
     <script src="https://kit.fontawesome.com/6e0c65f34f.js" crossorigin="anonymous"></script>
+<link href="https://cdn.datatables.net/v/bs4/dt-2.0.8/datatables.min.css" rel="stylesheet">
 
 </head>
 

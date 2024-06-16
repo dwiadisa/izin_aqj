@@ -45,6 +45,7 @@
 
     <script src="<?php echo base_url('assets/theme/') ?>js/dashboard/dashboard-1.js"></script>
 
+<!-- <script src="https://cdn.datatables.net/v/bs4/dt-2.0.8/datatables.min.js"></script> -->
 
     <script src="<?php echo base_url('assets/theme/') ?>plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url('assets/theme/') ?>plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
@@ -53,7 +54,9 @@
     <!-- jquery  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    
+    <script>
+      new DataTable('.table-responsive');
+    </script>
 
 </body>
 

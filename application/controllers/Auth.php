@@ -72,14 +72,10 @@ class Auth extends CI_Controller {
         // echo base_url();
     }
 
-    public function login_aksi(){   
-
-
-
-        // $this->load->view('');
-        // $this->load->view('');
-        // $this->load->view('');
-
+    public function logout(){   
+        $this->session->sess_destroy();
+        redirect('auth');
+     
 
     }
 }
