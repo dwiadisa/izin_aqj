@@ -20,6 +20,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="nis" disabled name="nis" placeholder="Enter a username.." value="<?php echo $format_nis ?>">
+                                                <?php echo form_error('nis', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -27,6 +28,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="nama_santri" name="nama_santri" placeholder="Masukkan Nama Santri">
+                                                <?php echo form_error('nama_santri', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -34,6 +36,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="date" class="form-control" id="tanggal_masuk_santri" name="tanggal_masuk_santri" placeholder="Masukkan Tanggal Masuk Santri">
+                                                <?php echo form_error('tanggal_masuk_santri', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -41,13 +44,15 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir">
+                                                <?php echo form_error('tempat_lahir', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-confirm-password">Tanggal Lahir <span class="text-danger">*</span>
-                                            </label
+                                            </label>
                                             <div class="col-lg-6">
-                                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukkan Tempat Lahir">
+                                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukkan Tanggal Lahir">
+                                                <?php echo form_error('tanggal_lahir', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <hr>
@@ -56,6 +61,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="alamat_dusun" name="alamat_dusun" placeholder="Masukkan Dusun">
+                                                <?php echo form_error('alamat_dusun', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -63,6 +69,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="alamat_desa" name="alamat_desa" placeholder="Masukkan Desa/Kelurahan">
+                                                <?php echo form_error('alamat_desa', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -70,6 +77,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="alamat_kecamatan" name="alamat_kecamatan" placeholder="Masukkan Kecamatan">
+                                                <?php echo form_error('alamat_kecamatan', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -77,6 +85,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="alamat_kabupaten" name="alamat_kabupaten" placeholder="Masukkan Kabupaten/Kota">
+                                                <?php echo form_error('alamat_kabupaten', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -84,6 +93,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="alamat_provinsi" name="alamat_provinsi" placeholder="Masukkan Provinsi">
+                                                <?php echo form_error('alamat_provinsi', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <hr>
@@ -97,6 +107,7 @@
                                                     <option value="<?php echo $l->id_lembaga ?>"><?php echo $l->nama_lembaga ?></option>
                                                    <?php endforeach; ?>
                                                 </select>
+                                                <?php echo form_error('lembaga_pendidikan', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <hr>
@@ -105,6 +116,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Masukkan Nama Ayah">
+                                                <?php echo form_error('nama_ayah', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -112,6 +124,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah">
+                                                <?php echo form_error('pekerjaan_ayah', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -119,20 +132,16 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Masukkan Nama Ibu">
+                                                <?php echo form_error('nama_ibu', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-website">Pekerjaan Ibu <span class="text-danger">*</span>
-                                            </label>
-                                            <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu">
-                                            </div>
-                                        </div>
+                                       
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-phoneus">No HP<span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan No Hp cth: 08123456xxx">
+                                                <?php echo form_error('no_hp', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -143,6 +152,7 @@
                                                     <option value="AKTIF">Aktif</option>
                                                     <option value="NONAKTIF">Nonaktif</option>
                                                 </select>
+                                                <?php echo form_error('status', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -150,6 +160,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="file" class="form-control" id="foto_santri" name="foto_santri">
+                                                <?php echo form_error('foto_santri', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">

@@ -22,7 +22,8 @@
     <!-- font awesome load -->
     <script src="https://kit.fontawesome.com/6e0c65f34f.js" crossorigin="anonymous"></script>
 <link href="https://cdn.datatables.net/v/bs4/dt-2.0.8/datatables.min.css" rel="stylesheet">
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 </head>
 
 <body>
@@ -319,8 +320,8 @@
                           <i class="fa-solid fa-check-to-slot"></i><span class="nav-text">Kelola Perizinan Santri</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./uc-nestedable.html">List Data/Status Perizinan Santri</a></li>
-                            <li><a href="./uc-noui-slider.html">Tambah Perizinan Santri</a></li>
+                            <li><a href="<?php echo base_url('data_perizinan_santri') ?>">List Data/Status Perizinan Santri</a></li>
+                            <li><a href="<?php echo base_url('data_perizinan_santri/tambah_perizinan_santri') ?>">Tambah Perizinan Santri</a></li>
                         
                         </ul>
                     </li>

@@ -9,6 +9,7 @@ class Data_santri extends CI_Controller {
         if (!is_login()) redirect('auth');
         $this->load->model('data_santri_model');
         $this->load->model('data_lembaga_pendidikan_model');
+        $this->load->model('data_penempatan_model');
     }
 
     public function index()
@@ -52,6 +53,7 @@ public function tambah_santri(){
     $this->form_validation->set_rules('pekerjaan_ayah', 'Pekerjaan Ayah', 'required', ['required' => 'Pekerjaan Ayah Wajib diisi!']);
     $this->form_validation->set_rules('nama_ibu', 'Nama Ibu', 'required', ['required' => 'Nama Ibu Wajib diisi!']);
     $this->form_validation->set_rules('no_hp', 'No Handphone', 'required|numeric', ['required' => 'NO HP Wajib diisi!', 'numeric' => 'No HP Harus Berupa Angka']);
+    $this->form_validation->set_rules('status', 'Status', 'required', ['required' => 'Status Wajib diisi!']);
 
     if ($this->form_validation->run() !== false) {
         $data_santri = [
@@ -69,7 +71,7 @@ public function tambah_santri(){
             'nama_ayah' => $this->input->post('nama_ayah'),
             'pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
             'nama_ibu' => $this->input->post('nama_ibu'),
-            'status' => $this->input->post('status'),
+            'status_santri' => $this->input->post('status'),
             'no_hp' => $this->input->post('no_hp')
         ];
 
@@ -91,7 +93,7 @@ public function tambah_santri(){
         $this->data_santri_model->tambah_santri($data_santri);
         redirect('data_santri');
     } else {
-        echo validation_errors();
+        // echo validation_errors();
         $this->load->view('templates/header_dashboard', $data);
         $this->load->view('content/data_santri/tambah_santri', $data);
         $this->load->view('templates/footer_dashboard');
@@ -148,7 +150,7 @@ public function tambah_santri(){
                 'pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
                 'nama_ibu' => $this->input->post('nama_ibu'),
                 'no_hp' => $this->input->post('no_hp'),
-                'status' => $this->input->post('status'),
+                'status_santri' => $this->input->post('status'),
             ];
 
             // Upload foto santri jika ada
@@ -165,7 +167,10 @@ public function tambah_santri(){
                     echo $this->upload->display_errors();
                 }
             }
+            if ($this->input->post('status') == 'NONAKTIF') {
 
+                $this->data_penempatan_model->hapus_penempatan_by_id($id_santri);
+            }
             $this->data_santri_model->update_santri($where, $data_update);
             redirect('data_santri');
         } else {
@@ -187,7 +192,7 @@ public function tambah_santri(){
                 unlink($path_foto);
             }
         }
-
+ $this->data_penempatan_model->hapus_penempatan_by_id($id_santri);
         // Menghapus data santri dari database
         $this->data_santri_model->hapus_santri($where);
         redirect('data_santri');

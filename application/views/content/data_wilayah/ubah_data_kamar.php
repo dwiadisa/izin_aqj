@@ -34,6 +34,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="nama_kamar" name="nama_kamar" placeholder="Enter a username.." value="<?php echo  $km->nama_kamar ?>">
+                                                <?php echo form_error('nama_kamar', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         

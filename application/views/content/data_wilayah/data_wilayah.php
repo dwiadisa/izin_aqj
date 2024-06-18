@@ -10,7 +10,7 @@
                             <h4 class="card-title"><?php echo $title ?></h4>
                             <hr>
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered zero-configuration">
+                                <table id="tabel-data" class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
@@ -69,12 +69,6 @@
         <!-- #/ container -->
     </div>
 
-    <!-- JS modal -->
-    <script>
-        $(document).ready(function() {
-            // No need for additional JavaScript as the modal ID is now unique for each record
-        });
-    </script>
-    <!-- JS modal -->
+  
 </body>
 </html>

@@ -19,6 +19,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="kode_wilayah" name="kode_wilayah" placeholder="Masukkan kode wilayah">
+                                                <?php echo form_error('kode_wilayah', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -26,6 +27,7 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="nama_wilayah" name="nama_wilayah" placeholder="Masukkan Nama Wilayah">
+                                                <?php echo form_error('nama_wilayah', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         

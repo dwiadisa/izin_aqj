@@ -59,7 +59,7 @@ class Data_santri_model extends CI_Model
         $this->db->select('data_santri.*, data_lembaga.nama_lembaga');
         $this->db->from('data_santri');
         $this->db->join('data_lembaga', 'data_santri.pendidikan_dipilih = data_lembaga.id_lembaga', 'left');
-        $this->db->where('data_santri.status', 'AKTIF');
+        $this->db->where('data_santri.status_santri', 'AKTIF');
         $query = $this->db->get();
         return $query;
     }                        
@@ -69,7 +69,7 @@ class Data_santri_model extends CI_Model
         $this->db->select('data_santri.*, data_lembaga.nama_lembaga');
         $this->db->from('data_santri');
         $this->db->join('data_lembaga', 'data_santri.pendidikan_dipilih = data_lembaga.id_lembaga', 'left');
-        $this->db->where('data_santri.status', 'NONAKTIF');
+        $this->db->where('data_santri.status_santri', 'NONAKTIF');
         $query = $this->db->get();
         return $query;
     }

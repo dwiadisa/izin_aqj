@@ -8,6 +8,7 @@ class Data_wilayah extends CI_Controller {
         parent::__construct();
         if (!is_login()) redirect('auth');
         $this->load->model('data_wilayah_model');
+        $this->load->model('data_penempatan_model');
     }
 
     public function index()
@@ -108,6 +109,7 @@ class Data_wilayah extends CI_Controller {
              $where = array('id_wilayah' => $id);
 
         $this->data_wilayah_model->hapus_wilayah($where);
+         $this->data_penempatan_model->hapus_wilayah($id);
         redirect(base_url('data_wilayah'));
     }
 
@@ -155,7 +157,7 @@ class Data_wilayah extends CI_Controller {
         } else {
              $data =[
             'title' => ' Tambah Data Kamar',
-            'wilayah' => $this->data_wilayah_model->lihat_wilayah(),
+            'wilayah' => $this->data_wilayah_model->lihat_wilayah()->result(),
             'kamar' => 'query'
 
         ];
@@ -227,6 +229,7 @@ class Data_wilayah extends CI_Controller {
         $where = array('id_kamar' => $id);
 
         $this->data_wilayah_model->hapus_kamar($where);
+        $this->data_penempatan_model->hapus_kamar($id);
         redirect(base_url('data_wilayah/list_kamar'));
         }
         

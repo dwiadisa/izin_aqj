@@ -51,7 +51,7 @@
                                                     Nama: <?php echo $santri->nama_lengkap_santri ?><br>
                                                     Tgl Lahir: <?php echo $santri->tanggal_lahir ?><br>
                                                     Lembaga: <?php echo $santri->nama_lembaga ?> <br>
-                                                    Status: <span class="badge badge-<?php echo ($santri->status == 'AKTIF') ? 'success' : 'danger'; ?>"><?php echo $santri->status; ?></span>
+                                                    Status: <span class="badge badge-<?php echo ($santri->status_santri == 'AKTIF') ? 'success' : 'danger'; ?>"><?php echo $santri->status_santri; ?></span>
                                                 </td>
                                                 <td>
                                                     Dusun: <?php echo $santri->alamat_dusun ?><br>
@@ -131,7 +131,7 @@
                                                                         Nama: <?php echo $santri->nama_lengkap_santri ?><br>
                                                                         Tgl Lahir: <?php echo $santri->tanggal_lahir ?><br>
                                                                         Lembaga: <?php echo $santri->nama_lembaga ?> <br>
-                                                                        Status: <span class="badge badge-success"><?php echo $santri->status; ?></span>
+                                                                        Status: <span class="badge badge-success"><?php echo $santri->status_santri; ?></span>
                                                                     </td>
                                                                     <td>
                                                                     Dusun: <?php echo $santri->alamat_dusun ?><br>
@@ -209,7 +209,7 @@
                                                                         Nama: <?php echo $santri->nama_lengkap_santri ?><br>
                                                                         Tgl Lahir: <?php echo $santri->tanggal_lahir ?><br>
                                                                         Lembaga: <?php echo $santri->nama_lembaga ?> <br>
-                                                                        Status: <span class="badge badge-danger"><?php echo $santri->status; ?></span>
+                                                                        Status: <span class="badge badge-danger"><?php echo $santri->status_santri; ?></span>
                                                                     </td>
                                                                     <td>
                                                                         Dusun: <?php echo $santri->alamat_dusun ?><br>
