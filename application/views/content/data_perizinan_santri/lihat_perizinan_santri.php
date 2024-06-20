@@ -67,7 +67,8 @@
                                                                     <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                                     <div class="dropdown-menu">
                                                                         <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/ubah_perizinan/'.$izin->id_izin) ?>">Detail/Ubah</a>
-                                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModal<?= $izin->id_izin ?>">Hapus</a>
+                                                                        <a class="dropdown-item" href="javascript:void(0);" onclick="window.open('<?= base_url('data_perizinan_santri/print_perizinan/'.$izin->id_izin) ?>', 'newwindow', 'width=800,height=600'); return false;">Print</a>
+                                                                          <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/hapus_perizinan/'.$izin->id_izin) ?>" onclick="return confirm('Apakah anda yakin menghapus perizinan ini?')">Hapus</a>
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -124,8 +125,9 @@
                                                                     <div class="btn-group" role="group">
                                                                         <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                                         <div class="dropdown-menu">
-                                                                            <a class="dropdown-item" href="ubah_perizinan.php?id=<?= $izin->kode_perizinan ?>">Detail/Ubah</a>
-                                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModal<?= $izin->kode_perizinan ?>">Hapus</a>
+                                                                             <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/ubah_perizinan/'.$izin->id_izin) ?>">Detail/Ubah</a>
+                                                                           <a class="dropdown-item" href="javascript:void(0);" onclick="window.open('<?= base_url('data_perizinan_santri/print_perizinan/'.$izin->id_izin) ?>', 'newwindow', 'width=800,height=600'); return false;">Print</a>
+                                                                             <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/hapus_perizinan/'.$izin->id_izin) ?>"onclick="return confirm('Apakah anda yakin menghapus perizinan ini?')">Hapus</a>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -182,8 +184,9 @@
                                                                     <div class="btn-group" role="group">
                                                                         <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                                         <div class="dropdown-menu">
-                                                                            <a class="dropdown-item" href="ubah_perizinan.php?id=<?= $izin->kode_perizinan ?>">Detail/Ubah</a>
-                                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModal<?= $izin->kode_perizinan ?>">Hapus</a>
+                                                                             <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/ubah_perizinan/'.$izin->id_izin) ?>">Detail/Ubah</a>
+                                                                         <a class="dropdown-item" href="javascript:void(0);" onclick="window.open('<?= base_url('data_perizinan_santri/print_perizinan/'.$izin->id_izin) ?>', 'newwindow', 'width=800,height=600'); return false;">Print</a>
+                                                                              <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/hapus_perizinan/'.$izin->id_izin) ?>"onclick="return confirm('Apakah anda yakin menghapus perizinan ini?')">Hapus</a>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -241,8 +244,10 @@
                                                                     <div class="btn-group" role="group">
                                                                         <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                                         <div class="dropdown-menu">
-                                                                            <a class="dropdown-item" href="ubah_perizinan.php?id=<?= $izin->kode_perizinan ?>">Detail/Ubah</a>
-                                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModal<?= $izin->kode_perizinan ?>">Hapus</a>
+                                                                          <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/ubah_perizinan/'.$izin->id_izin) ?>">Detail/Ubah</a>
+                                                                        <a class="dropdown-item" href="javascript:void(0);" onclick="window.open('<?= base_url('data_perizinan_santri/print_perizinan/'.$izin->id_izin) ?>', 'newwindow', 'width=800,height=600'); return false;">Print</a>
+                                                                          <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/hapus_perizinan/'.$izin->id_izin) ?>"onclick="return confirm('Apakah anda yakin menghapus perizinan ini?')">Hapus</a>
+                                                                            
                                                                         </div>
                                                                     </div>
                                                                 </td>

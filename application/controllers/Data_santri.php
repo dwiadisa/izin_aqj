@@ -180,6 +180,42 @@ public function tambah_santri(){
         }
     }
 
+    public function print_santri($id_santri){
+        $this->load->library('pdfgenerator');
+
+        $where = $id_santri;
+        $data_santri = $this->data_santri_model->print_data_santri($where)->row();
+        $data_lembaga = $this->data_lembaga_pendidikan_model->lihat_lembaga()->result();
+
+        $data = [
+            'title' => 'Data Santri',
+            'santri' => $data_santri,
+            'lembaga' => $data_lembaga
+        ];
+
+        // // var_dump($data);
+        // // die;
+        // // Judul PDF
+        $title_pdf = 'Data Santri';
+
+        // Nama file PDF saat diunduh
+        $file_pdf = 'data_santri_' . $id_santri . '.pdf';
+
+        // Pengaturan kertas
+        $paper = 'A4';
+
+        // Orientasi kertas
+        $orientation = "portrait";
+
+        // Mengenerate HTML view
+        $html = $this->load->view('cetak/identitas_santri', $data, true);
+
+        // Membuat PDF
+        $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+
+        // $this->load->view('cetak/identitas_santri',$data);
+
+    }
     public function hapus_santri($id_santri) {
         $where = array('id_santri' => $id_santri);
         

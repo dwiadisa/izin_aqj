@@ -72,6 +72,7 @@
                                                         <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item" href="<?php echo base_url('data_santri/ubah_santri/') . $santri->id_santri ?>">Ubah</a>
+                                                            <a class="dropdown-item" href="<?php echo base_url('data_santri/print_santri/') . $santri->id_santri ?>">Cetak</a>
                                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModal<?php echo $santri->id_santri ?>">Hapus</a>
                                                         </div>
                                                     </div>
@@ -151,6 +152,7 @@
                                                                             <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                                             <div class="dropdown-menu">
                                                                                 <a class="dropdown-item" href="<?php echo base_url('data_santri/ubah_santri/') . $santri->id_santri ?>">Ubah</a>
+                                                                                <a class="dropdown-item" href="<?php echo base_url('data_santri/print_santri/') . $santri->id_santri ?>">Cetak</a>
                                                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModalSantriAktif<?php echo $santri->id_santri ?>">Hapus</a>
                                                                             </div>
                                                                         </div>
@@ -229,6 +231,7 @@
                                                                             <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                                             <div class="dropdown-menu">
                                                                                 <a class="dropdown-item" href="<?php echo base_url('data_santri/ubah_santri/') . $santri->id_santri ?>">Ubah</a>
+                                                                                <a class="dropdown-item" href="<?php echo base_url('data_santri/print_santri/') . $santri->id_santri ?>">Cetak</a>
                                                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModalSantriNonaktif<?php echo $santri->id_santri ?>">Hapus</a>
                                                                             </div>
                                                                         </div>

@@ -72,7 +72,11 @@ class Data_perizinan_model extends CI_Model
     public function tambah_perizinan($data_perizinan){
         $this->db->insert('data_perizinan', $data_perizinan);
     }
-                        
+                
+    public function delete_perizinan($id_perizinan){
+        $this->db->where('id_izin', $id_perizinan);
+        $this->db->delete('data_perizinan');
+    }
 }
 
 

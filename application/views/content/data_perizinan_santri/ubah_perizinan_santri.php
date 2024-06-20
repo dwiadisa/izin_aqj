@@ -26,7 +26,7 @@
                                             <label class="col-lg-4 col-form-label" for="id_santri">NIS / Nama Santri / Wilayah<span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <select class="form-control select2" id="id_santri" name="id_santri">
+                                                <select class="form-control select2" readonly id="id_santri" name="id_santri" >
                                                     <option value="">Silakan pilih</option>
                                                     <?php foreach($load_penempatan as $penempatan): ?>
                                                     <option value="<?php echo $penempatan->id_santri; ?>" <?php echo $penempatan->id_santri == $perizinan->id_santri ? 'selected' : ''; ?>><?php echo $penempatan->no_induk_santri .  " - " . $penempatan->nama_lengkap_santri . " - " . $penempatan->nama_wilayah ?></option>
@@ -108,7 +108,7 @@
                                             <label class="col-lg-4 col-form-label" for="val-skill">Pemberi Izin<span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <select class="form-control" id="pemberi_izin" name="pemberi_izin">
+                                                <select class="form-control" readonly id="pemberi_izin" name="pemberi_izin">
                                                     <option value="">Pilih Pemberi Izin</option>
                                                     <?php foreach ($load_user as $user): ?>
                                                     <option value="<?php echo $user->id_user; ?>" <?php echo $user->id_user == $perizinan->pemberi_izin ? 'selected' : ''; ?>><?php echo $user->nama_lengkap; ?></option>
@@ -134,7 +134,8 @@
             </div>
             <!-- #/ container -->
         </div>
-
+</div>
+                                                    </div>
 <!--          
 <script>
     $(document).ready(function() {

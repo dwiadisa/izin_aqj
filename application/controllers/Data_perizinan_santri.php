@@ -2,10 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Data_perizinan_santri extends CI_Controller {
-
+     
     public function __construct()
     {
         parent::__construct();
+          if (!is_login()) redirect('auth');
         $this->load->model('Data_santri_model');
         $this->load->model('Data_perizinan_model');
         $this->load->model('Data_penempatan_model');
@@ -68,6 +69,8 @@ class Data_perizinan_santri extends CI_Controller {
                 'pemberi_izin' => $this->input->post('pemberi_izin')
             ];
 
+          
+
             $this->Data_perizinan_model->tambah_perizinan($data_perizinan);
             redirect('data_perizinan_santri');
         }
@@ -110,9 +113,34 @@ public function ubah_perizinan($id_perizinan)
             'pemberi_izin' => $this->input->post('pemberi_izin')
         ];
 
+        if ($this->input->post('status')== 'SUDAH DIIZINKAN') {
+            redirect('data_perizinan_santri/print_perizinan/'.$id_perizinan);
+        }
+
         $this->Data_perizinan_model->update_perizinan($id_perizinan, $data_perizinan);
         redirect('data_perizinan_santri');
     }
+}
+
+public function print_perizinan($id_perizinan){
+      $data = [
+            // 'title' => 'Ubah Data Perizinan Santri',
+            'perizinan' => $this->Data_perizinan_model->lihat_perizinan_by_id($id_perizinan),
+            'load_penempatan' => $this->Data_penempatan_model->lihat_penempatan()->result(),
+            'load_user' => $this->Data_user_model->lihat_user()->result()
+        ];
+
+     
+        if ($data['perizinan']->status_izin == 'SUDAH DIIZINKAN') {
+            $this->load->view('cetak/struk_perizinan',$data);
+        } else {
+            echo "<script>alert('Perizinan belum diizinkan');</script>";
+        }
+        
+
+        // var_dump($data);
+       
+
 }
 
 public function hapus_perizinan($id_perizinan)
