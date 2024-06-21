@@ -67,7 +67,10 @@
                                                                     <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                                     <div class="dropdown-menu">
                                                                         <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/ubah_perizinan/'.$izin->id_izin) ?>">Detail/Ubah</a>
-                                                                        <a class="dropdown-item" href="javascript:void(0);" onclick="window.open('<?= base_url('data_perizinan_santri/print_perizinan/'.$izin->id_izin) ?>', 'newwindow', 'width=800,height=600'); return false;">Print</a>
+                                                                     <?php if($izin->status_izin === "BELUM DIIZINKAN") :?>
+                                                                                <?php else: ?>
+                                                                                    <a class="dropdown-item" href="javascript:void(0);" onclick="window.open('<?= base_url('data_perizinan_santri/print_perizinan/'.$izin->id_izin) ?>', 'newwindow', 'width=800,height=600'); return false;">Print</a>
+                                                                                    <?php endif; ?>
                                                                           <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/hapus_perizinan/'.$izin->id_izin) ?>" onclick="return confirm('Apakah anda yakin menghapus perizinan ini?')">Hapus</a>
                                                                     </div>
                                                                 </div>
@@ -126,7 +129,10 @@
                                                                         <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                                         <div class="dropdown-menu">
                                                                              <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/ubah_perizinan/'.$izin->id_izin) ?>">Detail/Ubah</a>
-                                                                           <a class="dropdown-item" href="javascript:void(0);" onclick="window.open('<?= base_url('data_perizinan_santri/print_perizinan/'.$izin->id_izin) ?>', 'newwindow', 'width=800,height=600'); return false;">Print</a>
+                                                                         <?php if($izin->status_izin === "BELUM DIIZINKAN") :?>
+                                                                                <?php else: ?>
+                                                                                    <a class="dropdown-item" href="javascript:void(0);" onclick="window.open('<?= base_url('data_perizinan_santri/print_perizinan/'.$izin->id_izin) ?>', 'newwindow', 'width=800,height=600'); return false;">Print</a>
+                                                                                    <?php endif; ?>
                                                                              <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/hapus_perizinan/'.$izin->id_izin) ?>"onclick="return confirm('Apakah anda yakin menghapus perizinan ini?')">Hapus</a>
                                                                         </div>
                                                                     </div>
@@ -185,7 +191,10 @@
                                                                         <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                                         <div class="dropdown-menu">
                                                                              <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/ubah_perizinan/'.$izin->id_izin) ?>">Detail/Ubah</a>
-                                                                         <a class="dropdown-item" href="javascript:void(0);" onclick="window.open('<?= base_url('data_perizinan_santri/print_perizinan/'.$izin->id_izin) ?>', 'newwindow', 'width=800,height=600'); return false;">Print</a>
+                                                                             <?php if($izin->status_izin === "BELUM DIIZINKAN") :?>
+                                                                                <?php else: ?>
+                                                                                    <a class="dropdown-item" href="javascript:void(0);" onclick="window.open('<?= base_url('data_perizinan_santri/print_perizinan/'.$izin->id_izin) ?>', 'newwindow', 'width=800,height=600'); return false;">Print</a>
+                                                                                    <?php endif; ?>
                                                                               <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/hapus_perizinan/'.$izin->id_izin) ?>"onclick="return confirm('Apakah anda yakin menghapus perizinan ini?')">Hapus</a>
                                                                         </div>
                                                                     </div>
@@ -245,7 +254,10 @@
                                                                         <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                                         <div class="dropdown-menu">
                                                                           <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/ubah_perizinan/'.$izin->id_izin) ?>">Detail/Ubah</a>
-                                                                        <a class="dropdown-item" href="javascript:void(0);" onclick="window.open('<?= base_url('data_perizinan_santri/print_perizinan/'.$izin->id_izin) ?>', 'newwindow', 'width=800,height=600'); return false;">Print</a>
+                                                                     <?php if($izin->status_izin === "BELUM DIIZINKAN") :?>
+                                                                                <?php else: ?>
+                                                                                    <a class="dropdown-item" href="javascript:void(0);" onclick="window.open('<?= base_url('data_perizinan_santri/print_perizinan/'.$izin->id_izin) ?>', 'newwindow', 'width=800,height=600'); return false;">Print</a>
+                                                                                    <?php endif; ?>
                                                                           <a class="dropdown-item" href="<?= base_url('data_perizinan_santri/hapus_perizinan/'.$izin->id_izin) ?>"onclick="return confirm('Apakah anda yakin menghapus perizinan ini?')">Hapus</a>
                                                                             
                                                                         </div>

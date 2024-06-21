@@ -25,6 +25,7 @@ class Data_perizinan_santri extends CI_Controller {
         ];
 
         // var_dump($data);
+        // die;
          $this->load->view('templates/header_dashboard' , $data);
         $this->load->view('content/data_perizinan_santri/lihat_perizinan_santri',$data);
         $this->load->view('templates/footer_dashboard');

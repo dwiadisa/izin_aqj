@@ -1,12 +1,7 @@
 <div class="content-body" style="min-height: 1110px;">
 
             <div class="row page-titles mx-0">
-                <div class="col p-md-0">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
-                    </ol>
-                </div>
+               
             </div>
             <!-- row -->
 
@@ -15,111 +10,98 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
+                                <h4>Tambah Data Santri Riyadhoh</h4>
+                                <hr>
                                 <div class="form-validation">
                                     <form class="form-valide" action="#" method="post" novalidate="novalidate">
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-username">Username <span class="text-danger">*</span>
+                                            <label class="col-lg-4 col-form-label" for="val-username">Nama Santri Riyadhoh <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Enter a username..">
+                                                <input type="text" class="form-control" id="nama_santri_riyadhoh" name="nama_santri_riyadhoh" placeholder="Masukkan Nama Santri Riyadhoh..">
+                                                <?php echo form_error('nama_santri_riyadhoh', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-email">Email <span class="text-danger">*</span>
+                                            <label class="col-lg-4 col-form-label" for="val-email">Tempat Lahir<span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="val-email" name="val-email" placeholder="Your valid email..">
+                                                <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir..">
+                                                <?php echo form_error('tempat_lahir', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-password">Password <span class="text-danger">*</span>
+                                            <label class="col-lg-4 col-form-label" for="val-password">Tanggal Lahir<span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="password" class="form-control" id="val-password" name="val-password" placeholder="Choose a safe one..">
+                                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Choose a safe one..">
+                                                <?php echo form_error('tanggal_lahir', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-confirm-password">Confirm Password <span class="text-danger">*</span>
+                                            <label class="col-lg-4 col-form-label" for="val-confirm-password">Desa / Kelurahan<span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="password" class="form-control" id="val-confirm-password" name="val-confirm-password" placeholder="..and confirm it!">
+                                                <input type="text" class="form-control" id="alamat_desa" name="alamat_desa" placeholder="Masukkan Desa/Kelurahan..">
+                                                <?php echo form_error('alamat_desa', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-suggestions">Suggestions <span class="text-danger">*</span>
+                                            <label class="col-lg-4 col-form-label" for="val-confirm-password">Kecamatan<span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <textarea class="form-control" id="val-suggestions" name="val-suggestions" rows="5" placeholder="What would you like to see?"></textarea>
+                                                <input type="text" class="form-control" id="alamat_kecamatan" name="alamat_kecamatan" placeholder="Masukkan Kecamatan..">
+                                                <?php echo form_error('alamat_kecamatan', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-skill">Best Skill <span class="text-danger">*</span>
+                                            <label class="col-lg-4 col-form-label" for="val-confirm-password">Kabupaten/Kota<span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <select class="form-control" id="val-skill" name="val-skill">
-                                                    <option value="">Please select</option>
-                                                    <option value="html">HTML</option>
-                                                    <option value="css">CSS</option>
-                                                    <option value="javascript">JavaScript</option>
-                                                    <option value="angular">Angular</option>
-                                                    <option value="angular">React</option>
-                                                    <option value="vuejs">Vue.js</option>
-                                                    <option value="ruby">Ruby</option>
-                                                    <option value="php">PHP</option>
-                                                    <option value="asp">ASP.NET</option>
-                                                    <option value="python">Python</option>
-                                                    <option value="mysql">MySQL</option>
-                                                </select>
+                                                <input type="text" class="form-control" id="alamat_kabupaten" name="alamat_kabupaten" placeholder="Masukkan Kabupaten/Kota..">
+                                                <?php echo form_error('alamat_kabupaten', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-currency">Currency <span class="text-danger">*</span>
+                                            <label class="col-lg-4 col-form-label" for="val-confirm-password">Provinsi<span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="val-currency" name="val-currency" placeholder="$21.60">
+                                                <input type="text" class="form-control" id="alamat_provinsi" name="alamat_provinsi" placeholder="Masukkan Provinsi..">
+                                                <?php echo form_error('alamat_provinsi', '<div class="text-danger">', '</div>'); ?>
+                                            </div>
+                                        </div>
+                                     
+                                        
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-currency">No. NIK<span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="no_nik" name="no_nik" placeholder="Masukkan No. NIK..">
+                                                <?php echo form_error('no_nik', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-website">Website <span class="text-danger">*</span>
+                                            <label class="col-lg-4 col-form-label" for="val-website">No.HP <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="val-website" name="val-website" placeholder="http://example.com">
+                                                <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan No.HP..">
+                                                <?php echo form_error('no_hp', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-phoneus">Phone (US) <span class="text-danger">*</span>
+                                            <label class="col-lg-4 col-form-label" for="val-phoneus">Nama Wali<span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="val-phoneus" name="val-phoneus" placeholder="212-999-0000">
+                                                <input type="text" class="form-control" id="nama_wali" name="nama_wali" placeholder="Masukkan Nama Wali..">
+                                                <?php echo form_error('nama_wali', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-digits">Digits <span class="text-danger">*</span>
+                                            <label class="col-lg-4 col-form-label" for="val-digits">No. HP Wali <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="val-digits" name="val-digits" placeholder="5">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-number">Number <span class="text-danger">*</span>
-                                            </label>
-                                            <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="val-number" name="val-number" placeholder="5.0">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-range">Range [1, 5] <span class="text-danger">*</span>
-                                            </label>
-                                            <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="val-range" name="val-range" placeholder="4">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label"><a href="#">Terms &amp; Conditions</a>  <span class="text-danger">*</span>
-                                            </label>
-                                            <div class="col-lg-8">
-                                                <label class="css-control css-control-primary css-checkbox" for="val-terms">
-                                                    <input type="checkbox" class="css-control-input" id="val-terms" name="val-terms" value="1"> <span class="css-control-indicator"></span> I agree to the terms</label>
+                                                <input type="text" class="form-control" id="no_hp_wali" name="no_hp_wali" placeholder="Masukkan No. HP Wali..">
+                                                <?php echo form_error('no_hp_wali', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
