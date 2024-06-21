@@ -18,7 +18,7 @@
                                             <label class="col-lg-4 col-form-label" for="val-username">Kode Perizinan <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="kode_perizinan" readonly name="kode_perizinan" placeholder="Enter a username.." value="<?php echo strtoupper(random_string('alnum',6)); ?>">
+                                                <input type="text" class="form-control" id="kode_perizinan" readonly name="kode_perizinan" placeholder="Enter a username.." value="<?php echo strtoupper(random_string('alnum',5)); ?>">
                                                 <?php echo form_error('kode_perizinan', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
