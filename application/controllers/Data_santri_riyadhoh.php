@@ -95,7 +95,8 @@ class Data_santri_riyadhoh extends CI_Controller {
                 'title' => 'Ubah Santri Riyadhoh',
                 'santri' => $this->Data_santri_riyadhoh_model->get_santri_by_id($id)
             ];
-
+var_dump($data);
+die;
             $this->load->view('templates/header_dashboard', $data);
             $this->load->view('content/data_santri_riyadhoh/ubah_santri_riyadhoh', $data);
             $this->load->view('templates/footer_dashboard');
