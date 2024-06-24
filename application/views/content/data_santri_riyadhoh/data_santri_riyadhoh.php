@@ -61,7 +61,8 @@
                                                     <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                     <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
                                                         <a class="dropdown-item" href="<?php echo base_url('data_santri_riyadhoh/ubah_santri_riyadhoh/'.$sr->id_santri_riyadhoh) ?>">Ubah/Detail</a>
-                                                        <a class="dropdown-item" href="<?php echo base_url('data_santri_riyadhoh/hapus_santri_riyadhoh/'.$sr->id_santri_riyadhoh) ?>">Hapus</a>
+                                                        <a class="dropdown-item" href="<?php echo base_url('data_santri_riyadhoh/print_santri_riyadhoh/'.$sr->id_santri_riyadhoh) ?>">Print</a>
+                                                        <a class="dropdown-item" href="#" onclick="confirmDelete('<?php echo base_url('data_santri_riyadhoh/hapus_santri_riyadhoh/'.$sr->id_santri_riyadhoh) ?>')">Hapus</a>
                                                     </div>
                                                 </div>
                                     </div>    
@@ -79,3 +80,10 @@
             </div>
             <!-- #/ container -->
         </div>
+        <script>
+            function confirmDelete(url) {
+                if(confirm('Apakah Anda yakin ingin menghapus data santri riyadhoh ini?')) {
+                    window.location.href = url;
+                }
+            }
+        </script>
