@@ -93,7 +93,7 @@ class Data_santri_riyadhoh extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $data = [
                 'title' => 'Ubah Santri Riyadhoh',
-                'santri' => $this->Data_santri_riyadhoh_model->get_santri_by_id($id)
+                'data_santri' => $this->Data_santri_riyadhoh_model->get_santri_by_id($id)
             ];
 
             $this->load->view('templates/header_dashboard', $data);
@@ -119,6 +119,40 @@ class Data_santri_riyadhoh extends CI_Controller {
             redirect('data_santri_riyadhoh');
         }
     }
+
+public function print_santri_riyadhoh($id){
+    // Memuat library PDFGenerator
+    $this->load->library('pdfgenerator');
+
+    // Mengambil data santri berdasarkan ID
+    $data_santri = $this->Data_santri_riyadhoh_model->get_santri_by_id($id);
+  
+
+    // Menyiapkan data untuk ditampilkan pada PDF
+    $data = [
+        'title' => 'Data Santri Riyadhoh',
+        'santri' => $data_santri,
+       
+    ];
+
+    // Judul PDF
+    $title_pdf = 'Data Santri Riyadhoh';
+
+    // Nama file PDF saat diunduh
+    $file_pdf = 'data_santri_riyadhoh_' . $id . '.pdf';
+
+    // Pengaturan kertas
+    $paper = 'A4';
+
+    // Orientasi kertas
+    $orientation = "portrait";
+
+    // Mengenerate HTML view
+    $html = $this->load->view('cetak/cetak_santri_riyadhoh', $data, true);
+
+    // Membuat PDF
+    $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+}
 
 public function hapus_santri_riyadhoh($id)
 {
