@@ -21,6 +21,14 @@ class Data_santri_model extends CI_Model
         return $this->db->insert('data_santri', $data);
     }
 
+    public function tambah_santri_massal($data) {
+        return $insert = $this->db->insert_batch('data_santri', $data);
+        if($insert){
+			return true;
+		}
+    }
+
+
     public function lihat_santri_by_id($where) {
         $this->db->where($where);
         $query = $this->db->get('data_santri');

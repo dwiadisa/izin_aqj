@@ -14,6 +14,17 @@ class Data_penempatan_model extends CI_Model
     $query = $this->db->get();
     return $query;
     } 
+public function santri_tidak_terdaftar()
+{
+    $this->db->select('*');
+    $this->db->from('data_santri');
+    $this->db->where("id_santri NOT IN (SELECT id_santri FROM data_penghuni)", NULL, FALSE);
+    $query = $this->db->get();
+    return $query;
+}
+
+
+    
     
 public function tambah_penempatan($data_penempatan)
 {

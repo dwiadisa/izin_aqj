@@ -7,6 +7,8 @@ class Data_santri extends CI_Controller {
     {
         parent::__construct();
         if (!is_login()) redirect('auth');
+        // $this->load->library('excel');
+
         $this->load->model('data_santri_model');
         $this->load->model('data_lembaga_pendidikan_model');
         $this->load->model('data_penempatan_model');
@@ -100,7 +102,59 @@ public function tambah_santri(){
     }
 }
 
-    public function tambah_santri_massal() { 
+        public function download_template_excel(){
+        $this->load->library('excel');
+        $this->load->model('data_santri_model');
+
+        $santriData = $this->data_santri_model->lihat_santri_semua()->result_array();
+
+        $excel = new Excel();
+        $excel->setActiveSheetIndex(0);
+        $sheet = $excel->getActiveSheet();
+
+        // Set header
+        $headers = [
+            'ID Santri', 'No Induk Santri', 'Nama Lengkap Santri', 'Tanggal Masuk', 'Tempat Lahir', 'Tanggal Lahir', 
+            'Alamat Dusun', 'Alamat Desa', 'Alamat Kecamatan', 'Alamat Kabupaten', 'Alamat Provinsi', 
+            'Pendidikan Dipilih', 'Nama Ayah', 'Pekerjaan Ayah', 'Nama Ibu', 'No HP', 'Foto', 'Status Santri'
+        ];
+        $column = 0;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($column, 1, $header);
+            $column++;
+        }
+
+        // Set data
+        $row = 2;
+        foreach ($santriData as $data) {
+            $column = 0;
+            foreach ($data as $value) {
+                $sheet->setCellValueByColumnAndRow($column, $row, $value);
+                $column++;
+            }
+            $row++;
+        }
+
+        // Get the last no_induk_santri
+        $lastNoIndukSantri = $this->data_santri_model->get_last_no_induk(date('Y'));
+
+        // Save the file
+        $filename = 'Data_Santri_' . date('YmdHis') . '.xlsx';
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        try {
+            $writer = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+            $writer->save('php://output');
+        } catch (Exception $e) {
+            log_message('error', 'Error saat mencoba mengunduh file Excel: ' . $e->getMessage());
+            show_error('Terjadi kesalahan pada server. Silakan coba lagi atau hubungi administrator server.', 500);
+        }
+        exit;
+    }
+
+    public function tambah_data_santri_massal() { 
         $data = [
             'title' => 'Tambah Data Santri Secara Massal',
         ];
@@ -109,6 +163,63 @@ public function tambah_santri(){
         $this->load->view('content/data_santri/tambah_data_santri_massal', $data);
         $this->load->view('templates/footer_dashboard');
     }
+
+    public function tambah_santri_massal_proses() {
+        $this->load->library('excel');
+        $this->load->model('data_santri_model');
+
+        if (isset($_FILES['file']['name'])) {
+            $path = $_FILES['file']['tmp_name'];
+            $object = PHPExcel_IOFactory::load($path);
+            foreach ($object->getWorksheetIterator() as $worksheet) {
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+                for ($row = 2; $row <= $highestRow; $row++) {
+                    $no_induk_santri = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+                    $nama_lengkap_santri = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                    $tanggal_masuk = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $tempat_lahir = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $tanggal_lahir = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+                    $alamat_dusun = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+                    $alamat_desa = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+                    $alamat_kecamatan = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
+                    $alamat_kabupaten = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
+                    $alamat_provinsi = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
+                    $pendidikan_dipilih = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
+                    $nama_ayah = $worksheet->getCellByColumnAndRow(12, $row)->getValue();
+                    $pekerjaan_ayah = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
+                    $nama_ibu = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
+                    $no_hp = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
+                    $foto = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
+                    $status_santri = $worksheet->getCellByColumnAndRow(17, $row)->getValue();
+
+                    $data[] = array(
+                        'id_santri' => NULL,
+                        'no_induk_santri' => $no_induk_santri,
+                        'nama_lengkap_santri' => $nama_lengkap_santri,
+                        'tanggal_masuk' => date('Y-m-d', $tanggal_masuk),
+                        'tempat_lahir' => $tempat_lahir,
+                        'tanggal_lahir' => date('Y-m-d', $tanggal_lahir),
+                        'alamat_dusun' => $alamat_dusun,
+                        'alamat_desa' => $alamat_desa,
+                        'alamat_kecamatan' => $alamat_kecamatan,
+                        'alamat_kabupaten' => $alamat_kabupaten,
+                        'alamat_provinsi' => $alamat_provinsi,
+                        'pendidikan_dipilih' => $pendidikan_dipilih,
+                        'nama_ayah' => $nama_ayah,
+                        'pekerjaan_ayah' => $pekerjaan_ayah,
+                        'nama_ibu' => $nama_ibu,
+                        'no_hp' => $no_hp,
+                        'foto' => $foto,
+                        'status_santri' => $status_santri
+                    );
+                }
+            }
+            $this->data_santri_model->tambah_santri_massal($data);
+            redirect('data_santri');
+        }
+    }
+
 
     public function ubah_santri($id_santri) {
         $where = array('id_santri' => $id_santri);

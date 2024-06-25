@@ -45,7 +45,7 @@
                                         <?php foreach ($data_santri as $santri) : ?>
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
-                                                <td><img src="<?php echo base_url($santri->foto); ?>" alt="Foto Santri" style="width: 100px; height: auto;"></td>
+                                                <td>   <img src="<?php echo empty($santri->foto) ? base_url('assets/images/user.png') : base_url($santri->foto); ?>" alt="Foto Santri" style="width: 100px; height: auto;"></td>
                                                 <td>
                                                     No. Induk Santri: <?php echo $santri->no_induk_santri ?><br>
                                                     Nama: <?php echo $santri->nama_lengkap_santri ?><br>
@@ -126,7 +126,7 @@
                                                             <?php foreach ($santri_aktif as $santri) : ?>
                                                                 <tr>
                                                                     <td><?php echo $no++ ?></td>
-                                                                    <td><img src="<?php echo base_url($santri->foto); ?>" alt="Foto Santri" style="width: 100px; height: auto;"></td>
+                                                                    <td>   <img src="<?php echo empty($santri->foto) ? base_url('assets/images/user.png') : base_url($santri->foto); ?>" alt="Foto Santri" style="width: 100px; height: auto;"></td>
                                                                     <td>
                                                                         No. Induk Santri: <?php echo $santri->no_induk_santri ?><br>
                                                                         Nama: <?php echo $santri->nama_lengkap_santri ?><br>
@@ -205,7 +205,9 @@
                                                             <?php foreach ($santri_nonaktif as $santri) : ?>
                                                                 <tr>
                                                                     <td><?php echo $no++ ?></td>
-                                                                    <td><img src="<?php echo base_url($santri->foto); ?>" alt="Foto Santri" style="width: 100px; height: auto;"></td>
+                                                                    <td>
+                                                                        <img src="<?php echo empty($santri->foto) ? base_url('assets/images/user.png') : base_url($santri->foto); ?>" alt="Foto Santri" style="width: 100px; height: auto;">
+                                                                    </td>
                                                                     <td>
                                                                         No. Induk Santri: <?php echo $santri->no_induk_santri ?><br>
                                                                         Nama: <?php echo $santri->nama_lengkap_santri ?><br>

@@ -12,7 +12,9 @@
 	},
 	"require": {
 		"php": ">=5.3.7",
-		"mike42/escpos-php": "*"
+		"mike42/escpos-php": "*",
+		"phpoffice/phpexcel": "*",
+		"phpoffice/phpspreadsheet": "*"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

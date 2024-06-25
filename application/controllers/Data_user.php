@@ -7,6 +7,7 @@ class Data_user extends CI_Controller {
     {
         parent::__construct();
           if (!is_login()) redirect('auth');
+           $this->Access_block_model->block_pengurus();
         $this->load->model('data_user_model');
     }
 

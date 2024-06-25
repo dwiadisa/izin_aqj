@@ -54,6 +54,29 @@
         });
     });
 </script>
+
+ <script>
+                                    $(function() {
+                                        var data = <?php echo json_encode($hitung_per_wilayah); ?>;
+                                        var morrisData = data.map(function(item) {
+                                            return {
+                                                y: item.singkatan_wilayah,
+                                                a: item.jumlah_santri
+                                            };
+                                        });
+
+                                        Morris.Bar({
+                                            element: 'morris-bar-chart',
+                                            data: morrisData,
+                                            xkey: 'y',
+                                            ykeys: ['a'],
+                                            labels: ['Jumlah Santri'],
+                                            barColors: ['#0b62a4'],
+                                            hideHover: 'auto',
+                                            resize: true
+                                        });
+                                    });
+                                </script>
 </body>
 
 </html>

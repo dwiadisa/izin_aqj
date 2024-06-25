@@ -44,7 +44,7 @@ public function tambah_penempatan_santri(){
 
     $data = [
         'title' => 'Tambah Penempatan Santri',
-        'load_santri' => $this->data_santri_model->lihat_santri_aktif()->result(),
+        'load_santri' => $this->data_penempatan_model->santri_tidak_terdaftar()->result(),
         'load_wilayah' => $this->data_wilayah_model->lihat_wilayah()->result(),
         'load_kamar' => $this->data_wilayah_model->lihat_kamar()->result()
     ];

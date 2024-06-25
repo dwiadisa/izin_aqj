@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/theme/') ?>plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
     <link href="<?php echo base_url('assets/theme/') ?>css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <!-- font awesome load -->
     <script src="https://kit.fontawesome.com/6e0c65f34f.js" crossorigin="anonymous"></script>
 <link href="https://cdn.datatables.net/v/bs4/dt-2.0.8/datatables.min.css" rel="stylesheet">
@@ -88,14 +89,14 @@
                             <a href="javascript:void(0)" class="log-user"  data-toggle="dropdown">
                                 <span>English</span>  <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
                             </a>
-                            <div class="drop-down dropdown-language animated fadeIn  dropdown-menu">
-                                <div class="dropdown-content-body">
+                            <!-- <div class="drop-down dropdown-language animated fadeIn  dropdown-menu"> -->
+                                <!-- <div class="dropdown-content-body">
                                     <ul>
                                         <li><a href="javascript:void()">English</a></li>
                                         <li><a href="javascript:void()">Dutch</a></li>
                                     </ul>
-                                </div>
-                            </div>
+                                </div> -->
+                            <!-- </div> -->
                         </li>
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
@@ -106,13 +107,9 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                            <a href="<?php echo base_url('profil_user') ?>"><i class="icon-user"></i> <span>Profil</span></a>
                                         </li>
-                                        <li>
-                                            <a href="javascript:void()">
-                                                <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
-                                            </a>
-                                        </li>
+                                        
                                         
                                         <hr class="my-2">
                                       
@@ -156,6 +153,7 @@
                         </ul>
                     </li>
                    
+                    <?php if ($this->session->userdata('level') == 'ADMIN'): ?>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                           <i class="fa-solid fa-location-dot"></i> <span class="nav-text">Data Wilayah/Daerah (Asrama)</span>
@@ -180,6 +178,7 @@
                         
                         </ul>
                     </li>
+                    <?php endif; ?>
                     <li class="nav-label">Kelola Penempatan Santri</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -202,6 +201,14 @@
                         
                         </ul>
                     </li>
+                    <?php if ($this->session->userdata('level') == 'ADMIN'): ?>
+                    <li>
+                        <a href="<?php echo base_url('kiosk_setting') ?>" aria-expanded="false">
+                          <i class="fa-solid fa-desktop"></i></i><span class="nav-text">Kiosk Setting</span>
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    </li>
                     <!-- <li>
                         <a href="widgets.html" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
@@ -219,6 +226,7 @@
                         </ul>
                     </li>
                     <li class="nav-label">Manajemen User</li>
+                    <?php if ($this->session->userdata('level') == 'admin'): ?>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                            <i class="fa-solid fa-crown"></i><span class="nav-text">Data User</span>
@@ -228,10 +236,17 @@
                             <li><a href="<?php echo base_url('data_user/tambah_user') ?>" aria-expanded="false">Tambah User</a></li>
                         </ul>
                     </li>
+                    <?php endif; ?>
                   
                       <li>
-                        <a href="widgets.html" aria-expanded="false">
+                        <a href="<?php echo base_url('profil_user') ?>" aria-expanded="false">
                            <i class="fa-solid fa-address-card"></i><span class="nav-text">Lihat Profil Pengguna</span>
+                        </a>
+                      <li>
+                    
+                      <li>
+                        <a href="<?php echo base_url('about') ?>" aria-expanded="false">
+                         <i class="fa-solid fa-circle-info"></i><span class="nav-text">Tentang App</span>
                         </a>
                       <li>
                         <a href="<?php echo base_url('auth/logout') ?>" aria-expanded="false">
