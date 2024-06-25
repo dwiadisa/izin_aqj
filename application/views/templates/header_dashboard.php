@@ -25,6 +25,13 @@
 <link href="https://cdn.datatables.net/v/bs4/dt-2.0.8/datatables.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+<!-- google font -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<!-- google font -->
 </head>
 
 <body>
@@ -87,7 +94,26 @@
 
                         <li class="icons dropdown d-none d-md-flex">
                             <a href="javascript:void(0)" class="log-user"  data-toggle="dropdown">
-                                <span>English</span>  <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
+                                <span id="current-time"></span>
+                                <script>
+                                    function updateTime() {
+                                        var now = new Date();
+                                        var days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                                        var day = days[now.getDay()];
+                                        var date = now.getDate();
+                                        var month = now.getMonth() + 1;
+                                        var year = now.getFullYear();
+                                        var hours = now.getHours();
+                                        var minutes = now.getMinutes();
+                                        var seconds = now.getSeconds();
+                                        minutes = minutes < 10 ? '0' + minutes : minutes;
+                                        seconds = seconds < 10 ? '0' + seconds : seconds;
+                                        var timeString = day + ', ' + date + '/' + month + '/' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+                                        document.getElementById('current-time').innerHTML = timeString;
+                                    }
+                                    setInterval(updateTime, 1000);
+                                    updateTime();
+                                </script>
                             </a>
                             <!-- <div class="drop-down dropdown-language animated fadeIn  dropdown-menu"> -->
                                 <!-- <div class="dropdown-content-body">
