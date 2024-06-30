@@ -19,6 +19,8 @@ class Kiosk_model extends CI_Model
         $this->db->where('id_setting', 1);
         $this->db->update('kiosk_setting', $data);
     }
+
+   
 }
 
 

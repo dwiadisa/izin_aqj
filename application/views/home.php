@@ -36,13 +36,14 @@
     <!-- font awesome -->
 
        <!-- jQuery (diperlukan oleh Select2) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
     <!-- Select2 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
     <!-- select 2 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" /> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" /> -->
     <!-- =======================================================
   * Template Name: OnePage
   * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
@@ -97,7 +98,7 @@
                 <form id="licenseForm">
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Masukkan Kode Lisensi</label>
-                    <input type="text" class="form-control" id="kode_izin" name="kode_izin" aria-describedby="emailHelp" />
+                    <input type="text" class="form-control form-control-lg" id="kode_izin" name="kode_izin" aria-describedby="emailHelp" placeholder="Masukkan Kode Lisensi Perizinan Disini!" />
                   </div>
 
                   <div class="d-grid gap-2 mb-5">
@@ -108,7 +109,6 @@
                 </form>
               </div>
             </div>
-
             <div class="col">
               <div class="row gy-4">
                 <div class="col" data-aos="fade-up" data-aos-delay="100">
@@ -165,8 +165,7 @@
 
     <!-- modal izin santri -->
 
-<!-- Modal -->
-<div class="modal fade" id="izinmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="izinmodal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
@@ -174,9 +173,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       <div class="alert alert-success" role="alert">
+        <div class="alert alert-success" role="alert">
           <div class="fw-bold">Berikut Ketentuan untuk Izin Keluar Pesantren</div>
-
           <ul>
             <li>
               Alur Santri Izin Pulang dengan Alasan Kepentingan Keluarga:
@@ -199,60 +197,68 @@
           </ul>
           <div class="fw-bold">Jika sudah mengisi daftar berikut silakan meminta validasi ke pengurus</div>
         </div>
-        <form action="asdasdas" method="post">
-        <!-- Name input -->
-        <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="form4Example1">Kode Perizinan</label>
-          <input type="text" id="kode_izin" name="kode_izin" readonly class="form-control" value="<?php echo strtoupper(random_string('alnum',5)); ?>" />
-        </div>
+        <form action="<?php echo base_url('home/tambah_perizinan') ?>" method="post">
+          <!-- Name input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form4Example1">Kode Perizinan</label>
+            <input type="text" id="kode_perizinan" name="kode_perizinan" required readonly class="form-control" value="<?php echo strtoupper(random_string('alnum',5)); ?>" />
+          </div>
 
-        <!-- Email input -->
-        <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="form4Example2">Nama Santri</label>
-             <select class="form-control select2" id="mySelect2" name="id_santri">
-              <option value="">Please select</option>
-                    <?php foreach($load_penempatan as $penempatan): ?>
-                                                    <option value="<?php echo $penempatan->id_santri; ?>"><?php echo $penempatan->no_induk_santri .  " - " . $penempatan->nama_lengkap_santri . " - " . $penempatan->nama_wilayah ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>                                
-        </div>
-        <!-- Email input -->
-        <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="form4Example2">Tanggal Akhir</label>
-          <input type="date" id="tanggal_akhir" name="tanggal_akhir" class="form-control" />
-        </div>
-        <!-- Email input -->
-        <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="form4Example2">Jam Akhir</label>
-          <input type="time" id="jam_akhir" name="jam_akhir" class="form-control" />
-        </div>
+          <!-- Select2 Input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form4Example2">Nama Santri</label>
+            <select class="form-control selek2" required id="selek2" name="id_santri" style="width: 100%">
+                <option value="">Pilih Santri</option>
+                <?php foreach($load_penempatan as $penempatan): ?>
+                    <option value="<?php echo $penempatan->id_santri; ?>"><?php echo $penempatan->no_induk_santri .  " - " . $penempatan->nama_lengkap_santri . " - " . $penempatan->nama_wilayah ?></option>
+                <?php endforeach; ?>
+            </select>                                
+          </div>
 
-        <!-- Message input -->
-        <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="form4Example3">Keperluan</label>
-          <textarea class="form-control" id="keperluan" name="keperluan" rows="4"></textarea>
-        </div>
+          <!-- Date input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form4Example2">Tanggal Akhir</label>
+            <input type="date" id="tanggal_akhir" required name="tanggal_akhir" class="form-control" />
+          </div>
 
-    <hr>
-      <div class="d-grid gap-2">
-        <button  class="btn btn-success" type="submit">Ajukan Izin</button>
-      
+          <!-- Time input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form4Example2">Jam Akhir</label>
+            <input type="time" id="jam_akhir" required name="jam_akhir" class="form-control" />
+          </div>
+
+          <!-- Textarea input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form4Example3">Keperluan</label>
+            <textarea class="form-control" required id="keperluan" name="keperluan" rows="4"></textarea>
+          </div>
+
+          <hr>
+          <div class="d-grid gap-2">
+            <button  class="btn btn-success" type="submit">Ajukan Izin</button>
+          </div>
+        </form>
       </div>
-  <!-- Submit button -->
- 
-</form>
- 
     </div>
   </div>
 </div>
 
-</div>
+<!-- Inisialisasi Select2 -->
+<!-- <script>
+  $(document).ready(function() {
+    // Inisialisasi Select2 saat modal ditampilkan
+    $('#izinmodal').on('shown.bs.modal', function () {
+      $('.select2').select2();
+    });
+  });
+</script> -->
+
 
     <!-- modal izin santri -->
 
 
     <!-- modal tamu riyadhoh -->
-<div class="modal fade" id="riyadhoh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="riyadhoh"  aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
@@ -260,11 +266,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       <form action="" method="post">
+       <form action="<?php echo base_url('home/tambah_riyadhoh') ?>" method="post">
   <!-- Name input -->
   <div data-mdb-input-init class="form-outline mb-4">
     <label class="form-label" for="form4Example1">Nama Santri Riyadhoh</label>
-    <input type="text" id="nama_santri_riyadhod" name="nama_santri_riyadhoh" class="form-control" placeholder="Masukkan Nama Anda.." />
+    <input type="text" id="nama_santri_riyadhoh" name="nama_santri_riyadhoh" class="form-control" placeholder="Masukkan Nama Anda.." />
   </div>
 
   <!-- Email input -->
@@ -393,7 +399,7 @@
 
     <!-- Main JS File -->
     <script src="<?php echo base_url('assets/kiosk_templates/') ?>assets/js/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
 
     <!-- jam dan tanggal -->
     <script>
@@ -419,12 +425,22 @@
 </script>
 
 
-<!-- select2 -->
-   <script>
-      $(document).ready(function () {
-        $("#mySelect2").select2();
-      });
+  <!-- jQuery (necessary for Select2) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Initialize Select2 -->
+    <script>
+        $(document).ready(function() {
+            $('.selek2').select2({
+              dropdownParent : '#izinmodal',
+                placeholder: 'Pilih Santri',
+                allowClear: true
+            });
+        });
     </script>
+
+
 
 <!-- select2 -->
   <!-- script modal konfirmasi izin -->
