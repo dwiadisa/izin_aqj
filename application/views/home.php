@@ -89,7 +89,7 @@
         </div> -->
 
         <div class="container">
-          <div class="row" style="margin-top: 9rem; margin-bottom: 15rem">
+          <div class="row">
             <div class="col">
               <div class="container px-lg-5" data-aos="fade-up" data-aos-delay="50">
                 <div class="alert alert-success" role="alert">
@@ -156,13 +156,64 @@
 
                 <!-- End Service Item -->
               </div>
+               <div class="row gy-4 mt-2 mb-2">
+                <div class="col" data-aos="fade-up" data-aos-delay="300">
+                  <div class="service-item item-orange position-relative">
+                    <div class="icon">
+                      <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          stroke="none"
+                          stroke-width="0"
+                          fill="#f5f5f5"
+                          d="M300,582.0697525312426C382.5290701553225,586.8405444964366,449.9789794690241,525.3245884688669,502.5850820975895,461.55621195738473C556.606425686781,396.0723002908107,615.8543463187945,314.28637112970534,586.6730223649479,234.56875336149918C558.9533121215079,158.8439757836574,454.9685369536778,164.00468322053177,381.49747125262974,130.76875717737553C312.15926192815925,99.40240125094834,248.97055460311594,18.661163978235184,179.8680185752513,50.54337015887873C110.5421016452524,82.52863877960104,119.82277516462835,180.83849132639028,109.12597500060166,256.43424936330496C100.08760227029461,320.3096726198365,92.17705696193138,384.0621239912766,124.79988738764834,439.7174275375508C164.83382741302287,508.01625554203684,220.96474134820875,577.5009287672846,300,582.0697525312426"
+                        ></path>
+                      </svg>
+                   <i class="fa-solid fa-clipboard"></i>
+                    </div>
+                      <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#santri_baru"></a>
+                    <!-- <a href="service-details.html" class="stretched-link"> -->
+                      <h3>Pendaftaran Santri Baru</h3>
+                    </a>
+                    <!-- <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p> -->
+                  </div>
+                </div>
+
+
+               </div>
+              
             </div>
           </div>
         </div>
       </section>
       <!-- /Services Section -->
     </main>
+<!-- modal daftar santri baru -->
+<div class="modal fade" id="santri_baru" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pendaftaran Santri Baru</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4 class="text-center">Scan QR code dibawah untuk melakukan pendaftaran</h4>
+     <img src="<?php echo base_url('assets/images/qrcode_aqj.png') ?>" width="300px" class="rounded mx-auto d-block" alt="...">
+   
+  <div class="d-grid gap-2">
+   <a class="btn btn-success" href="https://bit.ly/PSBPPAQ2024" role="button">Menuju Link Pendaftaran</a>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>
+      </div>
+      <div class="modal-footer">
+       
+       
+      </div>
+    </div>
+  </div>
+</div>
 
+
+<!-- modal daftar santri baru -->
     <!-- modal izin santri -->
 
 <div class="modal fade" id="izinmodal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
