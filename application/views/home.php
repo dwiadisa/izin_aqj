@@ -8,7 +8,7 @@
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
-    <link href="<?php echo base_url('assets/kiosk_templates/') ?>assets/img/favicon.png" rel="icon" />
+     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('assets/images/Logo-Al-Qodiri-Small-150x150.png') ?>">
     <link href="<?php echo base_url('assets/kiosk_templates/') ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
     <!-- Fonts -->
