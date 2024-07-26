@@ -139,6 +139,64 @@ public function tambah_penempatan_santri(){
 
 
     }
+
+    public function ekspor_data_santri(){
+
+        $data= [
+            'title' => 'Ekspor Data Santri',
+            'wilayah'=> $this->data_wilayah_model->lihat_wilayah()->result()
+        ];
+
+    //  var_dump($data);
+        $this->load->view('templates/header_dashboard' , $data);
+        $this->load->view('content/data_penempatan/ekspor_data_santri', $data);
+        $this->load->view('templates/footer_dashboard');
+    }
+
+    public function download_excel_perwilayah($id){
+        $this->load->library('excel');
+        $this->load->model('data_penempatan_model');
+
+        $data_penghuni = $this->data_penempatan_model->ekspor_perwilayah($id)->result();
+
+        $excel = new Excel();
+        $excel->setActiveSheetIndex(0);
+        $sheet = $excel->getActiveSheet();
+
+        // Set header
+        $headers = ["No", "Nama Santri", "Nama Wilayah", "Nama Kamar"];
+        $column = 0;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($column, 1, $header);
+            $column++;
+        }
+
+        // Set data
+        $row = 2;
+        $no = 1;
+        foreach ($data_penghuni as $data) {
+            $sheet->setCellValueByColumnAndRow(0, $row, (string)$no++);
+            $sheet->setCellValueByColumnAndRow(1, $row, (string)$data->nama_lengkap_santri);
+            $sheet->setCellValueByColumnAndRow(2, $row, (string)$data->nama_wilayah);
+            $sheet->setCellValueByColumnAndRow(3, $row, (string)$data->nama_kamar);
+            $row++;
+        }
+
+        // Save the file
+        $filename = "Data_Santri_Perwilayah_" . date("YmdHis") . ".xlsx";
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        try {
+            $writer = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+            $writer->save('php://output');
+        } catch (Exception $e) {
+            log_message('error', 'Error saat mencoba mengunduh file Excel: ' . $e->getMessage());
+            show_error('Terjadi kesalahan pada server. Silakan coba lagi atau hubungi administrator server.', 500);
+        }
+        exit;
+    }
     
 }
 

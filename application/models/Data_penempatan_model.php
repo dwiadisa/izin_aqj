@@ -58,6 +58,19 @@ public function lihat_penghuni($id_kamar){
 
 }
 
+
+public function ekspor_perwilayah($id_wilayah){
+  $this->db->select('*');
+    $this->db->from('data_penghuni');
+    $this->db->join('data_santri', 'data_penghuni.id_santri = data_santri.id_santri', 'left');
+    $this->db->join('data_wilayah', 'data_penghuni.id_wilayah = data_wilayah.id_wilayah', 'left');
+    $this->db->join('data_kamar', 'data_penghuni.id_kamar = data_kamar.id_kamar', 'left');
+    $this->db->where('data_wilayah.id_wilayah', $id_wilayah);
+    $query = $this->db->get();
+    return $query;
+
+}
+
 public function ubah_penempatan($id_penghuni, $data_penempatan_baru)
 {
     $this->db->where('id_penghuni', $id_penghuni);

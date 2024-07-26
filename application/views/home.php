@@ -156,7 +156,7 @@
 
                 <!-- End Service Item -->
               </div>
-               <div class="row gy-4 mt-2 mb-2">
+               <div  class="row gy-4 mt-2 mb-2">
                 <div class="col" data-aos="fade-up" data-aos-delay="300">
                   <div class="service-item item-orange position-relative">
                     <div class="icon">

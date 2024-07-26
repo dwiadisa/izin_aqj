@@ -213,6 +213,7 @@
                         <ul aria-expanded="false">
                             <li><a href="<?php echo base_url('data_penempatan_santri') ?>">List Seluruh Penempatan Santri</a></li>
                             <li><a href="<?php echo base_url('data_penempatan_santri/tambah_penempatan_santri') ?>">Tambah Penempatan Santri</a></li>
+                            <li><a href="<?php echo base_url('data_penempatan_santri/ekspor_data_santri') ?>">Ekspor Santri Perwilayah</a></li>
                           
                          </ul>
                     </li>
