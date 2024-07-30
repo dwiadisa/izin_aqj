@@ -15,14 +15,7 @@
                                 <div class="form-validation">
                                     <?php echo form_open_multipart('data_santri/tambah_santri') ?>
                                     
-                                        <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-username">No Induk Santri <span class="text-danger">*</span>
-                                            </label>
-                                            <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="nis" disabled name="nis" placeholder="Enter a username.." value="<?php echo $format_nis ?>">
-                                                <?php echo form_error('nis', '<div class="text-danger">', '</div>'); ?>
-                                            </div>
-                                        </div>
+                                      <div class="alert alert-success">Untuk NIS (Nomor Induk Santri) akan digenerate otomatis berdasarkan tahun dan bulan pendaftaran</div>
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-email">Nama Santri <span class="text-danger">*</span>
                                             </label>

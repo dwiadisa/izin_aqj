@@ -3,17 +3,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         
 class Data_santri_model extends CI_Model 
 {
-    public function get_last_no_induk($currentYear) {
-        $this->db->select('MAX(SUBSTRING(no_induk_santri, 5, 3)) AS last_order');
-        $this->db->where('SUBSTRING(no_induk_santri, 1, 4) =', $currentYear);
-        $query = $this->db->get('data_santri');
+    // public function get_last_no_induk_by_year($year) {
+    //     $this->db->select('no_induk_santri');
+    //     $this->db->like('tahun_masuk', $year);
+    //     $this->db->order_by('no_induk_santri', 'DESC');
+    //     $this->db->limit(1);
+    //     $query = $this->db->get('data_santri');
 
-        if ($query->num_rows() > 0) {
-            $row = $query->row();
-            return (int)$row->last_order;
-        }
+    //     if ($query->num_rows() > 0) {
+    //         $result = $query->row();
+    //         $lastNoInduk = substr($result->no_induk_santri, 4); // Mengambil nomor urut dari nomor induk terakhir
+    //         return (int)$lastNoInduk;
+    //     } else {
+    //         return 0; // Jika tidak ada nomor urut sebelumnya
+    //     }
+    // }
+    public function get_last_no_induk_by_year($year) {
+    $this->db->select('no_induk_santri');
+    $this->db->like('tahun_masuk', $year);
+    $this->db->order_by('no_induk_santri', 'DESC');
+    $this->db->limit(1);
+    $query = $this->db->get('data_santri');
 
-        return 0;
+    if ($query->num_rows() > 0) {
+        $result = $query->row();
+        $lastNoInduk = substr($result->no_induk_santri, -3); // Mengambil nomor urut dari nomor induk terakhir
+        return (int)$lastNoInduk;
+    } else {
+        return 0; // Jika tidak ada nomor urut sebelumnya
+    }
+}
+
+    public function urut_pendaftaran(){
+        
     }
 
     public function tambah_santri($data) {
