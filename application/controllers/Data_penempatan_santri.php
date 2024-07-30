@@ -164,7 +164,7 @@ public function tambah_penempatan_santri(){
         $sheet = $excel->getActiveSheet();
 
         // Set header
-        $headers = ["No", "Nama Santri", "Nama Wilayah", "Nama Kamar"];
+        $headers = ["No","No Induk Santri", "Nama Santri", "Nama Wilayah", "Nama Kamar"];
         $column = 0;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($column, 1, $header);
@@ -176,9 +176,10 @@ public function tambah_penempatan_santri(){
         $no = 1;
         foreach ($data_penghuni as $data) {
             $sheet->setCellValueByColumnAndRow(0, $row, (string)$no++);
-            $sheet->setCellValueByColumnAndRow(1, $row, (string)$data->nama_lengkap_santri);
-            $sheet->setCellValueByColumnAndRow(2, $row, (string)$data->nama_wilayah);
-            $sheet->setCellValueByColumnAndRow(3, $row, (string)$data->nama_kamar);
+            $sheet->setCellValueByColumnAndRow(1, $row, (string)$data->no_induk_santri);
+            $sheet->setCellValueByColumnAndRow(2, $row, (string)$data->nama_lengkap_santri);
+            $sheet->setCellValueByColumnAndRow(3, $row, (string)$data->nama_wilayah);
+            $sheet->setCellValueByColumnAndRow(4, $row, (string)$data->nama_kamar);
             $row++;
         }
 
