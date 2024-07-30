@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 30, 2024 at 06:09 AM
--- Server version: 8.2.0
--- PHP Version: 7.4.33
+-- Generation Time: Jul 30, 2024 at 04:20 PM
+-- Server version: 8.0.21
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `data_perizinan` (
   `keperluan` varchar(256) NOT NULL,
   `pemberi_izin` int NOT NULL,
   PRIMARY KEY (`id_izin`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `data_perizinan`
@@ -141,14 +141,17 @@ CREATE TABLE IF NOT EXISTS `data_perizinan` (
 
 INSERT INTO `data_perizinan` (`id_izin`, `kode_perizinan`, `id_santri`, `tanggal_mulai`, `jam_mulai`, `tanggal_akhir`, `jam_akhir`, `status`, `status_izin`, `keperluan`, `pemberi_izin`) VALUES
 (1, 'F79E6', 34, '2024-06-25', '20:45:00', '2024-07-02', '14:48:00', 'TERLAMBAT KEMBALI', 'SUDAH DIIZINKAN', 'asdasd', 1),
-(2, '28THE', 44, '2024-06-26', '21:05:00', '2024-06-27', '17:00:00', 'TERLAMBAT KEMBALI', 'SUDAH DIIZINKAN', 'sdfsdfsdf', 1),
+(2, '28THE', 44, '2024-06-26', '21:05:00', '2024-06-27', '17:00:00', 'BELUM KEMBALI', 'SUDAH DIIZINKAN', 'sdfsdfsdf', 1),
 (3, 'HL4VJ', 54, '2024-06-30', '03:13:00', '2024-07-01', '03:18:00', 'SUDAH KEMBALI', 'SUDAH DIIZINKAN', 'Keperluan Menikah', 1),
 (4, 'XT0TY', 50, '2024-06-30', '10:56:13', '2024-07-03', '10:50:00', 'SUDAH KEMBALI', 'SUDAH DIIZINKAN', 'sadasdsad', 1),
 (5, 'ZXP19', 33, '2024-06-30', '10:59:00', '2024-07-05', '15:00:00', 'SUDAH KEMBALI', 'SUDAH DIIZINKAN', 'ddsafsfsd', 1),
 (6, 'YGITO', 5, '2024-06-30', '11:02:00', '2024-07-05', '17:57:00', 'SUDAH KEMBALI', 'SUDAH DIIZINKAN', 'sdafsdfsdf', 1),
 (9, 'PQSE2', 34, '2024-06-30', '12:24:00', '2024-07-04', '12:27:00', 'BELUM KEMBALI', 'BELUM DIIZINKAN', 'asddasd', 0),
 (10, 'POB3A', 54, '2024-06-30', '12:24:00', '2024-07-26', '12:30:00', 'BELUM KEMBALI', 'SUDAH DIIZINKAN', 'asddasdasdsad', 1),
-(11, '9TOMK', 10, '2024-06-30', '12:25:00', '2024-07-04', '12:29:00', 'BELUM KEMBALI', 'BELUM DIIZINKAN', 'asdasdas', 0);
+(11, '9TOMK', 10, '2024-06-30', '12:25:00', '2024-07-04', '12:29:00', 'BELUM KEMBALI', 'SUDAH DIIZINKAN', 'asdasdas', 1),
+(12, 'JHPFQ', 50, '2024-06-30', '19:22:00', '2024-07-14', '17:00:00', 'BELUM KEMBALI', 'SUDAH DIIZINKAN', 'Sunatan Dulure', 1),
+(13, 'XO3QT', 50, '2024-06-30', '20:07:00', '2024-07-04', '17:00:00', 'BELUM KEMBALI', 'SUDAH DIIZINKAN', 'Keperluan Keluarga', 1),
+(14, 'KXMJ4', 50, '2024-07-20', '11:23:00', '2024-07-21', '10:00:00', 'TERLAMBAT KEMBALI', 'SUDAH DIIZINKAN', 'Ke rumah sakit\r\n', 1);
 
 -- --------------------------------------------------------
 
@@ -159,6 +162,9 @@ INSERT INTO `data_perizinan` (`id_izin`, `kode_perizinan`, `id_santri`, `tanggal
 DROP TABLE IF EXISTS `data_santri`;
 CREATE TABLE IF NOT EXISTS `data_santri` (
   `id_santri` int NOT NULL AUTO_INCREMENT,
+  `tahun_masuk` year NOT NULL,
+  `bulan_masuk` varchar(20) NOT NULL,
+  `no_urut` varchar(20) NOT NULL,
   `no_induk_santri` varchar(20) NOT NULL,
   `nama_lengkap_santri` varchar(150) NOT NULL,
   `tanggal_masuk` date NOT NULL,
@@ -177,67 +183,70 @@ CREATE TABLE IF NOT EXISTS `data_santri` (
   `foto` varchar(150) NOT NULL,
   `status_santri` enum('AKTIF','NONAKTIF','','') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_santri`)
-) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `data_santri`
 --
 
-INSERT INTO `data_santri` (`id_santri`, `no_induk_santri`, `nama_lengkap_santri`, `tanggal_masuk`, `tempat_lahir`, `tanggal_lahir`, `alamat_dusun`, `alamat_desa`, `alamat_kecamatan`, `alamat_kabupaten`, `alamat_provinsi`, `pendidikan_dipilih`, `nama_ayah`, `pekerjaan_ayah`, `nama_ibu`, `no_hp`, `foto`, `status_santri`) VALUES
-(1, '2022001', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', 'Inggit', '08909999', './assets/foto_santri/1_WhatsApp_Image_2024-05-20_at_07_32_43_4263e0f8.jpg', 'NONAKTIF'),
-(4, '2022004', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910002', '', 'AKTIF'),
-(5, '2022005', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910003', '', 'AKTIF'),
-(6, '2022006', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910004', '', 'AKTIF'),
-(7, '2022007', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910005', '', 'AKTIF'),
-(8, '2022008', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910006', '', 'AKTIF'),
-(9, '2022009', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910007', '', 'AKTIF'),
-(10, '2022010', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910008', '', 'AKTIF'),
-(11, '2022011', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910009', '', 'AKTIF'),
-(12, '2022012', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910010', '', 'AKTIF'),
-(13, '2022013', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910011', '', 'AKTIF'),
-(14, '2022014', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910012', '', 'AKTIF'),
-(15, '2022015', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910013', '', 'AKTIF'),
-(16, '2022016', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910014', '', 'AKTIF'),
-(17, '2022017', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910015', '', 'AKTIF'),
-(18, '2022018', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910016', '', 'AKTIF'),
-(19, '2022019', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910017', '', 'AKTIF'),
-(20, '2022020', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910018', '', 'AKTIF'),
-(21, '2022021', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910019', '', 'AKTIF'),
-(22, '2022022', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910020', '', 'AKTIF'),
-(23, '2022023', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910021', '', 'AKTIF'),
-(24, '2022024', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910022', '', 'AKTIF'),
-(25, '2022025', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910023', '', 'AKTIF'),
-(26, '2022026', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910024', '', 'AKTIF'),
-(27, '2022027', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910025', '', 'AKTIF'),
-(28, '2022028', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910026', '', 'AKTIF'),
-(29, '2022029', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910027', '', 'AKTIF'),
-(30, '2022030', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910028', '', 'AKTIF'),
-(31, '2022031', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910029', '', 'AKTIF'),
-(32, '2023001', 'Ahmad Fauzi', '1970-01-01', 'Surabaya', '1970-01-01', 'Dusun A', 'Desa A', 'Kecamatan A', 'Kabupaten A', 'Provinsi A', 1, 'Budi Santoso', 'Petani', 'Siti Aminah', '081234567890', './assets/foto_santri/1_6c23fa12-48fa-46d2-b206-2c3c224d6b48.jpg', 'NONAKTIF'),
-(33, '2023002', 'Budi Santoso', '1970-01-01', 'Malang', '1970-01-01', 'Dusun B', 'Desa B', 'Kecamatan B', 'Kabupaten B', 'Provinsi B', 2, 'Slamet Riyadi', 'Guru', 'Rina Wati', '081234567891', './assets/foto_santri/2023002.jpg', 'AKTIF'),
-(34, '2023003', 'Citra Dewi', '1970-01-01', 'Jember', '1970-01-01', 'Dusun C', 'Desa C', 'Kecamatan C', 'Kabupaten C', 'Provinsi C', 3, 'Sukardi', 'Pedagang', 'Siti Nurjanah', '081234567892', './assets/foto_santri/2023003.jpg', 'AKTIF'),
-(35, '2023004', 'Dewi Sartika', '1970-01-01', 'Banyuwangi', '1970-01-01', 'Dusun D', 'Desa D', 'Kecamatan D', 'Kabupaten D', 'Provinsi D', 4, 'Sutrisno', 'Nelayan', 'Sri Rahayu', '081234567893', './assets/foto_santri/35_iduladha2024smkaqj-be12a7d5-84ac-4ca2-a12e-ee2068f53eab.jpg', 'NONAKTIF'),
-(36, '2023005', 'Eko Prasetyo', '1970-01-01', 'Probolinggo', '1970-01-01', 'Dusun E', 'Desa E', 'Kecamatan E', 'Kabupaten E', 'Provinsi E', 5, 'Suyono', 'Buruh', 'Siti Fatimah', '081234567894', './assets/foto_santri/2023005.jpg', 'AKTIF'),
-(37, '2023006', 'Fajar Nugraha', '1970-01-01', 'Pasuruan', '1970-01-01', 'Dusun F', 'Desa F', 'Kecamatan F', 'Kabupaten F', 'Provinsi F', 6, 'Agus Salim', 'Dokter', 'Nurul Huda', '081234567895', './assets/foto_santri/2023006.jpg', 'AKTIF'),
-(38, '2023007', 'Gita Suryani', '1970-01-01', 'Kediri', '1970-01-01', 'Dusun G', 'Desa G', 'Kecamatan G', 'Kabupaten G', 'Provinsi G', 2, 'Hariyanto', 'Pengusaha', 'Dewi Sartika', '081234567896', './assets/foto_santri/2023007.jpg', 'AKTIF'),
-(39, '2023008', 'Hendra Setiawan', '1970-01-01', 'Blitar', '1970-01-01', 'Dusun H', 'Desa H', 'Kecamatan H', 'Kabupaten H', 'Provinsi H', 8, 'Iwan Kurniawan', 'PNS', 'Eka Wulandari', '081234567897', './assets/foto_santri/2023008.jpg', 'AKTIF'),
-(40, '2023009', 'Intan Permatasari', '1970-01-01', 'Madiun', '1970-01-01', 'Dusun I', 'Desa I', 'Kecamatan I', 'Kabupaten I', 'Provinsi I', 9, 'Joko Susilo', 'Polisi', 'Fifi Fitriani', '081234567898', './assets/foto_santri/2023009.jpg', 'AKTIF'),
-(41, '2023010', 'Joko Widodo', '1970-01-01', 'Mojokerto', '1970-01-01', 'Dusun J', 'Desa J', 'Kecamatan J', 'Kabupaten J', 'Provinsi J', 4, 'Kurniawan', 'TNI', 'Gina Melati', '081234567899', './assets/foto_santri/2023010.jpg', 'NONAKTIF'),
-(42, '2023011', 'Kartika Putri', '1970-01-01', 'Nganjuk', '1970-01-01', 'Dusun K', 'Desa K', 'Kecamatan K', 'Kabupaten K', 'Provinsi K', 11, 'Lukman Hakim', 'Seniman', 'Hana Citra', '081234567900', './assets/foto_santri/2023011.jpg', 'AKTIF'),
-(43, '2023012', 'Linda Kusuma', '1970-01-01', 'Ponorogo', '1970-01-01', 'Dusun L', 'Desa L', 'Kecamatan L', 'Kabupaten L', 'Provinsi L', 12, 'Maman Abdurrahman', 'Akuntan', 'Ida Ayu', '081234567901', './assets/foto_santri/2023012.jpg', 'AKTIF'),
-(44, '2023013', 'Mega Ayuningtyas', '1970-01-01', 'Tulungagung', '1970-01-01', 'Dusun M', 'Desa M', 'Kecamatan M', 'Kabupaten M', 'Provinsi M', 13, 'Nanang Arifin', 'Advokat', 'Julia Perez', '081234567902', './assets/foto_santri/2023013.jpg', 'AKTIF'),
-(45, '2023014', 'Nina Yuliana', '1970-01-01', 'Trenggalek', '1970-01-01', 'Dusun N', 'Desa N', 'Kecamatan N', 'Kabupaten N', 'Provinsi N', 4, 'Oman Sudarman', 'Arsitek', 'Kartini Rahayu', '081234567903', './assets/foto_santri/45_misto_putih.jpg', 'AKTIF'),
-(46, '2023015', 'Oscar Pratama', '1970-01-01', 'Bojonegoro', '1970-01-01', 'Dusun O', 'Desa O', 'Kecamatan O', 'Kabupaten O', 'Provinsi O', 15, 'Purnomo', 'Dosen', 'Lestari', '081234567904', './assets/foto_santri/2023015.jpg', 'AKTIF'),
-(47, '2023016', 'Putri Anggraini', '1970-01-01', 'Jombang', '1970-01-01', 'Dusun P', 'Desa P', 'Kecamatan P', 'Kabupaten P', 'Provinsi P', 16, 'Qomar', 'Bidan', 'Mira Mariani', '081234567905', './assets/foto_santri/2023016.jpg', 'AKTIF'),
-(48, '2023017', 'Rahmat Hidayat', '1970-01-01', 'Lamongan', '1970-01-01', 'Dusun R', 'Desa R', 'Kecamatan R', 'Kabupaten R', 'Provinsi R', 17, 'Samsul Arifin', 'Peternak', 'Nurul Aini', '081234567906', './assets/foto_santri/2023017.jpg', 'AKTIF'),
-(49, '2023018', 'Siti Badriah', '1970-01-01', 'Magetan', '1970-01-01', 'Dusun S', 'Desa S', 'Kecamatan S', 'Kabupaten S', 'Provinsi S', 18, 'Taufik Hidayat', 'Fotografer', 'Olla Ramlan', '081234567907', './assets/foto_santri/2023018.jpg', 'AKTIF'),
-(50, '2023019', 'Tania Putri', '1970-01-01', 'Ngawi', '1970-01-01', 'Dusun T', 'Desa T', 'Kecamatan T', 'Kabupaten T', 'Provinsi T', 19, 'Umar Ali', 'Pilot', 'Puput Carolina', '081234567908', './assets/foto_santri/2023019.jpg', 'AKTIF'),
-(51, '2023020', 'Udin Samsudin', '1970-01-01', 'Pamekasan', '1970-01-01', 'Dusun U', 'Desa U', 'Kecamatan U', 'Kabupaten U', 'Provinsi U', 20, 'Viktor Surya', 'Chef', 'Ratna Dewi', '081234567909', './assets/foto_santri/2023020.jpg', 'AKTIF'),
-(52, '2023021', 'Vina Panduwinata', '1970-01-01', 'Sumenep', '1970-01-01', 'Dusun V', 'Desa V', 'Kecamatan V', 'Kabupaten V', 'Provinsi V', 21, 'Wahyu Teguh', 'Seniman', 'Sari Puspita', '081234567910', './assets/foto_santri/2023021.jpg', 'AKTIF'),
-(53, '2023022', 'Wulan Guritno', '1970-01-01', 'Sampang', '1970-01-01', 'Dusun W', 'Desa W', 'Kecamatan W', 'Kabupaten W', 'Provinsi W', 22, 'Xavier Hernandes', 'Musisi', 'Tina Talisa', '081234567911', './assets/foto_santri/2023022.jpg', 'AKTIF'),
-(54, '2023023', 'Xena Warrior', '1970-01-01', 'Bangkalan', '1970-01-01', 'Dusun X', 'Desa X', 'Kecamatan X', 'Kabupaten X', 'Provinsi X', 23, 'Yusuf Mansur', 'Ustadz', 'Umi Pipik', '081234567912', './assets/foto_santri/2023023.jpg', 'AKTIF'),
-(55, '2023024', 'Yudi Satria', '1970-01-01', 'Batu', '1970-01-01', 'Dusun Y', 'Desa Y', 'Kecamatan Y', 'Kabupaten Y', 'Provinsi Y', 24, 'Zainal Abidin', 'Politikus', 'Vera Kharisma', '081234567913', './assets/foto_santri/2023024.jpg', 'AKTIF'),
-(56, '2023025', 'Zara Leola', '1970-01-01', 'Malang', '1970-01-01', 'Dusun Z', 'Desa Z', 'Kecamatan Z', 'Kabupaten Z', 'Provinsi Z', 25, 'Adam Bachtiar', 'Dokter', 'Nina Zatulini', '081234567914', './assets/foto_santri/2023025.jpg', 'AKTIF');
+INSERT INTO `data_santri` (`id_santri`, `tahun_masuk`, `bulan_masuk`, `no_urut`, `no_induk_santri`, `nama_lengkap_santri`, `tanggal_masuk`, `tempat_lahir`, `tanggal_lahir`, `alamat_dusun`, `alamat_desa`, `alamat_kecamatan`, `alamat_kabupaten`, `alamat_provinsi`, `pendidikan_dipilih`, `nama_ayah`, `pekerjaan_ayah`, `nama_ibu`, `no_hp`, `foto`, `status_santri`) VALUES
+(1, '0000', '', '', '2022001', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', 'Inggit', '08909999', './assets/foto_santri/1_WhatsApp_Image_2024-05-20_at_07_32_43_4263e0f8.jpg', 'NONAKTIF'),
+(4, '0000', '', '', '2022004', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910002', '', 'AKTIF'),
+(5, '0000', '', '', '2022005', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910003', '', 'AKTIF'),
+(6, '0000', '', '', '2022006', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910004', '', 'AKTIF'),
+(7, '0000', '', '', '2022007', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910005', '', 'AKTIF'),
+(8, '0000', '', '', '2022008', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910006', '', 'AKTIF'),
+(9, '0000', '', '', '2022009', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910007', '', 'AKTIF'),
+(10, '0000', '', '', '2022010', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910008', '', 'AKTIF'),
+(11, '0000', '', '', '2022011', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910009', '', 'AKTIF'),
+(12, '0000', '', '', '2022012', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910010', '', 'AKTIF'),
+(13, '0000', '', '', '2022013', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910011', '', 'AKTIF'),
+(14, '0000', '', '', '2022014', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910012', '', 'AKTIF'),
+(15, '0000', '', '', '2022015', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910013', '', 'AKTIF'),
+(16, '0000', '', '', '2022016', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910014', '', 'AKTIF'),
+(17, '0000', '', '', '2022017', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910015', '', 'AKTIF'),
+(18, '0000', '', '', '2022018', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910016', '', 'AKTIF'),
+(19, '0000', '', '', '2022019', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910017', '', 'AKTIF'),
+(20, '0000', '', '', '2022020', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910018', '', 'AKTIF'),
+(21, '0000', '', '', '2022021', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910019', '', 'AKTIF'),
+(22, '0000', '', '', '2022022', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910020', '', 'AKTIF'),
+(23, '0000', '', '', '2022023', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910021', '', 'AKTIF'),
+(24, '0000', '', '', '2022024', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910022', '', 'AKTIF'),
+(25, '0000', '', '', '2022025', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910023', '', 'AKTIF'),
+(26, '0000', '', '', '2022026', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910024', '', 'AKTIF'),
+(27, '0000', '', '', '2022027', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910025', '', 'AKTIF'),
+(28, '0000', '', '', '2022028', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910026', '', 'AKTIF'),
+(29, '0000', '', '', '2022029', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910027', '', 'AKTIF'),
+(30, '0000', '', '', '2022030', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910028', '', 'AKTIF'),
+(31, '0000', '', '', '2022031', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910029', '', 'AKTIF'),
+(32, '0000', '', '', '2023001', 'Ahmad Fauzi', '1970-01-01', 'Surabaya', '1970-01-01', 'Dusun A', 'Desa A', 'Kecamatan A', 'Kabupaten A', 'Provinsi A', 1, 'Budi Santoso', 'Petani', 'Siti Aminah', '081234567890', './assets/foto_santri/1_6c23fa12-48fa-46d2-b206-2c3c224d6b48.jpg', 'NONAKTIF'),
+(33, '0000', '', '', '2023002', 'Budi Santoso', '1970-01-01', 'Malang', '1970-01-01', 'Dusun B', 'Desa B', 'Kecamatan B', 'Kabupaten B', 'Provinsi B', 2, 'Slamet Riyadi', 'Guru', 'Rina Wati', '081234567891', './assets/foto_santri/2023002.jpg', 'AKTIF'),
+(34, '0000', '', '', '2023003', 'Citra Dewi', '1970-01-01', 'Jember', '1970-01-01', 'Dusun C', 'Desa C', 'Kecamatan C', 'Kabupaten C', 'Provinsi C', 3, 'Sukardi', 'Pedagang', 'Siti Nurjanah', '081234567892', './assets/foto_santri/2023003.jpg', 'AKTIF'),
+(35, '0000', '', '', '2023004', 'Dewi Sartika', '1970-01-01', 'Banyuwangi', '1970-01-01', 'Dusun D', 'Desa D', 'Kecamatan D', 'Kabupaten D', 'Provinsi D', 4, 'Sutrisno', 'Nelayan', 'Sri Rahayu', '081234567893', './assets/foto_santri/35_iduladha2024smkaqj-be12a7d5-84ac-4ca2-a12e-ee2068f53eab.jpg', 'NONAKTIF'),
+(36, '0000', '', '', '2023005', 'Eko Prasetyo', '1970-01-01', 'Probolinggo', '1970-01-01', 'Dusun E', 'Desa E', 'Kecamatan E', 'Kabupaten E', 'Provinsi E', 5, 'Suyono', 'Buruh', 'Siti Fatimah', '081234567894', './assets/foto_santri/2023005.jpg', 'AKTIF'),
+(37, '0000', '', '', '2023006', 'Fajar Nugraha', '1970-01-01', 'Pasuruan', '1970-01-01', 'Dusun F', 'Desa F', 'Kecamatan F', 'Kabupaten F', 'Provinsi F', 6, 'Agus Salim', 'Dokter', 'Nurul Huda', '081234567895', './assets/foto_santri/2023006.jpg', 'AKTIF'),
+(38, '0000', '', '', '2023007', 'Gita Suryani', '1970-01-01', 'Kediri', '1970-01-01', 'Dusun G', 'Desa G', 'Kecamatan G', 'Kabupaten G', 'Provinsi G', 2, 'Hariyanto', 'Pengusaha', 'Dewi Sartika', '081234567896', './assets/foto_santri/2023007.jpg', 'AKTIF'),
+(39, '0000', '', '', '2023008', 'Hendra Setiawan', '1970-01-01', 'Blitar', '1970-01-01', 'Dusun H', 'Desa H', 'Kecamatan H', 'Kabupaten H', 'Provinsi H', 8, 'Iwan Kurniawan', 'PNS', 'Eka Wulandari', '081234567897', './assets/foto_santri/2023008.jpg', 'AKTIF'),
+(40, '0000', '', '', '2023009', 'Intan Permatasari', '1970-01-01', 'Madiun', '1970-01-01', 'Dusun I', 'Desa I', 'Kecamatan I', 'Kabupaten I', 'Provinsi I', 9, 'Joko Susilo', 'Polisi', 'Fifi Fitriani', '081234567898', './assets/foto_santri/2023009.jpg', 'AKTIF'),
+(41, '0000', '', '', '2023010', 'Joko Widodo', '1970-01-01', 'Mojokerto', '1970-01-01', 'Dusun J', 'Desa J', 'Kecamatan J', 'Kabupaten J', 'Provinsi J', 4, 'Kurniawan', 'TNI', 'Gina Melati', '081234567899', './assets/foto_santri/2023010.jpg', 'NONAKTIF'),
+(42, '0000', '', '', '2023011', 'Kartika Putri', '1970-01-01', 'Nganjuk', '1970-01-01', 'Dusun K', 'Desa K', 'Kecamatan K', 'Kabupaten K', 'Provinsi K', 11, 'Lukman Hakim', 'Seniman', 'Hana Citra', '081234567900', './assets/foto_santri/2023011.jpg', 'AKTIF'),
+(43, '0000', '', '', '2023012', 'Linda Kusuma', '1970-01-01', 'Ponorogo', '1970-01-01', 'Dusun L', 'Desa L', 'Kecamatan L', 'Kabupaten L', 'Provinsi L', 12, 'Maman Abdurrahman', 'Akuntan', 'Ida Ayu', '081234567901', './assets/foto_santri/2023012.jpg', 'AKTIF'),
+(44, '0000', '', '', '2023013', 'Mega Ayuningtyas', '1970-01-01', 'Tulungagung', '1970-01-01', 'Dusun M', 'Desa M', 'Kecamatan M', 'Kabupaten M', 'Provinsi M', 13, 'Nanang Arifin', 'Advokat', 'Julia Perez', '081234567902', './assets/foto_santri/2023013.jpg', 'AKTIF'),
+(45, '0000', '', '', '2023014', 'Nina Yuliana', '1970-01-01', 'Trenggalek', '1970-01-01', 'Dusun N', 'Desa N', 'Kecamatan N', 'Kabupaten N', 'Provinsi N', 4, 'Oman Sudarman', 'Arsitek', 'Kartini Rahayu', '081234567903', './assets/foto_santri/45_misto_putih.jpg', 'AKTIF'),
+(46, '0000', '', '', '2023015', 'Oscar Pratama', '1970-01-01', 'Bojonegoro', '1970-01-01', 'Dusun O', 'Desa O', 'Kecamatan O', 'Kabupaten O', 'Provinsi O', 15, 'Purnomo', 'Dosen', 'Lestari', '081234567904', './assets/foto_santri/2023015.jpg', 'AKTIF'),
+(47, '0000', '', '', '2023016', 'Putri Anggraini', '1970-01-01', 'Jombang', '1970-01-01', 'Dusun P', 'Desa P', 'Kecamatan P', 'Kabupaten P', 'Provinsi P', 16, 'Qomar', 'Bidan', 'Mira Mariani', '081234567905', './assets/foto_santri/2023016.jpg', 'AKTIF'),
+(48, '0000', '', '', '2023017', 'Rahmat Hidayat', '1970-01-01', 'Lamongan', '1970-01-01', 'Dusun R', 'Desa R', 'Kecamatan R', 'Kabupaten R', 'Provinsi R', 17, 'Samsul Arifin', 'Peternak', 'Nurul Aini', '081234567906', './assets/foto_santri/2023017.jpg', 'AKTIF'),
+(49, '0000', '', '', '2023018', 'Siti Badriah', '1970-01-01', 'Magetan', '1970-01-01', 'Dusun S', 'Desa S', 'Kecamatan S', 'Kabupaten S', 'Provinsi S', 18, 'Taufik Hidayat', 'Fotografer', 'Olla Ramlan', '081234567907', './assets/foto_santri/2023018.jpg', 'AKTIF'),
+(50, '0000', '', '', '2023019', 'Tania Putri', '1970-01-01', 'Ngawi', '1970-01-01', 'Dusun T', 'Desa T', 'Kecamatan T', 'Kabupaten T', 'Provinsi T', 19, 'Umar Ali', 'Pilot', 'Puput Carolina', '081234567908', './assets/foto_santri/2023019.jpg', 'AKTIF'),
+(51, '0000', '', '', '2023020', 'Udin Samsudin', '1970-01-01', 'Pamekasan', '1970-01-01', 'Dusun U', 'Desa U', 'Kecamatan U', 'Kabupaten U', 'Provinsi U', 20, 'Viktor Surya', 'Chef', 'Ratna Dewi', '081234567909', './assets/foto_santri/2023020.jpg', 'AKTIF'),
+(52, '0000', '', '', '2023021', 'Vina Panduwinata', '1970-01-01', 'Sumenep', '1970-01-01', 'Dusun V', 'Desa V', 'Kecamatan V', 'Kabupaten V', 'Provinsi V', 21, 'Wahyu Teguh', 'Seniman', 'Sari Puspita', '081234567910', './assets/foto_santri/2023021.jpg', 'AKTIF'),
+(53, '0000', '', '', '2023022', 'Wulan Guritno', '1970-01-01', 'Sampang', '1970-01-01', 'Dusun W', 'Desa W', 'Kecamatan W', 'Kabupaten W', 'Provinsi W', 22, 'Xavier Hernandes', 'Musisi', 'Tina Talisa', '081234567911', './assets/foto_santri/2023022.jpg', 'AKTIF'),
+(54, '0000', '', '', '2023023', 'Xena Warrior', '1970-01-01', 'Bangkalan', '1970-01-01', 'Dusun X', 'Desa X', 'Kecamatan X', 'Kabupaten X', 'Provinsi X', 23, 'Yusuf Mansur', 'Ustadz', 'Umi Pipik', '081234567912', './assets/foto_santri/2023023.jpg', 'AKTIF'),
+(55, '0000', '', '', '2023024', 'Yudi Satria', '1970-01-01', 'Batu', '1970-01-01', 'Dusun Y', 'Desa Y', 'Kecamatan Y', 'Kabupaten Y', 'Provinsi Y', 24, 'Zainal Abidin', 'Politikus', 'Vera Kharisma', '081234567913', './assets/foto_santri/2023024.jpg', 'AKTIF'),
+(56, '0000', '', '', '2023025', 'Zara Leola', '1970-01-01', 'Malang', '1970-01-01', 'Dusun Z', 'Desa Z', 'Kecamatan Z', 'Kabupaten Z', 'Provinsi Z', 25, 'Adam Bachtiar', 'Dokter', 'Nina Zatulini', '081234567914', './assets/foto_santri/2023025.jpg', 'AKTIF'),
+(60, '2023', '11', '', '202311001', 'Fulan', '2023-11-09', 'sdfsdfsd', '2000-09-18', 'sadasd', 'dsfsd', 'sdfsdf', 'sdfsdf', 'sdfsdf', 4, 'sdfsdf', 'sdfsd', 'sdfsd', '23423423', './assets/foto_santri/202209001_Desain_tanpa_judul_(22).png', 'AKTIF'),
+(58, '2024', '07', '', '202407001', 'Refi Tri askdhhaskjdha', '2024-07-31', 'Jember', '1999-02-22', 'asdas', 'asdas', 'asdsad', 'fewfdsfs', 'sdfsdf', 2, 'afdsf', 'sdfsdf', 'sdfsdf', '234234234', './assets/foto_santri/202407001_aqj_png.png', 'AKTIF'),
+(59, '2024', '08', '', '202408002', 'Tewelisasi', '2024-08-21', 'asdsadas', '2024-12-30', 'dfsdf', 'sdfsdf', 'sdfsdf', 'sgdfgf', 'sdfsdfs', 2, 'sdfsdf', 'sdfsd', 'sdfsdf', '809808908', './assets/foto_santri/202408002_qrcode_aqj.png', 'AKTIF');
 
 -- --------------------------------------------------------
 
