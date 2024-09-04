@@ -11,6 +11,7 @@ class Data_perizinan_santri extends CI_Controller {
         $this->load->model('Data_perizinan_model');
         $this->load->model('Data_penempatan_model');
         $this->load->model('Data_user_model');
+        $this->load->model('Keperluan_izin_model');
     }
 
     public function index()
@@ -149,6 +150,181 @@ public function hapus_perizinan($id_perizinan)
     $this->Data_perizinan_model->delete_perizinan($id_perizinan);
     redirect('data_perizinan_santri');
 }
+
+public function ekspor_rekapan_perizinan(){
+
+
+    $data =[
+        'title' => 'Ekspor Rekapan Data Perizinan Santri',
+        'load_perizinan_semua' => $this->Data_perizinan_model->lihat_perizinan()->result(),
+        // 'load_perizinan_kembali' => $this->Data_perizinan_model->lihat_perizinan_sudah_kembali()->result(),
+        // 'load_perizinan_sudah_kembali' => $this->Data_perizinan_model->lihat_perizinan_sudah_kembali()->result(),
+        // 'load_perizinan_belum_kembali' => $this->Data_perizinan_model->lihat_perizinan_belum_kembali()->result(),
+        // 'load_perizinan_terlambat' => $this->Data_perizinan_model->lihat_perizinan_terlambat()->result()
+    ];
+
+    // var_dump($data);
+    // die;
+     $this->load->view('templates/header_dashboard' , $data);
+    $this->load->view('content/data_perizinan_santri/ekspor_perizinan_santri',$data);
+    $this->load->view('templates/footer_dashboard');
 }
+public function download_rekapan_excel(){
+    $this->load->library('excel');
+        $this->load->model('data_penempatan_model');
+
+        $data_rekapan_izin = $this->Data_perizinan_model->lihat_perizinan()->result();
+
+        $excel = new Excel();
+        $excel->setActiveSheetIndex(0);
+        $sheet = $excel->getActiveSheet();
+
+        // Set header
+        $headers = ["No","Kode Perizinan","No Induk Santri", "Nama Santri", "Nama Wilayah", "Kamar","Tanggal Mulai Izin","Jam Mulai Izin", "Tanggal Kembali","Jam Kembali" ,"Status Kembali", "Status Izin","Keperluan"];
+       
+        $column = 0;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($column, 1, $header);
+            $column++;
+        }
+
+        // Set data
+        $row = 2;
+        $no = 1;
+        foreach ($data_rekapan_izin as $data) {
+            $sheet->setCellValueByColumnAndRow(0, $row, (string)$no++);
+            $sheet->setCellValueByColumnAndRow(1, $row, (string)$data->kode_perizinan);
+            $sheet->setCellValueByColumnAndRow(2, $row, (string)$data->no_induk_santri);
+            $sheet->setCellValueByColumnAndRow(3, $row, (string)$data->nama_lengkap_santri);
+            $sheet->setCellValueByColumnAndRow(4, $row, (string)$data->nama_wilayah);
+            $sheet->setCellValueByColumnAndRow(5, $row, (string)$data->nama_kamar);
+            $sheet->setCellValueByColumnAndRow(6, $row, (string)$data->tanggal_mulai);
+            $sheet->setCellValueByColumnAndRow(7, $row, (string)$data->jam_mulai);
+            $sheet->setCellValueByColumnAndRow(8, $row, (string)$data->tanggal_akhir);
+            $sheet->setCellValueByColumnAndRow(9, $row, (string)$data->jam_akhir);
+            $sheet->setCellValueByColumnAndRow(10, $row, (string)$data->status);
+            $sheet->setCellValueByColumnAndRow(11, $row, (string)$data->status_izin);
+            $sheet->setCellValueByColumnAndRow(12, $row, (string)$data->keperluan);
+            // $sheet->setCellValueByColumnAndRow(13, $row, (string)$data->nama_wilayah);
+            // $sheet->setCellValueByColumnAndRow(14, $row, (string)$data->nama_kamar);
+            $row++;
+        }
+
+        // Save the file
+        $filename = "Rekapan_perizinan_santri_" . date("YmdHis") . ".xlsx";
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        try {
+            $writer = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+            $writer->save('php://output');
+        } catch (Exception $e) {
+            log_message('error', 'Error saat mencoba mengunduh file Excel: ' . $e->getMessage());
+            show_error('Terjadi kesalahan pada server. Silakan coba lagi atau hubungi administrator server.', 500);
+        }
+        exit;
+
+}
+
+
+// update data keperluan izin santri
+
+public function data_keperluan_izin()
+{
+    $data =[
+        'title' => 'Data Keperluan Izin',
+        'load_keperluan' => $this->Keperluan_izin_model->lihat_keperluan()->result()
+    ];
+    // var_dump($data);
+    // die();
+    $this->load->view('templates/header_dashboard' , $data);
+    $this->load->view('content/keperluan_izin/index',$data);
+    $this->load->view('templates/footer_dashboard');
+
+}
+
+public function tambah_keperluan_izin(){
+
+    $data = [
+        'title' => 'Tambah Keperluan Izin'
+
+    ];
+
+  $this->form_validation->set_rules('nama_keperluan' , 'Nama Keperluan' , 'required' , array('required' => 'Nama Keperluan Wajib diisi!'));  
+  if ($this->form_validation->run() !=false) {
+        $data =[
+            'nama_keperluan' => $this->input->post('nama_keperluan')
+        ];   
+
+        $this->Keperluan_izin_model->tambah_keperluan($data);
+        redirect('data_perizinan_santri/data_keperluan_izin');
+  } else {
+    $this->load->view('templates/header_dashboard' , $data);
+    $this->load->view('content/keperluan_izin/tambah_keperluan_izin',$data);
+    $this->load->view('templates/footer_dashboard');
+  }
+  
+
+}
+
+public function ubah_keperluan_izin($id){
+
+    $where = array('id_keperluan' => $id);
+    $data = [
+        'title' => 'Ubah Keperluan_izin',
+        'load_keperluan' => $this->Keperluan_izin_model->ubah_keperluan($where)->row()  
+
+    ];
+
+    $this->load->view('templates/header_dashboard' , $data);
+    $this->load->view('content/keperluan_izin/ubah_keperluan_izin',$data);
+    $this->load->view('templates/footer_dashboard');
+
+
+}
+
+
+public function update_keperluan_izin(){
+
+    $this->form_validation->set_rules('id_keperluan' , 'id_keperluan' , 'required' ,array('required' => 'ID keperluan wajib diisi'));
+    $this->form_validation->set_rules('nama_keperluan' , 'Nama Keperluan' , 'required' ,array('required' => 'Nama Keperluan wajib diisi'));
+    if ($this->form_validation->run() !=false) {
+        $where = array(
+            'id_keperluan' => $this->input->post('id_keperluan')
+        );
+
+        $data = array(
+            'nama_keperluan' => $this->input->post('nama_keperluan')
+        );
+        $this->Keperluan_izin_model->update_keperluan($where, $data);
+        redirect('data_perizinan_santri/data_keperluan_izin');
+    } else {
+        
+        $where = array(
+            'id_keperluan' => $this->input->post('id_keperluan')
+        );
+        $data = [
+        'title' => 'Ubah Keperluan_izin',
+        'load_keperluan' => $this->Keperluan_izin_model->ubah_keperluan($where)->row()  
+        ];
+         $this->load->view('templates/header_dashboard' , $data);
+         $this->load->view('content/data_wilayah/ubah_data_wilayah', $data);
+         $this->load->view('templates/footer_dashboard');
+
+    }
+
+
+}
+
+public function hapus_keperluan_izin($id){
+    $where = array('id_keperluan' => $id);
+
+    $this->Keperluan_izin_model->hapus_keperluan($where);
+    redirect(base_url('data_perizinan_santri/data_keperluan_izin'));
+    }
+}
+
+
 
 /* End of file Data_perizinan_santri.php and path \application\controllers\Data_perizinan_santri.php */

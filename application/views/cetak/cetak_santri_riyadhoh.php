@@ -79,10 +79,10 @@
                             <td>Alamat Lengkap</td>
                             <td>
                               
-                                b. Desa : <?php echo $santri->alamat_desa; ?><br>
-                                c. Kecamatan : <?php echo $santri->alamat_kecamatan; ?><br>
-                                d. Kabupaten : <?php echo $santri->alamat_kabupaten; ?><br>
-                                e. Provinsi : <?php echo $santri->alamat_provinsi; ?><br>
+                                a. Desa : <?php echo $santri->alamat_desa; ?><br>
+                                b. Kecamatan : <?php echo $santri->alamat_kecamatan; ?><br>
+                                c. Kabupaten : <?php echo $santri->alamat_kabupaten; ?><br>
+                                d. Provinsi : <?php echo $santri->alamat_provinsi; ?><br>
                             </td>
                         </tr>
                         <tr>

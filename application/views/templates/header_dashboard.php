@@ -225,6 +225,9 @@
                         <ul aria-expanded="false">
                             <li><a href="<?php echo base_url('data_perizinan_santri') ?>">List Data/Status Perizinan Santri</a></li>
                             <li><a href="<?php echo base_url('data_perizinan_santri/tambah_perizinan_santri') ?>">Tambah Perizinan Santri</a></li>
+                            <li><a href="<?php echo base_url('data_perizinan_santri/data_keperluan_izin') ?>">Data Keperluan Izin</a></li>
+                            <li><a href="<?php echo base_url('data_perizinan_santri/tambah_keperluan_izin') ?>">Tambah Keperluan Izin</a></li>
+                            <li><a href="<?php echo base_url('data_perizinan_santri/ekspor_rekapan_perizinan') ?>">Ekspor Rekapan Perizinan Santri</a></li>
                         
                         </ul>
                     </li>
@@ -253,7 +256,7 @@
                         </ul>
                     </li>
                     <li class="nav-label">Manajemen User</li>
-                    <?php if ($this->session->userdata('level') == 'admin'): ?>
+                    <?php if ($this->session->userdata('level') == 'ADMIN'): ?>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                            <i class="fa-solid fa-crown"></i><span class="nav-text">Data User</span>

@@ -196,9 +196,9 @@ class Data_santri extends CI_Controller {
 
         // Set header
         $headers = [
-            'ID Santri', 'No Induk Santri', 'Nama Lengkap Santri', 'Tanggal Masuk', 'Tempat Lahir', 'Tanggal Lahir', 
-            'Alamat Dusun', 'Alamat Desa', 'Alamat Kecamatan', 'Alamat Kabupaten', 'Alamat Provinsi', 
-            'Pendidikan Dipilih', 'Nama Ayah', 'Pekerjaan Ayah', 'Nama Ibu', 'No HP', 'Foto', 'Status Santri'
+            'ID Santri', 'Tahun Masuk','Bulan Masuk', 'No Urut', 'No Induk Santri', 'Nama Lengkap Santri', 'Tanggal Masuk', 'Tempat Lahir', 
+            'Tanggal Lahir', 'Alamat Dusun', 'Alamat Desa', 'Alamat Kecamatan', 'Alamat Kabupaten', 
+            'Alamat Provinsi', 'Pendidikan Dipilih', 'Nama Ayah', 'Pekerjaan Ayah','Nama Ibu' , 'No HP', 'Foto', 'Status Santri', 'Lembaga Pendidikan dipilih'
         ];
         $column = 0;
         foreach ($headers as $header) {
@@ -218,7 +218,7 @@ class Data_santri extends CI_Controller {
         }
 
         // Get the last no_induk_santri
-        $lastNoIndukSantri = $this->data_santri_model->get_last_no_induk(date('Y'));
+        $lastNoIndukSantri = $this->data_santri_model->get_last_no_induk_by_year(date('Y'));
 
         // Save the file
         $filename = 'Data_Santri_' . date('YmdHis') . '.xlsx';

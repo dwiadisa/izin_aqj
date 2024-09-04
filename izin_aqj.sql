@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 30, 2024 at 04:20 PM
--- Server version: 8.0.21
--- PHP Version: 7.4.9
+-- Waktu pembuatan: 04 Sep 2024 pada 08.27
+-- Versi server: 8.3.0
+-- Versi PHP: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_kamar`
+-- Struktur dari tabel `data_kamar`
 --
 
 DROP TABLE IF EXISTS `data_kamar`;
@@ -33,28 +33,79 @@ CREATE TABLE IF NOT EXISTS `data_kamar` (
   `wilayah` int NOT NULL,
   `nama_kamar` varchar(20) NOT NULL,
   PRIMARY KEY (`id_kamar`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `data_kamar`
+-- Dumping data untuk tabel `data_kamar`
 --
 
 INSERT INTO `data_kamar` (`id_kamar`, `wilayah`, `nama_kamar`) VALUES
 (10, 1, 'SK-1'),
 (9, 1, 'SK-2'),
 (8, 4, 'Muharram'),
-(11, 2, 'Palestina'),
-(12, 2, 'Mesir'),
-(13, 2, 'Afghanistan'),
-(18, 2, 'Baghdad'),
+(11, 2, 'PALESTINA'),
+(12, 2, 'MESIR'),
+(13, 2, 'AFGHANISTAN'),
+(18, 2, 'BAGHDHAD'),
 (17, 3, 'xcvgfdsg'),
 (19, 5, 'Mexico'),
-(20, 6, 'Muharram');
+(20, 6, 'Muharram'),
+(21, 8, '1'),
+(22, 7, 'SA 1'),
+(23, 7, 'SA 2'),
+(24, 7, 'SA 3 (PENGDAR)'),
+(25, 7, 'SA 4'),
+(26, 9, 'RU 1 '),
+(27, 9, 'RU 2'),
+(28, 9, 'RU 3 (PENGDAR)'),
+(29, 9, 'RU 4'),
+(30, 9, 'RU 5'),
+(31, 9, 'RU 6'),
+(43, 2, 'MEKKAH'),
+(33, 10, 'Sunan Ampel'),
+(34, 10, 'Sunan Gersik'),
+(35, 10, 'Sunan Giri'),
+(36, 10, 'Sunan Bonang'),
+(37, 10, 'Sunan KaliJogo'),
+(38, 10, 'Sunan Drajad'),
+(39, 10, 'sunan Kudus'),
+(40, 10, 'Sunan Muria'),
+(41, 10, 'Sunan Gunung Jati'),
+(42, 10, 'Sunan Bayat'),
+(44, 2, 'YAMAN'),
+(45, 11, 'SEKSI TARBIYAH'),
+(46, 11, 'SEKSI KEAMANAN'),
+(47, 11, 'SEKSI KESENIAN'),
+(48, 11, 'SEKSI KESEHATAN'),
+(49, 11, 'SEKSI KEBERSIHAN'),
+(50, 11, 'SEKSI KAHRUBAX'),
+(51, 11, 'SEKSI TA\'MIR');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_lembaga`
+-- Struktur dari tabel `data_keperluan_izin`
+--
+
+DROP TABLE IF EXISTS `data_keperluan_izin`;
+CREATE TABLE IF NOT EXISTS `data_keperluan_izin` (
+  `id_keperluan` int NOT NULL AUTO_INCREMENT,
+  `nama_keperluan` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_keperluan`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data untuk tabel `data_keperluan_izin`
+--
+
+INSERT INTO `data_keperluan_izin` (`id_keperluan`, `nama_keperluan`) VALUES
+(1, 'Cap Tiga Jari'),
+(2, 'Kepentingan Keluarga');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `data_lembaga`
 --
 
 DROP TABLE IF EXISTS `data_lembaga`;
@@ -63,22 +114,30 @@ CREATE TABLE IF NOT EXISTS `data_lembaga` (
   `singkatan_lembaga` varchar(20) NOT NULL,
   `nama_lembaga` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_lembaga`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `data_lembaga`
+-- Dumping data untuk tabel `data_lembaga`
 --
 
 INSERT INTO `data_lembaga` (`id_lembaga`, `singkatan_lembaga`, `nama_lembaga`) VALUES
-(1, 'SMKAQJ', 'SMK Al-Qodiri Jember'),
-(2, 'MTSUAQ', 'MTs. Unggulan Al-Qodiri Jember'),
-(4, 'SMPPAQJ', 'SMP Plus Al-Qodiri Jember'),
-(5, 'IAIQOD', 'Institut Agama Islam Al-Qodiri Jember');
+(10, 'MA AQ', 'MADRASAH ALIYAH AL QODIRI 1 JEMBER'),
+(9, 'SMP PLUS AQ', 'SMP PLUS AL QODIRI 1 JEMBER'),
+(17, 'MTS UNGGULAN AQ', 'MTS UNGGULAN AL QODIRI 1 JEMBER'),
+(11, 'SMK AQ', 'SMK AL QODIRI 1 JEMBER'),
+(12, 'MAN 2 JEMBER', 'MADRASAH ALIYAH NEGERI 2 JEMBER'),
+(14, 'MTSN 2 JEMBER', 'MADRASAH TSANAWIYAH NEGERI 2 JEMBER'),
+(15, 'IAI AQ', 'INSTITUT AGAMA ISLAM AL QODIRI JEMBER'),
+(16, 'STIKES AQ', 'STIKES BHAKTI AL QODIRI'),
+(18, 'HM', 'HANYA MONDOK'),
+(19, 'UNEJ', 'UNIVERSITAS NEGRI JEMBER'),
+(20, 'STIKES SOEBANDI', 'STIKES SOEBANDI'),
+(21, 'POLTEK J', 'POLTEK JEMBER');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_penghuni`
+-- Struktur dari tabel `data_penghuni`
 --
 
 DROP TABLE IF EXISTS `data_penghuni`;
@@ -88,35 +147,190 @@ CREATE TABLE IF NOT EXISTS `data_penghuni` (
   `id_wilayah` int NOT NULL,
   `id_kamar` int NOT NULL,
   PRIMARY KEY (`id_penghuni`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=208 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `data_penghuni`
+-- Dumping data untuk tabel `data_penghuni`
 --
 
 INSERT INTO `data_penghuni` (`id_penghuni`, `id_santri`, `id_wilayah`, `id_kamar`) VALUES
-(8, 7, 2, 11),
-(13, 13, 2, 12),
-(6, 6, 2, 11),
-(10, 12, 2, 12),
-(14, 10, 1, 10),
-(15, 23, 2, 11),
-(27, 50, 5, 19),
-(17, 4, 2, 12),
-(18, 19, 3, 17),
-(19, 15, 2, 12),
-(21, 31, 2, 11),
-(22, 5, 1, 9),
-(23, 32, 2, 12),
-(24, 33, 2, 11),
-(25, 44, 2, 13),
-(26, 34, 1, 10),
-(28, 54, 6, 20);
+(48, 17, 7, 23),
+(40, 26, 7, 22),
+(47, 16, 7, 22),
+(39, 9, 7, 23),
+(50, 19, 7, 23),
+(46, 15, 7, 23),
+(35, 5, 8, 21),
+(38, 8, 7, 23),
+(42, 11, 7, 23),
+(37, 7, 8, 21),
+(45, 14, 7, 23),
+(44, 13, 7, 22),
+(36, 6, 8, 21),
+(43, 12, 7, 22),
+(41, 10, 7, 23),
+(49, 18, 7, 22),
+(59, 29, 9, 27),
+(51, 20, 7, 22),
+(52, 21, 7, 23),
+(53, 22, 7, 22),
+(54, 23, 7, 23),
+(55, 24, 7, 23),
+(56, 25, 7, 22),
+(57, 27, 8, 21),
+(58, 28, 7, 23),
+(60, 30, 9, 26),
+(61, 31, 9, 29),
+(62, 32, 9, 30),
+(63, 33, 9, 29),
+(64, 34, 9, 30),
+(65, 35, 9, 30),
+(66, 4, 8, 21),
+(67, 36, 9, 30),
+(68, 37, 9, 26),
+(69, 38, 9, 26),
+(70, 39, 9, 27),
+(71, 40, 9, 29),
+(72, 41, 9, 30),
+(73, 42, 9, 30),
+(74, 45, 9, 30),
+(75, 43, 9, 29),
+(76, 46, 9, 29),
+(77, 44, 9, 30),
+(78, 47, 9, 30),
+(79, 48, 9, 26),
+(80, 49, 9, 29),
+(81, 50, 9, 29),
+(82, 51, 9, 27),
+(83, 52, 9, 27),
+(84, 53, 9, 27),
+(85, 54, 9, 30),
+(86, 56, 9, 26),
+(87, 55, 9, 27),
+(88, 57, 9, 27),
+(89, 58, 9, 29),
+(90, 59, 9, 27),
+(91, 60, 9, 30),
+(92, 61, 9, 27),
+(93, 62, 9, 29),
+(94, 63, 9, 27),
+(95, 64, 9, 30),
+(96, 65, 9, 29),
+(97, 66, 9, 26),
+(98, 67, 9, 30),
+(99, 68, 9, 26),
+(100, 69, 9, 28),
+(101, 70, 9, 26),
+(102, 71, 9, 28),
+(103, 72, 9, 26),
+(104, 73, 9, 26),
+(105, 74, 9, 29),
+(106, 75, 9, 28),
+(107, 77, 9, 26),
+(109, 78, 9, 29),
+(110, 79, 9, 29),
+(111, 80, 9, 28),
+(112, 81, 7, 23),
+(113, 82, 7, 23),
+(114, 83, 7, 22),
+(115, 84, 7, 23),
+(116, 85, 7, 23),
+(117, 86, 7, 22),
+(118, 87, 7, 22),
+(119, 88, 7, 22),
+(120, 89, 7, 24),
+(121, 90, 7, 23),
+(122, 91, 7, 22),
+(123, 92, 7, 24),
+(124, 93, 7, 24),
+(125, 94, 7, 24),
+(126, 95, 10, 41),
+(127, 96, 10, 39),
+(128, 97, 10, 41),
+(129, 98, 10, 41),
+(130, 99, 10, 39),
+(131, 100, 10, 37),
+(132, 103, 10, 40),
+(133, 101, 10, 35),
+(134, 104, 10, 42),
+(135, 105, 10, 42),
+(136, 106, 10, 40),
+(137, 107, 10, 36),
+(138, 108, 10, 42),
+(139, 109, 7, 23),
+(140, 110, 10, 40),
+(141, 111, 10, 36),
+(142, 112, 7, 23),
+(143, 113, 10, 35),
+(144, 115, 10, 40),
+(145, 117, 10, 37),
+(146, 118, 10, 37),
+(147, 119, 10, 37),
+(148, 120, 10, 37),
+(149, 121, 10, 37),
+(150, 122, 10, 36),
+(151, 123, 10, 35),
+(152, 124, 10, 37),
+(153, 126, 10, 38),
+(154, 127, 10, 42),
+(155, 128, 10, 37),
+(156, 114, 10, 38),
+(157, 125, 10, 37),
+(158, 129, 10, 39),
+(159, 130, 10, 39),
+(160, 131, 11, 48),
+(161, 132, 11, 48),
+(162, 133, 11, 50),
+(163, 134, 2, 11),
+(164, 135, 2, 11),
+(165, 136, 2, 11),
+(166, 137, 2, 44),
+(167, 138, 2, 44),
+(168, 139, 2, 18),
+(169, 140, 2, 13),
+(170, 141, 2, 18),
+(171, 142, 2, 11),
+(172, 143, 2, 11),
+(173, 144, 2, 18),
+(174, 145, 2, 18),
+(175, 146, 2, 13),
+(176, 147, 2, 18),
+(177, 148, 2, 13),
+(178, 149, 2, 44),
+(179, 150, 2, 11),
+(180, 152, 2, 44),
+(181, 155, 2, 13),
+(182, 157, 2, 44),
+(183, 159, 2, 13),
+(184, 160, 2, 44),
+(185, 161, 2, 11),
+(186, 162, 2, 18),
+(187, 163, 2, 18),
+(188, 164, 2, 13),
+(189, 165, 2, 13),
+(190, 166, 2, 44),
+(191, 167, 2, 44),
+(192, 168, 2, 44),
+(193, 169, 2, 18),
+(194, 170, 2, 13),
+(195, 171, 2, 13),
+(196, 172, 2, 43),
+(197, 173, 2, 13),
+(198, 158, 2, 44),
+(199, 174, 2, 18),
+(200, 175, 2, 43),
+(201, 176, 2, 43),
+(202, 177, 11, 50),
+(203, 156, 10, 41),
+(204, 178, 10, 35),
+(205, 151, 10, 40),
+(206, 179, 10, 42),
+(207, 180, 10, 37);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_perizinan`
+-- Struktur dari tabel `data_perizinan`
 --
 
 DROP TABLE IF EXISTS `data_perizinan`;
@@ -133,30 +347,19 @@ CREATE TABLE IF NOT EXISTS `data_perizinan` (
   `keperluan` varchar(256) NOT NULL,
   `pemberi_izin` int NOT NULL,
   PRIMARY KEY (`id_izin`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `data_perizinan`
+-- Dumping data untuk tabel `data_perizinan`
 --
 
 INSERT INTO `data_perizinan` (`id_izin`, `kode_perizinan`, `id_santri`, `tanggal_mulai`, `jam_mulai`, `tanggal_akhir`, `jam_akhir`, `status`, `status_izin`, `keperluan`, `pemberi_izin`) VALUES
-(1, 'F79E6', 34, '2024-06-25', '20:45:00', '2024-07-02', '14:48:00', 'TERLAMBAT KEMBALI', 'SUDAH DIIZINKAN', 'asdasd', 1),
-(2, '28THE', 44, '2024-06-26', '21:05:00', '2024-06-27', '17:00:00', 'BELUM KEMBALI', 'SUDAH DIIZINKAN', 'sdfsdfsdf', 1),
-(3, 'HL4VJ', 54, '2024-06-30', '03:13:00', '2024-07-01', '03:18:00', 'SUDAH KEMBALI', 'SUDAH DIIZINKAN', 'Keperluan Menikah', 1),
-(4, 'XT0TY', 50, '2024-06-30', '10:56:13', '2024-07-03', '10:50:00', 'SUDAH KEMBALI', 'SUDAH DIIZINKAN', 'sadasdsad', 1),
-(5, 'ZXP19', 33, '2024-06-30', '10:59:00', '2024-07-05', '15:00:00', 'SUDAH KEMBALI', 'SUDAH DIIZINKAN', 'ddsafsfsd', 1),
-(6, 'YGITO', 5, '2024-06-30', '11:02:00', '2024-07-05', '17:57:00', 'SUDAH KEMBALI', 'SUDAH DIIZINKAN', 'sdafsdfsdf', 1),
-(9, 'PQSE2', 34, '2024-06-30', '12:24:00', '2024-07-04', '12:27:00', 'BELUM KEMBALI', 'BELUM DIIZINKAN', 'asddasd', 0),
-(10, 'POB3A', 54, '2024-06-30', '12:24:00', '2024-07-26', '12:30:00', 'BELUM KEMBALI', 'SUDAH DIIZINKAN', 'asddasdasdsad', 1),
-(11, '9TOMK', 10, '2024-06-30', '12:25:00', '2024-07-04', '12:29:00', 'BELUM KEMBALI', 'SUDAH DIIZINKAN', 'asdasdas', 1),
-(12, 'JHPFQ', 50, '2024-06-30', '19:22:00', '2024-07-14', '17:00:00', 'BELUM KEMBALI', 'SUDAH DIIZINKAN', 'Sunatan Dulure', 1),
-(13, 'XO3QT', 50, '2024-06-30', '20:07:00', '2024-07-04', '17:00:00', 'BELUM KEMBALI', 'SUDAH DIIZINKAN', 'Keperluan Keluarga', 1),
-(14, 'KXMJ4', 50, '2024-07-20', '11:23:00', '2024-07-21', '10:00:00', 'TERLAMBAT KEMBALI', 'SUDAH DIIZINKAN', 'Ke rumah sakit\r\n', 1);
+(10, 'NJH9C', 26, '2024-08-29', '06:32:00', '2024-09-05', '04:35:00', 'BELUM KEMBALI', 'SUDAH DIIZINKAN', 'CAP 3 JARI', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_santri`
+-- Struktur dari tabel `data_santri`
 --
 
 DROP TABLE IF EXISTS `data_santri`;
@@ -183,75 +386,191 @@ CREATE TABLE IF NOT EXISTS `data_santri` (
   `foto` varchar(150) NOT NULL,
   `status_santri` enum('AKTIF','NONAKTIF','','') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_santri`)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=181 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `data_santri`
+-- Dumping data untuk tabel `data_santri`
 --
 
 INSERT INTO `data_santri` (`id_santri`, `tahun_masuk`, `bulan_masuk`, `no_urut`, `no_induk_santri`, `nama_lengkap_santri`, `tanggal_masuk`, `tempat_lahir`, `tanggal_lahir`, `alamat_dusun`, `alamat_desa`, `alamat_kecamatan`, `alamat_kabupaten`, `alamat_provinsi`, `pendidikan_dipilih`, `nama_ayah`, `pekerjaan_ayah`, `nama_ibu`, `no_hp`, `foto`, `status_santri`) VALUES
-(1, '0000', '', '', '2022001', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', 'Inggit', '08909999', './assets/foto_santri/1_WhatsApp_Image_2024-05-20_at_07_32_43_4263e0f8.jpg', 'NONAKTIF'),
-(4, '0000', '', '', '2022004', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910002', '', 'AKTIF'),
-(5, '0000', '', '', '2022005', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910003', '', 'AKTIF'),
-(6, '0000', '', '', '2022006', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910004', '', 'AKTIF'),
-(7, '0000', '', '', '2022007', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910005', '', 'AKTIF'),
-(8, '0000', '', '', '2022008', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910006', '', 'AKTIF'),
-(9, '0000', '', '', '2022009', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910007', '', 'AKTIF'),
-(10, '0000', '', '', '2022010', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910008', '', 'AKTIF'),
-(11, '0000', '', '', '2022011', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910009', '', 'AKTIF'),
-(12, '0000', '', '', '2022012', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910010', '', 'AKTIF'),
-(13, '0000', '', '', '2022013', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910011', '', 'AKTIF'),
-(14, '0000', '', '', '2022014', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910012', '', 'AKTIF'),
-(15, '0000', '', '', '2022015', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910013', '', 'AKTIF'),
-(16, '0000', '', '', '2022016', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910014', '', 'AKTIF'),
-(17, '0000', '', '', '2022017', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910015', '', 'AKTIF'),
-(18, '0000', '', '', '2022018', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910016', '', 'AKTIF'),
-(19, '0000', '', '', '2022019', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910017', '', 'AKTIF'),
-(20, '0000', '', '', '2022020', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910018', '', 'AKTIF'),
-(21, '0000', '', '', '2022021', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910019', '', 'AKTIF'),
-(22, '0000', '', '', '2022022', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910020', '', 'AKTIF'),
-(23, '0000', '', '', '2022023', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910021', '', 'AKTIF'),
-(24, '0000', '', '', '2022024', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910022', '', 'AKTIF'),
-(25, '0000', '', '', '2022025', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910023', '', 'AKTIF'),
-(26, '0000', '', '', '2022026', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910024', '', 'AKTIF'),
-(27, '0000', '', '', '2022027', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910025', '', 'AKTIF'),
-(28, '0000', '', '', '2022028', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910026', '', 'AKTIF'),
-(29, '0000', '', '', '2022029', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910027', '', 'AKTIF'),
-(30, '0000', '', '', '2022030', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910028', '', 'AKTIF'),
-(31, '0000', '', '', '2022031', 'asdasd', '1970-01-01', 'Jember', '1970-01-01', 'Ngadupiro', 'Sumberjo', 'Sanankulon', 'Blitar', 'Jawa Timur', 1, 'soekarno', 'Presiden', '', '08910029', '', 'AKTIF'),
-(32, '0000', '', '', '2023001', 'Ahmad Fauzi', '1970-01-01', 'Surabaya', '1970-01-01', 'Dusun A', 'Desa A', 'Kecamatan A', 'Kabupaten A', 'Provinsi A', 1, 'Budi Santoso', 'Petani', 'Siti Aminah', '081234567890', './assets/foto_santri/1_6c23fa12-48fa-46d2-b206-2c3c224d6b48.jpg', 'NONAKTIF'),
-(33, '0000', '', '', '2023002', 'Budi Santoso', '1970-01-01', 'Malang', '1970-01-01', 'Dusun B', 'Desa B', 'Kecamatan B', 'Kabupaten B', 'Provinsi B', 2, 'Slamet Riyadi', 'Guru', 'Rina Wati', '081234567891', './assets/foto_santri/2023002.jpg', 'AKTIF'),
-(34, '0000', '', '', '2023003', 'Citra Dewi', '1970-01-01', 'Jember', '1970-01-01', 'Dusun C', 'Desa C', 'Kecamatan C', 'Kabupaten C', 'Provinsi C', 3, 'Sukardi', 'Pedagang', 'Siti Nurjanah', '081234567892', './assets/foto_santri/2023003.jpg', 'AKTIF'),
-(35, '0000', '', '', '2023004', 'Dewi Sartika', '1970-01-01', 'Banyuwangi', '1970-01-01', 'Dusun D', 'Desa D', 'Kecamatan D', 'Kabupaten D', 'Provinsi D', 4, 'Sutrisno', 'Nelayan', 'Sri Rahayu', '081234567893', './assets/foto_santri/35_iduladha2024smkaqj-be12a7d5-84ac-4ca2-a12e-ee2068f53eab.jpg', 'NONAKTIF'),
-(36, '0000', '', '', '2023005', 'Eko Prasetyo', '1970-01-01', 'Probolinggo', '1970-01-01', 'Dusun E', 'Desa E', 'Kecamatan E', 'Kabupaten E', 'Provinsi E', 5, 'Suyono', 'Buruh', 'Siti Fatimah', '081234567894', './assets/foto_santri/2023005.jpg', 'AKTIF'),
-(37, '0000', '', '', '2023006', 'Fajar Nugraha', '1970-01-01', 'Pasuruan', '1970-01-01', 'Dusun F', 'Desa F', 'Kecamatan F', 'Kabupaten F', 'Provinsi F', 6, 'Agus Salim', 'Dokter', 'Nurul Huda', '081234567895', './assets/foto_santri/2023006.jpg', 'AKTIF'),
-(38, '0000', '', '', '2023007', 'Gita Suryani', '1970-01-01', 'Kediri', '1970-01-01', 'Dusun G', 'Desa G', 'Kecamatan G', 'Kabupaten G', 'Provinsi G', 2, 'Hariyanto', 'Pengusaha', 'Dewi Sartika', '081234567896', './assets/foto_santri/2023007.jpg', 'AKTIF'),
-(39, '0000', '', '', '2023008', 'Hendra Setiawan', '1970-01-01', 'Blitar', '1970-01-01', 'Dusun H', 'Desa H', 'Kecamatan H', 'Kabupaten H', 'Provinsi H', 8, 'Iwan Kurniawan', 'PNS', 'Eka Wulandari', '081234567897', './assets/foto_santri/2023008.jpg', 'AKTIF'),
-(40, '0000', '', '', '2023009', 'Intan Permatasari', '1970-01-01', 'Madiun', '1970-01-01', 'Dusun I', 'Desa I', 'Kecamatan I', 'Kabupaten I', 'Provinsi I', 9, 'Joko Susilo', 'Polisi', 'Fifi Fitriani', '081234567898', './assets/foto_santri/2023009.jpg', 'AKTIF'),
-(41, '0000', '', '', '2023010', 'Joko Widodo', '1970-01-01', 'Mojokerto', '1970-01-01', 'Dusun J', 'Desa J', 'Kecamatan J', 'Kabupaten J', 'Provinsi J', 4, 'Kurniawan', 'TNI', 'Gina Melati', '081234567899', './assets/foto_santri/2023010.jpg', 'NONAKTIF'),
-(42, '0000', '', '', '2023011', 'Kartika Putri', '1970-01-01', 'Nganjuk', '1970-01-01', 'Dusun K', 'Desa K', 'Kecamatan K', 'Kabupaten K', 'Provinsi K', 11, 'Lukman Hakim', 'Seniman', 'Hana Citra', '081234567900', './assets/foto_santri/2023011.jpg', 'AKTIF'),
-(43, '0000', '', '', '2023012', 'Linda Kusuma', '1970-01-01', 'Ponorogo', '1970-01-01', 'Dusun L', 'Desa L', 'Kecamatan L', 'Kabupaten L', 'Provinsi L', 12, 'Maman Abdurrahman', 'Akuntan', 'Ida Ayu', '081234567901', './assets/foto_santri/2023012.jpg', 'AKTIF'),
-(44, '0000', '', '', '2023013', 'Mega Ayuningtyas', '1970-01-01', 'Tulungagung', '1970-01-01', 'Dusun M', 'Desa M', 'Kecamatan M', 'Kabupaten M', 'Provinsi M', 13, 'Nanang Arifin', 'Advokat', 'Julia Perez', '081234567902', './assets/foto_santri/2023013.jpg', 'AKTIF'),
-(45, '0000', '', '', '2023014', 'Nina Yuliana', '1970-01-01', 'Trenggalek', '1970-01-01', 'Dusun N', 'Desa N', 'Kecamatan N', 'Kabupaten N', 'Provinsi N', 4, 'Oman Sudarman', 'Arsitek', 'Kartini Rahayu', '081234567903', './assets/foto_santri/45_misto_putih.jpg', 'AKTIF'),
-(46, '0000', '', '', '2023015', 'Oscar Pratama', '1970-01-01', 'Bojonegoro', '1970-01-01', 'Dusun O', 'Desa O', 'Kecamatan O', 'Kabupaten O', 'Provinsi O', 15, 'Purnomo', 'Dosen', 'Lestari', '081234567904', './assets/foto_santri/2023015.jpg', 'AKTIF'),
-(47, '0000', '', '', '2023016', 'Putri Anggraini', '1970-01-01', 'Jombang', '1970-01-01', 'Dusun P', 'Desa P', 'Kecamatan P', 'Kabupaten P', 'Provinsi P', 16, 'Qomar', 'Bidan', 'Mira Mariani', '081234567905', './assets/foto_santri/2023016.jpg', 'AKTIF'),
-(48, '0000', '', '', '2023017', 'Rahmat Hidayat', '1970-01-01', 'Lamongan', '1970-01-01', 'Dusun R', 'Desa R', 'Kecamatan R', 'Kabupaten R', 'Provinsi R', 17, 'Samsul Arifin', 'Peternak', 'Nurul Aini', '081234567906', './assets/foto_santri/2023017.jpg', 'AKTIF'),
-(49, '0000', '', '', '2023018', 'Siti Badriah', '1970-01-01', 'Magetan', '1970-01-01', 'Dusun S', 'Desa S', 'Kecamatan S', 'Kabupaten S', 'Provinsi S', 18, 'Taufik Hidayat', 'Fotografer', 'Olla Ramlan', '081234567907', './assets/foto_santri/2023018.jpg', 'AKTIF'),
-(50, '0000', '', '', '2023019', 'Tania Putri', '1970-01-01', 'Ngawi', '1970-01-01', 'Dusun T', 'Desa T', 'Kecamatan T', 'Kabupaten T', 'Provinsi T', 19, 'Umar Ali', 'Pilot', 'Puput Carolina', '081234567908', './assets/foto_santri/2023019.jpg', 'AKTIF'),
-(51, '0000', '', '', '2023020', 'Udin Samsudin', '1970-01-01', 'Pamekasan', '1970-01-01', 'Dusun U', 'Desa U', 'Kecamatan U', 'Kabupaten U', 'Provinsi U', 20, 'Viktor Surya', 'Chef', 'Ratna Dewi', '081234567909', './assets/foto_santri/2023020.jpg', 'AKTIF'),
-(52, '0000', '', '', '2023021', 'Vina Panduwinata', '1970-01-01', 'Sumenep', '1970-01-01', 'Dusun V', 'Desa V', 'Kecamatan V', 'Kabupaten V', 'Provinsi V', 21, 'Wahyu Teguh', 'Seniman', 'Sari Puspita', '081234567910', './assets/foto_santri/2023021.jpg', 'AKTIF'),
-(53, '0000', '', '', '2023022', 'Wulan Guritno', '1970-01-01', 'Sampang', '1970-01-01', 'Dusun W', 'Desa W', 'Kecamatan W', 'Kabupaten W', 'Provinsi W', 22, 'Xavier Hernandes', 'Musisi', 'Tina Talisa', '081234567911', './assets/foto_santri/2023022.jpg', 'AKTIF'),
-(54, '0000', '', '', '2023023', 'Xena Warrior', '1970-01-01', 'Bangkalan', '1970-01-01', 'Dusun X', 'Desa X', 'Kecamatan X', 'Kabupaten X', 'Provinsi X', 23, 'Yusuf Mansur', 'Ustadz', 'Umi Pipik', '081234567912', './assets/foto_santri/2023023.jpg', 'AKTIF'),
-(55, '0000', '', '', '2023024', 'Yudi Satria', '1970-01-01', 'Batu', '1970-01-01', 'Dusun Y', 'Desa Y', 'Kecamatan Y', 'Kabupaten Y', 'Provinsi Y', 24, 'Zainal Abidin', 'Politikus', 'Vera Kharisma', '081234567913', './assets/foto_santri/2023024.jpg', 'AKTIF'),
-(56, '0000', '', '', '2023025', 'Zara Leola', '1970-01-01', 'Malang', '1970-01-01', 'Dusun Z', 'Desa Z', 'Kecamatan Z', 'Kabupaten Z', 'Provinsi Z', 25, 'Adam Bachtiar', 'Dokter', 'Nina Zatulini', '081234567914', './assets/foto_santri/2023025.jpg', 'AKTIF'),
-(60, '2023', '11', '', '202311001', 'Fulan', '2023-11-09', 'sdfsdfsd', '2000-09-18', 'sadasd', 'dsfsd', 'sdfsdf', 'sdfsdf', 'sdfsdf', 4, 'sdfsdf', 'sdfsd', 'sdfsd', '23423423', './assets/foto_santri/202209001_Desain_tanpa_judul_(22).png', 'AKTIF'),
-(58, '2024', '07', '', '202407001', 'Refi Tri askdhhaskjdha', '2024-07-31', 'Jember', '1999-02-22', 'asdas', 'asdas', 'asdsad', 'fewfdsfs', 'sdfsdf', 2, 'afdsf', 'sdfsdf', 'sdfsdf', '234234234', './assets/foto_santri/202407001_aqj_png.png', 'AKTIF'),
-(59, '2024', '08', '', '202408002', 'Tewelisasi', '2024-08-21', 'asdsadas', '2024-12-30', 'dfsdf', 'sdfsdf', 'sdfsdf', 'sgdfgf', 'sdfsdfs', 2, 'sdfsdf', 'sdfsd', 'sdfsdf', '809808908', './assets/foto_santri/202408002_qrcode_aqj.png', 'AKTIF');
+(4, '2012', '03', '', '201203001', 'RINDA NURYANTO PUTRA', '2012-03-27', 'BANYUWANGI', '2000-03-27', 'BOLOT', 'ALIYAN', 'ROGOJAMPI', 'BANYUWANGI', 'JAWA TIMUR', 17, 'SUPRIYANTO, S.Pd', 'PNS', 'NUR SITI SUPIYAH', '082232760070', './assets/foto_santri/201203001_69f212fa67854333abb7b5acd7c381ea.jpg', 'AKTIF'),
+(5, '2010', '07', '', '201007001', 'SOLEHUDIN', '2010-07-07', 'JEMBER', '1995-06-30', 'KRATON', 'WONOASRI', 'TEMPUREJO', 'JEMBER', 'JAWA TIMUR', 10, 'M IMRON ZAKARIYA', 'PETANI', 'SITI UMI KULSUM', '085230218247', './assets/foto_santri/201007001_IMG_1156-removebg-preview.png', 'AKTIF'),
+(6, '2015', '07', '', '201507001', 'MOH YAZID MUJADI', '2015-07-22', 'BANYUWANGI', '2000-07-11', 'CANGKRING', 'PENGATIGAN', 'ROGOJAMPI', 'BANYUWANGI', 'JAWA TIMUR', 11, 'SYAIFULLOH', 'PETANI', 'HUSRIYATI', '081515465448', './assets/foto_santri/201507001_WhatsApp_Image_2024-08-25_at_22_32_24.jpeg', 'AKTIF'),
+(7, '2013', '11', '', '201311001', 'MUHAMMAD YUNUS', '2013-11-12', 'BANYUWANGI', '1999-09-09', 'KEDUNEN', 'BOMO', 'BLIMBIMGSARI', 'BANYUWANGI', 'JAWA TIMUR', 17, 'MISWAN SAJIDI', 'WIRASWASTA', 'KHUSNUL KHOTIMAH', '087853844855', './assets/foto_santri/201311001_WhatsApp_Image_2024-08-28_at_13_10_38.jpeg', 'AKTIF'),
+(8, '2022', '07', '', '202207001', 'RIKY RIDHO', '2022-07-13', 'JEMBER', '2009-03-14', 'LAWANGSARI', 'NOGOSARI ', 'RAMBIPUJI', 'JEMBER', 'JAWA TIMUR', 9, 'JUMADI MASHURY', 'PETANI', 'SUSIATI', '085645820287', '', 'AKTIF'),
+(9, '2024', '08', '', '202408001', 'MUHAMMAD RAFAHI ALKAUNAIN', '2024-08-29', 'JEMBER', '2008-08-12', 'PEJI', 'LENGKONG', 'MUMBULSARI', 'JEMBER', 'JAWA TIMUR', 9, 'ARIK EFENDI', 'PEDAGANG', 'RITA LIDIYAWATI', '083109753012', '', 'AKTIF'),
+(10, '2024', '08', '', '202408002', 'M DA\'I BU ROQQI', '2024-08-29', 'BANYUWANGI', '2008-12-13', 'DURENAN', 'PAKEL', 'LICIN', 'BANYUWANGI', 'JAWA TIMUR', 9, 'ROMLI SUCIPTO', 'PETANI', 'SITI KHODIJAH', '085230518821', '', 'AKTIF'),
+(11, '2023', '09', '', '202309001', 'REFAN SYAFIQ. F', '2023-09-20', 'JEMBER', '2009-04-02', 'KRAJAN', 'SUKOKERTO', 'SUKOWONO', 'JEMBER', 'JAWA TIMUR', 9, 'BAKRIYANTO', 'PETANI', 'NANIK ALFIYAH', '085852780577', '', 'AKTIF'),
+(12, '2022', '06', '', '202206002', 'MUHAMMAD MUZAKKI', '2022-06-12', 'JEMBER', '2009-02-27', 'BACEM', 'PANDUMAN', 'JELBUK', 'JEMBER', 'JAWA TIMUR', 9, 'MULYADI', 'PETANI', 'NIWATI', '083877590355', '', 'AKTIF'),
+(13, '2024', '06', '', '202406003', 'SAMSUL ARIFIN AZ ZAKKI', '2024-06-11', 'JEMBER', '2011-12-06', 'LAMPARAN', 'PANDUMAN', 'JELBUK', 'JEMBER', 'JAWA TIMUR', 9, 'IMAM AMINULLOH', 'HONORER', 'IRMAWATI', '081299910599', '', 'AKTIF'),
+(14, '2023', '06', '', '202306002', 'ALFIN YANNUR WIDIANSYAH', '2023-06-14', 'JEMBER', '2011-01-30', 'KRAJAN A', 'BANGSALSARI', 'BANGSALSARI', 'JEMBER', 'JAWA TIMUR', 9, 'EKO WIDIYANTO', 'WIRASWASTA', 'SAMSIYATI', '082143908998', '', 'AKTIF'),
+(15, '2023', '06', '', '202306002', 'ALFAN YANNUR WIDIANSYAH', '2023-06-14', 'JEMBER', '2011-01-30', 'KRAJAN A', 'BANGSALSARI', 'BANGSALSARI', 'JEMBER', 'JAWA TIMUR', 9, 'EKO WIDIYANTO', 'WIRASWASTA', 'SAMSIYATI', '082143908998', '', 'AKTIF'),
+(16, '2024', '05', '', '202405003', 'BAKHTIAR ROBITUL UMAM KHOLIS', '2024-05-30', 'JEMBER', '2011-12-26', 'SUMURAN', 'AJUNG', 'AJUNG', 'JEMBER', 'JAWA TIMUR', 9, 'AHMAD NUR KHOLIS', 'WIRASWASTA', 'SITI FATIMAH', '081336103204', '', 'AKTIF'),
+(17, '2022', '07', '', '202207002', 'ACHMAD.FIRMANSYAH', '2022-07-05', 'JEMBER', '2009-09-04', 'GUMUK MUMUNDUNG', 'SUMBERSARI', 'SUMBERSARI', 'JEMBER', 'JAWA TIMUR', 9, 'ABDUL HALIM', 'MANDOR BANGUNAN', 'LILIK TOHIR', '085101155815', '', 'AKTIF'),
+(18, '2022', '07', '', '202207003', 'MUHAMMAD ARIS MUNANDAR', '2022-07-10', 'JEMBER', '2010-06-13', 'KARETAN', 'GRENDEN', 'PUGER', 'JEMBER', 'JAWA TIMUR', 9, 'IMAM SUBAKIR', 'PETANI', 'PUTRIE ERNA WATI', '085643193037', '', 'AKTIF'),
+(19, '2022', '06', '', '202206004', 'ALFIANSYAH MAULANA', '2022-06-17', 'JEMBER', '2009-11-10', 'KARANGSONO', 'GRENDEN', 'PUGER', 'JEMBER', 'JAWA TIMUR', 14, 'MUHAMAD HOLIL', 'PETANI', 'SITI MALIHA', '083856580734', '', 'AKTIF'),
+(20, '2024', '07', '', '202407003', 'ACHMAD AZZYAN JAKA WAHYUDI', '2024-07-09', 'JEMBER', '2012-01-21', 'LENGKONG TOKO', 'MRAWAN', 'MAYANG', 'JEMBER', 'JAWA TIMUR', 9, 'IMAM WAHYUDI', 'WIRASWASTA', 'EDWINA DWI UTAMI', '082334928418', '', 'AKTIF'),
+(21, '2023', '11', '', '202311002', 'AHMAD NAUFAL AZMI DAFA', '2023-11-06', 'JEMBER', '2010-06-03', 'LEMBENGAN', 'LEMBENGAN', 'LEDOKOMBO', 'JEMBER', 'JAWA TIMUR', 14, 'SUGENG HARIANTO', 'PNS', 'NUR HALIFAH', '082139944386', '', 'AKTIF'),
+(22, '2024', '03', '', '202403003', 'MOCH RIFAL FERDIANSYAH', '2024-03-02', 'JEMBER', '2010-06-23', 'JL AHMAD YANI ', 'KEBONSARI', 'SUMBERSARI', 'JEMBER', 'JAWA TIMUR', 9, 'JUNAIDI', 'WIRASWASTA', 'LISTIANA', '085738684497', '', 'AKTIF'),
+(23, '2022', '06', '', '202206004', 'AFDI KURNIA PRATAMA', '2022-06-28', 'NGAWI', '2009-11-06', 'VGH ', 'SATRIYA MEKAR ', 'SATRIYA MEKAR ', 'BEKASI', 'JAWA BARAT', 9, 'SUJADI', 'WIRASWASTA', 'SRI RUBIATI', '085737446096', '', 'AKTIF'),
+(24, '2022', '06', '', '202206004', 'ABDUL LATIF', '2022-06-05', 'JEMBER', '2009-12-21', 'TEMPUREJO', 'TEMPUREJO', 'TEMPUREJO', 'JEMBER', 'JAWA TIMUR', 9, 'SUDIONO', 'WIRASWASTA', 'LILIK SURIYATI', '085232500988', '', 'AKTIF'),
+(25, '2024', '07', '', '202407003', 'ALIF KHOIRIL RIZAL', '2024-07-10', 'BONDOWOS', '2010-05-20', 'KRAJAN', 'TAPEN', 'TAPEN', 'BONDOWOSO', 'JAWA TIMUR', 9, 'YUHYI FAHYUDI', 'PNS', 'SRI WAHYUNI', '085790637331', '', 'AKTIF'),
+(26, '2024', '06', '', '202406003', 'DEVA ALIEF ROHADI', '2024-06-23', 'PAMEKASAN', '2012-02-25', 'BANLANJANG', 'TLONTORAJA', 'PASEAN', 'PAMEKASAN', 'JAWA TIMUR', 9, 'MOH ROHADI', 'SUPIR', 'HALIMAH', '087829210194', '', 'AKTIF'),
+(27, '2012', '12', '', '201212002', 'IWAN HARIYANTO', '2012-12-12', 'JEMBER', '1984-12-12', 'KUMITIR', 'GRENDEN', 'PUGER', 'JEMBER', 'JAWA TIMUR', 10, 'SLAMET', 'WIRASWASTA', 'TARMI', '082333909903', './assets/foto_santri/201212002_WhatsApp_Image_2024-09-03_at_13_34_28.jpeg', 'AKTIF'),
+(28, '2022', '07', '', '202207004', 'DINAR ANTALOKA', '2022-07-12', 'DENPASAR', '2009-06-30', 'PANGONAN', 'PANGONAN', 'KENCONG', 'JEMBER', 'JAWA TIMUR', 9, 'HARIYANTO', 'PEDAGANG', 'SARIMA', '081338518611', '', 'AKTIF'),
+(29, '2022', '06', '', '202206005', 'AHMAD FIRMANSYAH', '2022-06-18', 'JEMBER', '2006-05-03', 'DARUSSALAM', 'JATIMULYO', 'JENGGAWAH', 'JEMBER', 'JAWA TIMUR', 11, 'MISNAWI', 'PETANI', 'WATININGSIH', '082334216246', '', 'AKTIF'),
+(30, '2020', '06', '', '202006001', 'ALVIN ANDRIANSYAH', '2020-06-12', 'JEMBER', '2008-07-29', 'KRAJAN KIDUL', 'SUMBEREJO', 'AMBULU', 'JEMBER', 'JAWA TIMUR', 11, 'SUMARDI', 'PETANI', 'WINARSIH', '085259104009', '', 'AKTIF'),
+(31, '2020', '07', '', '202007002', 'THORIQ ABI PRATAMA', '2020-07-23', 'KOTA BARU', '2007-07-13', 'WONOREJO', 'WONOREJO', 'PAMUKAN UTARA', 'KOTA BARU', 'KALIMANTAN SELATAN', 11, 'SARWONO', 'BENGKEL', 'HARTINI', '0', '', 'AKTIF'),
+(32, '2023', '07', '', '202307003', 'RIZAL HUZAIMI ', '2023-07-01', 'JEMBER', '2007-04-14', 'KRAJAN', 'GLAGAH WERO', 'KALISAT', 'JEMBER', 'JAWA TIMUR', 11, 'SUKARTO', 'BURUH TANI', 'SULIHA', '082146324117', '', 'AKTIF'),
+(33, '2023', '07', '', '202307003', 'MOHAMMAD ALFI HIDAYATULLAH', '2023-07-02', 'JEMBER', '2007-12-17', 'KRAJAN', 'TEGAL WANGI', 'UMBULSARI', 'JEMBER', 'JAWA TIMUR', 11, 'ALM. ASMU\'I', '0', 'SITI MAISAROH', '085258535850', '', 'AKTIF'),
+(34, '2023', '07', '', '202307003', 'MUHAMMAD RAYHAN ROHMADTULLAH', '2023-07-03', 'BLORA', '2008-04-04', 'PONDOK LALANG', 'WONOJATI', 'JENGGAWAH', 'JEMBER', 'JAWA TIMUR', 11, 'ABU BAKAR', 'PEDAGANG', 'SULASIH', '085258535850', '', 'AKTIF'),
+(35, '2023', '06', '', '202306003', 'MUHAMMAD RAFLY ARDIANSYAH', '2023-06-27', 'JEMBER', '2007-12-29', 'KRAJAN', 'GADING REJO', 'UMBULSARI', 'JEMBER', 'JAWA TIMUR', 11, 'SUGIRIANTO', 'PETANI', 'MARDIYAH', '085230260063', '', 'AKTIF'),
+(36, '2023', '07', '', '202307003', 'MUHAMMAD NAUFAL FIRMANSYAH NABILA', '2023-07-10', 'JEMBER', '2007-05-05', 'MANGLI', 'AJUNG', 'AJUNG', 'JEMBER', 'JAWA TIMUR', 11, 'MUHAMMAD DLABITH', 'GURU', 'CHUMAY', '0895348949280', '', 'AKTIF'),
+(37, '2024', '07', '', '202407003', 'MOH SYAIFUL KHAIR', '2024-07-04', 'SUMENEP', '2008-10-27', 'TEGAL BARAT', 'BRAGUNG', 'GULUK GULUK', 'SUMENEP', 'JAWA TIMUR', 11, 'ABDULLAH', 'WIRASWASTA', 'LAYYINAH', '082337777945', '', 'AKTIF'),
+(38, '2024', '07', '', '202407003', 'MOH NOR SIDDIEQY', '2024-07-07', 'SUMENEP', '2009-03-28', 'BANASEREP TIMUR', 'PANGGULAN', 'LENTENG', 'SUMENEP', 'JAWA TIMUR', 11, 'IDRIS SHALEH', 'PETANI', 'HAMIYAH', '085933677137', '', 'AKTIF'),
+(39, '2022', '05', '', '202205005', 'ABDUL MALIK FR', '2022-05-18', 'JEMBER', '2008-08-28', 'BULANGAN', 'LENGKONG', 'MUMBULSARI', 'JEMBER', 'JAWA TIMUR', 11, 'FATHUR RAHMAN', 'GURU', 'ISNAWATI HARHAP', '085105414447', '', 'AKTIF'),
+(40, '2020', '07', '', '202007003', 'AHMAT AFFREIL KUNCORO', '2020-07-09', 'JEMBER ', '2007-06-26', 'JUMBATAN', 'DARUNGAN', 'TANGGUL', 'JEMBER', 'JAWA TIMUR', 11, 'SUDARSO', 'PEDAGANG', 'SUWINDA', '08', '', 'AKTIF'),
+(41, '2022', '07', '', '202207005', 'AHMAD ALDI BAHTIYARIL ANAM', '2022-07-06', 'JEMBER', '2006-05-03', 'KRAJAN', 'BORAN', 'TEMPUREJO', 'JEMBER', 'JAWA TIMUR', 11, 'ILYAS ALFAROKI', 'WIRASWASTA', 'IFA KURNIAWATI', '081559628789', '', 'AKTIF'),
+(42, '2022', '07', '', '202207006', 'M ERFAN ALINATA AZIZI', '2022-07-17', 'JEMBER ', '2007-07-12', 'TISNOGAMBAR', 'JATISARI', 'BANGSALSARI', 'JEMBER', 'JAWA TIMUR', 11, 'AZIZ', 'PETANI', 'YANA', '082337527509', '', 'AKTIF'),
+(43, '2020', '07', '', '202007004', 'AHMAD MAULANA ARMADANI', '2020-07-06', 'Jember', '2006-09-28', 'SUMBER DANDANG', 'KEBONSARI', 'SUMBERSARI', 'JEMBER', 'JAWA TIMUR', 11, 'HARIYANTO', 'WIRASWASTA', 'SULIYAH', '08', '', 'AKTIF'),
+(44, '2020', '08', '', '202008005', 'ROYYAN BADARUZZAMAN', '2020-08-05', 'MALANG', '2008-01-29', 'ORO ORO OMBO', 'ORO ORO OMBO', 'BATU', 'MALANG', 'JAWA TIMUR', 11, 'ACHMAD FAIZ ABRORI', 'GURU', 'MULYANI', '087859130003', '', 'AKTIF'),
+(45, '2022', '06', '', '202206007', 'MUHAMMAD FERDIANSYAH', '2022-06-29', 'JEMBER ', '2005-12-31', 'KRAJAN', 'BORAN KRAJAN', 'TEMPUREJO', 'JEMBER', 'JAWA TIMUR', 11, 'SYAIFUL ANAM', 'WIRASWASTA', 'HALIMMATUS SA\'DIYAH', '085235599469', '', 'AKTIF'),
+(46, '2023', '06', '', '202306003', 'MARCELLINO ABILLAS EKA SAPUTRA', '2023-06-30', 'LUMAJANG', '2008-03-15', 'KEDUNG PAKIS', 'GAPLEK', 'PASIRIAN', 'LUMAJANG', 'JAWA TIMUR', 11, 'JAINUL ARIFIN', 'WIRASWASTA', 'HARTANTI AGUSTINI', '08', '', 'AKTIF'),
+(47, '2020', '07', '', '202007006', 'MUHAMMAD AFANDY', '2020-07-15', 'JEMBER', '2007-10-14', 'KRAJAN', 'KLOMPANGAN', 'AJUNG', 'JEMBER', 'JAWA TIMUR', 11, 'GUFRON', 'ARSITEK', 'SUPIYANI', '08', '', 'AKTIF'),
+(48, '2019', '06', '', '201906001', 'TEGAR SATRIYO WIBOWO', '2019-06-24', 'JEMBER ', '2007-06-23', 'KRAJAN', 'GADINGREJO', 'UMBULSARI', 'JEMBER', 'JAWA TIMUR', 12, 'WAHYUDI', 'PETANI', 'YETI', '0852256755613', '', 'AKTIF'),
+(49, '2020', '08', '', '202008006', 'ROFIQ AGUSTINO', '2020-08-03', 'BONDOWOSO', '2008-08-23', 'TEGAL AMPEL', 'CERMEH', 'CERMEH', 'BONDOWOSO', 'JAWA TIMUR', 11, 'SADNADIYANTO', 'PENGUSAHA', 'NUR HAYATI', '08', '', 'AKTIF'),
+(50, '2022', '07', '', '202207007', 'MUHAMMAD AINUL YAQIN IRWANSYAH', '2022-07-13', 'JEMBER', '2007-07-03', 'KRAJAN', 'KIDUL PASAR', 'RAMBIPUJI', 'JEMBER', 'JAWA TIMUR', 11, 'ZAINAL ABIDIN', 'WIRASWASTA', 'ZAHROTUL', '08', '', 'AKTIF'),
+(51, '2021', '07', '', '202107001', 'MUHAMMAD DAE BAHTIAR', '2021-07-10', 'JEMBER ', '2008-06-28', 'PEREBBALAN', 'KARANGHARJO', 'SILO', 'JEMBER', 'JAWA TIMUR', 11, 'HOLILI', 'PETANI', 'AISYAH', '08523408284', '', 'AKTIF'),
+(52, '2021', '06', '', '202106002', 'MUHAMMAD ASROFI ANWAR', '2021-06-13', 'JEMBER', '2009-08-12', 'KRAJAN', 'UMBULSARI ', 'UMBULSARI', 'JEMBER', 'JAWA TIMUR', 12, 'SAMSUL ARIFIN', 'WIRASUWASTA', 'NANI MASRUROH', '08', '', 'AKTIF'),
+(53, '2021', '07', '', '202107002', 'FITRUL MUTTAQIN BILLAH', '2021-07-28', 'JEMBER ', '2008-07-12', 'LANGSATAN', 'SUKAMAKMUR AJUNG JEM', 'AJUNG', 'JEMBER', 'JAWA TIMUR', 11, 'MUKHLIS', 'PETANI', 'WIWIK', '082', '', 'AKTIF'),
+(54, '2020', '06', '', '202006007', 'ABRILLIAN ALFARIZI', '2020-06-03', 'JEMBER', '2008-07-26', 'BALUNG LOR', 'BALUNG LOR', 'BALUNG', 'JEMBER', 'JAWA TIMUR', 11, 'MUARIF', 'WIRASWASTA', 'SUMAIYAH', '082337173299', '', 'AKTIF'),
+(55, '2021', '07', '', '202107003', 'JANUAR ILHAM RIDHO', '2021-07-28', 'KUPANG', '2009-01-25', 'KUPANG', 'KUPANG', 'KELAPA LIMA', 'KUPANG', 'NUSA TENGGARA TIMUR', 12, 'MIYOKO', 'WIRAUSAHA', 'YANTER', '08', '', 'AKTIF'),
+(56, '2024', '07', '', '202407003', 'AGAMULLAH ADY SISTIAN', '2024-07-01', 'JEMBER', '2009-08-27', 'KARANG SONO', 'GRENDEN', 'PUGER', 'JEMBER', 'JAWA TIMUR', 11, 'DODIK ARISTYA', 'WIRASWASTA', 'AYUK SETIANINGSIH', '085829127172', '', 'AKTIF'),
+(57, '2023', '07', '', '202307003', 'MUHAMMAD DAVID', '2023-07-11', 'JEMBER ', '2008-08-03', 'MINCEK', 'KEMIRI', 'PANTI', 'JEMBER', 'JAWA TIMUR', 11, 'MUHTAR', 'WIRASUASTA', 'FATIMAH', '085808741737', '', 'AKTIF'),
+(58, '2022', '08', '', '202208008', 'DAVID', '2022-08-05', 'JEMBER', '2006-08-19', 'KAMAL', 'GUMITIR', 'ARJASA', 'JEMBER', 'JAWA TIMUR', 11, 'HARI', 'PETANI', 'LIN', '085', '', 'AKTIF'),
+(59, '2021', '06', '', '202106004', 'SUHERMAN', '2021-06-16', 'JEMBER', '2008-08-29', 'KRAJAN', 'TAMANSARI', 'MUMBULSARI', 'JEMBER', 'JAWA TIMUR', 11, 'NIRIN', 'WIRASWSATA', 'FATIMAH', '08', '', 'AKTIF'),
+(60, '2023', '08', '', '202308003', 'FATHONI', '2023-08-08', 'SUMENEP', '2008-10-21', 'ARES', 'BANARESEP TIMUR', 'LENTENG', 'SUMENEP', 'JAWA TIMUR', 11, 'ARIP', 'PETANI', 'SAHMI', '08', '', 'AKTIF'),
+(61, '2021', '07', '', '202107004', 'KEVIN GUNAWAN WIBISONO', '2021-07-11', 'JEMBER ', '2008-05-22', 'KRASAK', 'PANCAKARYA', 'AJUNG', 'JEMBER', 'JAWA TIMUR', 11, 'MOHAMMAD HOLIK', 'WIRASWASTA', 'IFA ILMIAH', '08', '', 'AKTIF'),
+(62, '2019', '07', '', '201907002', 'REZA HARIYANTO', '2019-07-13', 'JEMBER', '2006-02-08', 'CURAH LEMBU', 'PLALANGAN', 'KALISAT', 'JEMBER', 'JAWA TIMUR', 11, 'MAHMUDI', 'WIRASWASTA', 'SAFIYATUR ROHMAH', '082273787651', '', 'AKTIF'),
+(63, '2021', '06', '', '202106005', 'MUHAMMAD YUSFI HABIBI', '2021-06-15', 'JEMBER', '2009-11-10', 'KRAJAN', 'PAKUSARI', 'PAKUSARI', 'JEMBER', 'JAWA TIMUR', 11, 'SUDARMUJI', 'WIRASWASTA', 'SITI KHOLILAH', '085335679147', '', 'AKTIF'),
+(64, '2023', '08', '', '202308003', 'MOHAMAD ROSI', '2023-08-09', 'BANYUWANGI', '2007-06-06', 'TAMANBARU', 'TAMANBARU', 'BANYUWANGI', 'BANYUWANGI', 'JAWA TIMUR', 11, 'ABDUL SALAM', 'BURUH', 'NURHAYATI', '083857097580', '', 'AKTIF'),
+(65, '2020', '06', '', '202006007', 'FIRMANDA MAULANA', '2020-06-28', 'LUMAJANG', '2008-06-08', 'KRAJAN', 'URANGGANTUNG ', 'SUKODONO', 'LUMAJANG', 'Jawa timur', 11, 'NUR HASAN', 'PETANI', 'NUR KHOLIFA', '08', '', 'AKTIF'),
+(66, '2024', '06', '', '202406003', 'VIRDAN AHMAD ALFARABY', '2024-06-19', 'JEMBER', '2009-01-23', 'SUKOSARI', 'JATISARI', 'JENGGAWAH', 'JEMBER', 'JAWA TIMUR', 11, 'EKO BUDI PRASETYO', 'PETANI', 'AFKARINA', '081230181346', '', 'AKTIF'),
+(67, '2019', '07', '', '201907003', 'MUHAMMMAD MAULANA ROSYID', '2019-07-13', 'JEMBER ', '2007-05-14', 'SALAKAN', 'SEMBORO LOR', 'SEMBORO', 'JEMBER', 'JAWA TIMUR', 11, 'MOCH MUALLIMIN', 'GURU', 'SUNAINI', '085259220402', '', 'AKTIF'),
+(68, '2024', '07', '', '202407003', 'BAHRUL AMINUL AMIN', '2024-07-20', 'JEMBER', '2008-11-11', 'KRAJAN', 'SELATENG', 'LEDOKOMBO', 'JEMBER', 'JAWA TIMUR', 11, 'ABU BAKAR', 'PETANI', 'MISYANI', '08', '', 'AKTIF'),
+(69, '2019', '06', '', '201906004', 'MUHAMMAD ABDUL ROHIM', '2019-06-30', 'LUMAJANG', '2006-06-11', 'KEDUNG PAKIS', 'KEDUNG PAKIS', 'PASIRIAN', 'LUMAJANG', 'JAWA TIMUR', 11, 'SUKARJO', 'Wiraswasta ', 'MUJIATI', '08', '', 'AKTIF'),
+(70, '2024', '07', '', '202407003', 'SEPTIYAWAN', '2024-07-12', 'BANYUWANGI', '2008-09-22', 'PADANG', 'RAMPAN', 'SINGOJURUH', 'BANYUWANGI', 'JAWA TIMUR', 11, 'ROMDANI', 'PETANI', 'SUNARSIH', '08', '', 'AKTIF'),
+(71, '2023', '07', '', '202307003', 'RAFEL JIHAN FAHMI', '2023-07-04', 'JEMBER', '2007-10-19', 'JALINAN', 'HARJOMULYO', 'SILO', 'JEMBER', 'JAWA TIMUR', 11, 'MUDASIR', 'WIRASWASTA ', 'ST KHALIFAH', '081228358584', '', 'AKTIF'),
+(72, '2024', '06', '', '202406003', 'MUHAMMAD IRFAN ALBI ANSYAH', '2024-06-10', 'JEMBER', '2008-10-19', 'KRAJAN', 'SADENGAN BARAT', 'SUMBERBARU', 'JEMBER', 'JAWA TIMUR', 11, 'SUYONO', 'PEDAGANG', 'ANIS HANDAYANI', '085230815560', '', 'AKTIF'),
+(73, '2024', '07', '', '202407003', 'MUHAMMAD IKBAL FAWAZI', '2024-07-26', 'Jember', '2008-08-22', 'Sukosari', 'Jatisari', 'Jenggawah', 'Jember', 'Jawa timur', 11, 'NURHOLIS', 'Wirauswasta', 'SULEHATIN', '08', '', 'AKTIF'),
+(74, '2020', '07', '', '202007007', 'FERDIKA PURNAMA DZIKKRILLAH', '2020-07-20', 'TANJUNG PANDAN', '2006-12-05', 'KOTA', 'KOTA', 'TANJUNG PANDAN ', 'BANGKA BELITUNG', 'BANGKA BELITUNG', 11, 'FAKHRUL HIDAYAH', 'PEDAGANG', 'SITI NUR HASANAH', '08', '', 'AKTIF'),
+(75, '2018', '06', '', '201806001', 'DIMAS ANANDA PUTRA', '2018-06-07', 'JELBUK,JEMBER ', '2006-09-08', 'SUKOWIRYO', 'SUDUNG TIMUR', 'JELBUK', 'JEMBER', 'JAWA TIMUR', 15, 'MOCH SHOLIHIN', 'TANI', 'SAKTIMA', '08220890614', '', 'AKTIF'),
+(78, '2022', '07', '', '202207009', 'ROBY ZASKY R', '2022-07-24', 'JEMBER ', '2006-09-23', 'PRAPEN', 'SUMBER KEJAYAN', 'MAYANG', 'JEMBER', 'JAWA TIMUR', 11, 'ZAINI', 'PETANI', 'INADIRO', '085103707259', '', 'AKTIF'),
+(77, '2024', '07', '', '202407003', 'IRVAN RAMDHANI', '2024-07-19', 'JEMBER', '2009-09-09', 'GAMBIRONO', 'GAMBIRONO', 'BANGSALSARI', 'JEMBER', 'JAWA TIMUR', 11, 'MUHAMMAD MALIK', 'WIRASWASTA', 'DEWI KUSDIAWATI', '08', '', 'AKTIF'),
+(79, '2020', '07', '', '202007007', 'MUHAMMAD RIFKI', '2020-07-18', 'JEMBER ', '2006-05-09', 'CURAH DAMI', 'BOTANI', 'SUKORAMBI', 'JEMBER', 'JAWA TIMUR', 11, 'MUSTOFA', 'PETANI', 'WATIK', '08', '', 'AKTIF'),
+(80, '2016', '07', '', '201607001', 'MOHAMMAD NUR HAFIDZ', '2016-07-18', 'JEMBER ', '2003-05-05', 'KRAJAN KIDUL', 'YOSORATI', 'SUMBERBARU', 'JEMBER', 'JAWA TIMUR', 16, 'MOHAMMAD SYAHRI', 'BANGUNAN', 'SITI ROMLA', '085730834435', '', 'AKTIF'),
+(81, '2023', '07', '', '202307003', 'AHMAD BAIHAKI', '2023-07-10', 'BONDOWOSO', '2010-06-20', 'KRAJAN', 'TAPEN', 'TAPEN', 'BONDOWOSO', 'JAWA TIMUR', 9, 'SU\'IB', 'PEDAGANG', 'SASMIYATI', '085232370912', '', 'AKTIF'),
+(82, '2022', '07', '', '202207009', 'M ABDURRAHMAN WAHID', '2022-07-12', 'JEMBER', '2010-01-02', 'KRAJAN A', 'CURAH KALONG', 'BANGSALSARI', 'JEMBER', 'JAWA TIMUR', 9, 'IMAM NAWAWI', 'PEDAGANG', 'NINING AMALIA', '085322619294', '', 'AKTIF'),
+(83, '2024', '06', '', '202406003', 'AHMAD AGIL NUH ALAMSYAH', '2024-06-05', 'JEMBER', '2011-08-10', 'SUMUR', 'AJUNG', 'AJUNG', 'JEMBER', 'JAWA TIMUR', 9, 'SYAHRONI', 'PETANI', 'HILYATUL MILLAH', '081249723185', '', 'AKTIF'),
+(84, '2022', '06', '', '202206009', 'M.AIKON HASAN BILBAL', '2022-06-29', 'JEMBER', '2009-11-22', 'KEBON INDAH', 'TEGAL BESAR', 'SUMBERSARI', 'JEMBER', 'JAWA TIMUR', 9, 'NUR HAMIDI', 'PNS', 'YULIANA', '085105136822', '', 'AKTIF'),
+(85, '2023', '07', '', '202307003', 'DHOMIRUL ASHID AFFANDY', '2023-07-02', 'JEMBER', '2010-03-01', 'KRAJAN', 'SEMPOLAN', 'SILO', 'JEMBER', 'JAWA TIMUR', 9, 'MAWARDI', 'PEDAGANG', 'YUSNIYAR', '081286899789', '', 'AKTIF'),
+(86, '2024', '07', '', '202407003', 'DIAS FERDIANSYAH', '2024-07-16', 'SUMENEP', '2012-05-16', 'PARSE', 'KOLO-KOLO', 'ARJASA', 'SUMENEP', 'JAWA TIMUR', 9, 'MATRAPI', 'WIRASWASTA', 'SUMHARIRAH', '085924539324', '', 'AKTIF'),
+(87, '2024', '06', '', '202406003', 'AULIA KUKUH ANUGERAH', '2024-06-29', 'BANYUWANGI', '2011-04-30', 'KLONTANG', 'GENDOH', 'SEMPU', 'BANYUWANGI', 'JAWA TIMUR', 9, 'SELAMET', 'PEDAGANG', 'PRAMUDINING RAHAYU', '081339211922', '', 'AKTIF'),
+(88, '2024', '02', '', '202402003', 'ALI WAFA BARANI AZHAR', '2024-02-23', 'JEMBER', '2011-11-26', 'JLN MERPATI NO 76', 'CANGKRING', 'PATRANG', 'JEMBER', 'JAWA TIMUR', 9, 'AMSORI', 'HONORER', 'ULFATURROHMAH', '085234853951', '', 'AKTIF'),
+(89, '2021', '06', '', '202106005', 'MUHAMMAD ROFIQ ', '2021-06-29', 'JEMBER', '2009-02-04', 'JERENG TIMUR', 'GUGUT', 'RAMBIPUJI', 'JEMBER', 'JAWA TIMUR', 9, 'ABU SALI', 'WIRASWASTA', 'FATMAWATI', '082332912878', '', 'AKTIF'),
+(90, '2022', '06', '', '202206009', 'AHMED BASTIAN Q.A', '2022-06-29', 'JEMBER', '2010-08-25', 'TEGALAN', 'LANGKAP', 'BANGSALSARI', 'JEMBER', 'JAWA TIMUR', 14, 'ADNAN FARUQ', 'PNS', 'QUROTUL A\'YUNI', '083114179017', '', 'AKTIF'),
+(91, '2024', '06', '', '202406003', 'ACHMAD IQBAL FAIZI', '2024-06-13', 'JEMBER', '2011-03-27', 'SUMBER KETANGI', 'WIROLEGI', 'SUMBERSARI', 'JEMBER', 'JAWA TIMUR', 9, 'EDI NAWAWI ', 'PETANI', 'IKA ZAMILATUL JANAH', '082264517459', '', 'AKTIF'),
+(92, '2021', '07', '', '202107005', 'RAYHAN GALIH NUGRAHA', '2021-07-12', 'JEMBER', '2009-03-06', 'TEGALWANGI', 'CURAH KUTUK', 'UMBULSARI', 'JEMBER', 'JAWA TIMUR', 9, 'SUTOMO', 'GURU', 'ISTIANA', '085232604334', '', 'AKTIF'),
+(93, '2021', '07', '', '202107006', 'DANIL PUTRA PRATAMA', '2021-07-04', 'SITUBONDO', '2008-12-19', 'MONCEL', 'JUGLANGAN', 'PANJI', 'SITUBONDO', 'JAWA TIMUR', 9, 'DANANG INDRA SATRIYO', 'PEDAGANG', 'HALIMATUS SA\'DIYAH', '085604122134', '', 'AKTIF'),
+(94, '2024', '06', '', '202406003', 'WIDAD ALI MURTADHO', '2024-06-17', 'JEMBER', '2000-04-04', 'DARUNGAN', 'PANTI', 'PANTI', 'JEMBER', 'JAWA TIMUR', 12, 'FARID', 'WIRASWASTA', 'MUTI\'AH', '081249441432', '', 'AKTIF'),
+(95, '2019', '05', '', '201905004', 'ALI ZAINUR RIDHO', '2019-05-06', 'JEMBER', '2006-06-06', 'KRAJAN', 'MOJOSARI', 'PUGER', 'JEMBER', 'JAWA TIMUR', 17, 'SARUSO', 'NELAYAN', 'HAYATI', '082322085303', '', 'AKTIF'),
+(96, '2019', '06', '', '201906004', 'YAHYA SULTONI', '2019-06-19', 'JEMBER', '2006-11-19', 'SULING', 'BAGON', 'PUGER', 'JEMBER', 'JAWA TIMUR', 9, 'SULIS', 'PETANI', 'MUZAIROH', '085935182301', '', 'AKTIF'),
+(97, '2019', '06', '', '201906004', 'SYAIFULLAH YUSUF FACHRUDI', '2019-06-26', 'BONDOWOSO', '2007-03-05', 'KAMPUNG HAJI', 'BATAAN', 'TENGGARANG', 'BONDOWOSO', 'JAWA TIMUR', 10, 'RUDI SUMINTO', 'WIRASWASTA', 'TRUFINIA', '085719485988', '', 'AKTIF'),
+(98, '2019', '07', '', '201907004', 'AHMAD FACHRI AL HUSENI', '2019-07-05', 'MAKASAR', '2007-02-26', 'KEPUH WETAN', 'KALIREJO', 'KABAT', 'BANYUWANGI', 'JAWA TIMUR', 10, 'MURTONO', 'BURUH', 'SULAM ISTI', '081332034067', '', 'AKTIF'),
+(99, '2019', '07', '', '201907005', 'MOCH FAJRI HIDAYATULLOH', '2019-07-10', 'JEMBER', '2006-12-02', 'KLAYU', 'TEGAL WARU', 'MAYANG', 'JEMBER', 'JAWA TIMUR', 17, 'USMAN', 'BANGUNAN', 'HALIMATUS SA\'DIYAH', '085100799235', '', 'AKTIF'),
+(100, '2022', '07', '', '202207009', 'IDHAM AKROMUL IBAD', '2022-07-01', 'KALIBARU WETAN', '2007-02-07', 'KRAJAN', 'KALIBARU WETAN', 'KALIBARU', 'BANYUWANGI', 'JAWA TIMUR', 10, 'ABDUL HADI', 'WIRASWASTA ', 'PURYANI', '083140683713', '', 'AKTIF'),
+(101, '2020', '06', '', '202006007', 'M.WAHYU.BAGUS', '2020-06-08', 'AMBULU JEMBER', '2007-06-04', 'KRAJAN KARANGANYAR', 'KARANGANYAR', 'AMBULU', 'JEMBER', 'JAWATIMUR', 10, 'RIDWAN', 'SOPER', 'siti maysaroh', '081232286757', '', 'AKTIF'),
+(105, '2020', '07', '', '202007007', 'MUHAMMAD FARIZ AL MAGHDISH', '2020-07-03', 'JEMBER', '2008-10-22', 'MANDIGU', 'SUCO', 'MUMBUL SARI', 'JEMBER', 'JAWA TIMUR', 10, 'ROSIDI', 'WIRASWASTA', 'ELISETIAWATI', '081249737301', '', 'AKTIF'),
+(103, '2019', '06', '', '201906006', 'MUHAMMAD SYAHIDZUL ANWAR', '2019-06-02', 'BONDOWOSO', '2007-05-04', 'KLABANG AGUNG', 'KLABANG AGUNG', 'TEGAL AMPEL', 'BONDOWOSO', 'JAWA TIMUR', 10, 'M WAHYUDI MUZAMIL', 'WIRASWASTA', 'HALIMATUS SA\'DIYAH', '085737417620', '', 'AKTIF'),
+(104, '2019', '07', '', '201907006', 'MOH ALIF DESSTA', '2019-07-03', 'PAPUA', '2006-12-06', 'KAPURAN', 'KAPURAN', 'WONOSARI', 'BONDOWOSO ', 'JAWA TIMUR', 10, 'SAMHADI', 'PNS', 'SITI AMIATUN', '081316380670', '', 'AKTIF'),
+(106, '2020', '06', '', '202006007', 'MOCH AIZUL RIDHO', '2020-06-10', 'JEMBER', '2007-08-02', 'Kauman', 'Tempurejo', 'Tempurejo', 'Jember', 'Jawa timur', 10, 'Wasik', 'Wiraswasta', 'Ervia', '085236353963', '', 'AKTIF'),
+(107, '2023', '05', '', '202305003', 'M NIRWAN DARMAWAN', '2023-05-10', 'JEMBER', '2007-02-09', 'KRAJAN', 'MOJOSARI', 'PUGER', 'JEEMBER', 'JAWA TIMUR', 10, 'M HALILA', 'WIRASWASTA ', 'NANIK', '083182687333', '', 'AKTIF'),
+(108, '2020', '07', '', '202007007', 'AHMAD AFRIYANSYAH', '2020-07-03', 'KOTABUMI', '2008-04-01', 'MARGO MULYO', 'ABUNG JAYO', 'ABUNG SELATAN', 'LAMPUNG UTARA', 'LAMPUNG', 10, 'NGATIMIN', 'WIRASWASTA', 'SATINI', '082281050634', '', 'AKTIF'),
+(109, '2022', '06', '', '202206009', 'MUHAMMAD IHSANI', '2022-06-15', 'BONDOWOSO', '2009-05-17', 'BLAWAN', 'BLAWAN', 'IJEN', 'BONDOWOSO', 'JAWA TIMUR', 17, 'ROHIM', 'PNS', 'SUNARTIK', '082332916277', '', 'AKTIF'),
+(110, '2022', '07', '', '202207009', 'AZMAN NABIL', '2022-07-01', 'BANYUWANGI ', '2007-06-26', 'KRAJAN', 'JELUN', 'LICIN', 'BANYUWANGI', 'JAWA TIMUR', 10, 'NANANG KHOSIM', 'PNS', 'JUMROTUL FAWAIDA', '085257794353', '', 'AKTIF'),
+(111, '2020', '07', '', '202007007', 'REZA ADITYA WARDANA', '2020-07-03', 'JEMBER ', '2007-07-21', 'SUMBER JATI', 'SUMBER JATI', 'SILO', 'JEMBER', 'JAWA TIMUR', 10, 'HENDRA', 'WIRASWASTA', 'ESTA DWI BUDIARSIH', '082276538756', '', 'AKTIF'),
+(112, '2020', '01', '', '202001007', 'SALMAN ALFARISI', '2020-01-01', 'JEMBER', '2010-02-05', 'SILO', 'SUMBERLANAS BARAT', 'SILO', 'JEMBER', 'JAWA TIMUR', 9, 'SUBAIDI', 'SUPIR', 'MU\'ISAH', '082141162668', '', 'AKTIF'),
+(113, '2020', '06', '', '202006007', 'SALMAN ALFARISY', '2020-06-05', 'BONDOWOSO ', '2007-10-17', 'KRAJAN ATAS', 'SUGER LOR', 'MAESAN', 'BONDOWOSO ', 'JAWA TIMUR', 10, 'FATHOR ROHMAN', 'WIRASWASTA ', 'SUSTIN FADILA', '085233757925', '', 'AKTIF'),
+(114, '2022', '06', '', '202206009', 'MUHAMMAD FIKRI', '2022-06-15', 'JEMBER', '2007-01-24', 'DUKLENGKONG', 'SUMBER WRINGIN', 'SUKOWONO', 'JEMBER', 'JAWA TIMUR', 10, 'YUSUF', 'PETANI', 'MARBUA', '083166235510', '', 'AKTIF'),
+(115, '2022', '07', '', '202207009', 'FATHORROHMAN', '2022-07-13', 'SAMPANG', '2006-06-19', 'KRAJAN', 'TANGGUL KULON', 'TANGGUL', 'JEMBER', 'JAWA TIMUR', 10, 'ABDUL MANAF', 'PEDAGANG', 'NOER FIAYATIN', '0882257436587', '', 'AKTIF'),
+(124, '2024', '06', '', '202406003', 'AFTONIL HAKIM', '2024-06-27', 'JEMBER ', '2009-06-23', 'SUKMOILANG', 'PACE', 'SILO', 'JEMBER', 'JAWA TIMUR', 10, 'SAMA\'ON', 'PETANI', 'SIYATI', '085233804014', '', 'AKTIF'),
+(117, '2021', '06', '', '202106007', 'AHMAD RENDRA ARIFIN', '2021-06-02', 'JEMBER', '2008-09-09', 'GARAHAN', 'GARAHAN', 'SILO', 'JEMBER', 'JAWA TIMUR', 10, 'ZAINUL ARIFIN', 'WIRASWASTA ', 'TUTUK PURWATI NOVITASARI', '0', '', 'AKTIF'),
+(118, '2021', '06', '', '202106007', 'ADITYA RAHMA DANI', '2021-06-27', 'JEMBER ', '2008-12-31', 'KRAJAN BARAT', 'TEGAL GEDE', 'SUMBER SARI', 'JEMBER', 'JAWA TIMUR', 10, 'MUSLEHHUDIN SAIFUL BAHRI', 'WIRASWASTA', 'ENI ERVIANA ', '082331571966', '', 'AKTIF'),
+(119, '2019', '06', '', '201906007', 'MUHAMMAD IPNU FADIL', '2019-06-12', 'JEMBER', '2006-10-14', 'KRAJAN', 'ARJASA', 'ARJASA', 'JEMBER', 'JAWA TIMUR', 17, 'ABDUL HAMID', 'PEDAGANG', 'NINGSIH', '085888553674', '', 'AKTIF'),
+(120, '2024', '06', '', '202406003', 'FAIRUZ ADITYA AHMAD HARYONO', '2024-06-30', 'JEMBER', '2008-07-06', 'GADUNGAN ', 'KLATAKAN', 'TANGGUL', 'JEMBER', 'JAWA TIMUR', 10, 'HARYONO ', 'PEMDES', 'UYUN NUR ROHMAH', '081333795554', '', 'AKTIF'),
+(121, '2024', '07', '', '202407003', 'IBNU KHAIRIL FATTAH', '2024-07-02', 'JEMBER ', '2009-09-27', 'SUMBER LANAS BARAT', 'HARJOMULYO', 'SILO', 'JEMBER', 'JAWA TIMUR', 10, 'SUKRIYONO', 'WIRASWASTA', 'RUSTININGSIH', '085334607971', '', 'AKTIF'),
+(122, '2023', '07', '', '202307003', 'AFIF FIRDAUS', '2023-07-02', 'INDRAMAYU', '2008-06-12', 'ADAN ADAN', 'TAMBI', 'SLIYEG', 'INDRAMAYU', 'JAWA BARAT', 10, 'SYAMSUDIN', 'SUPIR', 'NINICARINI', '0', '', 'AKTIF'),
+(123, '2023', '07', '', '202307003', 'MUHAMMAD MAHFILUL ALBAB', '2023-07-02', 'BONDOWOSO ', '2007-09-20', 'KRAJAN ATAS', 'SUGER LOR', 'MAESAN', 'BONDOWOSO ', 'JAWA TIMUR', 10, 'MOHAMMAD KHOIRUL ANAM', 'GURU', 'FARIDATUN HASANAH', '085258898400', '', 'AKTIF'),
+(125, '2021', '06', '', '202106007', 'MOCH RIO SEPTIAWAN', '2021-06-09', 'JEMBER', '2008-05-23', 'KLAYU', 'TEGALWARU', 'MAYANG', 'JEMBER', 'JAWA TIMUR', 10, 'NAWAR RIYASTHA', 'PEDAGANG', 'MAISAROH', '085101694080', '', 'AKTIF'),
+(126, '2022', '06', '', '202206009', 'M HIMYAR HIZBULLAH', '2022-06-23', 'JEMBER', '2007-07-27', 'PATEMON', 'PATEMON', 'TANGGUL WETAN', 'JEMBER', 'JAWA TIMUR', 10, 'HARYADI', 'WIRASWASTA ', 'HUSNUL KHOTIMAH', '081233274021', '', 'AKTIF'),
+(127, '2021', '06', '', '202106007', 'MUHAMMAD IRCHAMUL HUDA', '2021-06-30', 'MANOKWARI', '2008-05-13', 'AIMASI', 'PRAFI', 'PRAFI', 'MANOKWARI', 'PAPUA BARAT', 17, 'MUSYARIFUL ANFI', 'WIRASWASTA', 'MISTIAH', '0822641805077', '', 'AKTIF'),
+(128, '2021', '06', '', '202106007', 'ARYA JAYA GEMAYEL PUTRA', '2021-06-25', 'MAGETAN', '2008-09-09', 'JIMBARAN', 'JIMBARAN', 'KUTA SELATAN', 'BALI', 'BALI', 10, 'ZAINUL KARIM', 'WIRASWASTA', 'SRI HANDAYANI', '081239156445', '', 'AKTIF'),
+(129, '2022', '07', '', '202207009', 'M KHANAFI ALDI PRASETYO', '2022-07-13', 'PURBALINGGA', '2005-07-19', 'PAGEDONGAN TENGAH', 'PAGEDONGAN', 'PAGEDONGAN', 'BANJARNEGARA', 'JAWA TENGAH', 10, 'EDI PURWANTO', 'PENGUSAHA', 'CHABIBAH', '081991582992', '', 'AKTIF'),
+(130, '2021', '07', '', '202107007', 'MOH ROFIQI', '2021-07-07', 'BANYUWANGI', '2006-04-14', 'KRAJAN', 'TEGALHARJO', 'GLENMORE', 'BANYUWANGI', 'JAWA TIMUR', 15, 'HERYANTO', 'WIRASWASTA', 'RAUDA', '085236898800', '', 'AKTIF'),
+(131, '2018', '10', '', '201810002', 'MUHAMMAD NASICH FATAHILLAH', '2018-10-28', 'PROBOLINGGO', '2003-03-18', 'SUMBERKDAWUNG', 'SUMBERKEDAWUNG', 'LECES', 'PROBOLINGGO', 'JAWA TIMUR', 16, 'AKHMAD KHOIRON', 'WIRASWASTA', 'ROHANI', '085784084090', './assets/foto_santri/201810002_WhatsApp_Image_2024-09-03_at_13_32_15.jpeg', 'AKTIF'),
+(132, '2018', '10', '', '201810003', 'ARDHO YUWONO WISNUGATI', '2018-10-13', 'LUMAJANG', '1999-07-26', 'GLADAK SERANG', 'BANYUPUTIH LOR', 'RANDUAGUNG', 'LUMAJANG', 'JAWA TIMUR', 16, 'TIMBUL HARIYANTO', 'PENSIUNAN', 'MULYATI SITI FATIMAH', '087886102960', './assets/foto_santri/201810003_WhatsApp_Image_2024-09-03_at_13_29_401.jpeg', 'AKTIF'),
+(133, '2020', '06', '', '202006007', 'M HAMDANI IBRAHIM', '2020-06-12', 'JEMBER', '2007-12-12', 'MANGARAN ', 'LONCATAN', 'AJUNG', 'JEMBER', 'JAWA TIMUR', 11, 'ALI RAHMATULLAH', 'WIRASWASTA', 'ENDANGSOFILIANTI', '085235529113', '', 'AKTIF'),
+(134, '2022', '06', '', '202206009', 'M FAIDUL AKBAR', '2022-06-22', 'JEMBER', '2010-05-29', 'SUMBER SALAK', 'SUMBERSALAK', 'LEDOKOMBO', 'JEMBER', 'JAWA TIMUR', 9, 'M MAWARDI', 'PEDAGANG', 'AMALIA', '081391760456', '', 'AKTIF'),
+(135, '2022', '06', '', '202206009', 'HASBI ASSIDIQI', '2022-06-30', 'JEMBER', '2009-09-26', 'KRAJAN', 'WONOSARI', 'PUGER', 'JEMBER', 'JAWA TIMUR', 14, 'SAMSUL ARIFIN', 'PETANI', 'SITI NUR HOLIFA', '081', '', 'AKTIF'),
+(136, '2019', '06', '', '201906007', 'MOHAMMAD HIDAYATULLAH', '2019-06-24', 'KALIMANTAN', '2010-03-26', 'SANGKOH ESTATE', 'SANGKOH ESTATE', 'SUNGAI DURIAN', 'KOTABARU', 'KALIMANTAN SELATAN', 9, 'BUDI NAHTO', 'PETANI', 'NAWATI', '082352534320', '', 'AKTIF'),
+(137, '2022', '06', '', '202206009', 'ABDI CHAMRIE BILAWAL', '2022-06-13', 'TANGERANG', '2008-04-01', 'SARAKHAN', 'PISANGAN JAYA', 'SEPATAN', 'TENGERANG', 'BANTEN', 10, 'ABDULLAH', 'PNS', 'WIWIK TAUFIQOH', '08', '', 'AKTIF'),
+(138, '2023', '06', '', '202306003', 'ANDRE LORENZO', '2023-06-11', 'SURABAYA', '2007-01-05', 'BERINGKAH', 'BERINGKAH', 'MENGANTI', 'GRESIK', 'JAWA TIMUR', 10, 'GIDEON BERNAD', 'WIRASWASTA', 'NUR FAIDAH', '081216668294', '', 'AKTIF'),
+(139, '2023', '07', '', '202307003', 'ATHALA RIFQI ADAM', '2023-07-01', 'JEMBER', '2009-02-25', 'PASAR ALAS', 'GARAHAN', 'SILO', 'JEMBER', 'JATIM', 12, 'PURDIANTO', 'WIRASUASTA', 'EVA SOFIYANTI', '082', '', 'AKTIF'),
+(140, '2024', '06', '', '202406003', 'BAGAS YOVI ROMADHONI', '2024-06-26', 'JEMBER', '2009-09-16', 'CURAH LAOS', 'LAMPEJI', 'MUMBULSARI', 'JEMBER', 'JAWA TIMUR', 10, 'DIDIK MULAYDI', 'SUPIR', 'RIKA RAHAYU', '08', '', 'AKTIF'),
+(141, '2023', '06', '', '202306003', 'ANANDA NUR MAULANA', '2023-06-19', 'BANYUWANGI', '2007-06-05', 'GEPURO', 'WATUKEBO', 'BLIMBING SARI', 'BANYUWANGI', 'JATIM', 11, 'MAHSUN RIEFAAN', 'WIRASUASTA', 'KUMALA', '082', '', 'AKTIF'),
+(142, '2019', '06', '', '201906007', 'MUHAMMAD FARISIL FIKRI', '2019-06-04', 'GROGOT', '2009-04-03', 'SANGKOH ESTATE', 'SANGKOH ESTATE', 'PAMUKAN UTAR', 'KOTA BARU', 'KALIMANTAN SELATAN', 9, 'AGUS SUPRIYANTO', 'WIRASWASTA', 'JARWATI', '08', '', 'AKTIF'),
+(143, '2022', '06', '', '202206009', 'AHMAD SODIK', '2022-06-15', 'BONDOWOSO', '2009-02-27', 'SANGKOH ESTATE', 'SANGKOH ESTATE', 'PAMUKAN UTARA', 'KOTA BARU', 'KALIMANTAN SELATAN', 9, 'JUNAEDI', 'WIRASWASTA', 'HAYATI', '08', '', 'AKTIF'),
+(144, '2023', '06', '', '202306003', 'MUHAMMAD FACHRI ASIDIKI', '2023-06-03', 'LUMAJANG', '2009-03-07', 'TEGAL BESAR ', 'TEGAL BESAR', 'KALIWATES', 'JEMBER', 'JATIM', 12, 'MOH ROSI', 'WIRASUASTA', 'FITROHTUL MUNAWAROH', '082335723040', '', 'AKTIF'),
+(145, '2021', '06', '', '202106008', 'RENO RAMA SAPUTRA', '2021-06-16', 'JEMBER', '2009-04-15', 'KRAJAN UTARA', 'KERTONEGORO', 'JENGGAWAH', 'JEMBER', 'JAWA TIMUR', 12, 'RAMA SUGIANTO', 'WIRASWASTA', 'SRI WAHYUNI', '085345478700', '', 'AKTIF'),
+(146, '2024', '07', '', '202407003', 'HAMIM ADISTYA NUR ROHIM', '2024-07-17', 'JEMBER', '2009-03-13', 'MULYOREJO', 'BABAN BARAT', 'SILO', 'JEMBER', 'JAWA TIMUR', 11, 'JONO HARIYANTO', 'PETANI', 'MARHATI', '082332204211', '', 'AKTIF'),
+(147, '2021', '07', '', '202107008', 'MUHAMMAD HUSEIN FAKIH AL KHALWANI', '2021-07-06', 'JEMBER', '2008-10-09', 'KRAJAN KULON', 'UMBULSARI', 'UMBULSARI', 'JEMBER', 'JATIM', 14, 'SYAKHUS ROHMAN', 'WIRASUASTA', 'ASFIYAH TRI ISMIYATI', '085234147171', '', 'AKTIF'),
+(148, '2024', '06', '', '202406003', 'MUHAMMAD ABU RIJAL', '2024-06-11', 'NGULING', '2009-04-12', 'REMBANG', 'WOTGALIH', 'NGULING', 'PASURUAN', 'JAWA TIMUR', 10, 'SUWANDI', 'PETANI', 'SULIHA', '08', '', 'AKTIF'),
+(149, '2020', '07', '', '202007007', 'TEGAR JULI WIJAKSONO', '2020-07-26', 'JEMBER ', '2007-07-26', 'GAYAM', 'RAMBI GUNDAM', 'RAMBI PUJI', 'JEMBER', 'JATIM', 10, 'SUBIYANTORO', 'PEDAGANG', 'SUWARLIN', '085336499239', '', 'AKTIF'),
+(150, '2021', '02', '', '202102009', 'MUHAMMAD ADITYA', '2021-02-16', 'JEMBER', '2009-04-07', 'SUDUNG TIMUR', 'SUKOWIRYO', 'JELBUK', 'JEMBER', 'JAWA TIMUR', 11, 'SLAMET', 'PETANI', 'ISA KUSMINARTI', '08', '', 'AKTIF'),
+(151, '2019', '07', '', '201907007', 'M.ARIL AINUR ROBIT', '2019-07-03', 'JEMBER', '2007-03-20', 'CURAH PINANG', 'TAMANSARI', 'MUMBULSARI', 'JEMBER', 'JAWA TIMUR', 10, 'ASAD', 'PETANI', 'ILFIYATUL HASANAH', '085732325164', '', 'AKTIF'),
+(152, '2024', '01', '', '202401003', 'YAHYA ARIA MULIANA', '2024-01-21', 'JAKARTA', '2005-07-06', 'JLN LUMPANG', 'LUMPANG', 'KARANGANYAR', 'PURBALINGGA', 'JAWA TENGAH', 15, 'SUSILO', 'PENGUSAHA', 'MUNIROH', '081390324278', '', 'AKTIF'),
+(179, '2019', '07', '', '201907011', 'MIFTAHUR RIZKI HIDAYATULLOH', '2019-07-11', 'JEMBER', '2007-07-09', 'KRAJAN', 'KLOMPANGAN', 'AJUNG', 'JEMBER', 'JAWA TIMUR', 17, 'KUSDARIYANTO', 'PEDAGANG', 'MARIYATUL QIBTIYAH', '085104617420', '', 'AKTIF'),
+(154, '2021', '06', '', '202106009', 'AHMAD AULIA KAKA FIRANSYAH', '2021-06-23', 'LAMPUNG', '2008-07-11', 'BANJAR TEGES', 'BANJAR TEGES', 'GIANYAR', 'GIANYAR', 'BALI', 12, 'AHMAD SAIDUN', 'WIRASWASTA', 'SRI ASTUTI', '081338333134', '', 'AKTIF'),
+(155, '2024', '07', '', '202407003', 'FANO ANDI JUNIO', '2024-07-01', 'JEMBER', '2009-06-21', 'CURAHNONGKO', 'CURAHNONGKO', 'TEMPUREJO', 'JEMBER', 'JAWA TIMUR', 11, 'FARID', 'PETANI', 'APRILIA', '085718448700', '', 'AKTIF'),
+(156, '2019', '07', '', '201907009', 'NABIL PRATAMA', '2019-07-03', 'JEMBER', '2007-02-22', 'PAGUAN', 'PETUNG', 'BANGSALSARI', 'JEMBER', 'JAWA TIMUR', 10, 'TOMIN', 'BURUH BANGUNAN', 'SUNARSIH', '081523684703', '', 'AKTIF'),
+(157, '2023', '07', '', '202307003', 'JOKO SETOYONO', '2023-07-20', 'SAMPIT', '2008-04-27', 'JLN CUT MUKTIYAH', 'SAWAHAN', 'MENTAWA  BARU KETAPA', 'SAMPIT', 'KALTENG', 10, 'KATIYONO', 'PENGUSAHA', 'SAWATI', '081349006955', '', 'AKTIF'),
+(158, '2024', '08', '', '202408003', 'AHMAD FARHAN NURUL ULUM', '2024-08-09', 'GRESIK,', '2005-12-20', 'PETUNG', 'PETUNG', 'PANCENG', 'GRESIK', 'JAWA TIMUR', 15, 'AHMAD FARHAN NURUL ULUM', 'GURU SWASTA', 'GURU SWASTA', '085785421797', '', 'AKTIF'),
+(159, '2024', '07', '', '202407004', 'IQBAL MAULANA', '2024-07-16', 'JEMBER', '2009-11-21', 'DARUNGAN', 'JATIROTO', 'SUMBERBARU', 'JEMBER', 'JAWA TIMUR', 11, 'SAIFUL', 'WIRASWASTA', 'FIRDATUL KHOIRIYAH', '08', '', 'AKTIF'),
+(160, '2023', '02', '', '002302001', 'TEGAR FEBRI HIDAYATUS SALAM', '0023-02-27', 'JEMBER', '2008-02-15', 'WONO ASRI', 'KRATON', 'TEMPUREJO', 'JEMBER', 'JAWA TIMUR', 10, 'SLAMET', 'PETANI', 'JUMIATI', '082', '', 'AKTIF'),
+(161, '2023', '06', '', '202306003', 'FATHOR ROZI', '2023-06-14', 'SUMENEP', '2005-05-13', 'BUDDI', 'LAPA LAOK', 'DUNGKEK', 'SUMENEP', 'JAWA TIMUR', 15, 'MOH HAMZAH', 'PETANI', 'MAS ADA', '081939051335', '', 'AKTIF'),
+(162, '2021', '07', '', '202107009', 'MUHAMMAD ZAINAL ABIDIN', '2021-07-30', 'JEMBER', '2008-08-26', 'KRAJAN TENGAH', 'BALUNG KULON', 'BALUNG', 'JEMBER', 'JAWA TIMUR', 12, 'MISBAHUL HASAN', 'WIRASUASTA', 'KHOLIFAH', '082257526835', '', 'AKTIF'),
+(163, '2023', '07', '', '202307003', 'MUHAMMAD FAIRUZ YASHFI QOLBI', '2023-07-01', 'BONDOWOSO', '2008-04-10', 'SEKARPUTIH', 'TEGAL AMPEL', 'TEGAL AMPEL', 'BONDOWOSO', 'JAWA TIMUR', 12, 'KHOIRIL ANWAR', 'PNS', 'KHUSNUL HAYATI', '082330429102', '', 'AKTIF'),
+(164, '2024', '06', '', '202406004', 'MUHAMMAD AFANDI CHOIRON', '2024-06-23', 'PASURUAN', '2009-08-17', 'KRAJAN', 'KMUNING SARI LOR', 'PANTI', 'JEMBER', 'JAWA TIMUR', 10, 'ASMUNI', 'WIRASUASTA', 'SOLIKHAH', '085748924639', '', 'AKTIF'),
+(165, '2023', '06', '', '202306003', 'M RAVI RAMADHANI', '2023-06-07', 'SITUBONDO', '2010-09-04', 'BABATAN', 'BABATAN', 'SEMBORO', 'JEMBER', 'JAWA TIMUR', 9, 'BUDI RAHARDI', 'PEDAGANG', 'ANA SOVIANA', '087857589725', '', 'AKTIF'),
+(166, '2021', '06', '', '202106010', 'AHMAD ALFAN ALMUZAMMIL', '2021-06-15', 'BONDOWOSO', '2008-07-15', 'GUNUNG SARI', 'GUNUNG SARI', 'MAESAN', 'BONDOWOSO', 'JAWA TIMUR', 10, 'AHMAD RUDIANTO', 'PETANI', 'HASANAH', '082301707087', '', 'AKTIF'),
+(167, '2024', '08', '', '202408004', 'MUHAMMAD GHAZI MUBAROK', '2024-08-15', 'SUMENEP', '2005-09-09', 'PANGGULAN', 'BANARASEP TIMOR', 'LENTENG', 'SUMENEP', 'JAWA TIMUR', 15, 'MUHAMMAD ANWAR', 'GURU', 'ROHANIYAH', '082', '', 'AKTIF'),
+(168, '2023', '06', '', '202306003', 'AHMAD NIDHOMIL FAHMI', '2023-06-23', 'BONDOWOSO', '2008-02-10', 'MASJID', 'KLABANG AGUNG', 'TEGAL AMPEL', 'BONDOWOSO', 'JAWA TIMUR', 10, 'MUHAMAD', 'PETANI', 'SUPIANA', '085336059215', '', 'AKTIF'),
+(169, '2023', '07', '', '202307003', 'ALFIN NUR FIKI FAHRI', '2023-07-17', 'JEMBER', '0006-02-19', 'PRINGGOWIERAWAN', 'BATU URIP', 'SUMBERBARU', 'JEMBER', 'JAWA TIMUR', 11, 'HERI SANTOSO', 'PEDAGANG', 'LATIFAH', '082317711269', '', 'AKTIF'),
+(170, '2024', '07', '', '202407005', 'RISKI FAJAR SHODIQ', '2024-07-25', 'JEMBER', '2011-03-28', 'JAMBISARI', 'JAMBISARI', 'MUMBULSARI', 'JEMBER', 'JAWA TIMUR', 9, 'SHOLEH', 'PEDAGANG', 'SITI MUSTASIYAH', '08', '', 'AKTIF'),
+(171, '2022', '08', '', '202208009', 'WADUD ALI SABANA', '2022-08-09', 'JEMBER', '2006-12-28', 'DARUNGAN', 'PANTI', 'PANTI', 'JEMBER', 'JAWA TIMUR', 11, 'FARID', 'WIRASUASTA', 'MUTI\'AH', '085336533780', '', 'AKTIF'),
+(172, '2022', '06', '', '202206010', 'MUHAMMAD BIMA FIRMANSYAH', '2022-06-25', 'JEMBER', '2006-12-21', 'ROWO', 'PAKUSARI', 'PAKUSARI', 'JEMBER', 'JAWA TIMUR', 12, 'MUHAMMAD FIRJON', 'WIRASWASTA', 'SITI CHOTIMAH', '085330804708', '', 'AKTIF'),
+(173, '2023', '07', '', '202307003', 'M.FAHRIL ILMAN HUDA', '2023-07-04', 'JEMBER', '2007-12-11', 'GAWOK', 'DUKUH DEMPOK', 'WULUHAN', 'JEMBER', 'JAWA TIMUR', 10, 'SONI KHOLIQIN ROFIK', 'GURU', 'KASMIATUN', '082', '', 'AKTIF'),
+(174, '2022', '06', '', '202206010', 'PUTRA ARIZONA DANI ARTA', '2022-06-29', 'JEMBER', '2006-05-17', 'KRAJAN BARAT', 'ANTIROGO', 'SUMBERSARI', 'JEMBER', 'JAWA TIMUR', 11, 'IMAM MUDIN', 'PENGUSAHA', 'SITI MAIMUNAH', '085707014463', '', 'AKTIF'),
+(175, '2019', '06', '', '201906010', 'MUHAMMAD FARHAN AHDANIL WAFI', '2019-06-05', 'JEMBER', '2006-09-04', 'KRAJAN KULON', 'TANJUNG REJO', 'WULUHAN', 'JEMBER', 'JAWA TIMUR', 12, 'MUHAMAD TOHARI', 'PETANI', 'LILIS YULIANI', '08153567114', '', 'AKTIF'),
+(176, '2021', '12', '', '002112001', 'REZA VANDIKA JULIANDRA', '0021-12-05', 'JEMBER ', '2005-07-08', 'KRAJAN', 'LOJEJER', 'WULUHAN', 'JEMBER', 'JAWA TIMUR', 15, 'ANDIK KURNIAWAN', 'WIRASUASTA', 'IVA SETYOWATI', '081358045988', '', 'AKTIF'),
+(177, '2020', '07', '', '202007007', 'DAVIQ HIKMAL AKBAR', '2020-07-09', 'BONDOWOSO', '2007-07-09', 'JATIYAN', 'SUMBER ANYAR ', 'MAESAN', 'BONDOWOSO', 'JAWA TIMUR', 10, 'UMARUL FARUQ', 'GURU', 'IMROKATUS SOLIKHAH', '085233678476', '', 'AKTIF'),
+(178, '2019', '07', '', '201907010', 'MUHAMMAD ZJAKY RAMADHANI', '2019-07-14', 'LUMAJANG', '2006-10-16', 'PONDOK ASRI', 'KEDUNGREJO', 'ROWOKANGKUNG', 'LUMAJANG', 'JAWA TIMUR', 17, 'ZAINAL ABIDIN', 'WIRASWASTA', 'SITI NUR ASWATUL HASANAH', '082131188570', '', 'AKTIF'),
+(180, '2021', '07', '', '202107010', 'TITO CAESAR PRATAMA', '2021-07-17', 'LUMAJANG', '2008-10-22', 'KEDUNG PAKIS', 'PASIRIAN', 'PASIRIAN', 'LUMAJANG', 'JAWA TIMUR', 17, 'TOTOK MASOBIRI', 'PEDAGANG', 'LILIK LESTARI', '085235303525', '', 'AKTIF');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_santri_riyadhoh`
+-- Struktur dari tabel `data_santri_riyadhoh`
 --
 
 DROP TABLE IF EXISTS `data_santri_riyadhoh`;
@@ -271,43 +590,20 @@ CREATE TABLE IF NOT EXISTS `data_santri_riyadhoh` (
   `tahun_daftar` year NOT NULL,
   `tanggal_daftar` date NOT NULL,
   PRIMARY KEY (`id_santri_riyadhoh`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `data_santri_riyadhoh`
+-- Dumping data untuk tabel `data_santri_riyadhoh`
 --
 
 INSERT INTO `data_santri_riyadhoh` (`id_santri_riyadhoh`, `nama_santri_riyadhoh`, `tempat_lahir`, `tanggal_lahir`, `alamat_desa`, `alamat_kecamatan`, `alamat_kabupaten`, `alamat_provinsi`, `no_nik`, `no_hp`, `nama_wali`, `no_hp_wali`, `tahun_daftar`, `tanggal_daftar`) VALUES
-(26, 'asdasd', 'asdasd', '2024-06-19', 'sqdasd', 'asdasd', 'asdas', 'asdasd', '123123', '12321312', 'qweqweqw', '12312321', '2024', '2024-06-30'),
-(2, 'Bella Saphira', 'Bandung', '2003-02-20', 'Sukajadi', 'Sukajadi', 'Bandung', 'Jawa Barat', '3273012002030002', '081234567892', 'Siti Aminah', '081234567893', '2024', '2024-02-25'),
-(3, 'Chandra Wijaya', 'Surabaya', '2003-03-25', 'Wonokromo', 'Wonokromo', 'Surabaya', 'Jawa Timur', '3578012503030003', '081234567894', 'Wahyu Nugroho', '081234567895', '2024', '2024-03-30'),
-(4, 'Dewi Persik', 'Semarang', '2003-04-30', 'Candisari', 'Candisari', 'Semarang', 'Jawa Tengah', '3374013004030004', '081234567896', 'Agus Salim', '081234567897', '2024', '2024-04-05'),
-(5, 'Eko Prasetyo', 'Yogyakarta', '2003-05-05', 'Kraton', 'Kraton', 'Yogyakarta', 'DI Yogyakarta', '3471010505030005', '081234567898', 'Surya Kencana', '081234567899', '2024', '2024-05-10'),
-(6, 'Fajar Nugraha', 'Denpasar', '2003-06-10', 'Denpasar Barat', 'Denpasar Barat', 'Denpasar', 'Bali', '5171011006030006', '081234567900', 'Made Alit', '081234567901', '2024', '2024-06-15'),
-(7, 'Gita Suryani', 'Medan', '2003-07-15', 'Medan Baru', 'Medan Baru', 'Medan', 'Sumatera Utara', '1271011507030007', '081234567902', 'Rahmat Hidayat', '081234567903', '2024', '2024-07-20'),
-(8, 'Hendra Setiawan', 'Palembang', '2003-08-20', 'Ilir Timur II', 'Ilir Timur II', 'Palembang', 'Sumatera Selatan', '1671012008030008', '081234567904', 'Dedi Mulyadi', '081234567905', '2024', '2024-08-25'),
-(9, 'Intan Permatasari', 'Makassar', '2003-09-25', 'Makassar', 'Makassar', 'Makassar', 'Sulawesi Selatan', '9271012509030009', '081234567906', 'Andi Sulaiman', '081234567907', '2024', '2024-09-30'),
-(10, 'Joko Widodo', 'Batam', '2003-10-30', 'Batam Kota', 'Batam Kota', 'Batam', 'Kepulauan Riau', '2971013001003010', '081234567908', 'Herman Syah', '081234567909', '2024', '2024-10-05'),
-(11, 'Kartika Putri', 'Pekanbaru', '2003-11-05', 'Pekanbaru Kota', 'Pekanbaru Kota', 'Pekanbaru', 'Riau', '1471010511030011', '081234567910', 'Arief Rahman', '081234567911', '2024', '2024-11-10'),
-(12, 'Linda Kusuma', 'Banjarmasin', '2003-12-10', 'Banjarmasin Tengah', 'Banjarmasin Tengah', 'Banjarmasin', 'Kalimantan Selatan', '7371011012030012', '081234567912', 'Bambang Suryo', '081234567913', '2024', '2024-12-15'),
-(13, 'Mega Ayuningtyas', 'Pontianak', '2004-01-15', 'Pontianak Kota', 'Pontianak Kota', 'Pontianak', 'Kalimantan Barat', '7471011501040013', '081234567914', 'Cahyo Nugroho', '081234567915', '2024', '2024-01-20'),
-(14, 'Nina Yuliana', 'Samarinda', '2004-02-19', 'Samarinda Seberang', 'Samarinda Seberang', 'Samarinda', 'Kalimantan Timur', '7571011902040014', '081234567916', 'Dwi Astuti', '081234567917', '2024', '2024-02-25'),
-(15, 'Oscar Pratama', 'Manado', '2004-03-25', 'Wanea', 'Wanea', 'Manado', 'Sulawesi Utara', '8271012503040015', '081234567918', 'Eka Putra', '081234567919', '2024', '2024-03-31'),
-(16, 'Putri Anggraini', 'Jayapura', '2004-04-30', 'Jayapura Utara', 'Jayapura Utara', 'Jayapura', 'Papua', '9471013004040016', '081234567920', 'Fajar Kurniawan', '081234567921', '2024', '2024-04-05'),
-(17, 'Rahmat Hidayat', 'Ambon', '2004-05-05', 'Sirimau', 'Sirimau', 'Ambon', 'Maluku', '9771010505040017', '081234567922', 'Agus Setiawan', '081234567923', '2024', '2024-05-10'),
-(18, 'Siti Badriah', 'Kupang', '2004-06-10', 'Kupang Timur', 'Kupang Timur', 'Kupang', 'Nusa Tenggara Timur', '8571011006040018', '081234567924', 'Budi Santoso', '081234567925', '2024', '2024-06-15'),
-(19, 'Tania Putri', 'Mataram', '2004-07-15', 'Mataram', 'Mataram', 'Mataram', 'Nusa Tenggara Barat', '8371011507040019', '081234567926', 'Citra Dewi', '081234567927', '2024', '2024-07-20'),
-(20, 'Udin Samsudin', 'Banda Aceh', '2004-08-20', 'Baiturrahman', 'Baiturrahman', 'Banda Aceh', 'Aceh', '1171012008040020', '081234567928', 'Dian Permata', '081234567929', '2024', '2024-08-25'),
-(21, 'Vina Panduwinata', 'Palu', '2004-09-25', 'Palu Timur', 'Palu Timur', 'Palu', 'Sulawesi Tengah', '8271012509040021', '081234567930', 'Eko Wahyudi', '081234567931', '2024', '2024-09-30'),
-(22, 'Wulan Guritno', 'Gorontalo', '2004-10-30', 'Gorontalo', 'Gorontalo', 'Gorontalo', 'Gorontalo', '7571013001040022', '081234567932', 'Fahri Hamzah', '081234567933', '2024', '2024-10-05'),
-(23, 'Xena Warrior', 'Kendari', '2004-11-05', 'Kendari', 'Kendari', 'Kendari', 'Sulawesi Tenggara', '9371010511040023', '081234567934', 'Galih Ginanjar', '081234567935', '2024', '2024-11-10'),
-(24, 'Yudi Satria', 'Ternate', '2004-12-10', 'Ternate Selatan', 'Ternate Selatan', 'Ternate', 'Maluku Utara', '9771011012040024', '081234567936', 'Hariyanto', '081234567937', '2024', '2024-12-15'),
-(25, 'Zara Leola', 'Sorong', '2005-01-15', 'Sorong', 'Sorong', 'Sorong', 'Papua Barat', '9571011501050025', '081234567938', 'Indra Bekti', '081234567939', '2024', '2024-01-20');
+(1, 'Testing', 'Test', '1996-07-10', 'Kranjingan', 'Sumbersari', 'Ireng Dowo', 'Jawa Timur', '234324234', '123123123', 'asdasdas', '4645645645', '2024', '2024-08-02'),
+(2, 'Mudjiatno ', 'Semarang', '1962-02-25', 'Dampala', 'Bahodopi', 'Morowali', 'Sulawesi Tengah', '5371042502620007', '085394781394', 'mispan', '1', '2024', '2024-08-29');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_wilayah`
+-- Struktur dari tabel `data_wilayah`
 --
 
 DROP TABLE IF EXISTS `data_wilayah`;
@@ -316,23 +612,25 @@ CREATE TABLE IF NOT EXISTS `data_wilayah` (
   `nama_wilayah` varchar(100) NOT NULL,
   `singkatan_wilayah` varchar(100) NOT NULL,
   PRIMARY KEY (`id_wilayah`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `data_wilayah`
+-- Dumping data untuk tabel `data_wilayah`
 --
 
 INSERT INTO `data_wilayah` (`id_wilayah`, `nama_wilayah`, `singkatan_wilayah`) VALUES
-(1, 'Sunan Kalijaga', 'SK'),
-(2, 'Lembaga Pendidikan Bahasa Arab', 'LPBA'),
-(3, 'Sunan Muria', 'SM'),
-(5, 'English Camp', 'ELCA'),
-(6, 'Rusunawa (Unggulan)', 'RSW');
+(10, 'WALISONGO', 'WS'),
+(2, 'LEMBAGA PENDIDIKAN BAHASA ARAB', 'LPBA'),
+(8, 'PENGURUS PESANTREN', 'AMIL'),
+(9, 'RAUDHATUL ULUM', 'RU'),
+(6, 'RUSUNAWA (UNGGULAN)', 'RSW'),
+(7, 'SUNAN AMPEL', 'SA'),
+(11, 'SUNAN GUNUNG JATI (SEKSI)', 'SEKSI');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kiosk_setting`
+-- Struktur dari tabel `kiosk_setting`
 --
 
 DROP TABLE IF EXISTS `kiosk_setting`;
@@ -344,7 +642,7 @@ CREATE TABLE IF NOT EXISTS `kiosk_setting` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `kiosk_setting`
+-- Dumping data untuk tabel `kiosk_setting`
 --
 
 INSERT INTO `kiosk_setting` (`id_setting`, `nama_setting`, `status`) VALUES
@@ -353,7 +651,7 @@ INSERT INTO `kiosk_setting` (`id_setting`, `nama_setting`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -370,12 +668,11 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `nama_lengkap`, `email`, `no_hp`, `level`, `status`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Maftuhin', 'administator@email.com', '0000000000', 'ADMIN', 'AKTIF'),
-(3, 'pengurus', 'ef4113dcac30d9fea0cd4ed7caa66ee8', 'MAHFUDZ ROZIQI, S.Pd.I', 'mahfudzroziqi16@guru.smk.belajar.id', '089287867123', 'PENGURUS', 'AKTIF');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'administator@email.com', '0000000000', 'ADMIN', 'AKTIF');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

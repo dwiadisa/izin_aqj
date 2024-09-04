@@ -164,7 +164,12 @@ public function tambah_penempatan_santri(){
         $sheet = $excel->getActiveSheet();
 
         // Set header
-        $headers = ["No","No Induk Santri", "Nama Santri", "Nama Wilayah", "Nama Kamar"];
+        $headers = ["No","No Induk Santri","Tanggal Masuk", "Nama Santri", "Tempat Lahir", "Tanggal Lahir","Nama Ayah","Nama Ibu", "Alamat Desa","Alamat Kecamatan" ,"Alamat Kabupaten", "Alamat Provinsi","No HP" ,"Nama Wilayah", "Nama Kamar"];
+        // $headers = [
+        //     'ID Santri', 'Tahun Masuk','Bulan Masuk', 'No Urut', 'No Induk Santri', 'Nama Lengkap Santri', 'Tanggal Masuk', 'Tempat Lahir', 
+        //     'Tanggal Lahir', 'Alamat Dusun', 'Alamat Desa', 'Alamat Kecamatan', 'Alamat Kabupaten', 
+        //     'Alamat Provinsi', 'Pendidikan Dipilih', 'Nama Ayah', 'Pekerjaan Ayah','Nama Ibu' , 'No HP', 'Foto', 'Status Santri', 'Lembaga Pendidikan dipilih'
+        // ];
         $column = 0;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($column, 1, $header);
@@ -177,9 +182,19 @@ public function tambah_penempatan_santri(){
         foreach ($data_penghuni as $data) {
             $sheet->setCellValueByColumnAndRow(0, $row, (string)$no++);
             $sheet->setCellValueByColumnAndRow(1, $row, (string)$data->no_induk_santri);
-            $sheet->setCellValueByColumnAndRow(2, $row, (string)$data->nama_lengkap_santri);
-            $sheet->setCellValueByColumnAndRow(3, $row, (string)$data->nama_wilayah);
-            $sheet->setCellValueByColumnAndRow(4, $row, (string)$data->nama_kamar);
+            $sheet->setCellValueByColumnAndRow(2, $row, (string)$data->tanggal_masuk);
+            $sheet->setCellValueByColumnAndRow(3, $row, (string)$data->nama_lengkap_santri);
+            $sheet->setCellValueByColumnAndRow(4, $row, (string)$data->tempat_lahir);
+            $sheet->setCellValueByColumnAndRow(5, $row, (string)$data->tanggal_lahir);
+            $sheet->setCellValueByColumnAndRow(6, $row, (string)$data->nama_ayah);
+            $sheet->setCellValueByColumnAndRow(7, $row, (string)$data->nama_ibu);
+            $sheet->setCellValueByColumnAndRow(8, $row, (string)$data->alamat_desa);
+            $sheet->setCellValueByColumnAndRow(9, $row, (string)$data->alamat_kecamatan);
+            $sheet->setCellValueByColumnAndRow(10, $row, (string)$data->alamat_kabupaten);
+            $sheet->setCellValueByColumnAndRow(11, $row, (string)$data->alamat_provinsi);
+            $sheet->setCellValueByColumnAndRow(12, $row, (string)$data->no_hp);
+            $sheet->setCellValueByColumnAndRow(13, $row, (string)$data->nama_wilayah);
+            $sheet->setCellValueByColumnAndRow(14, $row, (string)$data->nama_kamar);
             $row++;
         }
 

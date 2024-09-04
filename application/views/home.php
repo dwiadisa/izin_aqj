@@ -274,8 +274,8 @@
 
           <!-- Time input -->
           <div data-mdb-input-init class="form-outline mb-4">
-            <label class="form-label" for="form4Example2">Jam Akhir</label>
-            <input type="time" id="jam_akhir" required name="jam_akhir" class="form-control" />
+              <label class="form-label" for="form4Example2">Jam Akhir</label>
+               <input type="time" id="jam_akhir" required name="jam_akhir" class="form-control" max="17:00" value="17:00" />
           </div>
 
           <!-- Textarea input -->
