@@ -23,7 +23,8 @@ class Data_santri extends CI_Controller {
             'santri_nonaktif' => $this->data_santri_model->lihat_santri_nonaktif()->result()
         ];
 
-        // var_dump($data);
+        var_dump($data);
+        die;
         $this->load->view('templates/header_dashboard', $data);
         $this->load->view('content/data_santri/data_santri', $data);
         $this->load->view('templates/footer_dashboard');

@@ -77,9 +77,10 @@ class Data_santri_model extends CI_Model
     
     public function lihat_santri_semua()
     {
-        $this->db->select('data_santri.*, data_lembaga.nama_lembaga');
+        $this->db->select('data_santri.*, data_lembaga.nama_lembaga' , );
         $this->db->from('data_santri');
         $this->db->join('data_lembaga', 'data_santri.pendidikan_dipilih = data_lembaga.id_lembaga', 'left');
+        $this->db->join('data_lembaga as lembaga', 'data_santri.pendidikan_saat_ini = data_lembaga.id_lembaga', 'left');
         $query = $this->db->get();
         return $query;
     }     

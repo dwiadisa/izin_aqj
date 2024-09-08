@@ -265,6 +265,11 @@
                             <li><a href="<?php echo base_url('data_user') ?>" aria-expanded="false">List User</a></li>
                             <li><a href="<?php echo base_url('data_user/tambah_user') ?>" aria-expanded="false">Tambah User</a></li>
                         </ul>
+                        <li>
+                        <a href="<?php echo base_url('database_backup') ?>" aria-expanded="false">
+                          <i class="fa-solid fa-database"></i></i><span class="nav-text">Backup Database</span>
+                        </a>
+                    </li>
                     </li>
                     <?php endif; ?>
                   
