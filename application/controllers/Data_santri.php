@@ -23,8 +23,8 @@ class Data_santri extends CI_Controller {
             'santri_nonaktif' => $this->data_santri_model->lihat_santri_nonaktif()->result()
         ];
 
-        var_dump($data);
-        die;
+        // var_dump($data);
+        // die;
         $this->load->view('templates/header_dashboard', $data);
         $this->load->view('content/data_santri/data_santri', $data);
         $this->load->view('templates/footer_dashboard');
@@ -509,9 +509,9 @@ public function ubah_santri($id_santri) {
                 unlink($path_foto);
             }
         }
- $this->data_penempatan_model->hapus_penempatan_by_id($id_santri);
-        // Menghapus data santri dari database
-        $this->data_santri_model->hapus_santri($where);
+//  $this->data_penempatan_model->hapus_penempatan_by_id($id_santri);
+//         // Menghapus data santri dari database
+//         $this->data_santri_model->hapus_santri($where);
         redirect('data_santri');
     }
 }
