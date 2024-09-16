@@ -163,7 +163,7 @@
                         <a href="<?php echo base_url('dashboard') ?>" aria-expanded="false">
                          <i class="fa-solid fa-gauge"></i><span class="nav-text">Dashboard</span>
                         </a>
-                      <li>
+                                </li>
                   
                    
                     <li class="nav-label">Master Data Santri dan Wilayah (Asrama)</li>
@@ -178,7 +178,11 @@
                         
                         </ul>
                     </li>
-                   
+                     <li>
+                        <a href="<?php echo base_url('data_santri/histori_pendidikan') ?>" aria-expanded="false">
+                          <i class="fa-solid fa-clock-rotate-left"></i><span class="nav-text">Histori Pendidikan Santri</span>
+                        </a>
+                    </li>
                     <?php if ($this->session->userdata('level') == 'ADMIN'): ?>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">

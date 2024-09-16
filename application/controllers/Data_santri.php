@@ -514,5 +514,29 @@ public function ubah_santri($id_santri) {
 //         $this->data_santri_model->hapus_santri($where);
         redirect('data_santri');
     }
+
+
+    public function histori_pendidikan(){
+
+     $id_santri =  $this->input->get('id_santri');
+        $where = array('id_santri' => $id_santri);
+         $data = [
+            'title' => 'Histori Pendidikan Santri',
+            'data_santri' => $this->data_santri_model->lihat_santri_semua()->result(),
+            'lihat_santri' => $this->data_santri_model->lihat_santri_by_id($where)->row(),
+            'session_santri' =>    $this->session->set_userdata('id_santri', $id_santri),
+            // 'lihat_session' => 
+            // 'set_session' => $this->set_session
+            // 'histori_pendidikan_persantri' => $this->data_santri_model->histori_pendidikan_santri()->result()
+            // 'santri_aktif' => $this->data_santri_model->lihat_santri_aktif()->result(),
+            // 'santri_nonaktif' => $this->data_santri_model->lihat_santri_nonaktif()->result()
+        ];
+
+        // var_dump($data);
+        // die;
+        $this->load->view('templates/header_dashboard', $data);
+        $this->load->view('content/data_santri/data_histori', $data);
+        $this->load->view('templates/footer_dashboard');
+    }
 }
 ?>

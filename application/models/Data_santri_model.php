@@ -115,5 +115,11 @@ class Data_santri_model extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function histori_pendidikan_santri($id){
+            
+
+
+    }
 }
 ?>
