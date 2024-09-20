@@ -16,7 +16,7 @@
                                   <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="id_santri">Pilih Santri<span class="text-danger">*</span>
                                             </label>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-6 col-md-8 col-sm-12">
 
                                               <form class="form-valide" action="" method="get" novalidate="novalidate">
                                                 <select class="form-control select2" id="id_santri" name="id_santri">
@@ -27,7 +27,9 @@
                                                 </select>
                                                 <?php echo form_error('id_santri', '<div class="text-danger">', '</div>'); ?>
                                             </div>
-                                            <button type="submit" class="btn btn-sm mb-1 btn-flat btn-success"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
+                                            <div class="col-lg-2 col-md-4 col-sm-12">
+                                                <button type="submit" class="btn btn-sm mb-1 btn-flat btn-success"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
+                                            </div>
                                         </form>
 
                                         
@@ -37,7 +39,11 @@
                                         <b>Data Santri : </b>
                                         <div class="  row">
                                             <div class=" container col-md-8">
-                                                <table class="table table-bordered">
+
+                                            <?php if ($lihat_santri == null) : ?>
+                                                <p>PIlih santri terlebih dahulu</p>
+                                                <?php else : ?>
+                                                     <table class="table table-bordered">
                                                     <tr>
                                                         <th>Nama</th>
                                                         <td><?php echo $lihat_santri->nama_lengkap_santri; ?></td>
@@ -59,9 +65,17 @@
                                                         <td><?php echo $lihat_santri->status_santri; ?></td>
                                                     </tr>
                                                 </table>
+                                                <button type="button" class="btn mb-1 btn-success">Success</button>
+                                                    <?php endif ?>
+                                               
                                             </div>
                                             <div class="col-md-4">
-                                                <img src="<?php echo base_url($lihat_santri->foto); ?>" alt="Foto Santri" width="160px" class="img-fluid mx-auto d-block">
+                                                   <?php if ($lihat_santri == null) : ?>
+                                              
+                                                <?php else : ?>
+                                                   
+                                                    <img src="<?php echo base_url($lihat_santri->foto); ?>" alt="Foto Santri" width="160px" class="img-fluid mx-auto d-block">
+                                                    <?php endif ?>
                                             </div>
                                         </div>
 

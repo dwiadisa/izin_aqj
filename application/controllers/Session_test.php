@@ -12,6 +12,8 @@ class Session_test extends CI_Controller {
     {
     var_dump($this->session->userdata());
     }
+
+    
 }
 
 /* End of file Session_test.php and path \application\controllers\Session_test.php */
