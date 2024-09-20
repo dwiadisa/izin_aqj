@@ -116,8 +116,19 @@ class Data_santri_model extends CI_Model
         return $query;
     }
 
+    public function tambah_history_pendidikan($data){
+          return $this->db->insert('data_history_pendidikan', $data);
+    }
+
     public function histori_pendidikan_santri($id){
-            
+        $this->db->select('data_santri.*, data_history_pendidikan.*, data_lembaga.*');
+        $this->db->from('data_history_pendidikan');
+        $this->db->join('data_santri', 'data_history_pendidikan.id_santri = data_santri.id_santri', 'left');
+        $this->db->join('data_lembaga', 'data_history_pendidikan.id_lembaga = data_lembaga.id_lembaga', 'left');
+       $this->db->where('data_history_pendidikan.id_santri' , $id);
+        $query = $this->db->get();
+        return $query;
+
 
 
     }

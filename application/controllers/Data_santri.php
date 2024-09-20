@@ -12,6 +12,7 @@ class Data_santri extends CI_Controller {
         $this->load->model('data_santri_model');
         $this->load->model('data_lembaga_pendidikan_model');
         $this->load->model('data_penempatan_model');
+        $this->load->model('data_lembaga_pendidikan_model');
     }
 
     public function index()
@@ -525,6 +526,8 @@ public function ubah_santri($id_santri) {
             'data_santri' => $this->data_santri_model->lihat_santri_semua()->result(),
             'lihat_santri' => $this->data_santri_model->lihat_santri_by_id($where)->row(),
             'session_santri' =>    $this->session->set_userdata('id_santri', $id_santri),
+              'lembaga' => $this->data_lembaga_pendidikan_model->lihat_lembaga()->result(),
+              'lihat_history' => $this->data_santri_model->histori_pendidikan_santri($id_santri)->result()
             // 'lihat_session' => 
             // 'set_session' => $this->set_session
             // 'histori_pendidikan_persantri' => $this->data_santri_model->histori_pendidikan_santri()->result()
@@ -537,6 +540,42 @@ public function ubah_santri($id_santri) {
         $this->load->view('templates/header_dashboard', $data);
         $this->load->view('content/data_santri/data_histori', $data);
         $this->load->view('templates/footer_dashboard');
+    }
+
+    public function tambah_history_pendidikan_santri(){
+    $this->form_validation->set_rules('id_santri' , 'ID Santri' , 'required');
+    $this->form_validation->set_rules('nama_lembaga' , 'Nama Lembaga' , 'required');
+    $this->form_validation->set_rules('tahun_awal' , 'Tahun Awal' , 'required');
+    $this->form_validation->set_rules('tahun_akhir' , 'Tahun Akhir' , 'required');
+
+    if ($this->form_validation->run() !=false) {
+        # code...
+
+        $data = array(
+           $id = 'id_santri'=> $this->input->post('id_santri'),
+            'id_lembaga' => $this->input->post('nama_lembaga'),
+            'tahun_masuk_lembaga' => $this->input->post('tahun_awal'),
+            'tahun_keluar_lembaga' => $this->input->post('tahun_akhir')
+
+
+        );
+
+        $this->data_santri_model->tambah_history_pendidikan($data);
+        redirect(base_url('data_santri/histori_pendidikan?id_santri=' . $this->input->post('id_santri')));
+// var_dump($data);
+        // echo "input sukses!";
+    } else {
+       
+echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Data History Pendidikan Gagal Di Tambah');
+    window.location.href='" . base_url('data_santri/histori_pendidikan?id_santri=' . $this->input->post('id_santri')) . "';
+    </script>");
+
+    }
+    
+
+        
+
     }
 }
 ?>

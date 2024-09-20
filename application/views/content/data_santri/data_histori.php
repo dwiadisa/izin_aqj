@@ -65,7 +65,7 @@
                                                         <td><?php echo $lihat_santri->status_santri; ?></td>
                                                     </tr>
                                                 </table>
-                                                <button type="button" class="btn mb-1 btn-success">Success</button>
+                                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal_tambah_history">Tambah Histori Pendidikan</button>
                                                     <?php endif ?>
                                                
                                             </div>
@@ -92,30 +92,26 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                            $no=1;
+                                            foreach ($lihat_history as $hs): ?>
                                             <tr>
-                                                <th>1</th>
-                                                <td>Kolor Tea Shirt For Man</td>
-                                                <td><span class="badge badge-primary px-2">Sale</span>
+                                                <th><?php echo$no++ ?></th>
+                                                <td><?php echo $hs->nama_lembaga ?></td>
+                                                <td><?php echo $hs->tahun_masuk_lembaga ?></td>
+                                                <td><?php echo $hs->tahun_keluar_lembaga ?></td>
+                                                <td class="color-primary">
+                                                    
+                                  <div class="btn-group" role="group">
+                                        <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Success</button>
+                                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Dropdown link</a> <a class="dropdown-item" href="#">Dropdown link</a>
+                                        </div>
+                                    </div>
+
                                                 </td>
-                                                <td>January 22</td>
-                                                <td class="color-primary">$21.56</td>
                                             </tr>
-                                            <tr>
-                                                <th>2</th>
-                                                <td>Kolor Tea Shirt For Women</td>
-                                                <td><span class="badge badge-danger px-2">Tax</span>
-                                                </td>
-                                                <td>January 30</td>
-                                                <td class="color-success">$55.32</td>
-                                            </tr>
-                                            <tr>
-                                                <th>3</th>
-                                                <td>Blue Backpack For Baby</td>
-                                                <td><span class="badge badge-success px-2">Extended</span>
-                                                </td>
-                                                <td>January 25</td>
-                                                <td class="color-danger">$14.85</td>
-                                            </tr>
+                                            <?php endforeach ?>
+                                          
                                         </tbody>
                                     </table>
                                 </div>
@@ -126,3 +122,60 @@
             </div>
             <!-- #/ container -->
         </div>
+
+        <!-- modal history -->
+
+        <div class="modal fade" id="modal_tambah_history" style="display: none;" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Tambah History Pendidikan</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"><span>×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="form-valide" action="<?php echo base_url('data_santri/tambah_history_pendidikan_santri') ?>" method="post" novalidate="novalidate">
+                                                    <input type="hidden" name="id_santri" value="<?php echo $lihat_santri->id_santri ?>">
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-skill">Nama Lembaga<span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <select class="form-control" id="nama_lembaga" name="nama_lembaga">
+                                                    <option value="">Pilih Lembaga</option>
+                                                    <?php foreach ($lembaga as $lg) : ?>
+                                                    <option value="<?php echo $lg->id_lembaga ?>"><?php echo  $lg->nama_lembaga ?></option>
+                                                    <?php endforeach ?>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-currency">Tahun Awal <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="number" class="form-control" id="tahun_awal" name="tahun_awal" placeholder="Masukkan Tahun Awal Masuk">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-website">Tahun Akhir<span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="number" class="form-control" id="tahun_akhir" name="tahun_akhir" placeholder="Masukkan Tahun Akhir Masuk">
+                                            </div>
+                                        </div>
+                                     
+                                        <div class="form-group row">
+                                            <div class="col-lg-8 ml-auto">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                                   
+                                                </div>
+                                                <!-- <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
