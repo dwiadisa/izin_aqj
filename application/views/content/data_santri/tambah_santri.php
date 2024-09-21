@@ -144,6 +144,7 @@
                                                 <select class="form-control" id="status" name="status">
                                                     <option value="AKTIF">Aktif</option>
                                                     <option value="NONAKTIF">Nonaktif</option>
+                                                    <option value="ALUMNI">ALUMNI</option>
                                                 </select>
                                                 <?php echo form_error('status', '<div class="text-danger">', '</div>'); ?>
                                             </div>

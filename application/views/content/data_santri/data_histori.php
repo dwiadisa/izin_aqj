@@ -103,8 +103,10 @@
                                                 <td class="color-primary">
                                                     
                                   <div class="btn-group" role="group">
-                                        <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Success</button>
-                                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Dropdown link</a> <a class="dropdown-item" href="#">Dropdown link</a>
+                                        <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="<?php echo base_url() ?>">Ubah</a>
+                                             <a class="dropdown-item" href="<?php echo base_url() ?>">Hapus</a>
                                         </div>
                                     </div>
 

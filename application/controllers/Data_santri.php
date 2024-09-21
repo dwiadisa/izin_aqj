@@ -21,7 +21,8 @@ class Data_santri extends CI_Controller {
             'title' => 'Data Santri',
             'data_santri' => $this->data_santri_model->lihat_santri_semua()->result(),
             'santri_aktif' => $this->data_santri_model->lihat_santri_aktif()->result(),
-            'santri_nonaktif' => $this->data_santri_model->lihat_santri_nonaktif()->result()
+            'santri_nonaktif' => $this->data_santri_model->lihat_santri_nonaktif()->result(),
+            'santri_alumni' => $this->data_santri_model->lihat_santri_alumni()->result()
         ];
 
         // var_dump($data);
@@ -575,6 +576,10 @@ echo ("<script LANGUAGE='JavaScript'>
     
 
         
+
+    }
+
+    public function ubah_history_pendidikan_santri($id){
 
     }
 }

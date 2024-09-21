@@ -145,6 +145,7 @@
                                                     <option value="">Pilih Status</option>
                                                     <option value="AKTIF" <?php echo ($santri->status_santri == 'AKTIF') ? 'selected' : ''; ?>>Aktif</option>
                                                     <option value="NONAKTIF" <?php echo ($santri->status_santri == 'NONAKTIF') ? 'selected' : ''; ?>>Nonaktif</option>
+                                                    <option value="ALUMNI" <?php echo ($santri->status_santri == 'ALUMNI') ? 'selected' : ''; ?>>Alumni</option>
                                                 </select>
                                                 <?php echo form_error('status', '<div class="text-danger">', '</div>'); ?>
                                             </div>
