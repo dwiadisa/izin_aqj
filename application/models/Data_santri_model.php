@@ -141,5 +141,20 @@ class Data_santri_model extends CI_Model
 
 
     }
+
+    public function ubah_history_pendidikan($id_history, $data) {
+        $this->db->where('id_history', $id_history);
+        return $this->db->update('data_history_pendidikan', $data);
+    }
+
+    public function hapus_history_pendidikan($id_history){
+        $this->db->where('id_history', $id_history);
+        return $this->db->delete('data_history_pendidikan');
+    }
+    
+    public function update_status($id, $status) {
+        $this->db->where('id_santri', $id);
+        return $this->db->update('data_santri', array('status_santri' => $status));
+    }
 }
 ?>

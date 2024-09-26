@@ -105,8 +105,8 @@
                                   <div class="btn-group" role="group">
                                         <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="<?php echo base_url() ?>">Ubah</a>
-                                             <a class="dropdown-item" href="<?php echo base_url() ?>">Hapus</a>
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ubahHistoryModal">Ubah</a>
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#hapusHistoryModal">Hapus</a>
                                         </div>
                                     </div>
 
@@ -178,6 +178,74 @@
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                     <button type="button" class="btn btn-primary">Save changes</button>
                                                 </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="modal fade" id="ubahHistoryModal" tabindex="-1" role="dialog" aria-labelledby="ubahHistoryModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="ubahHistoryModalLabel">Ubah Histori Pendidikan</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="form-valide" action="<?php echo base_url('data_santri/ubah_history_pendidikan_santri') ?>" method="post" novalidate="novalidate">
+                                                        <input type="hidden" name="id_santri" value="<?php echo $lihat_santri->id_santri ?>">
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-4 col-form-label" for="nama_lembaga_ubah">Nama Lembaga<span class="text-danger">*</span></label>
+                                                            <div class="col-lg-6">
+                                                                <select class="form-control" id="nama_lembaga_ubah" name="nama_lembaga">
+                                                                    <option value="">Pilih Lembaga</option>
+                                                                    <?php foreach ($lembaga as $lg) : ?>
+                                                                    <option value="<?php echo $lg->id_lembaga ?>" <?php echo ($lg->id_lembaga == $history->id_lembaga) ? 'selected' : ''; ?>><?php echo $lg->nama_lembaga ?></option>
+                                                                    <?php endforeach ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-4 col-form-label" for="tahun_awal_ubah">Tahun Awal <span class="text-danger">*</span></label>
+                                                            <div class="col-lg-6">
+                                                                <input type="number" class="form-control" id="tahun_awal_ubah" name="tahun_awal" placeholder="Masukkan Tahun Awal" value="<?php echo $history->tahun_masuk_lembaga ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-4 col-form-label" for="tahun_akhir_ubah">Tahun Akhir<span class="text-danger">*</span></label>
+                                                            <div class="col-lg-6">
+                                                                <input type="number" class="form-control" id="tahun_akhir_ubah" name="tahun_akhir" placeholder="Masukkan Tahun Akhir" value="<?php echo $history->tahun_keluar_lembaga ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-8 ml-auto">
+                                                                <button type="submit" class="btn btn-primary">Ubah</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="modal fade" id="hapusHistoryModal" tabindex="-1" role="dialog" aria-labelledby="hapusHistoryModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="hapusHistoryModalLabel">Hapus Histori Pendidikan</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah Anda yakin ingin menghapus histori pendidikan ini?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                    <a href="<?php echo base_url('data_santri/hapus_history_pendidikan_santri/' . $hs->id_history) ?>" class="btn btn-danger" id="hapusHistoryButton">Hapus</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -13,6 +13,22 @@
                                 <h4 class="card-title">Data Santri</h4>
                                 <hr>
                                 <!-- Nav tabs -->
+                                <form method="post" action="<?php echo base_url('Data_santri/update_status_batch'); ?>">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="status">Pilih Status Santri:</label>
+                                            <select class="form-control" name="status" id="status">
+                                                <option value="ALUMNI">ALUMNI</option>
+                                                <option value="AKTIF">AKTIF</option>
+                                                <option value="NONAKTIF">NONAKTIF</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-primary mt-4" onclick="return confirm('Apakah Anda yakin ingin memperbarui status santri ini?');">Update Status</button>
+                                    </div>
+                                </div>
                                 <div class="default-tab">
                                     <ul class="nav nav-tabs mb-3" role="tablist">
                                         <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#semua">Semua</a>
@@ -28,17 +44,18 @@
                                     <div class="tab-content">
                                         <div class="tab-pane fade show active" id="semua" role="tabpanel">
                                             <div class="p-t-15">
-                                         <div class="btn-group" role="group">
-                                        <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Set Status Santri</button>
-                                        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
-                                            <a class="dropdown-item" href="#">Dropdown link</a> 
-                                            <a class="dropdown-item" href="#">Dropdown link</a>
-                                        </div>
-                                    </div>
+                                                <div class="btn-group" role="group">
+                                                <!-- <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Set Status Santri</button> -->
+                                                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
+                                                    <a class="dropdown-item" href="#">Dropdown link</a> 
+                                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                                </div>
+                                            </div>
                                                <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
+                                            <th>Checkbox</th>
                                             <th>No.</th>
                                             <th>Foto</th>
                                             <th>Detail Santri</th>
@@ -52,6 +69,9 @@
                                         <?php $no = 1; ?>
                                         <?php foreach ($data_santri as $santri) : ?>
                                             <tr>
+                                                <td>
+                                                    <input type="checkbox" id="cb<?php echo $santri->id_santri; ?>" name="id_santri[]" value="<?php echo $santri->id_santri; ?>">
+                                                </td>
                                                 <td><?php echo $no++ ?></td>
                                                 <td>   <img src="<?php echo empty($santri->foto) ? base_url('assets/images/user.png') : base_url($santri->foto); ?>" alt="Foto Santri" style="width: 100px; height: auto;"></td>
                                                 <td>
@@ -120,6 +140,7 @@
                                                     <table class="table table-striped table-bordered zero-configuration">
                                                         <thead>
                                                             <tr>
+                                                                <th>Checkbox</th>
                                                                 <th>No.</th>
                                                                 <th>Foto</th>
                                                                 <th>Detail Santri</th>
@@ -133,6 +154,9 @@
                                                             <?php $no = 1; ?>
                                                             <?php foreach ($santri_aktif as $santri) : ?>
                                                                 <tr>
+                                                                    <td>
+                                                                        <input type="checkbox" id="cb<?php echo $santri->id_santri; ?>" name="id_santri[]" value="<?php echo $santri->id_santri; ?>">
+                                                                    </td>
                                                                     <td><?php echo $no++ ?></td>
                                                                     <td>   <img src="<?php echo empty($santri->foto) ? base_url('assets/images/user.png') : base_url($santri->foto); ?>" alt="Foto Santri" style="width: 100px; height: auto;"></td>
                                                                     <td>
@@ -199,6 +223,7 @@
                                                     <table class="table table-striped table-bordered zero-configuration">
                                                         <thead>
                                                             <tr>
+                                                                <th>Checkbox</th>
                                                                 <th>No.</th>
                                                                 <th>Foto</th>
                                                                 <th>Detail Santri</th>
@@ -212,6 +237,9 @@
                                                             <?php $no = 1; ?>
                                                             <?php foreach ($santri_nonaktif as $santri) : ?>
                                                                 <tr>
+                                                                    <td>
+                                                                        <input type="checkbox" id="cb<?php echo $santri->id_santri; ?>" name="id_santri[]" value="<?php echo $santri->id_santri; ?>">
+                                                                    </td>
                                                                     <td><?php echo $no++ ?></td>
                                                                     <td>
                                                                         <img src="<?php echo empty($santri->foto) ? base_url('assets/images/user.png') : base_url($santri->foto); ?>" alt="Foto Santri" style="width: 100px; height: auto;">
@@ -281,6 +309,8 @@
                                                     <table class="table table-striped table-bordered zero-configuration">
                                                         <thead>
                                                             <tr>
+                                                                
+                                                                <th>Checkbox</th>
                                                                 <th>No.</th>
                                                                 <th>Foto</th>
                                                                 <th>Detail Santri</th>
@@ -294,6 +324,9 @@
                                                             <?php $no = 1; ?>
                                                             <?php foreach ($santri_alumni as $santri) : ?>
                                                                 <tr>
+                                                                    <td>
+                                                                        <input type="checkbox" id="cb<?php echo $santri->id_santri; ?>" name="id_santri[]" value="<?php echo $santri->id_santri; ?>">
+                                                                    </td>
                                                                     <td><?php echo $no++ ?></td>
                                                                     <td>   <img src="<?php echo empty($santri->foto) ? base_url('assets/images/user.png') : base_url($santri->foto); ?>" alt="Foto Santri" style="width: 100px; height: auto;"></td>
                                                                     <td>
@@ -363,3 +396,6 @@
             </div>
             <!-- End of Selection -->
                                         </div>
+                                        </form>
+
+                                        
