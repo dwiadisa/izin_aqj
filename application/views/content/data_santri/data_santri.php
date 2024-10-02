@@ -15,18 +15,22 @@
                                 <!-- Nav tabs -->
                                 <form method="post" action="<?php echo base_url('Data_santri/update_status_batch'); ?>">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="status">Pilih Status Santri:</label>
-                                            <select class="form-control" name="status" id="status">
-                                                <option value="ALUMNI">ALUMNI</option>
-                                                <option value="AKTIF">AKTIF</option>
-                                                <option value="NONAKTIF">NONAKTIF</option>
-                                            </select>
+                                    <div class="col-md-12">
+                                        <div class=" container row justify-content-center">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="status">Pilih Status Santri:</label>
+                                                    <select class="form-control" name="status" id="status">
+                                                        <option value="ALUMNI">ALUMNI</option>
+                                                        <option value="AKTIF">AKTIF</option>
+                                                        <option value="NONAKTIF">NONAKTIF</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-primary mt-4" onclick="return confirm('Apakah Anda yakin ingin memperbarui status santri ini?');">Update Status</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button type="submit" class="btn btn-primary mt-4" onclick="return confirm('Apakah Anda yakin ingin memperbarui status santri ini?');">Update Status</button>
                                     </div>
                                 </div>
                                 <div class="default-tab">

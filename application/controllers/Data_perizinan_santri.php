@@ -43,7 +43,7 @@ class Data_perizinan_santri extends CI_Controller {
         $this->form_validation->set_rules('status', 'Status', 'required', array('required' => 'Status wajib diisi.'));
         $this->form_validation->set_rules('status_izin', 'Status Izin', 'required', array('required' => 'Status Izin wajib diisi.'));
         $this->form_validation->set_rules('keperluan', 'Keperluan', 'required', array('required' => 'Keperluan wajib diisi.'));
-        $this->form_validation->set_rules('pemberi_izin', 'Pemberi Izin', 'required', array('required' => 'Pemberi Izin wajib diisi.'));
+        // $this->form_validation->set_rules('pemberi_izin', 'Pemberi Izin', 'required', array('required' => 'Pemberi Izin wajib diisi.'));
 
         if ($this->form_validation->run() == FALSE) {
             $data =[
@@ -68,7 +68,7 @@ class Data_perizinan_santri extends CI_Controller {
                 'status' => $this->input->post('status'),
                 'status_izin' => $this->input->post('status_izin'),
                 'keperluan' => $this->input->post('keperluan'),
-                'pemberi_izin' => $this->input->post('pemberi_izin')
+                'pemberi_izin' => $this->session->userdata('id_user')
             ];
 
           

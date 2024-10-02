@@ -105,7 +105,7 @@
                                   <div class="btn-group" role="group">
                                         <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ubahHistoryModal">Ubah</a>
+                                            <!-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ubahHistoryModal">Ubah</a> -->
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#hapusHistoryModal">Hapus</a>
                                         </div>
                                     </div>
@@ -195,6 +195,7 @@
                                                 <div class="modal-body">
                                                     <form class="form-valide" action="<?php echo base_url('data_santri/ubah_history_pendidikan_santri') ?>" method="post" novalidate="novalidate">
                                                         <input type="hidden" name="id_santri" value="<?php echo $lihat_santri->id_santri ?>">
+                                                        <?php if (isset($history)): ?>
                                                         <div class="form-group row">
                                                             <label class="col-lg-4 col-form-label" for="nama_lembaga_ubah">Nama Lembaga<span class="text-danger">*</span></label>
                                                             <div class="col-lg-6">
@@ -218,6 +219,9 @@
                                                                 <input type="number" class="form-control" id="tahun_akhir_ubah" name="tahun_akhir" placeholder="Masukkan Tahun Akhir" value="<?php echo $history->tahun_keluar_lembaga ?>">
                                                             </div>
                                                         </div>
+                                                        <?php else: ?>
+                                                        <p>Data histori tidak ditemukan.</p>
+                                                        <?php endif; ?>
                                                         <div class="form-group row">
                                                             <div class="col-lg-8 ml-auto">
                                                                 <button type="submit" class="btn btn-primary">Ubah</button>

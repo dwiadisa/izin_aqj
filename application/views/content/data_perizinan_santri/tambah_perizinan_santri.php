@@ -104,21 +104,7 @@
                                                 <?php echo form_error('keperluan', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>
-                                     <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-skill">Pemberi Izin<span class="text-danger">*</span>
-                                            </label>
-                                            <div class="col-lg-6">
-                                                <select class="form-control" id="pemberi_izin" name="pemberi_izin">
-                                                    <option value="">Pilih Pemberi Izin</option>
-                                                    <?php foreach ($load_user as $user): ?>
-                                                    <option value="<?php echo $user->id_user; ?>"><?php echo $user->nama_lengkap; ?></option>
-                                                    <?php endforeach; ?>
-                                                
-                                                </select>
-                                                <?php echo form_error('pemberi_izin', '<div class="text-danger">', '</div>'); ?>
-                                            </div>
-                                        </div>
-                                      
+                                     
                                        
                                         <div class="form-group row">
                                             <div class="col-lg-8 ml-auto">
