@@ -99,6 +99,25 @@
                                         <?php echo form_error('no_hp_wali', '<div class="text-danger">', '</div>'); ?>
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-digits">Tanggal Daftar <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="date" class="form-control" id="tanggal_daftar" name="tanggal_daftar" value="<?php echo $data_santri->tanggal_daftar; ?>" placeholder="Masukkan Tanggal Daftar..">
+                                        <?php echo form_error('tanggal_daftar', '<div class="text-danger">', '</div>'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-digits">Tanggal Tenggat <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="date" class="form-control" id="tanggal_tenggat" name="tanggal_tenggat" value="<?php echo $data_santri->tanggal_tenggat; ?>" placeholder="Masukkan Tanggal Tenggat..">
+                                        <?php echo form_error('tanggal_tenggat', '<div class="text-danger">', '</div>'); ?>
+                                    </div>
+                                </div>
+
+
                                 <div class="form-group row">
                                     <div class="col-lg-8 ml-auto">
                                         <button type="submit" class="btn btn-primary">Submit</button>

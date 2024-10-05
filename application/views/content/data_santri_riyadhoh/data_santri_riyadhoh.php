@@ -22,7 +22,7 @@
                                                 <th>Detail Santri Riyadhoh</th>
                                                 <th>Alamat Lengkap</th>
                                                 <th>Detail Wali</th>
-                                                <th>Tanggal/Tahun Pendaftaran</th>
+                                                <th>Tanggal Pendaftaran & Tenggat / Tahun Pendaftaran</th>
                                                 <th>Aksi</th>
                                             
                                             </tr>
@@ -53,7 +53,16 @@
                                             </td>
                                                 <td>
                                                     Tanggal Pendaftaran : <?php echo $sr->tanggal_daftar ?> <br>
+                                                    Tanggal Tenggat : <?php echo $sr->tanggal_tenggat ?> <br>
                                                     Tahun Pendaftaran : <?php echo $sr->tahun_daftar ?> <br>
+                                                <?php
+                                                    $tanggal_daftar = new DateTime($sr->tanggal_daftar);
+                                                    $tanggal_tenggat = new DateTime($sr->tanggal_tenggat);
+                                                    if ($tanggal_daftar > $tanggal_tenggat) {
+                                                        $interval = $tanggal_daftar->diff($tanggal_tenggat);
+                                                        echo '<span class="badge badge-danger">Tanggal Riyadhoh telah terlewati ' . $interval->days . ' hari</span>';
+                                                    }
+                                                ?>
 
                                                 </td>
                                                 <td>

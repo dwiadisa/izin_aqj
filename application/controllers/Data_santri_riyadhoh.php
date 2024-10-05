@@ -62,12 +62,15 @@ class Data_santri_riyadhoh extends CI_Controller {
                 'no_hp' => $this->input->post('no_hp'),
                 'nama_wali' => $this->input->post('nama_wali'),
                 'no_hp_wali' => $this->input->post('no_hp_wali'),
-                'tanggal_daftar' => $this->input->post(date('Y-m-d')),
-                'tahun_daftar' => $this->input->post(date('Y')),
+                'tanggal_daftar' => date('Y-m-d'),
+                'tahun_daftar' => date('Y'),
+                'tanggal_tenggat' => date('Y-m-d', strtotime('+40 days', strtotime(date('Y-m-d')))),
                 
             ];
 
-       
+    
+            var_dump($data_santri);
+            die;
             $this->Data_santri_riyadhoh_model->tambah_santri_riyadhoh($data_santri);
 
             redirect('data_santri_riyadhoh');
@@ -89,6 +92,8 @@ class Data_santri_riyadhoh extends CI_Controller {
         $this->form_validation->set_rules('no_hp', 'No. HP', 'required|numeric', array('required' => 'No. HP harus diisi.', 'numeric' => 'No. HP harus berupa angka.'));
         $this->form_validation->set_rules('nama_wali', 'Nama Wali', 'required', array('required' => 'Nama Wali harus diisi.'));
         $this->form_validation->set_rules('no_hp_wali', 'No. HP Wali', 'required|numeric', array('required' => 'No. HP Wali harus diisi.', 'numeric' => 'No. HP Wali harus berupa angka.'));
+        $this->form_validation->set_rules('tanggal_daftar', 'Tanggal Daftar', 'required', array('required' => 'Tanggal Daftar harus diisi.'));
+        $this->form_validation->set_rules('tanggal_tenggat', 'Tanggal Tenggat', 'required', array('required' => 'Tanggal Tenggat harus diisi.'));
 
         if ($this->form_validation->run() == FALSE) {
             $data = [
@@ -112,7 +117,9 @@ class Data_santri_riyadhoh extends CI_Controller {
                 'no_nik' => $this->input->post('no_nik'),
                 'no_hp' => $this->input->post('no_hp'),
                 'nama_wali' => $this->input->post('nama_wali'),
-                'no_hp_wali' => $this->input->post('no_hp_wali')
+                'no_hp_wali' => $this->input->post('no_hp_wali'),
+                'tanggal_daftar' => $this->input->post('tanggal_daftar'),
+                'tanggal_tenggat' => $this->input->post('tanggal_tenggat'),
             ];
 
             $this->Data_santri_riyadhoh_model->ubah_santri_riyadhoh($id, $data_santri);
@@ -153,6 +160,67 @@ public function print_santri_riyadhoh($id){
 
     // Membuat PDF
     $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+}
+
+
+public function ekspor_santri_riyadhoh()
+{
+    $data_santri = $this->Data_santri_riyadhoh_model->lihat_santri_riyadhoh()->result();
+  $data_rekapan_izin = $this->Data_perizinan_model->lihat_perizinan()->result();
+
+        $excel = new Excel();
+        $excel->setActiveSheetIndex(0);
+        $sheet = $excel->getActiveSheet();
+
+        // Set header
+        $headers = ["No","Kode Perizinan","No Induk Santri", "Nama Santri", "Nama Wilayah", "Kamar","Tanggal Mulai Izin","Jam Mulai Izin", "Tanggal Kembali","Jam Kembali" ,"Status Kembali", "Status Izin","Keperluan"];
+       
+        $column = 0;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($column, 1, $header);
+            $column++;
+        }
+
+        // Set data
+        $row = 2;
+        $no = 1;
+        foreach ($data_rekapan_izin as $data) {
+            $sheet->setCellValueByColumnAndRow(0, $row, (string)$no++);
+            $sheet->setCellValueByColumnAndRow(1, $row, (string)$data->kode_perizinan);
+            $sheet->setCellValueByColumnAndRow(2, $row, (string)$data->no_induk_santri);
+            $sheet->setCellValueByColumnAndRow(3, $row, (string)$data->nama_lengkap_santri);
+            $sheet->setCellValueByColumnAndRow(4, $row, (string)$data->nama_wilayah);
+            $sheet->setCellValueByColumnAndRow(5, $row, (string)$data->nama_kamar);
+            $sheet->setCellValueByColumnAndRow(6, $row, (string)$data->tanggal_mulai);
+            $sheet->setCellValueByColumnAndRow(7, $row, (string)$data->jam_mulai);
+            $sheet->setCellValueByColumnAndRow(8, $row, (string)$data->tanggal_akhir);
+            $sheet->setCellValueByColumnAndRow(9, $row, (string)$data->jam_akhir);
+            $sheet->setCellValueByColumnAndRow(10, $row, (string)$data->status);
+            $sheet->setCellValueByColumnAndRow(11, $row, (string)$data->status_izin);
+            $sheet->setCellValueByColumnAndRow(12, $row, (string)$data->keperluan);
+            // $sheet->setCellValueByColumnAndRow(13, $row, (string)$data->nama_wilayah);
+            // $sheet->setCellValueByColumnAndRow(14, $row, (string)$data->nama_kamar);
+            $row++;
+        }
+
+        // Save the file
+        $filename = "Rekapan_perizinan_santri_" . date("YmdHis") . ".xlsx";
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        try {
+            $writer = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+            $writer->save('php://output');
+        } catch (Exception $e) {
+            log_message('error', 'Error saat mencoba mengunduh file Excel: ' . $e->getMessage());
+            show_error('Terjadi kesalahan pada server. Silakan coba lagi atau hubungi administrator server.', 500);
+        }
+        exit;
+
+
+
+    
 }
 
 public function hapus_santri_riyadhoh($id)
