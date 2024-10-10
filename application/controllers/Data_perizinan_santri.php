@@ -89,7 +89,7 @@ public function ubah_perizinan($id_perizinan)
     $this->form_validation->set_rules('status', 'Status', 'required', array('required' => 'Status harus diisi.'));
     $this->form_validation->set_rules('status_izin', 'Status Izin', 'required', array('required' => 'Status Izin harus diisi.'));
     $this->form_validation->set_rules('keperluan', 'Keperluan', 'required', array('required' => 'Keperluan harus diisi.'));
-    $this->form_validation->set_rules('pemberi_izin', 'Pemberi Izin', 'required', array('required' => 'Pemberi Izin harus diisi.'));
+    // $this->form_validation->set_rules('pemberi_izin', 'Pemberi Izin', 'required', array('required' => 'Pemberi Izin harus diisi.'));
 
     if ($this->form_validation->run() == FALSE) {
         $data = [
@@ -112,7 +112,7 @@ public function ubah_perizinan($id_perizinan)
             'status' => $this->input->post('status'),
             'status_izin' => $this->input->post('status_izin'),
             'keperluan' => $this->input->post('keperluan'),
-            'pemberi_izin' => $this->input->post('pemberi_izin')
+            'pemberi_izin' =>  $this->session->userdata('id_user')
         ];
 
         if ($this->input->post('status')== 'SUDAH DIIZINKAN') {

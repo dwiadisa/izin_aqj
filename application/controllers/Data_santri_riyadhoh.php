@@ -162,18 +162,34 @@ public function print_santri_riyadhoh($id){
     $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
 }
 
-
-public function ekspor_santri_riyadhoh()
+public function cetak_santri_riyadhoh()
 {
+    
+         $data = [
+            'title' => ' Ekspor Data Santri Riyadhoh' ,
+            'load_santri_riyadhoh' => $this->Data_santri_riyadhoh_model->lihat_santri_riyadhoh()->result()
+        ];  
+
+        $this->load->view('templates/header_dashboard' , $data);
+        $this->load->view('content/data_santri_riyadhoh/cetak_santri_riyadhoh',$data);
+        $this->load->view('templates/footer_dashboard');
+
+}
+
+
+public function download_rekapan_excel()
+{
+     $this->load->library('excel');
     $data_santri = $this->Data_santri_riyadhoh_model->lihat_santri_riyadhoh()->result();
-  $data_rekapan_izin = $this->Data_perizinan_model->lihat_perizinan()->result();
+//   $data_rekapan_izin = $this->Data_perizinan_model->lihat_perizinan()->result();
+
 
         $excel = new Excel();
         $excel->setActiveSheetIndex(0);
         $sheet = $excel->getActiveSheet();
 
         // Set header
-        $headers = ["No","Kode Perizinan","No Induk Santri", "Nama Santri", "Nama Wilayah", "Kamar","Tanggal Mulai Izin","Jam Mulai Izin", "Tanggal Kembali","Jam Kembali" ,"Status Kembali", "Status Izin","Keperluan"];
+        $headers = ["No", "Nama Santri", "Tempat Lahir", "Tanggal Lahir", "Alamat Desa", "Alamat Kecamatan", "Alamat Kabupaten", "Alamat Provinsi", "No. NIK", "No. HP", "Nama Wali", "No. HP Wali", "Tahun Daftar", "Tanggal Daftar", "Tanggal Tenggat", "Status"];
        
         $column = 0;
         foreach ($headers as $header) {
@@ -182,29 +198,30 @@ public function ekspor_santri_riyadhoh()
         }
 
         // Set data
-        $row = 2;
+        $row = 2;   
         $no = 1;
-        foreach ($data_rekapan_izin as $data) {
+        foreach ($data_santri as $data) {
             $sheet->setCellValueByColumnAndRow(0, $row, (string)$no++);
-            $sheet->setCellValueByColumnAndRow(1, $row, (string)$data->kode_perizinan);
-            $sheet->setCellValueByColumnAndRow(2, $row, (string)$data->no_induk_santri);
-            $sheet->setCellValueByColumnAndRow(3, $row, (string)$data->nama_lengkap_santri);
-            $sheet->setCellValueByColumnAndRow(4, $row, (string)$data->nama_wilayah);
-            $sheet->setCellValueByColumnAndRow(5, $row, (string)$data->nama_kamar);
-            $sheet->setCellValueByColumnAndRow(6, $row, (string)$data->tanggal_mulai);
-            $sheet->setCellValueByColumnAndRow(7, $row, (string)$data->jam_mulai);
-            $sheet->setCellValueByColumnAndRow(8, $row, (string)$data->tanggal_akhir);
-            $sheet->setCellValueByColumnAndRow(9, $row, (string)$data->jam_akhir);
-            $sheet->setCellValueByColumnAndRow(10, $row, (string)$data->status);
-            $sheet->setCellValueByColumnAndRow(11, $row, (string)$data->status_izin);
-            $sheet->setCellValueByColumnAndRow(12, $row, (string)$data->keperluan);
-            // $sheet->setCellValueByColumnAndRow(13, $row, (string)$data->nama_wilayah);
-            // $sheet->setCellValueByColumnAndRow(14, $row, (string)$data->nama_kamar);
+            $sheet->setCellValueByColumnAndRow(1, $row, (string)$data->nama_santri_riyadhoh);
+            $sheet->setCellValueByColumnAndRow(2, $row, (string)$data->tempat_lahir);
+            $sheet->setCellValueByColumnAndRow(3, $row, (string)$data->tanggal_lahir);
+            $sheet->setCellValueByColumnAndRow(4, $row, (string)$data->alamat_desa);
+            $sheet->setCellValueByColumnAndRow(5, $row, (string)$data->alamat_kecamatan);
+            $sheet->setCellValueByColumnAndRow(6, $row, (string)$data->alamat_kabupaten);
+            $sheet->setCellValueByColumnAndRow(7, $row, (string)$data->alamat_provinsi);
+            $sheet->setCellValueByColumnAndRow(8, $row, (string)$data->no_nik);
+            $sheet->setCellValueByColumnAndRow(9, $row, (string)$data->no_hp);
+            $sheet->setCellValueByColumnAndRow(10, $row, (string)$data->nama_wali);
+            $sheet->setCellValueByColumnAndRow(11, $row, (string)$data->no_hp_wali);
+            $sheet->setCellValueByColumnAndRow(12, $row, (string)$data->tahun_daftar);
+            $sheet->setCellValueByColumnAndRow(13, $row, (string)$data->tanggal_daftar);
+            $sheet->setCellValueByColumnAndRow(14, $row, (string)$data->tanggal_tenggat);
+            $sheet->setCellValueByColumnAndRow(15, $row, (string)$data->status);
             $row++;
         }
 
         // Save the file
-        $filename = "Rekapan_perizinan_santri_" . date("YmdHis") . ".xlsx";
+        $filename = "Rekapan_Santri_Riyadhoh_" . date("YmdHis") . ".xlsx";
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="' . $filename . '"');
         header('Cache-Control: max-age=0');

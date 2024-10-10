@@ -256,8 +256,8 @@
                         <ul aria-expanded="false">
                             <li><a href="<?php echo base_url('data_santri_riyadhoh') ?>">List Santri Riyadhoh</a></li>
                             <li><a href="<?php echo base_url('data_santri_riyadhoh/tambah_santri_riyadhoh') ?>">Tambah Data Santri Riyadhoh</a></li>
-                            <li><a href="<?php echo base_url('data_santri_riyadhoh/ekspor_santri_riyadhoh') ?>">Ekspor Data Santri Riyadhoh</a></li>
-                            
+                        
+                            <li><a href="<?php echo base_url('data_santri_riyadhoh/cetak_santri_riyadhoh') ?>">Ekspor Data Santri Riyadhoh</a></li>
                         </ul>
                     </li>
                     <li class="nav-label">Manajemen User</li>
