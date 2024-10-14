@@ -180,7 +180,7 @@ public function download_rekapan_excel(){
         $sheet = $excel->getActiveSheet();
 
         // Set header
-        $headers = ["No","Kode Perizinan","No Induk Santri", "Nama Santri", "Nama Wilayah", "Kamar","Tanggal Mulai Izin","Jam Mulai Izin", "Tanggal Kembali","Jam Kembali" ,"Status Kembali", "Status Izin","Keperluan"];
+        $headers = ["No","Kode Perizinan","No Induk Santri", "Nama Santri", "Nama Wilayah", "Kamar","Tanggal Mulai Izin","Jam Mulai Izin", "Tanggal Kembali","Jam Kembali" , "Tanggal Checkin", "Jam Checkin", "Status Kembali", "Status Izin","Keperluan"];
        
         $column = 0;
         foreach ($headers as $header) {
@@ -202,11 +202,11 @@ public function download_rekapan_excel(){
             $sheet->setCellValueByColumnAndRow(7, $row, (string)$data->jam_mulai);
             $sheet->setCellValueByColumnAndRow(8, $row, (string)$data->tanggal_akhir);
             $sheet->setCellValueByColumnAndRow(9, $row, (string)$data->jam_akhir);
-            $sheet->setCellValueByColumnAndRow(10, $row, (string)$data->status);
-            $sheet->setCellValueByColumnAndRow(11, $row, (string)$data->status_izin);
-            $sheet->setCellValueByColumnAndRow(12, $row, (string)$data->keperluan);
-            // $sheet->setCellValueByColumnAndRow(13, $row, (string)$data->nama_wilayah);
-            // $sheet->setCellValueByColumnAndRow(14, $row, (string)$data->nama_kamar);
+            $sheet->setCellValueByColumnAndRow(10, $row, (string)$data->tanggal_checkin);
+            $sheet->setCellValueByColumnAndRow(11, $row, (string)$data->jam_checkin);
+            $sheet->setCellValueByColumnAndRow(12, $row, (string)$data->status);
+            $sheet->setCellValueByColumnAndRow(13, $row, (string)$data->status_izin);
+            $sheet->setCellValueByColumnAndRow(14, $row, (string)$data->keperluan);
             $row++;
         }
 
