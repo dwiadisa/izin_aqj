@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         
 class Home_model extends CI_Model 
 {
+    
+
     public function lihat_lisensi_izin($izin)
     {
 
@@ -28,8 +30,13 @@ class Home_model extends CI_Model
 
 
     public function update_izin($kode,$status){
+        date_default_timezone_set('Asia/Jakarta');
         $this->db->where('kode_perizinan', $kode);
-        $this->db->update('data_perizinan', array('status' => $status));
+        $this->db->update('data_perizinan', array('status' => $status,
+                                                'tanggal_checkin' => date('Y-m-d'),
+                                                'jam_checkin' => date('H:i:s')
+    
+    ));
 
     }
                         

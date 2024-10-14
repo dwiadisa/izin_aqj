@@ -34,7 +34,9 @@
                                                             <th>No</th>
                                                             <th>Kode Izin</th>
                                                             <th>Detail Santri</th>
-                                                            <th>Tanggal & Jam Mulai - Akhir</th>
+                                                            <th>Tanggal & Jam Mulai - Akhir <br>
+                                                                Tanggal & Jam Masuk Pondok (Check In Kiosk)
+                                                            </th>
                                                             <th>Status</th>
                                                             <th>Aksi</th>
                                                         </tr>
@@ -46,7 +48,7 @@
                                                             <td><?= $no++ ?></td>
                                                             <td><strong><?= $izin->kode_perizinan ?></strong></td>
                                                             <td><?= $izin->no_induk_santri ?> - <?= $izin->nama_lengkap_santri ?></td>
-                                                            <td><?= $izin->tanggal_mulai ?><br><?= $izin->jam_mulai ?> - <?= $izin->tanggal_akhir ?><br><?= $izin->jam_akhir ?>
+                                                            <td><?= $izin->tanggal_mulai ?> | <?= $izin->jam_mulai ?> s/d <?= $izin->tanggal_akhir ?> | <?= $izin->jam_akhir ?>
                                                                     <?php 
                                                                     $current_time = date('Y-m-d H:i:s');
                                                                     $end_time = $izin->tanggal_akhir . ' ' . $izin->jam_akhir;
@@ -63,6 +65,7 @@
                                                                                  echo "<span class='badge badge-success'>Sisa $days_remaining hari</span>";
                                                                              }
                                                                     }  
+                                                                    echo "<div style='margin-top: 10px;'><strong>Check-in:</strong> " . $izin->tanggal_checkin . " |  " . $izin->jam_checkin . "</div>";
                                                                     ?></td>
                                                             <td><?= $izin->status ?> <br>
                                                             <?php if ($izin->status_izin == 'BELUM DIIZINKAN'): ?>
@@ -105,7 +108,9 @@
                                                                 <th>No</th>
                                                                 <th>Kode Izin</th>
                                                                 <th>Detail Santri</th>
-                                                                <th>Tanggal Mulai - Akhir</th>
+                                                                 <th>Tanggal & Jam Mulai - Akhir <br>
+                                                                Tanggal & Jam Masuk Pondok (Check In Kiosk)
+                                                            </th>
                                                                 <th>Status</th>
                                                                 <th>Aksi</th>
                                                             </tr>
@@ -117,26 +122,25 @@
                                                                 <td><?= $no++ ?></td>
                                                                 <td><strong><?= $izin->kode_perizinan ?></strong></td>
                                                                 <td><?= $izin->no_induk_santri ?> - <?= $izin->nama_lengkap_santri ?></td>
-                                                                <td><?= $izin->tanggal_mulai ?><br><?= $izin->jam_mulai ?> - <?= $izin->tanggal_akhir ?><br><?= $izin->jam_akhir ?>
-                                                                    <?php
+                                                                  <td><?= $izin->tanggal_mulai ?> | <?= $izin->jam_mulai ?> s/d <?= $izin->tanggal_akhir ?> | <?= $izin->jam_akhir ?>
+                                                                    <?php 
                                                                     $current_time = date('Y-m-d H:i:s');
                                                                     $end_time = $izin->tanggal_akhir . ' ' . $izin->jam_akhir;
-                                                                    // if (strtotime($current_time) > strtotime($end_time)):
-                                                                    //     $diff = strtotime($current_time) - strtotime($end_time);
-                                                                    //     $days_late = floor($diff / (60 * 60 * 24));
-                                                                    //     echo "<span class='badge badge-danger'>Terlambat $days_late hari</span>";
-                                                                    // endif; 
-                                                                    ?>
-                                                                    <?php if ($izin->status === "SUDAH KEMBALI"): ?>
-                                                                        <span class='badge badge-success'>Perizinan sudah selesai</span>
-                                                                    <?php elseif ($izin->status === "BELUM KEMBALI"): ?>
-                                                                        <?php if (strtotime($current_time) > strtotime($end_time)): ?>
-                                                                            <span class='badge badge-danger'>Terlambat $days_late hari</span>
-                                                                        <?php else: ?>
-                                                                            <span class='badge badge-success'>Sisa <?php echo  $days_remaining ?> hari</span>
-                                                                        <?php endif; ?>
-                                                                    <?php endif; ?>
-                                                                </td>
+                                                                    if ($izin->status === "SUDAH KEMBALI"){
+                                                                        echo "<span class='badge badge-success'>Perizinan sudah selesai</span>";
+                                                                    }elseif  ($izin->status === "BELUM KEMBALI"){
+                                                                             if (strtotime($current_time) > strtotime($end_time)) {
+                                                                                 $diff = strtotime($current_time) - strtotime($end_time);
+                                                                                 $days_late = floor($diff / (60 * 60 * 24));
+                                                                                 echo "<span class='badge badge-danger'>Terlambat $days_late hari</span>";
+                                                                             } else {
+                                                                                 $diff = strtotime($end_time) - strtotime($current_time);
+                                                                                 $days_remaining = floor($diff / (60 * 60 * 24));
+                                                                                 echo "<span class='badge badge-success'>Sisa $days_remaining hari</span>";
+                                                                             }
+                                                                    }  
+                                                                    echo "<div style='margin-top: 10px;'><strong>Check-in:</strong> " . $izin->tanggal_checkin . " |  " . $izin->jam_checkin . "</div>";
+                                                                    ?></td>
                                                                 <td><?= $izin->status ?> <br>
                                                                 <?php if ($izin->status_izin == 'BELUM DIIZINKAN'): ?>
                                                                     <span class='badge badge-danger'>BELUM DIIZINKAN</span>
@@ -178,7 +182,9 @@
                                                                 <th>No</th>
                                                                 <th>Kode Izin</th>
                                                                 <th>Detail Santri</th>
-                                                                <th>Tanggal Mulai - Akhir</th>
+                                                                <th>Tanggal & Jam Mulai - Akhir <br>
+                                                                Tanggal & Jam Masuk Pondok (Check In Kiosk)
+                                                            </th>
                                                                 <th>Status</th>
                                                                 <th>Aksi</th>
                                                             </tr>
@@ -190,21 +196,25 @@
                                                                 <td><?= $no++ ?></td>
                                                                 <td><strong><?= $izin->kode_perizinan ?></strong></td>
                                                                 <td><?= $izin->no_induk_santri ?> - <?= $izin->nama_lengkap_santri ?></td>
-                                                                <td><?= $izin->tanggal_mulai ?><br><?= $izin->jam_mulai ?> - <?= $izin->tanggal_akhir ?><br><?= $izin->jam_akhir ?>
+                                                                 <td><?= $izin->tanggal_mulai ?> | <?= $izin->jam_mulai ?> s/d <?= $izin->tanggal_akhir ?> | <?= $izin->jam_akhir ?>
                                                                     <?php 
                                                                     $current_time = date('Y-m-d H:i:s');
                                                                     $end_time = $izin->tanggal_akhir . ' ' . $izin->jam_akhir;
-                                                                    ?>
-                                                                    <?php if ($izin->status === "SUDAH KEMBALI"): ?>
-                                                                        <span class='badge badge-success'>Perizinan sudah selesai</span>
-                                                                    <?php elseif ($izin->status === "BELUM KEMBALI"): ?>
-                                                                        <?php if (strtotime($current_time) > strtotime($end_time)): ?>
-                                                                            <span class='badge badge-danger'>Terlambat $days_late hari</span>
-                                                                        <?php else: ?>
-                                                                            <span class='badge badge-success'>Sisa <?php echo  $days_remaining ?> hari</span>
-                                                                        <?php endif; ?>
-                                                                    <?php endif; ?>
-                                                                </td>
+                                                                    if ($izin->status === "SUDAH KEMBALI"){
+                                                                        echo "<span class='badge badge-success'>Perizinan sudah selesai</span>";
+                                                                    }elseif  ($izin->status === "BELUM KEMBALI"){
+                                                                             if (strtotime($current_time) > strtotime($end_time)) {
+                                                                                 $diff = strtotime($current_time) - strtotime($end_time);
+                                                                                 $days_late = floor($diff / (60 * 60 * 24));
+                                                                                 echo "<span class='badge badge-danger'>Terlambat $days_late hari</span>";
+                                                                             } else {
+                                                                                 $diff = strtotime($end_time) - strtotime($current_time);
+                                                                                 $days_remaining = floor($diff / (60 * 60 * 24));
+                                                                                 echo "<span class='badge badge-success'>Sisa $days_remaining hari</span>";
+                                                                             }
+                                                                    }  
+                                                                    echo "<div style='margin-top: 10px;'><strong>Check-in:</strong> " . $izin->tanggal_checkin . " |  " . $izin->jam_checkin . "</div>";
+                                                                    ?></td>
                                                                 <td><?= $izin->status ?> <br>
                                                                 <?php if ($izin->status_izin == 'BELUM DIIZINKAN'): ?>
                                                                     <span class='badge badge-danger'>BELUM DIIZINKAN</span>
@@ -246,7 +256,9 @@
                                                                 <th>No</th>
                                                                 <th>Kode Izin</th>
                                                                 <th>Detail Santri</th>
-                                                                <th>Tanggal Mulai - Akhir</th>
+                                                               <th>Tanggal & Jam Mulai - Akhir <br>
+                                                                Tanggal & Jam Masuk Pondok (Check In Kiosk)
+                                                            </th>
                                                                 <th>Status</th>
                                                                 <th>Aksi</th>
                                                             </tr>
@@ -258,21 +270,25 @@
                                                                 <td><?= $no++ ?></td>
                                                                 <td><strong><?= $izin->kode_perizinan ?></strong></td>
                                                                 <td><?= $izin->no_induk_santri ?> - <?= $izin->nama_lengkap_santri ?></td>
-                                                                <td><?= $izin->tanggal_mulai ?><br><?= $izin->jam_mulai ?> - <?= $izin->tanggal_akhir ?><br><?= $izin->jam_akhir ?>
+                                                                  <td><?= $izin->tanggal_mulai ?> | <?= $izin->jam_mulai ?> s/d <?= $izin->tanggal_akhir ?> | <?= $izin->jam_akhir ?>
                                                                     <?php 
                                                                     $current_time = date('Y-m-d H:i:s');
                                                                     $end_time = $izin->tanggal_akhir . ' ' . $izin->jam_akhir;
-                                                                    ?>
-                                                                    <?php if ($izin->status === "SUDAH KEMBALI"): ?>
-                                                                        <span class='badge badge-success'>Perizinan sudah selesai</span>
-                                                                    <?php elseif ($izin->status === "BELUM KEMBALI"): ?>
-                                                                        <?php if (strtotime($current_time) > strtotime($end_time)): ?>
-                                                                            <span class='badge badge-danger'>Terlambat $days_late hari</span>
-                                                                        <?php else: ?>
-                                                                            <span class='badge badge-success'>Sisa $days_remaining hari</span>
-                                                                        <?php endif; ?>
-                                                                    <?php endif; ?>
-                                                                </td>
+                                                                    if ($izin->status === "SUDAH KEMBALI"){
+                                                                        echo "<span class='badge badge-success'>Perizinan sudah selesai</span>";
+                                                                    }elseif  ($izin->status === "BELUM KEMBALI"){
+                                                                             if (strtotime($current_time) > strtotime($end_time)) {
+                                                                                 $diff = strtotime($current_time) - strtotime($end_time);
+                                                                                 $days_late = floor($diff / (60 * 60 * 24));
+                                                                                 echo "<span class='badge badge-danger'>Terlambat $days_late hari</span>";
+                                                                             } else {
+                                                                                 $diff = strtotime($end_time) - strtotime($current_time);
+                                                                                 $days_remaining = floor($diff / (60 * 60 * 24));
+                                                                                 echo "<span class='badge badge-success'>Sisa $days_remaining hari</span>";
+                                                                             }
+                                                                    }  
+                                                                    echo "<div style='margin-top: 10px;'><strong>Check-in:</strong> " . $izin->tanggal_checkin . " |  " . $izin->jam_checkin . "</div>";
+                                                                    ?></td>
                                                                 <td><?= $izin->status ?> <br>
                                                                 <?php if ($izin->status_izin == 'BELUM DIIZINKAN'): ?>
                                                                     <span class='badge badge-danger'>BELUM DIIZINKAN</span>
