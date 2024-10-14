@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 05, 2024 at 10:12 AM
+-- Generation Time: Oct 14, 2024 at 05:21 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.4.9
 
@@ -373,19 +373,22 @@ CREATE TABLE IF NOT EXISTS `data_perizinan` (
   `jam_mulai` time NOT NULL,
   `tanggal_akhir` date NOT NULL,
   `jam_akhir` time NOT NULL,
+  `tanggal_checkin` date NOT NULL,
+  `jam_checkin` time NOT NULL,
   `status` enum('SUDAH KEMBALI','BELUM KEMBALI','TERLAMBAT KEMBALI','') NOT NULL,
   `status_izin` enum('SUDAH DIIZINKAN','BELUM DIIZINKAN','','') NOT NULL,
   `keperluan` varchar(256) NOT NULL,
   `pemberi_izin` int NOT NULL,
   PRIMARY KEY (`id_izin`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `data_perizinan`
 --
 
-INSERT INTO `data_perizinan` (`id_izin`, `kode_perizinan`, `id_santri`, `tanggal_mulai`, `jam_mulai`, `tanggal_akhir`, `jam_akhir`, `status`, `status_izin`, `keperluan`, `pemberi_izin`) VALUES
-(10, 'NJH9C', 26, '2024-08-29', '06:32:00', '2024-09-05', '04:35:00', 'BELUM KEMBALI', 'SUDAH DIIZINKAN', 'CAP 3 JARI', 1);
+INSERT INTO `data_perizinan` (`id_izin`, `kode_perizinan`, `id_santri`, `tanggal_mulai`, `jam_mulai`, `tanggal_akhir`, `jam_akhir`, `tanggal_checkin`, `jam_checkin`, `status`, `status_izin`, `keperluan`, `pemberi_izin`) VALUES
+(10, 'NJH9C', 26, '2024-08-29', '06:32:00', '2024-11-30', '04:35:00', '2024-10-15', '00:11:25', 'SUDAH KEMBALI', 'SUDAH DIIZINKAN', 'CAP 3 JARI', 1),
+(16, 'WTETZ', 6, '2024-10-11', '16:22:00', '2024-10-11', '17:00:00', '2024-10-14', '21:20:18', 'TERLAMBAT KEMBALI', 'SUDAH DIIZINKAN', 'rtret', 1);
 
 -- --------------------------------------------------------
 
