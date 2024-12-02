@@ -216,7 +216,7 @@ public function download_rekapan_excel()
             $sheet->setCellValueByColumnAndRow(12, $row, (string)$data->tahun_daftar);
             $sheet->setCellValueByColumnAndRow(13, $row, (string)$data->tanggal_daftar);
             $sheet->setCellValueByColumnAndRow(14, $row, (string)$data->tanggal_tenggat);
-            $sheet->setCellValueByColumnAndRow(15, $row, (string)$data->status);
+            // $sheet->setCellValueByColumnAndRow(15, $row, (string)$data->status);
             $row++;
         }
 
