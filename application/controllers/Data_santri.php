@@ -450,7 +450,7 @@ public function ubah_santri($id_santri) {
                 echo $this->upload->display_errors();
             }
         }
-        if ($this->input->post('status') == 'NONAKTIF') {
+        if ($this->input->post('status') == 'NONAKTIF' || $this->input->post('status') == 'ALUMNI') {
             $this->data_penempatan_model->hapus_penempatan_by_id($id_santri);
         }
         $this->data_santri_model->update_santri($where, $data_update);
@@ -516,18 +516,24 @@ public function ubah_santri($id_santri) {
 //         $this->data_santri_model->hapus_santri($where);
         redirect('data_santri');
     }
+public function update_status_batch() {
+    $id_santri = $this->input->post('id_santri');
+    $status = $this->input->post('status');
 
-    public function update_status_batch() {
-        $id_santri = $this->input->post('id_santri');
-        $status = $this->input->post('status');
-
+    // Pastikan $id_santri adalah array dan tidak kosong
+    if (is_array($id_santri) && !empty($id_santri)) {
         foreach ($id_santri as $id) {
             $this->data_santri_model->update_status($id, $status);
+            
+            // Periksa status dan hapus penempatan jika perlu
+            if ($status == 'NONAKTIF' || $status == 'ALUMNI') {
+                $this->data_penempatan_model->hapus_penempatan_by_id($id);
+            }
         }
-
-        redirect('data_santri');
     }
 
+    redirect('data_santri');
+}
 
     public function histori_pendidikan(){
 

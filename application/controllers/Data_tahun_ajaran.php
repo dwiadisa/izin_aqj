@@ -20,9 +20,6 @@ class Data_tahun_ajaran extends CI_Controller {
 		];
 
 
-		var_dump($data);
-		die;
-			   // die;
         $this->load->view('templates/header_dashboard', $data);
         $this->load->view('content/data_tahun_ajaran/data_tahun_ajaran', $data);
         $this->load->view('templates/footer_dashboard');
@@ -33,9 +30,24 @@ class Data_tahun_ajaran extends CI_Controller {
 			'title' => 'Tambah Tahun Ajaran',
 		];
 
-		$this->load->view('templates/header_dashboard', $data);
-        $this->load->view('content/data_tahun_ajaran/tambah_tahun_ajaran', $data);
-        $this->load->view('templates/footer_dashboard');
+		$this->form_validation->set_rules('nama_tahun_ajaran' , 'Nama Tahun Ajaran' , 'required' , array('required' => 'Nama Tahun Ajaran harus diisi'));
+
+		if ($this->form_validation->run() !=false) {
+			
+			$data = array('nama_tahun_ajaran' => $this->input->post('nama_tahun_ajaran'));
+			$this->Tahun_ajaran_model->tambah_tahun_ajaran($data);
+			redirect(base_url('data_tahun_ajaran'));
+
+
+		} else {
+			$this->load->view('templates/header_dashboard', $data);
+			$this->load->view('content/data_tahun_ajaran/tambah_tahun_ajaran', $data);
+			$this->load->view('templates/footer_dashboard');
+
+
+
+		}
+		
 
 	}
 

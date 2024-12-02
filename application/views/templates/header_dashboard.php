@@ -166,7 +166,7 @@
                                 </li>
                   
                    
-                    <li class="nav-label">Master Data Santri dan Wilayah (Asrama)</li>
+                    <li class="nav-label">Master Data </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                          <i class="fa-solid fa-users"></i> <span class="nav-text">Data Santri</span>
@@ -175,6 +175,7 @@
                             <li><a href="<?php echo base_url('data_santri') ?>">Data Santri</a></li>
                             <li><a href="<?php echo base_url('data_santri/tambah_santri') ?>">Tambah Santri Secara Manual</a></li>
                             <li><a href="<?php echo base_url('data_santri/tambah_data_santri_massal') ?>">Tambah Santri Secara Massal (Excel)</a></li>
+                            <li><a href="<?php echo base_url('') ?>">Kartu Tanda Santri</a></li>
                         
                         </ul>
                     </li>
@@ -204,6 +205,20 @@
                         <ul aria-expanded="false">
                             <li><a href="<?php echo base_url('data_lembaga_pendidikan') ?>">Data Lembaga Pendidikan</a></li>
                             <li><a href="<?php echo base_url('data_lembaga_pendidikan/tambah_lembaga') ?>">Tambah Lembaga Pendidikan</a></li>
+                            
+                        
+                        </ul>
+                    </li>
+
+                     <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                       <i class="fa-solid fa-signal"></i> <span class="nav-text">Manajemen Kelas dan Rombel</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="<?php echo base_url('data_tahun_ajaran') ?>">Data Tahun Ajaran</a></li>
+                            <li><a href="<?php echo base_url('data_tahun_ajaran/tambah_tahun_ajaran') ?>">Tambah Tahun Ajaran</a></li>
+                            <li><a href="<?php echo base_url('data_lembaga_pendidikan/tambah_lembaga') ?>">Data Kelas</a></li>
+                            <li><a href="<?php echo base_url('data_lembaga_pendidikan/tambah_lembaga') ?>">Tambah Kelas</a></li>
                             
                         
                         </ul>
