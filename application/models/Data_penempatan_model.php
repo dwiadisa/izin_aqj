@@ -25,9 +25,9 @@ class Data_penempatan_model extends CI_Model
 	}
 		
     
-public function tambah_penempatan($data_penempatan)
+public function tambah_penempatan_batch($data_penempatan)
 {
-    $this->db->insert('data_penghuni', $data_penempatan);
+    $this->db->insert_batch('data_penghuni', $data_penempatan);
 }
                         
 

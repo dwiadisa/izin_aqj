@@ -1,12 +1,12 @@
 <div class="content-body" style="min-height: 798px;">
 
             <div class="row page-titles mx-0">
-                <div class="col p-md-0">
+                <!-- <div class="col p-md-0">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
                         <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
                     </ol>
-                </div>
+                </div> -->
             </div>
             <!-- row -->
 
@@ -24,11 +24,12 @@
                                             <label class="col-lg-4 col-form-label" for="val-skill">Pilih Santri<span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <select class="form-control" id="pilih_santri" name="pilih_santri">
-                                                    <option value="">Pilih Santri</option>
-                                                    <?php foreach ($load_santri as $santri ):?>
-                                                    <option value="<?php echo $santri->id_santri ?>"><?php echo $santri->no_induk_santri . " - " . $santri->nama_lengkap_santri ?></option>
-                                                    <?php endforeach ;?>
+                                                <select class="form-control select2-santri" id="pilih_santri" multiple="multiple" name="pilih_santri[]">
+                                                    <?php foreach ($load_santri as $santri ): ?>
+														<option value="<?php echo $santri->id_santri ?>">
+															<?php echo $santri->no_induk_santri . " - " . $santri->nama_lengkap_santri ?>
+														</option>
+													<?php endforeach; ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -104,4 +105,20 @@
             }
         });
     });
+</script>
+
+
+<script>
+
+$(document).ready(function() {
+    $('.select2-santri').select2(
+		{
+            placeholder: "Pilih Santri",  // Placeholder
+            allowClear: true,         // Untuk memungkinkan menghapus pilihan
+            tags: true                // Memungkinkan pengguna menambahkan pilihan baru
+        }
+
+
+	);
+});
 </script>

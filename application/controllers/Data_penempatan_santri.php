@@ -40,8 +40,8 @@ class Data_penempatan_santri extends CI_Controller {
         // echo json_decode($data);
     }
 
-public function tambah_penempatan_santri(){
-
+	public function tambah_penempatan_santri()
+	{
     $data = [
         'title' => 'Tambah Penempatan Santri',
         'load_santri' => $this->data_penempatan_model->santri_tidak_terdaftar()->result(),
@@ -49,25 +49,50 @@ public function tambah_penempatan_santri(){
         'load_kamar' => $this->data_wilayah_model->lihat_kamar()->result()
     ];
 
-        $this->form_validation->set_rules('pilih_santri', 'Santri', 'required', array('required' => 'Santri harus dipilih.'));
-        $this->form_validation->set_rules('pilih_wilayah', 'Wilayah', 'required', array('required' => 'Wilayah harus dipilih.'));
-        $this->form_validation->set_rules('pilih_kamar', 'Kamar', 'required', array('required' => 'Kamar harus dipilih.'));
+    // Validasi form
+    $this->form_validation->set_rules('pilih_santri[]', 'Santri', 'required', ['required' => 'Santri harus dipilih.']);
+    $this->form_validation->set_rules('pilih_wilayah', 'Wilayah', 'required', ['required' => 'Wilayah harus dipilih.']);
+    $this->form_validation->set_rules('pilih_kamar', 'Kamar', 'required', ['required' => 'Kamar harus dipilih.']);
 
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header_dashboard', $data);
-            $this->load->view('content/data_penempatan/tambah_penempatan', $data);
-            $this->load->view('templates/footer_dashboard');
-        } else {
-            $data_penempatan = array(
-                'id_santri' => $this->input->post('pilih_santri'),
-                'id_wilayah' => $this->input->post('pilih_wilayah'),
-                'id_kamar' => $this->input->post('pilih_kamar')
-            );
+    if ($this->form_validation->run() == FALSE) {
+        $this->load->view('templates/header_dashboard', $data);
+        $this->load->view('content/data_penempatan/tambah_penempatan', $data);
+        $this->load->view('templates/footer_dashboard');
+    } else {
+        // Data dari form
+        $santri_ids = $this->input->post('pilih_santri'); // Array of selected santri
+        $wilayah_id = $this->input->post('pilih_wilayah');
+        $kamar_id = $this->input->post('pilih_kamar');
 
-            $this->data_penempatan_model->tambah_penempatan($data_penempatan);
-            redirect('Data_penempatan_santri');
+        // Siapkan data untuk insert_batch
+        $data_penempatan = [];
+        foreach ($santri_ids as $id_santri) {
+            $data_penempatan[] = [
+                'id_santri' => $id_santri,
+                'id_wilayah' => $wilayah_id,
+                'id_kamar' => $kamar_id
+            ];
         }
 
+        // Insert batch
+        $this->data_penempatan_model->tambah_penempatan_batch($data_penempatan);
+
+				// Redirect setelah sukses
+
+				// Pesan alert yang ingin ditampilkan
+		$message = "Penempatan Santri telah Berhasil!";
+
+		// Mendapatkan base_url dari konfigurasi CodeIgniter
+		$base_url = base_url('data_penempatan_santri/tambah_penempatan_santri');
+
+		// Menggunakan echo untuk menghasilkan kode JavaScript
+		echo "<script type='text/javascript'>
+				alert('$message');
+				window.location.href = '$base_url';
+			</script>";
+        // redirect('Data_penempatan_santri');
+    	}
+	}
 
 
 
@@ -77,7 +102,7 @@ public function tambah_penempatan_santri(){
         // $this->load->view('content/data_penempatan/tambah_penempatan', $data);
         // $this->load->view('templates/footer_dashboard');
 
-}
+
 
         public function pindah_penempatan($id_penghuni){
             $data = [

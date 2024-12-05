@@ -166,10 +166,18 @@
                  <td style= "vertical-align: top;">
                     <?php
                         $imagePath = $santri->foto;
-                        $imageData = file_get_contents($imagePath);
-                        $base64Image = base64_encode($imageData);
+                        // $imageData = file_get_contents($imagePath);
+                        // $base64Image = base64_encode($imageData);
                     ?>
+					<!-- jika foto santri tidak ada munculkan ini -->
+					<?php if($imagePath == "") : ?>
+                    <img src="<?php echo base_url('assets/images/user.png') ?>" alt="Foto Santri"  style="width: 100px;">
+					<?php else : ?>
+						<?php  $imageData = file_get_contents($imagePath);
+                        		$base64Image = base64_encode($imageData); ?>
+						<!-- jika foto santri ada munculkan ini -->
                     <img src="data:image/jpeg;base64,<?php echo $base64Image; ?>" alt="Foto Santri"  style="width: 100px;">
+					<?php endif; ?>
                 </td>
                 <td style="text-align: center;">
                     <p>
