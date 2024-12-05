@@ -51,26 +51,42 @@ class Data_tahun_ajaran extends CI_Controller {
 
 	}
 
-	public function ubah_tahun_ajaran(){
-		$data = [
-			'title' => 'Ubah Tahun Ajaran',
-			];
+	public function ubah_tahun_ajaran($id){
+            $where = array('id_tahun_ajaran' => $id);
+            $data = [
+                'title' => 'Ubah Tahun Ajaran',
+                'tahun_ajaran' => $this->Tahun_ajaran_model->ubah_tahun_ajaran($where)->row()
+            ];
+
+          	$this->form_validation->set_rules('nama_tahun_ajaran' , 'Nama Tahun Ajaran' , 'required' , array('required' => 'Nama Tahun Ajaran harus diisi'));
+           
+
+            if ($this->form_validation->run() != false) {
+                $data = array(
+                    'id_tahun_ajaran' => $this->input->post('id_tahun_ajaran'),
+                    'nama_tahun_ajaran' => $this->input->post('nama_tahun_ajaran')
+                );
+
+                $this->Tahun_ajaran_model->update_tahun_ajaran($where, $data);
+                redirect('data_tahun_ajaran');
+            } else {
+               	$this->load->view('templates/header_dashboard', $data);
+				$this->load->view('content/data_tahun_ajaran/ubah_tahun_ajaran', $data);
+				$this->load->view('templates/footer_dashboard');
+            }
+        }
 
 
-			
 
 
-		
+	public function hapus_tahun_ajaran($id){
+
+		$where = array('id_tahun_ajaran' => $id);
+        $this->Tahun_ajaran_model->hapus_tahun_ajaran($where);
+        redirect('data_tahun_ajaran');
 
 	}
-
-	public function hapus_tahun_ajaran(){
-
-
-
-
-
-	}
+	
 
 
 }
