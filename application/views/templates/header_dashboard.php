@@ -22,10 +22,16 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <!-- font awesome load -->
     <script src="https://kit.fontawesome.com/6e0c65f34f.js" crossorigin="anonymous"></script>
-<link href="https://cdn.datatables.net/v/bs4/dt-2.0.8/datatables.min.css" rel="stylesheet">
+	<link href="https://cdn.datatables.net/v/bs4/dt-2.0.8/datatables.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
+<!-- cropper -->
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
+<!-- cropper -->
 <!-- google font -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -175,7 +181,7 @@
                             <li><a href="<?php echo base_url('data_santri') ?>">Data Santri</a></li>
                             <li><a href="<?php echo base_url('data_santri/tambah_santri') ?>">Tambah Santri Secara Manual</a></li>
                             <li><a href="<?php echo base_url('data_santri/tambah_data_santri_massal') ?>">Tambah Santri Secara Massal (Excel)</a></li>
-                            <li><a href="<?php echo base_url('') ?>">Kartu Tanda Santri</a></li>
+                            <li><a href="<?php echo base_url('data_santri/kartu_santri') ?>">Kartu Tanda Santri (BETA)</a></li>
                         
                         </ul>
                     </li>

@@ -61,6 +61,22 @@ class Data_santri_model extends CI_Model
     public function update_santri($where, $data_update) {
         $this->db->where($where);
         return $this->db->update('data_santri', $data_update);
+		
+    }
+    
+    public function update_santri_kts($santri_id, $data) {
+         // Memastikan ID santri ada dan data yang akan di-update tidak kosong
+        if (empty($santri_id) || empty($data)) {
+            return false;
+        }
+
+        // Menggunakan query builder untuk memperbarui data berdasarkan ID santri
+        $this->db->where('id_santri', $santri_id);
+        $update = $this->db->update('data_santri', $data);
+
+        // Memastikan query berhasil
+        return $update ? true : false;
+		
     }
 
     public function get_santri_by_id($id_santri) {

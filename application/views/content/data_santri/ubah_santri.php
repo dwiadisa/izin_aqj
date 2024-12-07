@@ -28,7 +28,7 @@
                                             <label class="col-lg-4 col-form-label" for="val-password">Tanggal Masuk Santri <span class="text-danger">*</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="date" class="form-control" id="tanggal_masuk_santri" name="tanggal_masuk_santri" value="<?php echo $santri->tanggal_masuk; ?>" placeholder="Masukkan Tanggal Masuk Santri">
+                                                <input type="date" class="form-control" id="tanggal_masuk_santri" name="tanggal_masuk_santri" value="<?php echo $santri->tanggal_masuk; ?>" disabled placeholder="Masukkan Tanggal Masuk Santri">
                                                 <?php echo form_error('tanggal_masuk_santri', '<div class="text-danger">', '</div>'); ?>
                                             </div>
                                         </div>

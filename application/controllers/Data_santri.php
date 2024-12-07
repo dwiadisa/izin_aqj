@@ -386,7 +386,7 @@ public function ubah_santri($id_santri) {
     ];
 
     $this->form_validation->set_rules('nama_santri', 'Nama Santri', 'required', ['required' => 'Nama Santri Wajib diisi!']);
-    $this->form_validation->set_rules('tanggal_masuk_santri', 'Tanggal Masuk Santri', 'required', ['required' => 'Tanggal Masuk Santri Wajib diisi!']);
+    // $this->form_validation->set_rules('tanggal_masuk_santri', 'Tanggal Masuk Santri', 'required', ['required' => 'Tanggal Masuk Santri Wajib diisi!']);
     $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir Santri', 'required', ['required' => 'Tempat Lahir Santri Wajib diisi!']);
     $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir Santri', 'required', ['required' => 'Tanggal Lahir Wajib diisi!']);
     $this->form_validation->set_rules('alamat_dusun', 'Alamat Dusun', 'required', ['required' => 'Dusun Wajib diisi!']);
@@ -420,7 +420,7 @@ public function ubah_santri($id_santri) {
             'bulan_masuk' => $bulanMasukBaru,
             'no_induk_santri' => $newOrderFormatted,
             'nama_lengkap_santri' => $this->input->post('nama_santri'),
-            'tanggal_masuk' => $tanggalMasukBaru,
+            // 'tanggal_masuk' => $tanggalMasukBaru,
             'tempat_lahir' => $this->input->post('tempat_lahir'),
             'tanggal_lahir' => $this->input->post('tanggal_lahir'),
             'alamat_dusun' => $this->input->post('alamat_dusun'),
@@ -647,5 +647,118 @@ echo ("<script LANGUAGE='JavaScript'>
     </script>");
         }
     }
+
+	// fitur kartu santri
+
+
+	public function kartu_santri() {
+    $id_santri = $this->input->get('id_santri');
+    
+    // Validasi ID santri dari input
+    if (!empty($id_santri)) {
+        $this->session->set_userdata('id_santri', $id_santri);
+    }
+
+    $where = array('id_santri' => $id_santri);
+    $data = [
+        'title' => 'Cetak Kartu Tanda Santri',
+        'data_santri' => $this->data_santri_model->lihat_santri_semua()->result(),
+        'lihat_santri' => $this->data_santri_model->lihat_santri_by_id($where)->row(),
+        'lembaga' => $this->data_lembaga_pendidikan_model->lihat_lembaga()->result(),
+    ];
+
+    // Load views
+    $this->load->view('templates/header_dashboard', $data);
+    $this->load->view('content/data_santri/kartu_santri', $data);
+    $this->load->view('templates/footer_dashboard');
 }
+public function upload_foto_kts() {
+    $imageData = $this->input->post('image');
+    $santri_id = $this->session->userdata('id_santri'); // Ambil ID santri dari session
+    $data_update = [];
+
+    // Validasi ID santri
+    if (empty($santri_id)) {
+        echo json_encode(['status' => false, 'message' => 'Santri ID is required!']);
+        return;
+    }
+
+    // Handle webcam photo (base64)
+    if (!empty($imageData)) {
+        $imageParts = explode(";base64,", $imageData);
+        $imageTypeAux = explode("image/", $imageParts[0]);
+        $imageType = $imageTypeAux[1];
+        $imageBase64 = base64_decode($imageParts[1]);
+
+        // Generate a unique filename
+        $fileName = uniqid() . '.' . $imageType;
+        $uploadPath = './assets/foto_santri/';
+
+        if (!is_dir($uploadPath)) {
+            mkdir($uploadPath, 0755, true);
+        }
+
+        // Create the full file path
+        $filePath = $uploadPath . $fileName;
+
+        if (file_put_contents($filePath, $imageBase64)) {
+            // Save the full path directly in the 'foto' column
+            $data_update['foto'] = $filePath;
+        } else {
+            echo json_encode(['status' => false, 'message' => 'Failed to save the webcam photo!']);
+            return;
+        }
+    }
+
+    // Handle manual file upload
+    if (!empty($_FILES['foto_santri']['name'])) {
+        $newOrderFormatted = date('Ymd_His');
+        $config['upload_path'] = './assets/foto_santri/';
+        $config['allowed_types'] = 'jpg|jpeg|png';
+        $config['file_name'] = $newOrderFormatted . '_' . $_FILES['foto_santri']['name'];
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('foto_santri')) {
+            $uploadedData = $this->upload->data();
+            // Save the full file path directly in the 'foto' column
+            $data_update['foto'] = './assets/foto_santri/' . $uploadedData['file_name'];
+        } else {
+            echo json_encode(['status' => false, 'message' => $this->upload->display_errors()]);
+            return;
+        }
+    }
+// Simpan ke database
+if (!empty($data_update['foto'])) {
+    // Ambil foto lama dari database
+    $where = array('id_santri' => $santri_id);
+    $foto_lama = $this->data_santri_model->lihat_santri_by_id($where)->row(); // Pastikan Anda memiliki metode ini untuk mendapatkan foto lama
+
+    // Jika ada foto lama, hapus file tersebut
+    if (!empty($foto_lama->foto) && file_exists($foto_lama->foto)) {
+        if (!unlink($foto_lama->foto)) {
+            echo json_encode(['status' => false, 'message' => 'Failed to delete old photo.']);
+            return; // Hentikan eksekusi jika gagal menghapus foto lama
+        }
+    }
+
+    // Siapkan data untuk disimpan
+    $saveData = [
+        'foto' => $data_update['foto']  // Full file path to be saved in the 'foto' column
+    ];
+
+    // Update data santri
+    if ($this->data_santri_model->update_santri_kts($santri_id, $saveData)) {
+        echo json_encode(['status' => true, 'message' => 'Photo uploaded and saved to database successfully!', 'foto' => $data_update['foto'], 'santri' => $santri_id]);
+    } else {
+        echo json_encode(['status' => false, 'message' => 'Failed to save photo to database.']);
+    }
+} else {
+    echo json_encode(['status' => false, 'message' => 'No photo data received!']);
+}
+}
+
+        
+    }
+
 ?>
