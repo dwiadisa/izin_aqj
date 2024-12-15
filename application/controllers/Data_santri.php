@@ -418,7 +418,7 @@ public function ubah_santri($id_santri) {
         $data_update = [
             'tahun_masuk' => $tahunMasukBaru,
             'bulan_masuk' => $bulanMasukBaru,
-            'no_induk_santri' => $newOrderFormatted,
+            // 'no_induk_santri' => $newOrderFormatted,
             'nama_lengkap_santri' => $this->input->post('nama_santri'),
             // 'tanggal_masuk' => $tanggalMasukBaru,
             'tempat_lahir' => $this->input->post('tempat_lahir'),
@@ -729,7 +729,7 @@ public function upload_foto_kts() {
         }
     }
 // Simpan ke database
-if (!empty($data_update['foto'])) {
+	if (!empty($data_update['foto'])) {
     // Ambil foto lama dari database
     $where = array('id_santri' => $santri_id);
     $foto_lama = $this->data_santri_model->lihat_santri_by_id($where)->row(); // Pastikan Anda memiliki metode ini untuk mendapatkan foto lama
@@ -753,12 +753,161 @@ if (!empty($data_update['foto'])) {
     } else {
         echo json_encode(['status' => false, 'message' => 'Failed to save photo to database.']);
     }
-} else {
-    echo json_encode(['status' => false, 'message' => 'No photo data received!']);
-}
-}
+	} else {
+		echo json_encode(['status' => false, 'message' => 'No photo data received!']);
+	}
+	}
 
+	public function cetak_kts(){
+		$where = array('id_santri' =>  $this->session->userdata('id_santri'));
+
+		$cetak = [
+			'kartu' => $this->data_santri_model->get_kartu_by_id(1),
+			'santri' => $this->data_santri_model->lihat_santri_by_id($where)->row()
+		];
+	    $this->load->view('cetak/cetak_kts' , $cetak);
+	    // var_dump('cetak/cetak_kts' , $santri , $kartu);
+		}
+
+		public function cetak_kts_belakang(){
+			$cetak = [
+			'kartu' => $this->data_santri_model->get_kartu_by_id(2),
+			
+		];
+			   $this->load->view('cetak/cetak_kts_belakang' , $cetak);
+		}
+
+
+	public function set_kartu_santri(){
+
+		 $data = [
+            'title' => 'Setting Kartu Santri',
+			'kartu_depan' =>  $this->data_santri_model->get_kartu_by_id(1),
+			'kartu_belakang' =>  $this->data_santri_model->get_kartu_by_id(2)
+        ];
+
+
+        $this->load->view('templates/header_dashboard', $data);
+        $this->load->view('content/data_santri/set_kartu_santri', $data);
+        $this->load->view('templates/footer_dashboard');
+
+
+	}
+
+	public function upload_kartu_depan($id_set){
+		// Direktori penyimpanan file
+        $upload_path = './assets/kts_template/';
+        
+        // Mendapatkan file lama
+        $existing_image = $this->data_santri_model->get_kartu_by_id($id_set);
+
+        // Konfigurasi upload
+        $config['upload_path'] = $upload_path;
+        $config['allowed_types'] = 'jpg|jpeg|png';
+        $config['max_size'] = 2048; // Maksimum 2MB
+        $config['file_name'] = 'kartu_' . time(); // Penamaan file baru
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('upload_kartu_depan')) {
+            // Jika upload gagal
+
+			$error = $this->upload->display_errors();
+			$this->session->set_flashdata('error', $error);
+
+	echo "<script>
+			alert('$error');
+			window.location.href = '" . base_url('data_santri/set_kartu_santri') . "';
+		</script>";
+	exit();
+
+
+            // $error = $this->upload->display_errors();
+            // $this->session->set_flashdata('error', $error);
+
+			// echo $error;
+            // redirect('some_error_page'); // Ganti dengan halaman error
+        } else {
+            // Jika upload berhasil
+            $upload_data = $this->upload->data();
+            $new_image_name = $upload_data['file_name'];
+
+            // Hapus file lama jika ada
+            if ($existing_image && file_exists($upload_path . $existing_image->image)) {
+                unlink($upload_path . $existing_image->image);
+            }
+
+            // Update database
+            $update = $this->data_santri_model->upload_kartu_depan($id_set, $new_image_name);
+
+            if ($update) {
+                $this->session->set_flashdata('success', 'Gambar berhasil diupdate.');
+            } else {
+                $this->session->set_flashdata('error', 'Gagal mengupdate database.');
+            }
+
+            redirect('data_santri/set_kartu_santri'); // Ganti dengan halaman sukses
+        }
+
+	}
+	public function upload_kartu_belakang($id_set){
+		// Direktori penyimpanan file
+        $upload_path = './assets/kts_template/';
+        
+        // Mendapatkan file lama
+          $existing_image = $this->data_santri_model->get_kartu_by_id($id_set);
+
+        // Konfigurasi upload
+        $config['upload_path'] = $upload_path;
+        $config['allowed_types'] = 'jpg|jpeg|png';
+        $config['max_size'] = 2048; // Maksimum 2MB
+        $config['file_name'] = 'kartu_' . time(); // Penamaan file baru
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('upload_kartu_belakang')) {
+            // Jika upload gagal
+			$error = $this->upload->display_errors();
+			echo "<script>
+			alert('$error');
+			window.location.href = '" . base_url('data_santri/set_kartu_santri') . "';
+		</script>";
+			exit();
+
+
+
+            // $this->session->set_flashdata('error', $error);
+            // // redirect('some_error_page'); // Ganti dengan halaman error
+			// echo $error;
+        } else {
+            // Jika upload berhasil
+            $upload_data = $this->upload->data();
+            $new_image_name = $upload_data['file_name'];
+
+            // Hapus file lama jika ada
+            if ($existing_image && file_exists($upload_path . $existing_image->image)) {
+                unlink($upload_path . $existing_image->image);
+            }
+
+            // Update database
+            $update = $this->data_santri_model->upload_kartu_belakang($id_set, $new_image_name);
+
+            if ($update) {
+                $this->session->set_flashdata('success', 'Gambar berhasil diupdate.');
+            } else {
+                $this->session->set_flashdata('error', 'Gagal mengupdate database.');
+            }
+
+          redirect('data_santri/set_kartu_santri'); // Ganti dengan halaman sukses
+
+
+	}
+	
+
+	
+	
         
     }
+}
 
 ?>

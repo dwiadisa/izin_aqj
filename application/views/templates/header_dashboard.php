@@ -182,6 +182,7 @@
                             <li><a href="<?php echo base_url('data_santri/tambah_santri') ?>">Tambah Santri Secara Manual</a></li>
                             <li><a href="<?php echo base_url('data_santri/tambah_data_santri_massal') ?>">Tambah Santri Secara Massal (Excel)</a></li>
                             <li><a href="<?php echo base_url('data_santri/kartu_santri') ?>">Kartu Tanda Santri (BETA)</a></li>
+                            <li><a href="<?php echo base_url('data_santri/set_kartu_santri') ?>">Setting Kartu Santri</a></li>
                         
                         </ul>
                     </li>

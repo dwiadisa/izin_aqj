@@ -172,5 +172,53 @@ class Data_santri_model extends CI_Model
         $this->db->where('id_santri', $id);
         return $this->db->update('data_santri', array('status_santri' => $status));
     }
+
+
+// lihat kartu depan
+	    public function get_kartu_by_id($id_set) {
+        $this->db->select('image');
+        $this->db->from('set_kartu_santri');
+        $this->db->where('id_set', $id_set);
+        $query = $this->db->get();
+        return $query->row(); // Mengembalikan data satu baris
+    }
+
+
+// lihat kartu belakang
+
+
+
+
+	// untuk upload kartu
+	public function upload_kartu_depan($id_set, $image_name){
+
+        // Data untuk update
+        $data = [
+            'image' => $image_name
+        ];
+        
+        // Update database
+        $this->db->where('id_set', $id_set);
+        return $this->db->update('set_kartu_santri', $data);
+    
+	}
+
+	// untuk upload kartu
+	public function upload_kartu_belakang($id_set, $image_name){
+
+        // Data untuk update
+        $data = [
+            'image' => $image_name
+        ];
+        
+        // Update database
+        $this->db->where('id_set', $id_set);
+        return $this->db->update('set_kartu_santri', $data);
+    
+	}
+
+	
+
 }
+
 ?>

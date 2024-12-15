@@ -112,7 +112,10 @@
                                                         <td><?php echo $lihat_santri->status_santri; ?></td>
                                                     </tr>
                                                 </table>
-                                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal_tambah_history">Cetak Kartu Tanda Santri</button>
+											<a href="javascript:void(0);" onclick="window.open('<?php echo base_url('data_santri/cetak_kts') ?>', '_blank', 'width=800,height=600');" class="btn btn-success">Cetak Kartu Tanda Santri</a>
+											<a href="javascript:void(0);" onclick="window.open('<?php echo base_url('data_santri/cetak_kts_belakang') ?>', '_blank', 'width=800,height=600');" class="btn btn-success">Cetak Belakang Kartu Tanda Santri</a>
+
+                                           
                                                     <?php endif ?>
                                                
                                             </div>
