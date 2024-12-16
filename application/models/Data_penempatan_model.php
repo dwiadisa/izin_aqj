@@ -3,6 +3,66 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         
 class Data_penempatan_model extends CI_Model 
 {
+
+
+	public function getPenempatanHierarki()
+    { // Mengambil data yang dibutuhkan dari tabel data_wilayah, data_kamar, data_penghuni, dan data_santri
+        $this->db->select('
+            data_wilayah.id_wilayah, data_wilayah.nama_wilayah, data_wilayah.singkatan_wilayah,
+            data_kamar.id_kamar, data_kamar.nama_kamar,
+            data_penghuni.id_penghuni,
+            data_santri.id_santri, data_santri.no_induk_santri, data_santri.nama_lengkap_santri
+        ');
+        $this->db->from('data_wilayah');
+        $this->db->join('data_kamar', 'data_kamar.wilayah = data_wilayah.id_wilayah', 'left');
+        $this->db->join('data_penghuni', 'data_penghuni.id_kamar = data_kamar.id_kamar', 'left');
+        $this->db->join('data_santri', 'data_penghuni.id_santri = data_santri.id_santri', 'left');
+        $this->db->order_by('data_wilayah.id_wilayah, data_kamar.id_kamar, data_santri.nama_lengkap_santri');
+        
+        $query = $this->db->get();
+        $result = $query->result_array();
+
+        // Mengorganisir data ke dalam struktur hierarki
+        $data_hierarki = [];
+        foreach ($result as $row) {
+            $id_wilayah = $row['id_wilayah'];
+            $id_kamar = $row['id_kamar'];
+
+            // Menambahkan wilayah jika belum ada
+            if (!isset($data_hierarki[$id_wilayah])) {
+                $data_hierarki[$id_wilayah] = [
+                    'nama_wilayah' => $row['nama_wilayah'],
+                    'singkatan_wilayah' => $row['singkatan_wilayah'],
+                    'kamar' => []
+                ];
+            }
+
+            // Menambahkan kamar jika belum ada
+            if (!isset($data_hierarki[$id_wilayah]['kamar'][$id_kamar])) {
+                $data_hierarki[$id_wilayah]['kamar'][$id_kamar] = [
+                    'nama_kamar' => $row['nama_kamar'],
+                    'penghuni' => []
+                ];
+            }
+
+            // Menambahkan penghuni jika ada
+            if (!empty($row['id_penghuni'])) {
+                $data_hierarki[$id_wilayah]['kamar'][$id_kamar]['penghuni'][] = [
+                    'id_penghuni' => $row['id_penghuni'],
+                    'no_induk_santri' => $row['no_induk_santri'],
+                    'nama_lengkap_santri' => $row['nama_lengkap_santri']
+                ];
+            }
+        }
+
+        return $data_hierarki;
+
+      
+    }
+
+
+
+
     public function lihat_penempatan()
     {
 

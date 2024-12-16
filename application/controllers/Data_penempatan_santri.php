@@ -15,17 +15,41 @@ class Data_penempatan_santri extends CI_Controller {
 
     public function index()
     {
-       $data =[
-            'title' => 'Kelola Penempatan Santri',
-            'lihat_penempatan' => $this->data_penempatan_model->lihat_penempatan()->result(),
-            'load_wilayah' => $this->data_wilayah_model->lihat_wilayah()->result()
-         
+		 // Load model
+        // $this->load->model('DataPenempatanModel');
+         $this->load->model('data_wilayah_model');
+        // Ambil data hierarki penempatan
+        $data_penempatan = $this->data_penempatan_model->getPenempatanHierarki();
 
-       ];
-            // var_dump($data);
-        $this->load->view('templates/header_dashboard' , $data);
+        // Siapkan data untuk view
+        $data = [
+            'title' => 'Kelola Penempatan Santri',
+            'data_penempatan' => $data_penempatan
+        ];
+
+        // Load view
+        $this->load->view('templates/header_dashboard', $data);
         $this->load->view('content/data_penempatan/lihat_penempatan', $data);
         $this->load->view('templates/footer_dashboard');
+
+
+
+
+
+
+
+
+    //    $data =[
+    //         'title' => 'Kelola Penempatan Santri',
+    //         'lihat_penempatan' => $this->data_penempatan_model->lihat_penempatan()->result(),
+    //         'load_wilayah' => $this->data_wilayah_model->lihat_wilayah()->result()
+         
+
+    //    ];
+    //         // var_dump($data);
+    //     $this->load->view('templates/header_dashboard' , $data);
+    //     $this->load->view('content/data_penempatan/lihat_penempatan', $data);
+    //     $this->load->view('templates/footer_dashboard');
 
 
     }
