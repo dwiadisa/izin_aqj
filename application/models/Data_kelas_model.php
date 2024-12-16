@@ -14,8 +14,10 @@ class Data_kelas_model extends CI_Model
 
     }
 	
-	public function tambah_kelas(){
-		
+	public function tambah_kelas($data){
+
+		$this->db->insert('data_kelas', $data);
+
 	}
                         
 }

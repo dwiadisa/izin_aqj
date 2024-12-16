@@ -31,8 +31,8 @@
                                                 <div class="btn-group" role="group">
                                                     <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="<?php echo base_url('data_tahun_ajaran/ubah_tahun_ajaran/') . $ta->id_tahun_ajaran ?>">Ubah</a>
-                                                        <button class="dropdown-item btn-delete" data-id="<?php echo $ta->id_tahun_ajaran ?>" data-name="<?php echo $ta->nama_tahun_ajaran ?>">Hapus</button>
+                                                        <a class="dropdown-item" href="<?php echo base_url('data_kelas/ubah_kelas/') . $kl->id_kelas ?>">Ubah</a>
+                                                   
                                                     </div>
                                                 </div>
                                             </td>

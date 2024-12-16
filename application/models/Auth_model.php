@@ -1,13 +1,12 @@
-<?php 
-defined('BASEPATH') OR exit('No direct script access allowed');
-                        
-class Auth_model extends CI_Model 
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Auth_model extends CI_Model
 {
-    public function login($where)
-    {
-   return $this->db->get_where('user', $where);
-    }                        
-                        
+	public function login($where)
+	{
+		return $this->db->get_where('user', $where);
+	}
 }
 
 

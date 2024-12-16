@@ -225,7 +225,7 @@
                             <li><a href="<?php echo base_url('data_tahun_ajaran') ?>">Data Tahun Ajaran</a></li>
                             <li><a href="<?php echo base_url('data_tahun_ajaran/tambah_tahun_ajaran') ?>">Tambah Tahun Ajaran</a></li>
                             <li><a href="<?php echo base_url('data_kelas') ?>">Data Kelas</a></li>
-                            <li><a href="<?php echo base_url('data_lembaga_pendidikan/tambah_lembaga') ?>">Tambah Kelas</a></li>
+                            <li><a href="<?php echo base_url('data_kelas/tambah_kelas') ?>">Tambah Kelas</a></li>
                             
                         
                         </ul>
