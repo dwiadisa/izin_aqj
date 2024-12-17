@@ -54,11 +54,39 @@ class Data_kelas extends CI_Controller
 			$this->load->view('templates/footer_dashboard');
 		}
 	}
-	public function ubah_kelas()
+	public function ubah_kelas($id)
 	{
+		// Validasi form
+		$this->form_validation->set_rules('nama_kelas', 'Nama Kelas', 'required', array('required' => '%s harus diisi'));
+		$this->form_validation->set_rules('lembaga', 'Lembaga', 'required', array('required' => '%s harus diisi'));
+
+		if ($this->form_validation->run() != false) {
+			// Data yang akan diupdate
+			$data = array(
+				'nama_kelas' => $this->input->post('nama_kelas'),
+				'lembaga' => $this->input->post('lembaga')
+			);
+
+			$this->Data_kelas_model->ubah_kelas($id, $data);
+			redirect('data_kelas');
+		} else {
+			// Ambil data kelas dan lembaga untuk form
+			$data = [
+				'title' => 'Ubah Data Kelas',
+				'kelas' => $this->Data_kelas_model->get_kelas_by_id($id),
+				'lembaga' => $this->Data_lembaga_pendidikan_model->lihat_lembaga()->result()
+			];
+
+			$this->load->view('templates/header_dashboard', $data);
+			$this->load->view('content/data_kelas/ubah_kelas', $data);
+			$this->load->view('templates/footer_dashboard');
+		}
 	}
-	public function hapus_kelas()
+
+	public function hapus_kelas($id)
 	{
+		$this->Data_kelas_model->hapus_kelas($id);
+		redirect('data_kelas');
 	}
 }
 
