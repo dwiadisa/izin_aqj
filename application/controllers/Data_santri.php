@@ -10,7 +10,7 @@ class Data_santri extends CI_Controller
 		if (!is_login()) redirect('auth');
 		// $this->load->library('excel');
 
-		$this->load->model('data_santri_model');
+		$this->load->model('Data_santri_model');
 		$this->load->model('data_lembaga_pendidikan_model');
 		$this->load->model('data_penempatan_model');
 		$this->load->model('data_lembaga_pendidikan_model');
@@ -20,10 +20,10 @@ class Data_santri extends CI_Controller
 	{
 		$data = [
 			'title' => 'Data Santri',
-			'data_santri' => $this->data_santri_model->lihat_santri_semua()->result(),
-			'santri_aktif' => $this->data_santri_model->lihat_santri_aktif()->result(),
-			'santri_nonaktif' => $this->data_santri_model->lihat_santri_nonaktif()->result(),
-			'santri_alumni' => $this->data_santri_model->lihat_santri_alumni()->result()
+			'data_santri' => $this->Data_santri_model->lihat_santri_semua()->result(),
+			'santri_aktif' => $this->Data_santri_model->lihat_santri_aktif()->result(),
+			'santri_nonaktif' => $this->Data_santri_model->lihat_santri_nonaktif()->result(),
+			'santri_alumni' => $this->Data_santri_model->lihat_santri_alumni()->result()
 		];
 
 		// var_dump($data);
@@ -37,7 +37,7 @@ class Data_santri extends CI_Controller
 	{
 		$currentYear = date('Y', strtotime($this->input->post('tanggal_masuk_santri')));
 		$currentMonth = date('m', strtotime($this->input->post('tanggal_masuk_santri')));
-		$lastOrder = $this->data_santri_model->get_last_no_induk_by_year($currentYear);
+		$lastOrder = $this->Data_santri_model->get_last_no_induk_by_year($currentYear);
 		$newOrder = $lastOrder + 1;
 		$newOrderFormatted = $currentYear . $currentMonth . str_pad($newOrder, 3, '0', STR_PAD_LEFT);
 
@@ -100,7 +100,7 @@ class Data_santri extends CI_Controller
 				}
 			}
 
-			$this->data_santri_model->tambah_santri($data_santri);
+			$this->Data_santri_model->tambah_santri($data_santri);
 			redirect('data_santri');
 		} else {
 			// echo validation_errors();
@@ -115,7 +115,7 @@ class Data_santri extends CI_Controller
 	// public function tambah_santri(){
 
 	//     // $currentYear = date('Y');
-	//     // $lastOrder = $this->data_santri_model->get_last_no_induk($currentYear);
+	//     // $lastOrder = $this->Data_santri_model->get_last_no_induk($currentYear);
 	//     // $newOrder = $lastOrder + 1;
 	//     // $newOrderFormatted = $currentYear . str_pad($newOrder, 3, '0', STR_PAD_LEFT);
 	//     $data = [
@@ -179,7 +179,7 @@ class Data_santri extends CI_Controller
 	//             }
 	//         }
 
-	//         $this->data_santri_model->tambah_santri($data_santri);
+	//         $this->Data_santri_model->tambah_santri($data_santri);
 	//         redirect('data_santri');
 	//     } else {
 	//         // echo validation_errors();
@@ -192,9 +192,9 @@ class Data_santri extends CI_Controller
 	public function download_template_excel()
 	{
 		$this->load->library('excel');
-		$this->load->model('data_santri_model');
+		$this->load->model('Data_santri_model');
 
-		$santriData = $this->data_santri_model->lihat_santri_semua()->result_array();
+		$santriData = $this->Data_santri_model->lihat_santri_semua()->result_array();
 
 		$excel = new Excel();
 		$excel->setActiveSheetIndex(0);
@@ -224,7 +224,7 @@ class Data_santri extends CI_Controller
 		}
 
 		// Get the last no_induk_santri
-		$lastNoIndukSantri = $this->data_santri_model->get_last_no_induk_by_year(date('Y'));
+		$lastNoIndukSantri = $this->Data_santri_model->get_last_no_induk_by_year(date('Y'));
 
 		// Save the file
 		$filename = 'Data_Santri_' . date('YmdHis') . '.xlsx';
@@ -256,7 +256,7 @@ class Data_santri extends CI_Controller
 	public function tambah_santri_massal_proses()
 	{
 		$this->load->library('excel');
-		$this->load->model('data_santri_model');
+		$this->load->model('Data_santri_model');
 
 		if (isset($_FILES['file']['name'])) {
 			$path = $_FILES['file']['tmp_name'];
@@ -305,7 +305,7 @@ class Data_santri extends CI_Controller
 					);
 				}
 			}
-			$this->data_santri_model->tambah_santri_massal($data);
+			$this->Data_santri_model->tambah_santri_massal($data);
 			redirect('data_santri');
 		}
 	}
@@ -315,7 +315,7 @@ class Data_santri extends CI_Controller
 	//     $where = array('id_santri' => $id_santri);
 	//     $data = [
 	//         'title' => 'Ubah Data Santri',
-	//         'santri' => $this->data_santri_model->lihat_santri_by_id($where)->row(),
+	//         'santri' => $this->Data_santri_model->lihat_santri_by_id($where)->row(),
 	//         'lembaga' => $this->data_lembaga_pendidikan_model->lihat_lembaga()->result()
 	//     ];
 
@@ -372,7 +372,7 @@ class Data_santri extends CI_Controller
 
 	//             $this->data_penempatan_model->hapus_penempatan_by_id($id_santri);
 	//         }
-	//         $this->data_santri_model->update_santri($where, $data_update);
+	//         $this->Data_santri_model->update_santri($where, $data_update);
 	//         redirect('data_santri');
 	//     } else {
 	//         $this->load->view('templates/header_dashboard', $data);
@@ -384,7 +384,7 @@ class Data_santri extends CI_Controller
 	public function ubah_santri($id_santri)
 	{
 		$where = array('id_santri' => $id_santri);
-		$santri = $this->data_santri_model->lihat_santri_by_id($where)->row();
+		$santri = $this->Data_santri_model->lihat_santri_by_id($where)->row();
 		$data = [
 			'title' => 'Ubah Data Santri',
 			'santri' => $santri,
@@ -414,7 +414,7 @@ class Data_santri extends CI_Controller
 
 			// Jika tahun masuk diubah, maka generate NIS baru
 			if ($santri->tahun_masuk != $tahunMasukBaru) {
-				$lastOrder = $this->data_santri_model->get_last_no_induk_by_year($tahunMasukBaru);
+				$lastOrder = $this->Data_santri_model->get_last_no_induk_by_year($tahunMasukBaru);
 				$newOrder = $lastOrder + 1;
 				$newOrderFormatted = $tahunMasukBaru . $bulanMasukBaru . str_pad($newOrder, 3, '0', STR_PAD_LEFT);
 			} else {
@@ -459,7 +459,7 @@ class Data_santri extends CI_Controller
 			if ($this->input->post('status') == 'NONAKTIF' || $this->input->post('status') == 'ALUMNI') {
 				$this->data_penempatan_model->hapus_penempatan_by_id($id_santri);
 			}
-			$this->data_santri_model->update_santri($where, $data_update);
+			$this->Data_santri_model->update_santri($where, $data_update);
 			redirect('data_santri');
 		} else {
 			$this->load->view('templates/header_dashboard', $data);
@@ -474,7 +474,7 @@ class Data_santri extends CI_Controller
 		$this->load->library('pdfgenerator');
 
 		$where = $id_santri;
-		$data_santri = $this->data_santri_model->print_data_santri($where)->row();
+		$data_santri = $this->Data_santri_model->print_data_santri($where)->row();
 		$data_lembaga = $this->data_lembaga_pendidikan_model->lihat_lembaga()->result();
 
 		$data = [
@@ -511,7 +511,7 @@ class Data_santri extends CI_Controller
 		$where = array('id_santri' => $id_santri);
 
 		// Mengambil data santri untuk mendapatkan nama file foto
-		$santri = $this->data_santri_model->get_santri_by_id($id_santri);
+		$santri = $this->Data_santri_model->get_santri_by_id($id_santri);
 		if ($santri && $santri->foto) {
 			// Menghapus file foto dari server
 			$path_foto = './assets/foto_santri/' . $santri->foto;
@@ -521,7 +521,7 @@ class Data_santri extends CI_Controller
 		}
 		//  $this->data_penempatan_model->hapus_penempatan_by_id($id_santri);
 		//         // Menghapus data santri dari database
-		//         $this->data_santri_model->hapus_santri($where);
+		$this->Data_santri_model->hapus_santri($where);
 		redirect('data_santri');
 	}
 	public function update_status_batch()
@@ -532,7 +532,7 @@ class Data_santri extends CI_Controller
 		// Pastikan $id_santri adalah array dan tidak kosong
 		if (is_array($id_santri) && !empty($id_santri)) {
 			foreach ($id_santri as $id) {
-				$this->data_santri_model->update_status($id, $status);
+				$this->Data_santri_model->update_status($id, $status);
 
 				// Periksa status dan hapus penempatan jika perlu
 				if ($status == 'NONAKTIF' || $status == 'ALUMNI') {
@@ -551,16 +551,16 @@ class Data_santri extends CI_Controller
 		$where = array('id_santri' => $id_santri);
 		$data = [
 			'title' => 'Histori Pendidikan Santri',
-			'data_santri' => $this->data_santri_model->lihat_santri_semua()->result(),
-			'lihat_santri' => $this->data_santri_model->lihat_santri_by_id($where)->row(),
+			'data_santri' => $this->Data_santri_model->lihat_santri_semua()->result(),
+			'lihat_santri' => $this->Data_santri_model->lihat_santri_by_id($where)->row(),
 			'session_santri' =>    $this->session->set_userdata('id_santri', $id_santri),
 			'lembaga' => $this->data_lembaga_pendidikan_model->lihat_lembaga()->result(),
-			'lihat_history' => $this->data_santri_model->histori_pendidikan_santri($id_santri)->result()
+			'lihat_history' => $this->Data_santri_model->histori_pendidikan_santri($id_santri)->result()
 			// 'lihat_session' => 
 			// 'set_session' => $this->set_session
-			// 'histori_pendidikan_persantri' => $this->data_santri_model->histori_pendidikan_santri()->result()
-			// 'santri_aktif' => $this->data_santri_model->lihat_santri_aktif()->result(),
-			// 'santri_nonaktif' => $this->data_santri_model->lihat_santri_nonaktif()->result()
+			// 'histori_pendidikan_persantri' => $this->Data_santri_model->histori_pendidikan_santri()->result()
+			// 'santri_aktif' => $this->Data_santri_model->lihat_santri_aktif()->result(),
+			// 'santri_nonaktif' => $this->Data_santri_model->lihat_santri_nonaktif()->result()
 		];
 
 		// var_dump($data);
@@ -589,7 +589,7 @@ class Data_santri extends CI_Controller
 
 			);
 
-			$this->data_santri_model->tambah_history_pendidikan($data);
+			$this->Data_santri_model->tambah_history_pendidikan($data);
 			redirect(base_url('data_santri/histori_pendidikan?id_santri=' . $this->input->post('id_santri')));
 			// var_dump($data);
 			// echo "input sukses!";
@@ -616,7 +616,7 @@ class Data_santri extends CI_Controller
 
 		$data = [
 			'title' => 'Ubah History Pendidikan',
-			'history' => $this->data_santri_model->get_history_pendidikan_by_id($id_santri, $id_history),
+			'history' => $this->Data_santri_model->get_history_pendidikan_by_id($id_santri, $id_history),
 			'lembaga' => $this->data_lembaga_pendidikan_model->lihat_lembaga()->result()
 		];
 
@@ -627,7 +627,7 @@ class Data_santri extends CI_Controller
 
 	public function hapus_history_pendidikan_santri($id_history)
 	{
-		$this->data_santri_model->hapus_history_pendidikan($id_history);
+		$this->Data_santri_model->hapus_history_pendidikan($id_history);
 		redirect(base_url('data_santri/histori_pendidikan?id_santri=' . $this->session->userdata('id_santri')));
 	}
 
@@ -647,7 +647,7 @@ class Data_santri extends CI_Controller
 				'tahun_keluar_lembaga' => $this->input->post('tahun_akhir')
 			];
 
-			$this->data_santri_model->ubah_history_pendidikan($id_history, $data);
+			$this->Data_santri_model->ubah_history_pendidikan($id_history, $data);
 			redirect(base_url('data_santri/histori_pendidikan?id_santri=' . $this->input->post('id_santri')));
 		} else {
 			echo ("<script LANGUAGE='JavaScript'>
@@ -672,8 +672,8 @@ class Data_santri extends CI_Controller
 		$where = array('id_santri' => $id_santri);
 		$data = [
 			'title' => 'Cetak Kartu Tanda Santri',
-			'data_santri' => $this->data_santri_model->lihat_santri_semua()->result(),
-			'lihat_santri' => $this->data_santri_model->lihat_santri_by_id($where)->row(),
+			'data_santri' => $this->Data_santri_model->lihat_santri_semua()->result(),
+			'lihat_santri' => $this->Data_santri_model->lihat_santri_by_id($where)->row(),
 			'lembaga' => $this->data_lembaga_pendidikan_model->lihat_lembaga()->result(),
 		];
 
@@ -743,7 +743,7 @@ class Data_santri extends CI_Controller
 		if (!empty($data_update['foto'])) {
 			// Ambil foto lama dari database
 			$where = array('id_santri' => $santri_id);
-			$foto_lama = $this->data_santri_model->lihat_santri_by_id($where)->row(); // Pastikan Anda memiliki metode ini untuk mendapatkan foto lama
+			$foto_lama = $this->Data_santri_model->lihat_santri_by_id($where)->row(); // Pastikan Anda memiliki metode ini untuk mendapatkan foto lama
 
 			// Jika ada foto lama, hapus file tersebut
 			if (!empty($foto_lama->foto) && file_exists($foto_lama->foto)) {
@@ -759,7 +759,7 @@ class Data_santri extends CI_Controller
 			];
 
 			// Update data santri
-			if ($this->data_santri_model->update_santri_kts($santri_id, $saveData)) {
+			if ($this->Data_santri_model->update_santri_kts($santri_id, $saveData)) {
 				echo json_encode(['status' => true, 'message' => 'Photo uploaded and saved to database successfully!', 'foto' => $data_update['foto'], 'santri' => $santri_id]);
 			} else {
 				echo json_encode(['status' => false, 'message' => 'Failed to save photo to database.']);
@@ -774,8 +774,8 @@ class Data_santri extends CI_Controller
 		$where = array('id_santri' =>  $this->session->userdata('id_santri'));
 
 		$cetak = [
-			'kartu' => $this->data_santri_model->get_kartu_by_id(1),
-			'santri' => $this->data_santri_model->lihat_santri_by_id($where)->row()
+			'kartu' => $this->Data_santri_model->get_kartu_by_id(1),
+			'santri' => $this->Data_santri_model->lihat_santri_by_id($where)->row()
 		];
 		$this->load->view('cetak/cetak_kts', $cetak);
 		// var_dump('cetak/cetak_kts' , $santri , $kartu);
@@ -784,7 +784,7 @@ class Data_santri extends CI_Controller
 	public function cetak_kts_belakang()
 	{
 		$cetak = [
-			'kartu' => $this->data_santri_model->get_kartu_by_id(2),
+			'kartu' => $this->Data_santri_model->get_kartu_by_id(2),
 
 		];
 		$this->load->view('cetak/cetak_kts_belakang', $cetak);
@@ -796,8 +796,8 @@ class Data_santri extends CI_Controller
 
 		$data = [
 			'title' => 'Setting Kartu Santri',
-			'kartu_depan' =>  $this->data_santri_model->get_kartu_by_id(1),
-			'kartu_belakang' =>  $this->data_santri_model->get_kartu_by_id(2)
+			'kartu_depan' =>  $this->Data_santri_model->get_kartu_by_id(1),
+			'kartu_belakang' =>  $this->Data_santri_model->get_kartu_by_id(2)
 		];
 
 
@@ -812,7 +812,7 @@ class Data_santri extends CI_Controller
 		$upload_path = './assets/kts_template/';
 
 		// Mendapatkan file lama
-		$existing_image = $this->data_santri_model->get_kartu_by_id($id_set);
+		$existing_image = $this->Data_santri_model->get_kartu_by_id($id_set);
 
 		// Konfigurasi upload
 		$config['upload_path'] = $upload_path;
@@ -851,7 +851,7 @@ class Data_santri extends CI_Controller
 			}
 
 			// Update database
-			$update = $this->data_santri_model->upload_kartu_depan($id_set, $new_image_name);
+			$update = $this->Data_santri_model->upload_kartu_depan($id_set, $new_image_name);
 
 			if ($update) {
 				$this->session->set_flashdata('success', 'Gambar berhasil diupdate.');
@@ -868,7 +868,7 @@ class Data_santri extends CI_Controller
 		$upload_path = './assets/kts_template/';
 
 		// Mendapatkan file lama
-		$existing_image = $this->data_santri_model->get_kartu_by_id($id_set);
+		$existing_image = $this->Data_santri_model->get_kartu_by_id($id_set);
 
 		// Konfigurasi upload
 		$config['upload_path'] = $upload_path;
@@ -903,7 +903,7 @@ class Data_santri extends CI_Controller
 			}
 
 			// Update database
-			$update = $this->data_santri_model->upload_kartu_belakang($id_set, $new_image_name);
+			$update = $this->Data_santri_model->upload_kartu_belakang($id_set, $new_image_name);
 
 			if ($update) {
 				$this->session->set_flashdata('success', 'Gambar berhasil diupdate.');

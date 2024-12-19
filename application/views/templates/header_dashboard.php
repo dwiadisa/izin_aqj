@@ -245,6 +245,13 @@
 
 						</ul>
 					</li>
+					<li class="nav-label">Ekspor Data Santri</li>
+
+					<li>
+						<a href="<?php echo base_url('Ekspor_data') ?>" aria-expanded="false">
+							<i class="fa-solid fa-download"></i><span class="nav-text">Ekspor Data Lengkap</span>
+						</a>
+					</li>
 					<li class="nav-label">Master Perizinan Santri</li>
 					<li>
 						<a class="has-arrow" href="javascript:void()" aria-expanded="false">

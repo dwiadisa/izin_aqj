@@ -11,7 +11,8 @@ class Ekspor_data extends CI_Controller
 		$this->load->model('ekspor_data_model');
 	}
 
-	public function ekspor_santri()
+
+	public function index()
 	{
 
 		$data = [
