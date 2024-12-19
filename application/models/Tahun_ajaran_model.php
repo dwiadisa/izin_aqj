@@ -9,6 +9,8 @@ class Tahun_ajaran_model extends CI_Model
 		return $query->result();
 	}
 
+
+
 	public function tambah_tahun_ajaran($data)
 	{
 		$this->db->insert('tahun_ajaran', $data);
