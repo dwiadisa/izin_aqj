@@ -12,10 +12,8 @@
 	<title>FORM SANTRI PP AL-QODIRI JEMBER</title>
 </head>
 
-
 <style>
 	body {
-
 		margin: 10px;
 		font-family: "Times New Roman", Times, serif;
 		font-size: 12px;
@@ -42,7 +40,7 @@
 		<table class="mx-auto">
 			<tr>
 				<td>
-					<h5 class="fw-bold"><u>IDENTITAS SANTRI</u></h5>
+					<h5 class="fw-bold"><u>IDENTITAS LENGKAP SANTRI</u></h5>
 				</td>
 			</tr>
 		</table>
@@ -64,47 +62,60 @@
 			<tr>
 				<td style="width: 75%;">
 					<table class="table table-bordered">
-						<tr>
-							<td>1</td>
-							<td>No Induk Santri</td>
-							<td>: <?php echo $santri->no_induk_santri; ?></td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>Nama Lengkap Santri</td>
-							<td>: <?php echo $santri->nama_lengkap_santri; ?></td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>Tanggal Masuk</td>
-							<td>: <?php echo $santri->tanggal_masuk; ?></td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>Tempat Lahir</td>
-							<td>: <?php echo $santri->tempat_lahir; ?></td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>Tanggal Lahir</td>
-							<td>: <?php echo $santri->tanggal_lahir; ?></td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>Alamat Lengkap</td>
-							<td>
-								a. Dusun : <?php echo $santri->alamat_dusun; ?><br>
-								b. Desa : <?php echo $santri->alamat_desa; ?><br>
-								c. Kecamatan : <?php echo $santri->alamat_kecamatan; ?><br>
-								d. Kabupaten : <?php echo $santri->alamat_kabupaten; ?><br>
-								e. Provinsi : <?php echo $santri->alamat_provinsi; ?><br>
-							</td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td>Jenjang Pendidikan Yang Dipilih</td>
-							<td>: <?php echo $santri->nama_lembaga; ?></td>
-						</tr>
+						<?php foreach ($santri as $row) : ?>
+							<tr>
+								<td>1</td>
+								<td>No Induk Santri</td>
+								<td>: <?php echo $row->no_induk_santri ?? 'Tidak ada data'; ?></td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Nama Lengkap Santri</td>
+								<td>: <?php echo $row->nama_lengkap_santri ?? 'Tidak ada data'; ?></td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Tanggal Masuk</td>
+								<td>: <?php echo $row->tanggal_masuk ?? 'Tidak ada data'; ?></td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>Tempat Lahir</td>
+								<td>: <?php echo $row->tempat_lahir ?? 'Tidak ada data'; ?></td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>Tanggal Lahir</td>
+								<td>: <?php echo $row->tanggal_lahir ?? 'Tidak ada data'; ?></td>
+							</tr>
+							<tr>
+								<td>6</td>
+								<td>Alamat Lengkap</td>
+								<td>
+									a. Dusun : <?php echo $row->alamat_dusun ?? 'Tidak ada data'; ?><br>
+									b. Desa : <?php echo $row->alamat_desa ?? 'Tidak ada data'; ?><br>
+									c. Kecamatan : <?php echo $row->alamat_kecamatan ?? 'Tidak ada data'; ?><br>
+									d. Kabupaten : <?php echo $row->alamat_kabupaten ?? 'Tidak ada data'; ?><br>
+									e. Provinsi : <?php echo $row->alamat_provinsi ?? 'Tidak ada data'; ?><br>
+								</td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td>Lembaga Pendidikan</td>
+								<td>
+									Lembaga Awal: <?php echo $row->lembaga_awal ?? 'Tidak ada data'; ?><br>
+									Lembaga Saat ini: <?php echo $row->lembaga_akhir ?? 'Tidak ada data'; ?><br>
+									Kelas Saat Ini: <?php echo $row->nama_kelas ?? 'Tidak ada data'; ?><br>
+								</td>
+							</tr>
+							<tr>
+								<td>8</td>
+								<td>Wilayah / Kamar</td>
+								<td>
+									<?php echo $row->nama_wilayah ?? 'Tidak ada data'; ?> - <?php echo $row->nama_kamar ?? 'Tidak ada data'; ?>
+								</td>
+							</tr>
+						<?php endforeach; ?>
 					</table>
 					<table>
 						<tr>
@@ -118,29 +129,30 @@
 						</tr>
 					</table>
 					<table class="table table-bordered">
-						<tr>
-							<td>8</td>
-							<td>Nama Ayah</td>
-							<td>: <?php echo $santri->nama_ayah; ?></td>
-						</tr>
-						<tr>
-							<td>9</td>
-							<td>Pekerjaan Ayah</td>
-							<td>: <?php echo $santri->pekerjaan_ayah; ?></td>
-						</tr>
-						<tr>
-							<td>10</td>
-							<td>Nama Ibu</td>
-							<td>: <?php echo $santri->nama_ibu; ?></td>
-						</tr>
-						<tr>
-							<td>11</td>
-							<td>Pekerjaan Ibu</td>
-							<td>: <?php echo $santri->pekerjaan_ibu; ?></td>
-						</tr>
+						<?php foreach ($santri as $row) : ?>
+							<tr>
+								<td>9</td>
+								<td>Nama Ayah</td>
+								<td>: <?php echo $row->nama_ayah ?? 'Tidak ada data'; ?></td>
+							</tr>
+							<tr>
+								<td>10</td>
+								<td>Pekerjaan Ayah</td>
+								<td>: <?php echo $row->pekerjaan_ayah ?? 'Tidak ada data'; ?></td>
+							</tr>
+							<tr>
+								<td>11</td>
+								<td>Nama Ibu</td>
+								<td>: <?php echo $row->nama_ibu ?? 'Tidak ada data'; ?></td>
+							</tr>
+							<tr>
+								<td>12</td>
+								<td>Pekerjaan Ibu</td>
+								<td>: <?php echo $row->pekerjaan_ibu ?? 'Tidak ada data'; ?></td>
+							</tr>
+						<?php endforeach; ?>
 					</table>
 				</td>
-
 			</tr>
 		</table>
 		<table>
@@ -164,12 +176,10 @@
 			<tr>
 				<td style="vertical-align: top;">
 					<?php
-					$imagePath = $santri->foto;
-					// $imageData = file_get_contents($imagePath);
-					// $base64Image = base64_encode($imageData);
+					$imagePath = $row->foto ?? '';
 					?>
 					<!-- jika foto santri tidak ada munculkan ini -->
-					<?php if ($imagePath == "") : ?>
+					<?php if (empty($imagePath)) : ?>
 						<img src="<?php echo base_url('assets/images/user.png') ?>" alt="Foto Santri" style="width: 100px;">
 					<?php else : ?>
 						<?php $imageData = file_get_contents($imagePath);
@@ -200,3 +210,7 @@
 			</tr>
 		</table>
 		<small>Form ini dicetak pada <?php echo date('Y-m-d'); ?></small>
+	</div>
+</body>
+
+</html>

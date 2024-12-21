@@ -60,6 +60,7 @@ class Data_santri extends CI_Controller
 		$this->form_validation->set_rules('nama_ayah', 'Nama Ayah', 'required', ['required' => 'Nama Ayah Wajib diisi!']);
 		$this->form_validation->set_rules('pekerjaan_ayah', 'Pekerjaan Ayah', 'required', ['required' => 'Pekerjaan Ayah Wajib diisi!']);
 		$this->form_validation->set_rules('nama_ibu', 'Nama Ibu', 'required', ['required' => 'Nama Ibu Wajib diisi!']);
+		$this->form_validation->set_rules('pekerjaan_ibu', 'Pekerjaan Ibu', 'required', ['required' => 'Pekerjaan Ibu Wajib diisi!']);
 		$this->form_validation->set_rules('no_hp', 'No Handphone', 'required|numeric', ['required' => 'NO HP Wajib diisi!', 'numeric' => 'No HP Harus Berupa Angka']);
 		$this->form_validation->set_rules('status', 'Status', 'required', ['required' => 'Status Wajib diisi!']);
 
@@ -404,6 +405,7 @@ class Data_santri extends CI_Controller
 		$this->form_validation->set_rules('nama_ayah', 'Nama Ayah', 'required', ['required' => 'Nama Ayah Wajib diisi!']);
 		$this->form_validation->set_rules('pekerjaan_ayah', 'Pekerjaan Ayah', 'required', ['required' => 'Pekerjaan Ayah Wajib diisi!']);
 		$this->form_validation->set_rules('nama_ibu', 'Nama Ibu', 'required', ['required' => 'Nama Ibu Wajib diisi!']);
+		$this->form_validation->set_rules('pekerjaan_ibu', 'Pekerjaan Ibu', 'required', ['required' => 'Pekerjaan Ibu Wajib diisi!']);
 		$this->form_validation->set_rules('no_hp', 'No Handphone', 'required|numeric', ['required' => 'NO HP Wajib diisi!', 'numeric' => 'No HP Harus Berupa Angka']);
 		$this->form_validation->set_rules('status', 'Status', 'required', ['required' => 'Status Wajib diisi!']);
 
@@ -438,6 +440,7 @@ class Data_santri extends CI_Controller
 				'nama_ayah' => $this->input->post('nama_ayah'),
 				'pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
 				'nama_ibu' => $this->input->post('nama_ibu'),
+				'pekerjaan_ibu' => $this->input->post('pekerjaan_ibu'),
 				'no_hp' => $this->input->post('no_hp'),
 				'status_santri' => $this->input->post('status'),
 			];
@@ -544,118 +547,118 @@ class Data_santri extends CI_Controller
 		redirect('data_santri');
 	}
 
-	public function histori_pendidikan()
-	{
+	// public function histori_pendidikan()
+	// {
 
-		$id_santri =  $this->input->get('id_santri');
-		$where = array('id_santri' => $id_santri);
-		$data = [
-			'title' => 'Histori Pendidikan Santri',
-			'data_santri' => $this->Data_santri_model->lihat_santri_semua()->result(),
-			'lihat_santri' => $this->Data_santri_model->lihat_santri_by_id($where)->row(),
-			'session_santri' =>    $this->session->set_userdata('id_santri', $id_santri),
-			'lembaga' => $this->data_lembaga_pendidikan_model->lihat_lembaga()->result(),
-			'lihat_history' => $this->Data_santri_model->histori_pendidikan_santri($id_santri)->result()
-			// 'lihat_session' => 
-			// 'set_session' => $this->set_session
-			// 'histori_pendidikan_persantri' => $this->Data_santri_model->histori_pendidikan_santri()->result()
-			// 'santri_aktif' => $this->Data_santri_model->lihat_santri_aktif()->result(),
-			// 'santri_nonaktif' => $this->Data_santri_model->lihat_santri_nonaktif()->result()
-		];
+	// 	$id_santri =  $this->input->get('id_santri');
+	// 	$where = array('id_santri' => $id_santri);
+	// 	$data = [
+	// 		'title' => 'Histori Pendidikan Santri',
+	// 		'data_santri' => $this->Data_santri_model->lihat_santri_semua()->result(),
+	// 		'lihat_santri' => $this->Data_santri_model->lihat_santri_by_id($where)->row(),
+	// 		'session_santri' =>    $this->session->set_userdata('id_santri', $id_santri),
+	// 		'lembaga' => $this->data_lembaga_pendidikan_model->lihat_lembaga()->result(),
+	// 		'lihat_history' => $this->Data_santri_model->histori_pendidikan_santri($id_santri)->result()
+	// 		// 'lihat_session' => 
+	// 		// 'set_session' => $this->set_session
+	// 		// 'histori_pendidikan_persantri' => $this->Data_santri_model->histori_pendidikan_santri()->result()
+	// 		// 'santri_aktif' => $this->Data_santri_model->lihat_santri_aktif()->result(),
+	// 		// 'santri_nonaktif' => $this->Data_santri_model->lihat_santri_nonaktif()->result()
+	// 	];
 
-		// var_dump($data);
-		// die;
-		$this->load->view('templates/header_dashboard', $data);
-		$this->load->view('content/data_santri/data_histori', $data);
-		$this->load->view('templates/footer_dashboard');
-	}
+	// 	// var_dump($data);
+	// 	// die;
+	// 	$this->load->view('templates/header_dashboard', $data);
+	// 	$this->load->view('content/data_santri/data_histori', $data);
+	// 	$this->load->view('templates/footer_dashboard');
+	// }
 
-	public function tambah_history_pendidikan_santri()
-	{
-		$this->form_validation->set_rules('id_santri', 'ID Santri', 'required');
-		$this->form_validation->set_rules('nama_lembaga', 'Nama Lembaga', 'required');
-		$this->form_validation->set_rules('tahun_awal', 'Tahun Awal', 'required');
-		$this->form_validation->set_rules('tahun_akhir', 'Tahun Akhir', 'required');
+	// public function tambah_history_pendidikan_santri()
+	// {
+	// 	$this->form_validation->set_rules('id_santri', 'ID Santri', 'required');
+	// 	$this->form_validation->set_rules('nama_lembaga', 'Nama Lembaga', 'required');
+	// 	$this->form_validation->set_rules('tahun_awal', 'Tahun Awal', 'required');
+	// 	$this->form_validation->set_rules('tahun_akhir', 'Tahun Akhir', 'required');
 
-		if ($this->form_validation->run() != false) {
-			# code...
+	// 	if ($this->form_validation->run() != false) {
+	// 		# code...
 
-			$data = array(
-				$id = 'id_santri' => $this->input->post('id_santri'),
-				'id_lembaga' => $this->input->post('nama_lembaga'),
-				'tahun_masuk_lembaga' => $this->input->post('tahun_awal'),
-				'tahun_keluar_lembaga' => $this->input->post('tahun_akhir')
-
-
-			);
-
-			$this->Data_santri_model->tambah_history_pendidikan($data);
-			redirect(base_url('data_santri/histori_pendidikan?id_santri=' . $this->input->post('id_santri')));
-			// var_dump($data);
-			// echo "input sukses!";
-		} else {
-
-			echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Data History Pendidikan Gagal Di Tambah');
-    window.location.href='" . base_url('data_santri/histori_pendidikan?id_santri=' . $this->input->post('id_santri')) . "';
-    </script>");
-		}
-	}
-	public function ubah_history_pendidikan()
-	{
-		$id_santri = $this->input->get('id_santri');
-		$id_history = $this->input->get('id_history');
-
-		if (!$id_santri || !$id_history) {
-			echo ("<script LANGUAGE='JavaScript'>
-                window.alert('ID Santri dan ID History harus ada.');
-                window.location.href='" . base_url('data_santri/histori_pendidikan') . "';
-                </script>");
-			return;
-		}
-
-		$data = [
-			'title' => 'Ubah History Pendidikan',
-			'history' => $this->Data_santri_model->get_history_pendidikan_by_id($id_santri, $id_history),
-			'lembaga' => $this->data_lembaga_pendidikan_model->lihat_lembaga()->result()
-		];
-
-		$this->load->view('templates/header_dashboard', $data);
-		$this->load->view('content/data_santri/ubah_history_pendidikan', $data);
-		$this->load->view('templates/footer_dashboard');
-	}
-
-	public function hapus_history_pendidikan_santri($id_history)
-	{
-		$this->Data_santri_model->hapus_history_pendidikan($id_history);
-		redirect(base_url('data_santri/histori_pendidikan?id_santri=' . $this->session->userdata('id_santri')));
-	}
+	// 		$data = array(
+	// 			$id = 'id_santri' => $this->input->post('id_santri'),
+	// 			'id_lembaga' => $this->input->post('nama_lembaga'),
+	// 			'tahun_masuk_lembaga' => $this->input->post('tahun_awal'),
+	// 			'tahun_keluar_lembaga' => $this->input->post('tahun_akhir')
 
 
+	// 		);
 
-	public function ubah_history_pendidikan_santri()
-	{
-		$id_history = $this->input->post('id_history');
-		$this->form_validation->set_rules('nama_lembaga', 'Nama Lembaga', 'required');
-		$this->form_validation->set_rules('tahun_awal', 'Tahun Awal', 'required');
-		$this->form_validation->set_rules('tahun_akhir', 'Tahun Akhir', 'required');
+	// 		$this->Data_santri_model->tambah_history_pendidikan($data);
+	// 		redirect(base_url('data_santri/histori_pendidikan?id_santri=' . $this->input->post('id_santri')));
+	// 		// var_dump($data);
+	// 		// echo "input sukses!";
+	// 	} else {
 
-		if ($this->form_validation->run()) {
-			$data = [
-				'id_lembaga' => $this->input->post('nama_lembaga'),
-				'tahun_masuk_lembaga' => $this->input->post('tahun_awal'),
-				'tahun_keluar_lembaga' => $this->input->post('tahun_akhir')
-			];
+	// 		echo ("<script LANGUAGE='JavaScript'>
+	// window.alert('Data History Pendidikan Gagal Di Tambah');
+	// window.location.href='" . base_url('data_santri/histori_pendidikan?id_santri=' . $this->input->post('id_santri')) . "';
+	// </script>");
+	// 	}
+	// }
+	// public function ubah_history_pendidikan()
+	// {
+	// 	$id_santri = $this->input->get('id_santri');
+	// 	$id_history = $this->input->get('id_history');
 
-			$this->Data_santri_model->ubah_history_pendidikan($id_history, $data);
-			redirect(base_url('data_santri/histori_pendidikan?id_santri=' . $this->input->post('id_santri')));
-		} else {
-			echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Gagal memperbarui Data History Pendidikan');
-    window.location.href='" . base_url('data_santri/histori_pendidikan?id_santri=' . $this->input->post('id_santri')) . "';
-    </script>");
-		}
-	}
+	// 	if (!$id_santri || !$id_history) {
+	// 		echo ("<script LANGUAGE='JavaScript'>
+	//             window.alert('ID Santri dan ID History harus ada.');
+	//             window.location.href='" . base_url('data_santri/histori_pendidikan') . "';
+	//             </script>");
+	// 		return;
+	// 	}
+
+	// 	$data = [
+	// 		'title' => 'Ubah History Pendidikan',
+	// 		'history' => $this->Data_santri_model->get_history_pendidikan_by_id($id_santri, $id_history),
+	// 		'lembaga' => $this->data_lembaga_pendidikan_model->lihat_lembaga()->result()
+	// 	];
+
+	// 	$this->load->view('templates/header_dashboard', $data);
+	// 	$this->load->view('content/data_santri/ubah_history_pendidikan', $data);
+	// 	$this->load->view('templates/footer_dashboard');
+	// }
+
+	// public function hapus_history_pendidikan_santri($id_history)
+	// {
+	// 	$this->Data_santri_model->hapus_history_pendidikan($id_history);
+	// 	redirect(base_url('data_santri/histori_pendidikan?id_santri=' . $this->session->userdata('id_santri')));
+	// }
+
+
+
+	// public function ubah_history_pendidikan_santri()
+	// {
+	// 	$id_history = $this->input->post('id_history');
+	// 	$this->form_validation->set_rules('nama_lembaga', 'Nama Lembaga', 'required');
+	// 	$this->form_validation->set_rules('tahun_awal', 'Tahun Awal', 'required');
+	// 	$this->form_validation->set_rules('tahun_akhir', 'Tahun Akhir', 'required');
+
+	// 	if ($this->form_validation->run()) {
+	// 		$data = [
+	// 			'id_lembaga' => $this->input->post('nama_lembaga'),
+	// 			'tahun_masuk_lembaga' => $this->input->post('tahun_awal'),
+	// 			'tahun_keluar_lembaga' => $this->input->post('tahun_akhir')
+	// 		];
+
+	// 		$this->Data_santri_model->ubah_history_pendidikan($id_history, $data);
+	// 		redirect(base_url('data_santri/histori_pendidikan?id_santri=' . $this->input->post('id_santri')));
+	// 	} else {
+	// 		echo ("<script LANGUAGE='JavaScript'>
+	// window.alert('Gagal memperbarui Data History Pendidikan');
+	// window.location.href='" . base_url('data_santri/histori_pendidikan?id_santri=' . $this->input->post('id_santri')) . "';
+	// </script>");
+	// 	}
+	// }
 
 	// fitur kartu santri
 

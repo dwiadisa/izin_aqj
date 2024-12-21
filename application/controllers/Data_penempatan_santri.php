@@ -268,5 +268,4 @@ class Data_penempatan_santri extends CI_Controller
 		exit;
 	}
 }
-
 /* End of file Data_penempatan_santri.php and path \application\controllers\Data_penempatan_santri.php */

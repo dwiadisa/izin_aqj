@@ -128,6 +128,14 @@
 									<?php echo form_error('nama_ibu', '<div class="text-danger">', '</div>'); ?>
 								</div>
 							</div>
+							<div class="form-group row">
+								<label class="col-lg-4 col-form-label" for="val-currency">Pekerjaan Ibu <span class="text-danger">*</span>
+								</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu">
+									<?php echo form_error('pekerjaan_ibu', '<div class="text-danger">', '</div>'); ?>
+								</div>
+							</div>
 
 							<div class="form-group row">
 								<label class="col-lg-4 col-form-label" for="val-phoneus">No HP<span class="text-danger">*</span>
