@@ -8,6 +8,7 @@ class Data_rombel_model extends CI_Model
 	public function getHierarkiRombel($tahun_ajaran)
 	{
 		$this->db->select('
+		  	data_rombel.id_rombel,  
             data_lembaga.id_lembaga,
             data_lembaga.nama_lembaga,
             data_kelas.id_kelas,
@@ -49,10 +50,10 @@ class Data_rombel_model extends CI_Model
 			$hierarki[$id_lembaga]['kelas'][$id_kelas]['santri'][] = [
 				'id_santri' => $row['id_santri'],
 				'no_induk_santri' => $row['no_induk_santri'],
-				'nama_lengkap_santri' => $row['nama_lengkap_santri']
+				'nama_lengkap_santri' => $row['nama_lengkap_santri'],
+				'id_rombel' => $row['id_rombel']
 			];
 		}
-
 		return $hierarki;
 	}
 
@@ -91,8 +92,11 @@ class Data_rombel_model extends CI_Model
 
 	public function hapus_santri($where)
 	{
+
+		$this->db->where('id_rombel', $where);
+
 		// Menghapus data dari tabel data_rombel berdasarkan kondisi
-		return $this->db->delete('data_rombel', $where); // Pastikan 'data_rombel' adalah nama tabel yang benar
+		$this->db->delete('data_rombel'); // Pastikan 'data_rombel' adalah nama tabel yang benar
 	}
 }
 
