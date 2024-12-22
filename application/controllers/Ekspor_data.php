@@ -127,7 +127,7 @@ class Ekspor_data extends CI_Controller
 				$sheet->setCellValueByColumnAndRow(13, $row, (string)$data->no_hp ?? 'Tidak ada data');
 				$sheet->setCellValueByColumnAndRow(14, $row, (string)$data->lembaga_awal ?? 'Tidak ada data');
 				$sheet->setCellValueByColumnAndRow(15, $row, (string)$data->lembaga_akhir ?? 'Tidak ada data');
-				$sheet->setCellValueByColumnAndRow(16, $row, (string)$data->nama_kelas ?? 'Tidak ada data');
+				$sheet->setCellValueByColumnAndRow(16, $row, (string)$data->nama_kelas_akhir ?? 'Tidak ada data');
 				$sheet->setCellValueByColumnAndRow(17, $row, (string)$data->nama_wilayah ?? 'Tidak ada data');
 				$sheet->setCellValueByColumnAndRow(18, $row, (string)$data->nama_kamar ?? 'Tidak ada data');
 				$row++;
@@ -211,7 +211,7 @@ class Ekspor_data extends CI_Controller
 				$sheet->setCellValueByColumnAndRow(13, $row, (string)$data->no_hp ?? 'Tidak ada data');
 				$sheet->setCellValueByColumnAndRow(14, $row, (string)$data->lembaga_awal ?? 'Tidak ada data');
 				$sheet->setCellValueByColumnAndRow(15, $row, (string)$data->lembaga_akhir ?? 'Tidak ada data');
-				$sheet->setCellValueByColumnAndRow(16, $row, (string)$data->nama_kelas ?? 'Tidak ada data');
+				$sheet->setCellValueByColumnAndRow(16, $row, (string)$data->nama_kelas_akhir ?? 'Tidak ada data');
 				$sheet->setCellValueByColumnAndRow(17, $row, (string)$data->nama_wilayah ?? 'Tidak ada data');
 				$sheet->setCellValueByColumnAndRow(18, $row, (string)$data->nama_kamar ?? 'Tidak ada data');
 				$row++;
