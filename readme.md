@@ -1,5 +1,5 @@
-     ![Logo Al Qodiri](https://github.com/dwiadisa/izin_aqj/blob/main/assets/images/Logo-Al-Qodiri-Small-150x150.png?raw=true)
-     ```
+![Logo Al Qodiri](https://github.com/dwiadisa/izin_aqj/blob/main/assets/images/Logo-Al-Qodiri-Small-150x150.png?raw=true)
+     
 # SIPP TREN - Service Information System of the Islamic Boarding School Al-Qodiri Jember
 
 SIPP TREN adalah aplikasi berbasis web yang digunakan untuk mengelola izin santri keluar dari pesantren dan izin untuk santri tamu riyadhoh. Aplikasi ini memiliki berbagai fitur yang mencakup pengelolaan data santri, data asrama, rekapitulasi santri per asrama, pengelolaan santri tamu riyadhoh, serta pengaturan aktivasi sistem kiosk.
