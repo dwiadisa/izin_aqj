@@ -266,7 +266,6 @@
 							<input type="time" id="jam_akhir" required name="jam_akhir" class="form-control" max="17:00" value="17:00" />
 						</div>
 
-<<<<<<< HEAD
 						<!-- Date input -->
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="form4Example2">No. HP Wali Santri</label>
@@ -274,8 +273,6 @@
 						</div>
 
 
-=======
->>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 						<!-- Textarea input -->
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="form4Example3">Keperluan</label>
@@ -593,8 +590,4 @@
 
 </body>
 
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
