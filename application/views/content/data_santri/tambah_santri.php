@@ -48,6 +48,7 @@
 									<?php echo form_error('tanggal_lahir', '<div class="text-danger">', '</div>'); ?>
 								</div>
 							</div>
+<<<<<<< HEAD
 							<div class="form-group row">
 								<label class="col-lg-4 col-form-label" for="val-confirm-password">NIK Santri <span class="text-danger">*</span>
 								</label>
@@ -56,6 +57,8 @@
 									<?php echo form_error('nik_santri', '<div class="text-danger">', '</div>'); ?>
 								</div>
 							</div>
+=======
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 							<hr>
 							<div class="form-group row">
 								<label class="col-lg-4 col-form-label" for="val-confirm-password">Dusun

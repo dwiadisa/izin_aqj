@@ -91,11 +91,14 @@
 						</tr>
 						<tr>
 							<td>6</td>
+<<<<<<< HEAD
 							<td>NIK </td>
 							<td>: <?php echo $santri->nik_santri; ?></td>
 						</tr>
 						<tr>
 							<td>7</td>
+=======
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 							<td>Alamat Lengkap</td>
 							<td>
 								a. Dusun : <?php echo $santri->alamat_dusun; ?><br>
@@ -106,7 +109,11 @@
 							</td>
 						</tr>
 						<tr>
+<<<<<<< HEAD
 							<td>8</td>
+=======
+							<td>7</td>
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 							<td>Jenjang Pendidikan Yang Dipilih</td>
 							<td>: <?php echo $santri->nama_lembaga; ?></td>
 						</tr>
@@ -124,22 +131,38 @@
 					</table>
 					<table class="table table-bordered">
 						<tr>
+<<<<<<< HEAD
 							<td>9</td>
+=======
+							<td>8</td>
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 							<td>Nama Ayah</td>
 							<td>: <?php echo $santri->nama_ayah; ?></td>
 						</tr>
 						<tr>
+<<<<<<< HEAD
 							<td>10</td>
+=======
+							<td>9</td>
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 							<td>Pekerjaan Ayah</td>
 							<td>: <?php echo $santri->pekerjaan_ayah; ?></td>
 						</tr>
 						<tr>
+<<<<<<< HEAD
 							<td>11</td>
+=======
+							<td>10</td>
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 							<td>Nama Ibu</td>
 							<td>: <?php echo $santri->nama_ibu; ?></td>
 						</tr>
 						<tr>
+<<<<<<< HEAD
 							<td>12</td>
+=======
+							<td>11</td>
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 							<td>Pekerjaan Ibu</td>
 							<td>: <?php echo $santri->pekerjaan_ibu; ?></td>
 						</tr>

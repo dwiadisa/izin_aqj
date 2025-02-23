@@ -12,6 +12,7 @@
 					<div class="card-body">
 						<h4>Ekspor Data Santri Lengkap</h4>
 						<hr>
+<<<<<<< HEAD
 						<div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-number">Ekspor Semua Data Santri <span class="text-danger">*</span>
                                             </label>
@@ -21,6 +22,8 @@
                                         </div>
 
 						<hr>
+=======
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 						<p>Data Lengkap Santri</p>
 						<div class="form-group row">
 							<label class="col-lg-4 col-form-label" for="id_santri">Pilih Santri<span class="text-danger">*</span>

@@ -48,10 +48,14 @@
 															<tr>
 																<td><?= $no++ ?></td>
 																<td><strong><?= $izin->kode_perizinan ?></strong></td>
+<<<<<<< HEAD
 																<td><?= $izin->no_induk_santri ?> - <?= $izin->nama_lengkap_santri ?> <br>
 																	No. HP Wali Santri : <?= $izin->no_wali ?>
 
 																</td>
+=======
+																<td><?= $izin->no_induk_santri ?> - <?= $izin->nama_lengkap_santri ?></td>
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 																<td><?= $izin->tanggal_mulai ?> | <?= $izin->jam_mulai ?> s/d <?= $izin->tanggal_akhir ?> | <?= $izin->jam_akhir ?>
 																	<?php
 																	$current_time = date('Y-m-d H:i:s');
@@ -126,10 +130,14 @@
 															<tr>
 																<td><?= $no++ ?></td>
 																<td><strong><?= $izin->kode_perizinan ?></strong></td>
+<<<<<<< HEAD
 																<td><?= $izin->no_induk_santri ?> - <?= $izin->nama_lengkap_santri ?>
 																	<br>
 																	No. HP Wali Santri : <?= $izin->no_wali ?>
 																</td>
+=======
+																<td><?= $izin->no_induk_santri ?> - <?= $izin->nama_lengkap_santri ?></td>
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 																<td><?= $izin->tanggal_mulai ?> | <?= $izin->jam_mulai ?> s/d <?= $izin->tanggal_akhir ?> | <?= $izin->jam_akhir ?>
 																	<?php
 																	$current_time = date('Y-m-d H:i:s');
@@ -204,10 +212,14 @@
 															<tr>
 																<td><?= $no++ ?></td>
 																<td><strong><?= $izin->kode_perizinan ?></strong></td>
+<<<<<<< HEAD
 																<td><?= $izin->no_induk_santri ?> - <?= $izin->nama_lengkap_santri ?>
 																	<br>
 																	No. HP Wali Santri : <?= $izin->no_wali ?>
 																</td>
+=======
+																<td><?= $izin->no_induk_santri ?> - <?= $izin->nama_lengkap_santri ?></td>
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 																<td><?= $izin->tanggal_mulai ?> | <?= $izin->jam_mulai ?> s/d <?= $izin->tanggal_akhir ?> | <?= $izin->jam_akhir ?>
 																	<?php
 																	$current_time = date('Y-m-d H:i:s');
@@ -282,10 +294,14 @@
 															<tr>
 																<td><?= $no++ ?></td>
 																<td><strong><?= $izin->kode_perizinan ?></strong></td>
+<<<<<<< HEAD
 																<td><?= $izin->no_induk_santri ?> - <?= $izin->nama_lengkap_santri ?>
 																	<br>
 																	No. HP Wali Santri : <?= $izin->no_wali ?>
 																</td>
+=======
+																<td><?= $izin->no_induk_santri ?> - <?= $izin->nama_lengkap_santri ?></td>
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 																<td><?= $izin->tanggal_mulai ?> | <?= $izin->jam_mulai ?> s/d <?= $izin->tanggal_akhir ?> | <?= $izin->jam_akhir ?>
 																	<?php
 																	$current_time = date('Y-m-d H:i:s');
@@ -346,5 +362,8 @@
 		</div>
 	</div>
 	<!-- #/ container -->
+<<<<<<< HEAD
 </div>
+=======
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 </div>

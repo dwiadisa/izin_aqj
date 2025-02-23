@@ -105,7 +105,11 @@
 								<td>
 									Lembaga Awal: <?php echo $row->lembaga_awal ?? 'Tidak ada data'; ?><br>
 									Lembaga Saat ini: <?php echo $row->lembaga_akhir ?? 'Tidak ada data'; ?><br>
+<<<<<<< HEAD
 									Kelas Saat Ini: <?php echo $row->nama_kelas_akhir ?? 'Tidak ada data'; ?><br>
+=======
+									Kelas Saat Ini: <?php echo $row->nama_kelas ?? 'Tidak ada data'; ?><br>
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 								</td>
 							</tr>
 							<tr>

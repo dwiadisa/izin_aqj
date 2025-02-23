@@ -12,6 +12,7 @@ class Ekspor_data_model extends CI_Model
 		return $query;
 	}
 
+<<<<<<< HEAD
 
 	public function ekspor_semua(){
 
@@ -91,6 +92,9 @@ class Ekspor_data_model extends CI_Model
 		return $query->result();
 	}
 	public function ekspor_persantriooo($id)
+=======
+	public function ekspor_persantri($id)
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 	{
 		// Ambil data santri
 		$this->db->select('s.*');
@@ -105,10 +109,14 @@ class Ekspor_data_model extends CI_Model
             (SELECT r2.lembaga FROM data_rombel r2 WHERE r2.santri = r.santri ORDER BY r2.kelas DESC LIMIT 1) AS lembaga_akhir_id,
             (SELECT r2.kelas FROM data_rombel r2 WHERE r2.santri = r.santri ORDER BY r2.kelas DESC LIMIT 1) AS kelas_akhir,
             (SELECT l2.nama_lembaga FROM data_rombel r2 LEFT JOIN data_lembaga l2 ON r2.lembaga = l2.id_lembaga WHERE r2.santri = r.santri ORDER BY r2.kelas ASC LIMIT 1) AS lembaga_awal,
+<<<<<<< HEAD
             (SELECT l2.nama_lembaga FROM data_rombel r2 LEFT JOIN data_lembaga l2 ON r2.lembaga = l2.id_lembaga WHERE r2.santri = r.santri ORDER BY r2.kelas DESC LIMIT 1) AS lembaga_akhir,
 			(SELECT k2.nama_kelas FROM data_rombel r3 JOIN data_kelas k2 ON r3.kelas = k2.id_kelas WHERE r3.santri = s.id_santri ORDER BY r3.kelas DESC LIMIT 1) AS nama_kelas_akhir');
 			
 			
+=======
+            (SELECT l2.nama_lembaga FROM data_rombel r2 LEFT JOIN data_lembaga l2 ON r2.lembaga = l2.id_lembaga WHERE r2.santri = r.santri ORDER BY r2.kelas DESC LIMIT 1) AS lembaga_akhir');
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 
 		$this->db->from('data_rombel r');
 		$this->db->join('data_kelas k', 'r.kelas = k.id_kelas', 'left');
@@ -152,7 +160,12 @@ class Ekspor_data_model extends CI_Model
 
 		// Ambil data santri
 		// Mengambil data santri
+<<<<<<< HEAD
 		$this->db->select('s.*, p.*, w.nama_wilayah, c.nama_kamar, 
+=======
+		$this->db->select(
+			's.*, p.*, w.nama_wilayah, c.nama_kamar, 
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
         MAX(r.id_rombel) AS id_rombel, 
         MAX(k.nama_kelas) AS nama_kelas, 
         MAX(l.nama_lembaga) AS nama_lembaga, 
@@ -161,7 +174,19 @@ class Ekspor_data_model extends CI_Model
         (SELECT r2.kelas FROM data_rombel r2 WHERE r2.santri = s.id_santri ORDER BY r2.kelas DESC LIMIT 1) AS kelas_akhir,
         (SELECT l2.nama_lembaga FROM data_rombel r2 LEFT JOIN data_lembaga l2 ON r2.lembaga = l2.id_lembaga WHERE r2.santri = s.id_santri ORDER BY r2.kelas ASC LIMIT 1) AS lembaga_awal,
         (SELECT l2.nama_lembaga FROM data_rombel r2 LEFT JOIN data_lembaga l2 ON r2.lembaga = l2.id_lembaga WHERE r2.santri = s.id_santri ORDER BY r2.kelas DESC LIMIT 1) AS lembaga_akhir,
+<<<<<<< HEAD
 		(SELECT k2.nama_kelas FROM data_rombel r3 JOIN data_kelas k2 ON r3.kelas = k2.id_kelas WHERE r3.santri = s.id_santri ORDER BY r3.kelas DESC LIMIT 1) AS nama_kelas_akhir');
+=======
+		  (SELECT k2.nama_kelas FROM data_rombel r3 
+     JOIN data_kelas k2 ON r3.kelas = k2.id_kelas 
+     WHERE r3.santri = s.id_santri 
+     ORDER BY r3.kelas DESC 
+     LIMIT 1) AS nama_kelas_akhir
+		'
+
+
+		);
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 
 		$this->db->from('data_santri s');
 		$this->db->join('data_penghuni p', 's.id_santri = p.id_santri', 'left');
@@ -201,8 +226,17 @@ class Ekspor_data_model extends CI_Model
         (SELECT r2.kelas FROM data_rombel r2 WHERE r2.santri = s.id_santri ORDER BY r2.kelas DESC LIMIT 1) AS kelas_akhir,
         (SELECT l2.nama_lembaga FROM data_rombel r2 LEFT JOIN data_lembaga l2 ON r2.lembaga = l2.id_lembaga WHERE r2.santri = s.id_santri ORDER BY r2.kelas ASC LIMIT 1) AS lembaga_awal,
         (SELECT l2.nama_lembaga FROM data_rombel r2 LEFT JOIN data_lembaga l2 ON r2.lembaga = l2.id_lembaga WHERE r2.santri = s.id_santri ORDER BY r2.kelas DESC LIMIT 1) AS lembaga_akhir,
+<<<<<<< HEAD
 		(SELECT k2.nama_kelas FROM data_rombel r3 JOIN data_kelas k2 ON r3.kelas = k2.id_kelas WHERE r3.santri = s.id_santri ORDER BY r3.kelas DESC LIMIT 1) AS nama_kelas_akhir');
 		
+=======
+		  (SELECT k2.nama_kelas FROM data_rombel r3 
+     JOIN data_kelas k2 ON r3.kelas = k2.id_kelas 
+     WHERE r3.santri = s.id_santri 
+     ORDER BY r3.kelas DESC 
+     LIMIT 1) AS nama_kelas_akhir
+		');
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 
 		$this->db->from('data_santri s');
 		$this->db->join('data_penghuni p', 's.id_santri = p.id_santri', 'left');

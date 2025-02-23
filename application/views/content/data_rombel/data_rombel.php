@@ -29,6 +29,15 @@
 							</form>
 
 						</div>
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 						<?php if (!empty($data_rombel)) : ?>
 							<hr>
 
@@ -77,6 +86,10 @@
 																				<li class="list-group-item">
 																					<?php echo $santri['no_induk_santri'] . " - " . $santri['nama_lengkap_santri']; ?>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 																					<button class="btn btn-danger btn-sm float-right ml-2 btn-delete" data-id="<?php echo $santri['id_rombel']; ?>" data-name="<?php echo $santri['nama_lengkap_santri']; ?>">
 																						Hapus
 																					</button>
@@ -111,6 +124,11 @@
 	</div>
 </div>
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 <!-- Modal Hapus -->
 <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -144,4 +162,8 @@
 			$('#modalDelete').modal('show');
 		});
 	});
+<<<<<<< HEAD
 </script>
+=======
+</script>
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0

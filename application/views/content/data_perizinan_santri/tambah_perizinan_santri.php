@@ -68,6 +68,7 @@
 										<?php echo form_error('jam_akhir', '<div class="text-danger">', '</div>'); ?>
 									</div>
 								</div>
+<<<<<<< HEAD
 								<div class="form-group row">
 									<label class="col-lg-4 col-form-label" for="val-website">No. HP Wali Santri<span class="text-danger">*</span>
 									</label>
@@ -76,6 +77,8 @@
 										<?php echo form_error('no_wali', '<div class="text-danger">', '</div>'); ?>
 									</div>
 								</div>
+=======
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 								<hr>
 								<div class="form-group row">
 									<label class="col-lg-4 col-form-label" for="val-skill">Status<span class="text-danger">*</span>

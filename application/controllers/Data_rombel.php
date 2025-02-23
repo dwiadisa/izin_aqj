@@ -38,7 +38,13 @@ class Data_rombel extends CI_Controller
 			'selected_tahun_ajaran' => $this->session->userdata('selected_tahun_ajaran') // Ambil dari session
 		];
 
+<<<<<<< HEAD
 		log_message('debug', 'Data rombel setelah penghapusan: ' . json_encode($data_hierarki));
+=======
+		// var_dump($data);
+		// die;
+		// log_message('debug', 'Data rombel setelah penghapusan: ' . json_encode($data_hierarki));
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 		// Muat tampilan
 		$this->load->view('templates/header_dashboard', $data);
 		$this->load->view('content/data_rombel/data_rombel', $data);
@@ -111,6 +117,7 @@ class Data_rombel extends CI_Controller
 
 	public function hapus_santri($id)
 	{
+<<<<<<< HEAD
 		// Memuat model yang diperlukan
 		$this->load->model('Data_rombel_model');
 
@@ -127,6 +134,15 @@ class Data_rombel extends CI_Controller
 		}
 
 		// Redirect kembali ke halaman data rombel
+=======
+
+		// Menentukan kondisi untuk penghapusan
+		// $where = array('id_rombel' => $id);
+		$test = 	$this->Data_rombel_model->hapus_santri($id);
+		// // Redirect kembali ke halaman data rombel
+		// echo $test->affected_rows;
+		// die;
+>>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 		redirect('data_rombel');
 		// echo "penghapusan berhasil";
 	}
