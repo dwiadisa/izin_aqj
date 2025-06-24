@@ -81,7 +81,6 @@ class Ekspor_data extends CI_Controller
 	}
 
 
-<<<<<<< HEAD
 	public function ekspor_semua(){
 		$data_penghuni = $this->Ekspor_data_model->ekspor_semua();
 			$this->load->library('excel');
@@ -148,8 +147,6 @@ class Ekspor_data extends CI_Controller
 			exit;
 	}
 
-=======
->>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 	public function ekspor_pertahun()
 	{
 		$this->form_validation->set_rules('tahun', 'Tahun', 'required', array('required' => 'Tahun harus diisi'));
@@ -167,11 +164,7 @@ class Ekspor_data extends CI_Controller
 				"No", "No Induk Santri", "Nama Lengkap Santri", "Tanggal Masuk", "Tempat Lahir",
 				"Tanggal Lahir", "Nama Ayah", "Nama Ibu", "Alamat Dusun", "Alamat Desa",
 				"Alamat Kecamatan", "Alamat Kabupaten", "Alamat Provinsi", "No HP",
-<<<<<<< HEAD
 				"Lembaga Awal", "Lembaga Saat Ini", "Kelas Saat Ini", "Nama Wilayah", "Nama Kamar", "Status"
-=======
-				"Lembaga Awal", "Lembaga Saat Ini", "Kelas Saat Ini", "Nama Wilayah", "Nama Kamar"
->>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 			];
 
 			$column = 0;
