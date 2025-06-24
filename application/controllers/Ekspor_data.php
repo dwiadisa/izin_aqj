@@ -196,10 +196,7 @@ class Ekspor_data extends CI_Controller
 				$sheet->setCellValueByColumnAndRow(16, $row, (string)$data->nama_kelas_akhir ?? 'Tidak ada data');
 				$sheet->setCellValueByColumnAndRow(17, $row, (string)$data->nama_wilayah ?? 'Tidak ada data');
 				$sheet->setCellValueByColumnAndRow(18, $row, (string)$data->nama_kamar ?? 'Tidak ada data');
-<<<<<<< HEAD
 				$sheet->setCellValueByColumnAndRow(19, $row, (string)$data->status_santri ?? 'Tidak ada data');
-=======
->>>>>>> c828bd154037bc276d83a44c67e059eff275fbd0
 				$row++;
 			}
 
